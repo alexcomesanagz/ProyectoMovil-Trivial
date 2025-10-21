@@ -1,6 +1,7 @@
 package com.example.triviaapp.componentes
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -12,7 +13,7 @@ import androidx.compose.ui.res.painterResource
 @Composable
 fun ComponenteTarjetaHorizontal(imagen: Int,TxtMsg: String,accion:()-> Unit){
 
-    Row {
+    Row(modifier = Modifier.clickable(onClick = accion)) {
         Image(painter = painterResource(id = imagen),contentDescription = "imagen categoria")
         Text(text = TxtMsg)
     }
