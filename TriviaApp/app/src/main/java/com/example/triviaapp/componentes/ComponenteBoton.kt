@@ -12,14 +12,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun ComponenteBoton(Msg: String, modifier: Modifier = Modifier, accion:()-> Unit){
-    Box(modifier = modifier.fillMaxSize()){
+fun ComponenteBoton(Msg: String, modifier: Modifier = Modifier, coloresBoton: ArrayList<Color>, accion:()-> Unit){
+    Box(modifier = modifier){
         Button(onClick = accion,
             colors = ButtonColors(
-                containerColor = Color.Gray,
-                contentColor = Color.White,
-                disabledContainerColor = Color.Green,
-                disabledContentColor = Color.Black,
+                containerColor = coloresBoton.get(0),
+                contentColor = coloresBoton.get(1),
+                disabledContainerColor = coloresBoton.get(2),
+                disabledContentColor = coloresBoton.get(3),
             )) {
             Text(text = Msg)
         }
@@ -31,5 +31,10 @@ fun ComponenteBoton(Msg: String, modifier: Modifier = Modifier, accion:()-> Unit
 @Preview
 @Composable
 fun BotonPreview(){
-    ComponenteBoton(Msg = "yuya", accion = {})
+    val colorBoton = ArrayList<Color>()
+    colorBoton.add(Color.Gray)
+    colorBoton.add(Color.Blue)
+    colorBoton.add(Color.Black)
+    colorBoton.add(Color.Black)
+    ComponenteBoton(Msg = "yuya", coloresBoton = colorBoton,accion = {})
 }
