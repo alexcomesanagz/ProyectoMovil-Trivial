@@ -2,6 +2,7 @@ package com.example.triviaapp.componentes
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
@@ -13,6 +14,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -24,7 +27,7 @@ fun TopBarComponent(
     onMoreClick: () -> Unit
 ) {
     TopAppBar(
-        title = { Text(text = title) },
+        title = { Text(text = title, textAlign = TextAlign.Center) },
         navigationIcon = {
             IconButton(onClick = onMenuClick) {
                 Icon(Icons.Default.Menu, contentDescription = "Menu")
@@ -35,7 +38,7 @@ fun TopBarComponent(
                 Icon(Icons.Default.ExitToApp, contentDescription = "Search")
             }
             IconButton(onClick = onSearchClick) {
-                Icon(Icons.Default.ShoppingCart, contentDescription = "Search")
+                Icon(Icons.Default.Create, contentDescription = "Search")
             }
             IconButton(onClick = onMoreClick) {
                 Icon(Icons.Default.AccountCircle, contentDescription = "More")
