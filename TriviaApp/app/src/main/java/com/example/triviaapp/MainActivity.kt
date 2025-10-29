@@ -11,8 +11,33 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.triviaapp.ui.theme.TriviaAppTheme
+import com.example.compose.TriviaAppTheme
+import com.example.triviaapp.componentes.ComponenteListaTarjetas
+import com.example.triviaapp.componentes.ComponenteTarjetaHorizontal
+import com.example.triviaapp.componentes.Tarjeta
 
+private val tarjetas: List<Tarjeta> = listOf(
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela")
+)
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
