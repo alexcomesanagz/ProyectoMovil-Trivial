@@ -11,6 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 
+data class Boton(val texto: String, val modifier: Modifier = Modifier, val coloresBoton: ArrayList<Color>)
+
 @Composable
 fun ComponenteBoton(Msg: String, modifier: Modifier = Modifier, coloresBoton: ArrayList<Color>, accion:()-> Unit){
     Box(modifier = modifier){
