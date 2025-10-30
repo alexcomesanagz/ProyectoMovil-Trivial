@@ -32,11 +32,7 @@ fun ComponenteTarjetaHorizontal(contenido: Tarjeta) {
             .padding(horizontal = 2.dp, vertical = 2.dp)
             .fillMaxWidth()
     ) {
-        Image(
-            painter = painterResource(id = contenido.imagen),
-            modifier = Modifier.size(width = 20.dp, height = 20.dp),
-            contentDescription = "imagen categoria"
-        )
+        ComponenteImagen(id = contenido.imagen)
         Text(
             text = contenido.titulo,
             modifier = Modifier.padding(horizontal = 6.dp)
