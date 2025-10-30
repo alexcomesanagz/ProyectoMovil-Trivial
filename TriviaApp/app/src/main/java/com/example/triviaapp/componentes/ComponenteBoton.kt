@@ -2,6 +2,7 @@ package com.example.triviaapp.componentes
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -48,10 +49,26 @@ fun AceptartBoton(msj: String, accion: () -> Unit = {}) {
         coloresBoton = listaColor,
         accion = accion))
 }
+@Composable
+fun DenegartBoton(msj: String, accion: () -> Unit = {}) {
+    var listaColor = listOf<Color>(
+        MaterialTheme.colorScheme.onError,
+        MaterialTheme.colorScheme.onErrorContainer,
+        MaterialTheme.colorScheme.tertiary,
+        MaterialTheme.colorScheme.onPrimaryContainer
+    )
+    ComponenteBoton(datos = DatosBoton(msj = msj,
+        coloresBoton = listaColor,
+        accion = accion))
+}
+
 
 
 @Preview
 @Composable
 fun BotonPreview() {
-    AceptartBoton("aya")
+    Column {
+        AceptartBoton("aya")
+        DenegartBoton("aya")
+    }
 }
