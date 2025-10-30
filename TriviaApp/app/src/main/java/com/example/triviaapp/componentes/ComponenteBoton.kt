@@ -29,7 +29,8 @@ fun ComponenteBoton(datos: DatosBoton) {
                 contentColor = datos.coloresBoton.get(1),
                 disabledContainerColor = datos.coloresBoton.get(2),
                 disabledContentColor = datos.coloresBoton.get(3),
-            )
+            ),
+            modifier = datos.modifier
         ) {
             Text(text = datos.msj)
         }
@@ -38,7 +39,7 @@ fun ComponenteBoton(datos: DatosBoton) {
 }
 
 @Composable
-fun AceptartBoton(msj: String, accion: () -> Unit = {}) {
+fun AceptartBoton(msj: String,modifier: Modifier= Modifier, accion: () -> Unit = {}) {
     var listaColor = listOf<Color>(
         MaterialTheme.colorScheme.primaryContainer,
         MaterialTheme.colorScheme.onPrimaryContainer,
@@ -46,11 +47,12 @@ fun AceptartBoton(msj: String, accion: () -> Unit = {}) {
         MaterialTheme.colorScheme.onPrimaryContainer
     )
     ComponenteBoton(datos = DatosBoton(msj = msj,
+        modifier = modifier,
         coloresBoton = listaColor,
         accion = accion))
 }
 @Composable
-fun DenegartBoton(msj: String, accion: () -> Unit = {}) {
+fun DenegartBoton(msj: String,modifier: Modifier= Modifier, accion: () -> Unit = {}) {
     var listaColor = listOf<Color>(
         MaterialTheme.colorScheme.onError,
         MaterialTheme.colorScheme.onErrorContainer,
@@ -58,6 +60,7 @@ fun DenegartBoton(msj: String, accion: () -> Unit = {}) {
         MaterialTheme.colorScheme.onPrimaryContainer
     )
     ComponenteBoton(datos = DatosBoton(msj = msj,
+        modifier = modifier,
         coloresBoton = listaColor,
         accion = accion))
 }
