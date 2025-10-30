@@ -41,7 +41,7 @@ fun ComponenteListaTarjetas(tarjetas: List<Tarjeta>) {
         )
         {
             items(tarjetas) { tarjeta ->
-                ComponenteTarjetaHorizontal(tarjeta){}
+                ComponenteTarjetaHorizontal(tarjeta)
             }
         }
     }
