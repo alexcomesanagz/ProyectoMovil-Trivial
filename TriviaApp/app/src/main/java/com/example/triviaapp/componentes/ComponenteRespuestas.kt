@@ -13,11 +13,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ComponenteRespuestas(botonesRespuesta: List<String>) {
+fun ComponenteRespuestas(textoBotonesRespuesta: List<String>) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         content = {
-            items(botonesRespuesta) { textoBoton ->
+            items(textoBotonesRespuesta) { textoBoton ->
                 Box(
                     contentAlignment = Alignment.Center
                 ) {
@@ -32,11 +32,11 @@ fun ComponenteRespuestas(botonesRespuesta: List<String>) {
 @Preview(showSystemUi = true)
 @Composable
 fun prevComponenteRespuestas() {
-    val botones = listOf(
+    val textoBotonesRespuesta = listOf(
         "Respuesta 1",
         "Respuesta 2",
         "Respuesta 3",
         "Respuesta 4"
     )
-    ComponenteRespuestas(botones)
+    ComponenteRespuestas(textoBotonesRespuesta)
 }
