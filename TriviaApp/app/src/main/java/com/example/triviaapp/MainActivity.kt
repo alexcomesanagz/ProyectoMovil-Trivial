@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -43,6 +46,12 @@ private val tarjetas: List<Tarjeta> = listOf(
     Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
     Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
     Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
+    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
     Tarjeta(R.drawable.ic_launcher_background,"Abuela")
 )
 class MainActivity : ComponentActivity() {
@@ -51,39 +60,45 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TriviaAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize().padding(vertical = 10.dp),
+                Column {
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
                     topBar = { TopBarComponent(title = "nelsol") }) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                    ComponenteTituloYListaTarjetas(titulo, tarjetas)
+
+                    Box(Modifier.fillMaxSize().padding(innerPadding)) {
+                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                            ComponenteTituloYListaTarjetas(titulo, tarjetas)
+                            ComponenteTituloYListaTarjetas(titulo, tarjetas)
+                        }
+                    }
                 }
             }
+                }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    TriviaAppTheme {
-        Greeting("Android")
+    @Composable
+    fun Greeting(name: String, modifier: Modifier = Modifier) {
+        Text(
+            text = "Hello $name!",
+            modifier = modifier
+        )
     }
-}
 
-@Preview
-@Composable
-fun prevComponenteTituloYlistaTarjetas(){
-    TriviaAppTheme {
-        ComponenteTituloYListaTarjetas(titulo, tarjetas)
+    @Preview(showBackground = true)
+    @Composable
+    fun GreetingPreview() {
+        TriviaAppTheme {
+            Greeting("Android")
+        }
+    }
+
+    @Preview
+    @Composable
+    fun prevComponenteTituloYlistaTarjetas() {
+        TriviaAppTheme {
+            ComponenteTituloYListaTarjetas(titulo, tarjetas)
+        }
     }
 }
