@@ -31,7 +31,9 @@ import com.example.triviaapp.R
 @Composable
 fun ComponenteListaTarjetas(tarjetas: List<Tarjeta>) {
 
-    Box(Modifier.background(MaterialTheme.colorScheme.secondary, RoundedCornerShape(8.dp))) {
+    Box(Modifier.background(
+        MaterialTheme.colorScheme.secondary,
+        RoundedCornerShape(8.dp))) {
 
         LazyColumn(
             modifier = Modifier.padding(8.dp)
