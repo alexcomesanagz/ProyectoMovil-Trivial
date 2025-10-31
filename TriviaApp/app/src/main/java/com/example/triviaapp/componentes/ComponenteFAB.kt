@@ -1,0 +1,28 @@
+package com.example.triviaapp.componentes
+
+import android.annotation.SuppressLint
+import android.widget.Toast
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.AlertDialogDefaults.containerColor
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
+
+@Composable
+fun ComponenteFAB() {
+    val context = LocalContext.current
+    FloatingActionButton(onClick = {
+        Toast.makeText(context, "Suscribete", Toast.LENGTH_SHORT).show()
+    },
+        containerColor = MaterialTheme.colorScheme.primary
+    ) {
+        Icon(Icons.Default.Add, contentDescription = "Add")
+    }
+}
