@@ -4,18 +4,23 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.ComponenteListaTarjetas
 import com.example.triviaapp.componentes.ComponenteTarjetaHorizontal
 import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetas
 import com.example.triviaapp.componentes.Tarjeta
+import com.example.triviaapp.componentes.TopBarComponent
 
 private val titulo: String = "Título de prueba"
 private val tarjetas: List<Tarjeta> = listOf(
@@ -46,7 +51,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TriviaAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Scaffold(modifier = Modifier.fillMaxSize().padding(vertical = 10.dp),
+                    topBar = { TopBarComponent(title = "nelsol") }) { innerPadding ->
                     Greeting(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)

@@ -22,9 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun TopBarComponent(
     title: String,
-    onMenuClick: () -> Unit,
-    onSearchClick: () -> Unit,
-    onMoreClick: () -> Unit
+    onMenuClick: () -> Unit={},
+    onSearchClick: () -> Unit={},
+    onMoreClick: () -> Unit={}
 ) {
     TopAppBar(
         title = { Text(text = title, textAlign = TextAlign.Center) },
