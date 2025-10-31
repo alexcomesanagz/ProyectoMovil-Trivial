@@ -16,12 +16,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun ComponenteFAB() {
-    val context = LocalContext.current
-    FloatingActionButton(onClick = {
-        Toast.makeText(context, "Suscribete", Toast.LENGTH_SHORT).show()
-    },
-        containerColor = MaterialTheme.colorScheme.primary
+fun ComponenteFAB(onClick: () -> Unit) {
+    FloatingActionButton(
+        onClick = onClick,
+        containerColor = MaterialTheme.colorScheme.secondary
     ) {
         Icon(Icons.Default.Add, contentDescription = "Add")
     }
