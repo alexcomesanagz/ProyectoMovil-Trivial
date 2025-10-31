@@ -25,57 +25,17 @@ import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetas
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.TopBarComponent
 
-private val titulo: String = "Título de prueba"
-private val tarjetas: List<Tarjeta> = listOf(
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela")
-)
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             TriviaAppTheme {
-                Column {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    topBar = { TopBarComponent(title = "nelsol") }) { innerPadding ->
 
-                    Box(Modifier.fillMaxSize().padding(innerPadding)) {
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            ComponenteTituloYListaTarjetas(titulo, tarjetas)
-                            ComponenteTituloYListaTarjetas(titulo, tarjetas)
-                        }
-                    }
                 }
             }
-                }
         }
-    }
 
 
     @Composable
@@ -91,14 +51,6 @@ class MainActivity : ComponentActivity() {
     fun GreetingPreview() {
         TriviaAppTheme {
             Greeting("Android")
-        }
-    }
-
-    @Preview
-    @Composable
-    fun prevComponenteTituloYlistaTarjetas() {
-        TriviaAppTheme {
-            ComponenteTituloYListaTarjetas(titulo, tarjetas)
         }
     }
 }
