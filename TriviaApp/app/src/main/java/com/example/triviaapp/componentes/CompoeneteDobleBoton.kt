@@ -47,7 +47,7 @@ fun BotonesDobleAceptarLinea(msjBot1: String, msjBot2: String) {
 
 @Composable
 fun BotonesDobleAceptarColumna(msjBot1: String, msjBot2: String) {
-    Column(
+    Column(horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .padding(vertical = 5.dp)
             .fillMaxWidth(),
