@@ -27,10 +27,10 @@ import com.example.triviaapp.componentes.TopBarComponent
 import kotlinx.coroutines.launch
 
 private val tarjetas: List<Tarjeta> = listOf(
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background,"Abuela"))
+    Tarjeta(R.drawable.trivia,"Trivia"),
+    Tarjeta(R.drawable.trivia,"Trivia"),
+    Tarjeta(R.drawable.trivia,"Trivia"),
+    Tarjeta(R.drawable.trivia,"Trivia"))
 @Composable
 fun PaginaLista(){
     val snackbarHostState = remember { SnackbarHostState() }

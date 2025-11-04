@@ -69,7 +69,7 @@ fun ComponenteTarjetaHorizontalCategoria(contenido: Tarjeta) {
 @Preview
 @Composable
 fun PrevioTarjHoriz() {
-    val contenido = Tarjeta(R.drawable.ic_launcher_background, "abuela")
+    val contenido = Tarjeta(R.drawable.trivia, "abuela")
 
     ComponenteTarjetaHorizontalCategoria(contenido)
 }

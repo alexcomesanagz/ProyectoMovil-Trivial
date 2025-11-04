@@ -28,5 +28,5 @@ fun ComponenteImagen(id: Int,tamaño: Int=20) {
 @Preview
 @Composable
 fun ImagenPreview(){
-    ComponenteImagen(R.drawable.ic_launcher_background)
+    ComponenteImagen(R.drawable.trivia)
 }
