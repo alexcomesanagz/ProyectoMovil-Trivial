@@ -28,6 +28,8 @@ import com.example.triviaapp.componentes.ComponenteTarjetaHorizontal
 import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetas
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.TopBarComponent
+import com.example.triviaapp.paginas.PaginaLista
+import com.example.triviaapp.paginas.PaginaResponderPreguntas
 import kotlinx.coroutines.launch
 
 private val titulo: String = "Título de prueba"
@@ -82,17 +84,9 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     ) { innerPadding ->
-
-                        Box(
-                            Modifier
-                                .fillMaxSize()
-                                .padding(innerPadding)
-                        ) {
-                            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                                ComponenteTituloYListaTarjetas(titulo, tarjetas)
-                                ComponenteTituloYListaTarjetas(titulo, tarjetas)
-                            }
-                        }
+                        PaginaPrincipal()
+                        PaginaLista()
+                        PaginaResponderPreguntas()
                     }
                 }
             }

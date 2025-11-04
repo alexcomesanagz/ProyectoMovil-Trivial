@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.MaterialTheme
@@ -12,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.util.unpackFloat1
 
 class DatosBoton(
     val msj: String,
@@ -54,8 +56,8 @@ fun AceptartBoton(msj: String,modifier: Modifier= Modifier, accion: () -> Unit =
 @Composable
 fun DenegartBoton(msj: String,modifier: Modifier= Modifier, accion: () -> Unit = {}) {
     var listaColor = listOf<Color>(
-        MaterialTheme.colorScheme.onError,
-        MaterialTheme.colorScheme.onErrorContainer,
+        MaterialTheme.colorScheme.error,
+        MaterialTheme.colorScheme.scrim,
         MaterialTheme.colorScheme.tertiary,
         MaterialTheme.colorScheme.onPrimaryContainer
     )

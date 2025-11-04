@@ -3,6 +3,9 @@ package com.example.triviaapp.componentes
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -21,7 +24,12 @@ fun ComponenteRespuestas(textoBotonesRespuesta: List<String>) {
                 Box(
                     contentAlignment = Alignment.Center
                 ) {
-                    AceptartBoton(textoBoton)
+                    AceptartBoton(
+                        msj = textoBoton,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(10.dp)
+                            .height(60.dp))
                 }
             }
         }
