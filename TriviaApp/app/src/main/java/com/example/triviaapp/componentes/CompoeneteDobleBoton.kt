@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,13 +20,21 @@ fun BotonesAceptarDenegarLinea(msjBot1: String, msjBot2: String) {
         modifier = Modifier
             .padding(horizontal = 10.dp, vertical = 3.dp)
             .fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center,
+        horizontalArrangement = Arrangement.spacedBy(30.dp),
     ) {
-        Box(contentAlignment = Alignment.TopStart) {
-            DenegartBoton(msj = msjBot1)
+
+        Box(modifier = Modifier.weight(1f)) {
+            DenegartBoton(
+                msj = msjBot1,
+                modifier = Modifier.fillMaxWidth()
+            )
         }
-        Box(contentAlignment = Alignment.TopEnd,modifier = Modifier.fillMaxWidth()) {
-            AceptartBoton(msj = msjBot2)
+        Box(modifier = Modifier.weight(1f)) {
+            AceptartBoton(
+                msj = msjBot2,
+                modifier = Modifier.fillMaxWidth()
+
+            )
         }
     }
 }
@@ -36,12 +45,26 @@ fun BotonesDobleAceptarLinea(msjBot1: String, msjBot2: String) {
         modifier = Modifier
             .padding(vertical = 5.dp)
             .fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center,
+        horizontalArrangement = Arrangement.Center,
     ) {
-            AceptartBoton(msjBot1,Modifier
-                .padding(horizontal = 20.dp))
-            AceptartBoton(msjBot2,Modifier
-                .padding(horizontal = 20.dp))
+        Box(
+            modifier = Modifier.weight(1f)
+        ) {
+            AceptartBoton(
+                msjBot1, Modifier
+                    .padding(horizontal = 20.dp)
+                    .fillMaxWidth()
+            )
+        }
+        Box(
+            modifier = Modifier.weight(1f)
+        ) {
+            AceptartBoton(
+                msjBot2, Modifier
+                    .padding(horizontal = 20.dp)
+                    .fillMaxWidth()
+            )
+        }
     }
 }
 
@@ -64,7 +87,7 @@ fun BotonesDobleAceptarColumna(msjBot1: String, msjBot2: String) {
 fun PreviewDobleBoton() {
     Column {
         BotonesAceptarDenegarLinea("no", "si")
-        BotonesDobleAceptarLinea("si","si")
-        BotonesDobleAceptarColumna("si","si")
-     }
+        BotonesDobleAceptarLinea("si", "si")
+        BotonesDobleAceptarColumna("si", "si")
+    }
 }

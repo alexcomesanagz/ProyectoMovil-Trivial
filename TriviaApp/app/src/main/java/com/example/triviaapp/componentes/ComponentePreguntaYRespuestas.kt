@@ -10,8 +10,8 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ComponentePreguntaYRespuestas(enunciado: String, textoBotonesRespuesta: List<String>){
-    Column(modifier = Modifier.padding(vertical = 6.dp, horizontal = 30.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp)
+    Column(
+        verticalArrangement = Arrangement.spacedBy(15.dp)
     ){
         ComponenteTitulo(enunciado)
         ComponenteRespuestas(textoBotonesRespuesta)
