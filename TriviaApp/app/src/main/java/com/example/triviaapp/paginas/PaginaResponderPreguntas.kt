@@ -19,15 +19,20 @@ import androidx.compose.ui.unit.dp
 import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
+import com.example.triviaapp.componentes.BotonesDobleAceptarLinea
 import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
+import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetas
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.TopBarComponent
 import kotlinx.coroutines.launch
 
-val enunciado = " ¿La invasión de qué fortaleza por parte de los revolucionarios es considerada como el punto de inicio de la Revolución Francesa?"
+val txtSalir = "Salir"
+val txtFinalizar = "Finalizar"
 
+val enunciado =
+    "¿La invasión de qué fortaleza por parte de los revolucionarios es considerada como el punto de inicio de la Revolución Francesa?"
 val textoBotonesRespuesta = listOf(
     "Respuesta 1",
     "Respuesta 2",
@@ -35,21 +40,35 @@ val textoBotonesRespuesta = listOf(
     "Respuesta 4"
 )
 
+val preguntaActual = "1"
+val numPreguntas = "10"
 
-val txtSalir = "Salir"
-val txtFinalizar = "Finalizar"
+val txtAnterior = "Anterior"
+val txtSiguiente = "Siguiente"
+
 
 @Composable
 fun PaginaResponderPreguntas() {
-    Box(Modifier
-        .fillMaxSize()
-        .padding(20.dp)
-        .windowInsetsPadding(WindowInsets.safeDrawing)
+    Box(
+        Modifier
+            .fillMaxSize()
+            .padding(20.dp)
+            .windowInsetsPadding(WindowInsets.safeDrawing)
     ) {
-        Column(verticalArrangement = Arrangement.spacedBy(70.dp)) {
-            BotonesAceptarDenegarLinea(txtSalir, txtFinalizar)
-            ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
+        Column(
+            verticalArrangement = Arrangement.spacedBy(30.dp)
+        ) {
+            Column(verticalArrangement = Arrangement.spacedBy(70.dp)) {
+                BotonesAceptarDenegarLinea(txtSalir, txtFinalizar)
+                ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
 
+            }
+            Column(
+                verticalArrangement = Arrangement.spacedBy(70.dp)
+            ) {
+                ComponenteTitulo(preguntaActual + " / " + numPreguntas)
+                BotonesDobleAceptarLinea(txtAnterior, txtSiguiente)
+            }
         }
     }
 }

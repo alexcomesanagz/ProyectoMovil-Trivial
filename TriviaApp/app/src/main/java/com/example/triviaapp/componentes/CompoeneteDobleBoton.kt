@@ -47,14 +47,24 @@ fun BotonesDobleAceptarLinea(msjBot1: String, msjBot2: String) {
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.Center,
     ) {
-        AceptartBoton(
-            msjBot1, Modifier
-                .padding(horizontal = 20.dp)
-        )
-        AceptartBoton(
-            msjBot2, Modifier
-                .padding(horizontal = 20.dp)
-        )
+        Box(
+            modifier = Modifier.weight(1f)
+        ) {
+            AceptartBoton(
+                msjBot1, Modifier
+                    .padding(horizontal = 20.dp)
+                    .fillMaxWidth()
+            )
+        }
+        Box(
+            modifier = Modifier.weight(1f)
+        ) {
+            AceptartBoton(
+                msjBot2, Modifier
+                    .padding(horizontal = 20.dp)
+                    .fillMaxWidth()
+            )
+        }
     }
 }
 

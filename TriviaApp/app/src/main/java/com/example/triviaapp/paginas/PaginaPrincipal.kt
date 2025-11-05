@@ -63,9 +63,6 @@ private val tarjetas: List<Tarjeta> = listOf(
 
 @Composable
 fun PaginaPrincipal() {
-    val snackbarHostState = remember { SnackbarHostState() }
-    val scope = rememberCoroutineScope()
-
     Box(
         Modifier
             .fillMaxSize()

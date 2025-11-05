@@ -84,9 +84,15 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     ) { innerPadding ->
-                        PaginaPrincipal()
-                        PaginaLista()
-                        PaginaResponderPreguntas()
+                        Box(
+                            modifier = Modifier
+                                .padding(innerPadding)
+                                .fillMaxSize()
+                        ){
+//                        PaginaPrincipal()
+//                        PaginaLista()
+//                        PaginaResponderPreguntas()
+                        }
                     }
                 }
             }
@@ -129,16 +135,14 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 ) { innerPadding ->
-
                     Box(
-                        Modifier
-                            .fillMaxSize()
+                        modifier = Modifier
                             .padding(innerPadding)
-                    ) {
-                        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                            ComponenteTituloYListaTarjetas(titulo, tarjetas)
-                            ComponenteTituloYListaTarjetas(titulo, tarjetas)
-                        }
+                            .fillMaxSize()
+                    ){
+//                        PaginaPrincipal()
+//                        PaginaLista()
+//                        PaginaResponderPreguntas()
                     }
                 }
             }
