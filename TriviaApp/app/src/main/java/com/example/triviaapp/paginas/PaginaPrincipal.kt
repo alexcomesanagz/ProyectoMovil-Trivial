@@ -46,18 +46,6 @@ private val tarjetas: List<Tarjeta> = listOf(
     Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
     Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
     Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
     Tarjeta(R.drawable.ic_launcher_background, "Abuela")
 )
 

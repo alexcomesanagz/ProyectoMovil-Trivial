@@ -24,7 +24,6 @@ class DatosBoton(
 
 @Composable
 fun ComponenteBoton(datos: DatosBoton) {
-    Box(modifier = Modifier) {
         Button(
             onClick = datos.accion, colors = ButtonColors(
                 containerColor = datos.coloresBoton.get(0),
@@ -36,8 +35,6 @@ fun ComponenteBoton(datos: DatosBoton) {
         ) {
             Text(text = datos.msj)
         }
-    }
-
 }
 
 @Composable
