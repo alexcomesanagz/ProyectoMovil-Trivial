@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -29,9 +30,9 @@ import com.example.triviaapp.componentes.ComponenteListaTarjetas
 import com.example.triviaapp.componentes.ComponenteTarjetaHorizontal
 import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetas
+import com.example.triviaapp.componentes.DatosBotonDoble
 import com.example.triviaapp.componentes.DenegartBoton
 import com.example.triviaapp.componentes.Tarjeta
-import com.example.triviaapp.componentes.TopBarComponent
 import kotlinx.coroutines.launch
 import java.nio.file.WatchEvent
 import kotlin.math.sign
@@ -59,7 +60,7 @@ fun PaginaLogin() {
             Column(
                 verticalArrangement = Arrangement.spacedBy(space = 35.dp),
             ) {
-                BotonesDobleAceptarColumna(msjBot1 = "login", msjBot2 = "sign up")
+                BotonesDobleAceptarColumna(DatosBotonDoble(msjBot1 = "login", msjBot2 = "sign up", modifierBotones = Modifier.fillMaxWidth()))
             }
             Column(
             ) {

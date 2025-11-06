@@ -24,8 +24,8 @@ import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
 import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetas
+import com.example.triviaapp.componentes.DatosBotonDoble
 import com.example.triviaapp.componentes.Tarjeta
-import com.example.triviaapp.componentes.TopBarComponent
 import kotlinx.coroutines.launch
 
 val txtSalir = "Salir"
@@ -59,7 +59,7 @@ fun PaginaResponderPreguntas() {
             verticalArrangement = Arrangement.spacedBy(30.dp)
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(70.dp)) {
-                BotonesAceptarDenegarLinea(txtSalir, txtFinalizar)
+                BotonesAceptarDenegarLinea(datosBotones = DatosBotonDoble(txtSalir, txtFinalizar))
                 ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
 
             }
@@ -67,7 +67,7 @@ fun PaginaResponderPreguntas() {
                 verticalArrangement = Arrangement.spacedBy(70.dp)
             ) {
                 ComponenteTitulo(preguntaActual + " / " + numPreguntas)
-                BotonesDobleAceptarLinea(txtAnterior, txtSiguiente)
+                BotonesDobleAceptarLinea(DatosBotonDoble(txtAnterior, txtSiguiente))
             }
         }
     }
