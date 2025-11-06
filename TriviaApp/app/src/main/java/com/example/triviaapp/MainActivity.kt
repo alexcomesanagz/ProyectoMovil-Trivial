@@ -8,7 +8,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,7 +30,7 @@ import androidx.compose.ui.unit.dp
 import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.Tarjeta
-import com.example.triviaapp.componentes.TopBarComponent
+import com.example.triviaapp.componentes.ComponenteTopBar
 import kotlinx.coroutines.launch
 
 private val titulo: String = "Título de prueba"
@@ -106,7 +105,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                         Scaffold(
                             modifier = Modifier.fillMaxSize(),
-                            topBar = { TopBarComponent(title = "nelsol") },
+                            topBar = { ComponenteTopBar(title = "nelsol") },
                             floatingActionButton = {
                                 ComponenteFAB {
                                     scopeSnackbar.launch {
@@ -176,7 +175,7 @@ class MainActivity : ComponentActivity() {
             ) {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
-                    topBar = { TopBarComponent(title = "nelsol",
+                    topBar = { ComponenteTopBar(title = "nelsol",
                         onMenuClick = {
                             scope.launch {
                         drawerState.open()
