@@ -17,22 +17,7 @@ fun ComponenteTituloConBotonesHorizontal(txtTitulo: String, txtbotones: List<Str
         modifier = Modifier
     ) {
         ComponenteTitulo(txtTitulo)
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            Box(
-                modifier = Modifier.weight(1f)
-            ) {
-                BotonesDobleAceptarLinea(txtbotones.get(0), txtbotones.get(1))
-            }
-            Box(
-                modifier = Modifier.weight(1f)
-            ) {
-                BotonesDobleAceptarLinea(txtbotones.get(2), txtbotones.get(3))
-            }
-        }
+        ComponenteBotonesHorizontal(txtbotones)
     }
 }
 
