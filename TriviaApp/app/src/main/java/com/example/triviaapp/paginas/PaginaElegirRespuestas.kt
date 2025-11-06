@@ -18,6 +18,7 @@ import com.example.triviaapp.componentes.BotonesDobleAceptarLinea
 import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
 import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.ComponenteTituloConBotonesHorizontal
+import com.example.triviaapp.componentes.DatosBotonDoble
 
 
 val txtTitulo = "Opción correcta"
@@ -38,7 +39,7 @@ fun PaginaElegirRespuestas() {
             verticalArrangement = Arrangement.spacedBy(30.dp)
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(70.dp)) {
-                BotonesAceptarDenegarLinea(txtSalir, txtFinalizar)
+                BotonesAceptarDenegarLinea(DatosBotonDoble(txtSalir, txtFinalizar))
                 ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
 
             }
@@ -46,7 +47,7 @@ fun PaginaElegirRespuestas() {
                 verticalArrangement = Arrangement.spacedBy(30.dp)
             ) {
                 ComponenteTitulo(preguntaActual + " / " + numPreguntas)
-                BotonesDobleAceptarLinea(txtAnterior, txtSiguiente)
+                BotonesDobleAceptarLinea(DatosBotonDoble(txtAnterior, txtSiguiente))
             }
             Column(
                 modifier = Modifier.padding(vertical = 10.dp)

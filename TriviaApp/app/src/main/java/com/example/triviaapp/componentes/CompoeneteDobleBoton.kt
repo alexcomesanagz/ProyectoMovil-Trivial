@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 class DatosBotonDoble(
     var msjBot1: String,
     var msjBot2: String,
+    var modifierBotones: Modifier= Modifier,
     var accionBoton1: () -> Unit = {},
     var accionBoton2: () -> Unit = {}
 )
@@ -84,13 +85,15 @@ fun BotonesDobleAceptarColumna(datosBotones: DatosBotonDoble) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .padding(vertical = 5.dp)
+            .padding(vertical = 5.dp, horizontal = 40.dp)
             .fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
         AceptartBoton(msj = datosBotones.msjBot1,
+            modifier = datosBotones.modifierBotones,
             accion = datosBotones.accionBoton1)
         AceptartBoton(msj = datosBotones.msjBot1,
+            modifier = datosBotones.modifierBotones,
             accion = datosBotones.accionBoton1)
     }
 }

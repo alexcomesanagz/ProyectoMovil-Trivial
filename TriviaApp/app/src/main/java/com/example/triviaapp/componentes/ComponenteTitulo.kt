@@ -12,14 +12,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 @Composable
-fun ComponenteTitulo(titulo: String){
+fun ComponenteTitulo(titulo: String,tamaño: Int=15){
     Text(text = titulo,
         modifier = Modifier.background(MaterialTheme.colorScheme.secondary, RoundedCornerShape(8.dp))
             .padding(vertical = 4.dp, horizontal = 20.dp)
             .fillMaxWidth(),
-        textAlign = TextAlign.Center
+        textAlign = TextAlign.Center,
+            fontSize = tamaño.sp
     )
 }
 

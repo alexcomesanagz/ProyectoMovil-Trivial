@@ -18,12 +18,12 @@ fun ComponenteBotonesHorizontal(txtBotones: List<String>) {
         Box(
             modifier = Modifier.weight(1f)
         ) {
-            BotonesDobleAceptarLinea(txtBotones.get(0), txtBotones.get(1))
+            BotonesDobleAceptarLinea(DatosBotonDoble(txtBotones.get(0), txtBotones.get(1)))
         }
         Box(
             modifier = Modifier.weight(1f)
         ) {
-            BotonesDobleAceptarLinea(txtBotones.get(2), txtBotones.get(3))
+            BotonesDobleAceptarLinea(DatosBotonDoble(txtBotones.get(2), txtBotones.get(3)))
         }
     }
 }
