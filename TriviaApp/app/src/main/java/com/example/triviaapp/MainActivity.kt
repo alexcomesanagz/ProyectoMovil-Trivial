@@ -30,7 +30,9 @@ import com.example.triviaapp.componentes.ComponenteTarjetaHorizontal
 import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetas
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.TopBarComponent
+import com.example.triviaapp.paginas.PaginaElegirRespuestas
 import com.example.triviaapp.paginas.PaginaLista
+import com.example.triviaapp.paginas.PaginaLogin
 import com.example.triviaapp.paginas.PaginaPerfil
 import com.example.triviaapp.paginas.PaginaResponderPreguntas
 import kotlinx.coroutines.launch
@@ -131,10 +133,12 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.inverseSurface)
                     ){
-    //                        PaginaPrincipal()
-    //                        PaginaLista()
-    //                        PaginaResponderPreguntas()
-                       PaginaPerfil()
+//                           PaginaPrincipal()
+//                            PaginaLista()
+//                            PaginaLogin()
+//                            PaginaResponderPreguntas()
+//                            PaginaElegirRespuestas()
+//                            PaginaPerfil()
                     }
                 }
             }

@@ -54,6 +54,7 @@ fun PaginaPrincipal() {
     Box(
         Modifier
             .fillMaxSize()
+            .padding(vertical = 10.dp)
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
             ComponenteTituloYListaTarjetas(titulo, tarjetas)
