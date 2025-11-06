@@ -1,5 +1,6 @@
 package com.example.triviaapp.componentes
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,46 +25,62 @@ class DatosBoton(
 
 @Composable
 fun ComponenteBoton(datos: DatosBoton) {
-        Button(
-            onClick = datos.accion, colors = ButtonColors(
-                containerColor = datos.coloresBoton.get(0),
-                contentColor = datos.coloresBoton.get(1),
-                disabledContainerColor = datos.coloresBoton.get(2),
-                disabledContentColor = datos.coloresBoton.get(3),
-            ),
-            modifier = datos.modifier
-        ) {
-            Text(text = datos.msj)
-        }
+    Button(
+        onClick = datos.accion, colors = ButtonColors(
+            containerColor = datos.coloresBoton.get(0),
+            contentColor = datos.coloresBoton.get(1),
+            disabledContainerColor = datos.coloresBoton.get(2),
+            disabledContentColor = datos.coloresBoton.get(3),
+        ),
+        modifier = datos.modifier
+    ) {
+        Text(text = datos.msj)
+    }
 }
 
 @Composable
-fun AceptartBoton(msj: String,modifier: Modifier= Modifier, accion: () -> Unit = {}) {
+fun AceptartBoton(
+    msj: String,
+    modifier: Modifier = Modifier,
+    accion: () -> Unit = { Log.e("Testing", "Aceptar boton cliqueado") }
+) {
     var listaColor = listOf<Color>(
         MaterialTheme.colorScheme.primaryContainer,
         MaterialTheme.colorScheme.onPrimaryContainer,
         MaterialTheme.colorScheme.tertiary,
         MaterialTheme.colorScheme.onPrimaryContainer
     )
-    ComponenteBoton(datos = DatosBoton(msj = msj,
-        modifier = modifier,
-        coloresBoton = listaColor,
-        accion = accion))
+    ComponenteBoton(
+        datos = DatosBoton(
+            msj = msj,
+            modifier = modifier,
+            coloresBoton = listaColor,
+            accion = accion
+        )
+    )
 }
+
 @Composable
-fun DenegartBoton(msj: String,modifier: Modifier= Modifier, accion: () -> Unit = {}) {
+fun DenegartBoton(
+    msj: String,
+    modifier: Modifier = Modifier,
+    accion: () -> Unit = { Log.e("Testing", "Denegar boton cliqueado") }
+) {
     var listaColor = listOf<Color>(
         MaterialTheme.colorScheme.error,
         MaterialTheme.colorScheme.scrim,
         MaterialTheme.colorScheme.tertiary,
         MaterialTheme.colorScheme.onPrimaryContainer
     )
-    ComponenteBoton(datos = DatosBoton(msj = msj,
-        modifier = modifier,
-        coloresBoton = listaColor,
-        accion = accion))
+    ComponenteBoton(
+        datos = DatosBoton(
+            msj = msj,
+            modifier = modifier,
+            coloresBoton = listaColor,
+            accion = accion
+        )
+    )
 }
-
 
 
 @Preview
