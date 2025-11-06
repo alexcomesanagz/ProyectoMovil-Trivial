@@ -36,7 +36,7 @@ fun ComponenteListaTarjetas(tarjetas: List<Tarjeta>, tamanioCaja: Int = 250, tam
         )
         {
             items(tarjetas) { tarjeta ->
-                ComponenteTarjetaHorizontal(contenido = tarjeta, tamanio = tamanio)
+                ComponenteTarjetaHorizontal(tarjeta = tarjeta, tamanio = tamanio)
             }
         }
     }

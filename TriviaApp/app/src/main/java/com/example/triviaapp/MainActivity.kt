@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.compose.TriviaAppTheme
+import com.example.triviaapp.componentes.ComponenteDropDownMenuBoton
 import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.ComponenteListaTarjetas
 import com.example.triviaapp.componentes.ComponenteTarjetaHorizontal
@@ -97,7 +98,8 @@ class MainActivity : ComponentActivity() {
 //                        PaginaPrincipal()
 //                        PaginaLista()
 //                        PaginaResponderPreguntas()
-                          PaginaPerfil()
+                          /*PaginaPerfil()*/
+                            ComponenteDropDownMenuBoton()
                         }
                     }
                 }
