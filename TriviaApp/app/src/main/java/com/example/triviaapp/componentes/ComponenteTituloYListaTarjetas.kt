@@ -27,26 +27,26 @@ fun prevComponenteTituloYListaTarjetas(){
     val titulo = "Título de prueba"
 
     val tarjetas: List<Tarjeta> = listOf(
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,"Abuela")
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
+        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela")
     )
 
     ComponenteTituloYListaTarjetas(titulo, tarjetas)
