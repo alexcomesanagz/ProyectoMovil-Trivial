@@ -52,7 +52,7 @@ fun BotonesDobleAceptarLinea(msjBot1: String, msjBot2: String) {
         ) {
             AceptartBoton(
                 msjBot1, Modifier
-                    .padding(horizontal = 20.dp)
+                    .padding(horizontal = 8.dp)
                     .fillMaxWidth()
             )
         }
@@ -61,7 +61,7 @@ fun BotonesDobleAceptarLinea(msjBot1: String, msjBot2: String) {
         ) {
             AceptartBoton(
                 msjBot2, Modifier
-                    .padding(horizontal = 20.dp)
+                    .padding(horizontal = 8.dp)
                     .fillMaxWidth()
             )
         }
