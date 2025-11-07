@@ -32,7 +32,7 @@ private val tarjetas: List<Tarjeta> = listOf(
 )
 
 /**
- * 
+ * Pagina que muestra unos trivias recomendados y mas populares
  */
 @Composable
 fun PaginaPrincipal() {

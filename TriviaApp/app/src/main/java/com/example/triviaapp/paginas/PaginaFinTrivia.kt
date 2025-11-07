@@ -21,7 +21,7 @@ import com.example.triviaapp.componentes.DatosColumnaTexto
 import com.example.triviaapp.componentes.DenegartBoton
 
 /**
- * 
+ * Pagina que muestra los resultados del trivia hecho
  */
 @Composable
 fun PaginaFinTrivia(preguntasAcertadas: Int = 0, preguntasTotales: Int = 10) {

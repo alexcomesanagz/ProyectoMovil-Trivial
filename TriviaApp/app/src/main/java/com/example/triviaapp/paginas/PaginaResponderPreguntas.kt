@@ -47,7 +47,7 @@ val txtAnterior = "Anterior"
 val txtSiguiente = "Siguiente"
 
 /**
- * 
+ * Pagina para responder una de las preguntas de un trivia ya creado
  */
 @Composable
 fun PaginaResponderPreguntas() {

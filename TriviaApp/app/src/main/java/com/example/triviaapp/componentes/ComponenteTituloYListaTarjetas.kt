@@ -13,7 +13,7 @@ import com.example.triviaapp.R
 /**
  * crea una lista de tarjetas bajo un texto
  * @param titulo mensaje de el texto de encima de la lista
- * @param
+ * @param tarjetas lista de tarjetas que estaran en la lista
  */
 @Composable
 fun ComponenteTituloYListaTarjetas(

@@ -16,7 +16,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 
 /**
- * 
+ * Barra de navegacion de los escafolds
+ * @param title texto que estara en el centro
+ * @param onMenuClick acccion del menu al hacer click
+ * @param onSearchClick acccion del la barra de busqueda al hacer click
+ * @param onMoreClick acccion del perfil al hacer click
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

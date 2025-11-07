@@ -12,7 +12,9 @@ import androidx.compose.ui.unit.dp
 import com.example.triviaapp.R
 
 /**
- *
+ *set de cuatro botones en fila debajo de un texto
+ * @param txtTitulo contenido del texto
+ * @param txtbotones lista de contenido de cada boton, tiene que haber solo 4
  */
 @Composable
 fun ComponenteTituloConBotonesHorizontal(

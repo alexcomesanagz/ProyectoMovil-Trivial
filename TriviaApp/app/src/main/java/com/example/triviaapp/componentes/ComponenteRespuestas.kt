@@ -16,7 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 /**
- * 
+ * Set de 4 botones repartidos en 2 filas y 2 columnas
+ * @param textoBotonesRespuesta lista de contenido de cada boton, tiene que haber solo 4
  */
 @Composable
 fun ComponenteRespuestas(textoBotonesRespuesta: List<String>) {

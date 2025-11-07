@@ -9,7 +9,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 /**
- * 
+ * Crea un set de 4 botones organizados en
+ * 2 filas y 2 columnas debajo de una pregunta, texto
+ * @param enunciado contenido de la pregunta
+ * @param textoBotonesRespuesta lista de contenido de cada boton, tiene que haber solo 4
  */
 @Composable
 fun ComponentePreguntaYRespuestas(

@@ -24,7 +24,7 @@ private val tarjetas: List<Tarjeta> = listOf(
     Tarjeta(R.drawable.trivia,"Abuela"))
 
 /**
- * 
+ * Pagina que muestra todos los trivias disponibles
  */
 @Composable
 fun PaginaLista(){
