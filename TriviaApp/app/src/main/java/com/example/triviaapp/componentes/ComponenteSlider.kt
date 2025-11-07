@@ -21,7 +21,8 @@ import androidx.compose.ui.unit.dp
 /**
  * barra con número del 1 al 20
  * llendo de 1 en 1
- * número 10 por defecto
+ * @param sliderPosition posicion del componente,
+ * siendo esta 10 por defecto
  */
 @Composable
 fun ComponenteSlider(){
