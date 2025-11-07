@@ -1,17 +1,10 @@
 package com.example.triviaapp.componentes
 
-import androidx.compose.runtime.*
-import androidx.compose.material3.*
-
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 
 /**
@@ -20,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
  * @param txtNuevo texto introducido empleado para actualizar
  */
 @Composable
-fun ComponenteLabel(){
+fun ComponenteTextField(){
     val txtContenido = remember { mutableStateOf("") }
     TextField(
         value = txtContenido.value,
@@ -33,6 +26,6 @@ fun ComponenteLabel(){
 
 @Preview
 @Composable
-fun PrevComponenteLabel(){
-    ComponenteLabel()
+fun PrevComponenteTextField(){
+    ComponenteTextField()
 }
