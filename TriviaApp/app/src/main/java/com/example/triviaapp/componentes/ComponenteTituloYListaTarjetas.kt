@@ -10,8 +10,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.triviaapp.R
 
+/**
+ * crea una lista de tarjetas bajo un texto
+ * @param titulo mensaje de el texto de encima de la lista
+ * @param tarjetas lista de tarjetas que estaran en la lista
+ */
 @Composable
-fun ComponenteTituloYListaTarjetas(titulo: String, tarjetas: List<Tarjeta>) {
+fun ComponenteTituloYListaTarjetas(
+    titulo: String,
+    tarjetas: List<Tarjeta>
+) {
     Column(modifier = Modifier.padding(vertical = 6.dp, horizontal = 30.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ){

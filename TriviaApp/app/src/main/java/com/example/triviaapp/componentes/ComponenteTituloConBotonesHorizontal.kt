@@ -11,9 +11,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.triviaapp.R
 
-
+/**
+ *set de cuatro botones en fila debajo de un texto
+ * @param txtTitulo contenido del texto
+ * @param txtbotones lista de contenido de cada boton, tiene que haber solo 4
+ */
 @Composable
-fun ComponenteTituloConBotonesHorizontal(txtTitulo: String, txtbotones: List<String>) {
+fun ComponenteTituloConBotonesHorizontal(
+    txtTitulo: String,
+    txtbotones: List<String>
+) {
     Column(
         verticalArrangement = Arrangement.spacedBy(5.dp)
     ) {
@@ -30,6 +37,5 @@ fun PrevComponenteTituloConBotonesHorizontal() {
     val txtbotones: List<String> = listOf(
         "1", "2", "3", "4"
     )
-
     ComponenteTituloConBotonesHorizontal(txtTitulo, txtbotones)
 }

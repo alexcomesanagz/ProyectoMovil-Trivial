@@ -14,8 +14,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+/**
+ * crea un texto con un color de fondo predefinido
+ * @param titulo
+ */
 @Composable
-fun ComponenteTitulo(titulo: String,tamaño: Int=15){
+fun ComponenteTitulo(
+    titulo: String,
+    tamaño: Int=15
+){
     Text(text = titulo,
         modifier = Modifier.background(MaterialTheme.colorScheme.secondary, RoundedCornerShape(8.dp))
             .padding(vertical = 4.dp, horizontal = 20.dp)

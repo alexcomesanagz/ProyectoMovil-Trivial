@@ -32,6 +32,9 @@ val tarjetasUsuario: List<Tarjeta> = listOf(
     Tarjeta(R.drawable.ic_launcher_background, "Abuela")
 )
 
+/**
+ * pagina donde un usuario que inicio sesion mira sus datos de la cuenta
+ */
 @Composable
 fun PaginaPerfil() {
     Column(verticalArrangement = Arrangement.spacedBy(space = 50.dp)) {

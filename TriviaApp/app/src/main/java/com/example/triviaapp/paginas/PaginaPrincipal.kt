@@ -31,6 +31,9 @@ private val tarjetas: List<Tarjeta> = listOf(
     Tarjeta(R.drawable.ic_launcher_background, "Abuela")
 )
 
+/**
+ * Pagina que muestra unos trivias recomendados y mas populares
+ */
 @Composable
 fun PaginaPrincipal() {
     Box(

@@ -37,6 +37,9 @@ import kotlinx.coroutines.launch
 import java.nio.file.WatchEvent
 import kotlin.math.sign
 
+/**
+ * Pagina para entrar en tu cuenta ya creada o crear una nueva
+ */
 @Composable
 fun PaginaLogin() {
 

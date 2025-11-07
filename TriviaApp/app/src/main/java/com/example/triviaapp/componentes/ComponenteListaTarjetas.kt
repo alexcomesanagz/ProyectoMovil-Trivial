@@ -17,8 +17,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.triviaapp.R
 
+/**
+ * crea una lista de trajetas que se puede escrolear de manera vertical
+ * @param tarjetas tarjetas que aparecerán en la lista
+ * @param tamanioCaja la altura que tendrá donde se contiene la lista
+ * @param tamanio tamaño de las tarjetas de dentro de la lista
+ */
 @Composable
-fun ComponenteListaTarjetas(tarjetas: List<Tarjeta>, tamanioCaja: Int = 250, tamanio:Int=20) {
+fun ComponenteListaTarjetas(
+    tarjetas: List<Tarjeta>,
+    tamanioCaja: Int = 250,
+    tamanio: Int = 20
+) {
 
     Box(
         Modifier.background(
@@ -29,10 +39,10 @@ fun ComponenteListaTarjetas(tarjetas: List<Tarjeta>, tamanioCaja: Int = 250, tam
 
         LazyColumn(
             modifier = Modifier
-                .padding(all = (tamanio/1.8).dp)
+                .padding(all = (tamanio / 1.8).dp)
                 .fillMaxWidth()
                 .height(height = tamanioCaja.dp),
-            verticalArrangement = Arrangement.spacedBy((tamanio*0.5).dp)
+            verticalArrangement = Arrangement.spacedBy((tamanio * 0.5).dp)
         )
         {
             items(tarjetas) { tarjeta ->
@@ -59,6 +69,6 @@ fun prevComponenteListaTarjetas() {
         Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
         Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
         Tarjeta(R.drawable.ic_launcher_background, "Abuela")
-        )
+    )
     ComponenteListaTarjetas(tarjetas);
 }

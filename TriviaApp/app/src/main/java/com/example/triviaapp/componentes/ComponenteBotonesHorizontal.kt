@@ -8,6 +8,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
+/**
+ * crea 4 botones divididos entre 2 filas y 2 columnas
+ * @param txtBotones contiene el texto de cada boton, tienen que ser 4
+ */
 @Composable
 fun ComponenteBotonesHorizontal(txtBotones: List<String>) {
     Row(

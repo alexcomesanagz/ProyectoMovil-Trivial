@@ -14,11 +14,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+/**
+ * Crea un cuadro de texto con el nombre de los programadores y,
+ * si lo desea, el autor del trivia
+ * @param correo correo del autor del trivia
+ * @param creadorSi si se quiere o no que aparezcael creador del trivia
+ */
 @Composable
-fun ComponenteCreditoCreadores(correo: String="",creadorSi: Boolean=false){
-    Box(modifier = Modifier.padding(horizontal = 20.dp, vertical = 30.dp)
-        .background(MaterialTheme.colorScheme.secondary)
-        .fillMaxWidth()) {
+fun ComponenteCreditoCreadores(
+    correo: String = "",
+    creadorSi: Boolean = false
+) {
+    Box(
+        modifier = Modifier
+            .padding(horizontal = 20.dp, vertical = 30.dp)
+            .background(MaterialTheme.colorScheme.secondary)
+            .fillMaxWidth()
+    ) {
         if (creadorSi)
 
             Text(
@@ -31,23 +43,23 @@ fun ComponenteCreditoCreadores(correo: String="",creadorSi: Boolean=false){
                         " Borja Pazo y Alex Comesaña\n",
                 fontSize = 30.sp,
                 modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
-                )
+            )
         else {
             Text(
                 text = "Créditos \n" +
                         "\n" +
                         "Programado por:\n" +
-                        "Borja Pazo y Alex Comesaña\n"
-                , fontSize = 30.sp,
+                        "Borja Pazo y Alex Comesaña\n", fontSize = 30.sp,
                 modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
             )
         }
     }
 }
 
+
 @Preview(showSystemUi = true)
 @Composable
-fun PreviewCreditoCreador(){
+fun PreviewCreditoCreador() {
     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         ComponenteCreditoCreadores()
 

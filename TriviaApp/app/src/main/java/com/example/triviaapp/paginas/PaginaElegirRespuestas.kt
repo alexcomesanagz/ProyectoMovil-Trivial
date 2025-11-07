@@ -27,6 +27,9 @@ val txtBotones: List<String> = listOf(
     "1", "2", "3", "4"
 )
 
+/**
+ * Pagina para rellenar una preguntas a la hora de hacer un quiz
+ */
 @Composable
 fun PaginaElegirRespuestas() {
     Box(

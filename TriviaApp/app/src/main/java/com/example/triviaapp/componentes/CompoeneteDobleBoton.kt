@@ -13,6 +13,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+
+
+/**
+ * @param msjBot1 mensaje que aparecera dentro del primer boton
+ * @param msjBot2 mensaje que aparecera dentro del segundo boton
+ * @param modifierBotones modificador que se puede usar para cambiar el modificador de los botones llamados
+ * @param accionBoton1 acccion que tomara el primer boton al hacerle click
+ * @param accionBoton2 acccion que tomara el primer boton al hacerle click
+ */
 class DatosBotonDoble(
     var msjBot1: String,
     var msjBot2: String,
@@ -21,6 +30,12 @@ class DatosBotonDoble(
     var accionBoton2: () -> Unit = {}
 )
 
+
+
+/**
+ * creación en linea de dos botones, uno para denegar y otro para aceptar,
+ * tendrán el mismo tamaño los dos en base al espacio disponible
+ */
 @Composable
 fun BotonesAceptarDenegarLinea(datosBotones: DatosBotonDoble) {
     Row(
@@ -31,6 +46,7 @@ fun BotonesAceptarDenegarLinea(datosBotones: DatosBotonDoble) {
     ) {
 
         Box(modifier = Modifier.weight(1f)) {
+
             DenegartBoton(
                 msj = datosBotones.msjBot1,
                 modifier = Modifier.fillMaxWidth(),
@@ -49,6 +65,12 @@ fun BotonesAceptarDenegarLinea(datosBotones: DatosBotonDoble) {
     }
 }
 
+
+
+/**
+ * creación en linea de dos botones,
+ * tendrán el mismo tamaño los dos en base al espacio disponible
+ */
 @Composable
 fun BotonesDobleAceptarLinea(datosBotones: DatosBotonDoble) {
     Row(
@@ -80,6 +102,12 @@ fun BotonesDobleAceptarLinea(datosBotones: DatosBotonDoble) {
     }
 }
 
+
+
+/**
+ * creación en columna de dos botones,
+ * tendrán el mismo tamaño los dos en base al espacio disponible
+ */
 @Composable
 fun BotonesDobleAceptarColumna(datosBotones: DatosBotonDoble) {
     Column(
