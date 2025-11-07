@@ -11,9 +11,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.triviaapp.R
 
-
+/**
+ *
+ */
 @Composable
-fun ComponenteTituloConBotonesHorizontal(txtTitulo: String, txtbotones: List<String>) {
+fun ComponenteTituloConBotonesHorizontal(
+    txtTitulo: String,
+    txtbotones: List<String>
+) {
     Column(
         verticalArrangement = Arrangement.spacedBy(5.dp)
     ) {
@@ -30,6 +35,5 @@ fun PrevComponenteTituloConBotonesHorizontal() {
     val txtbotones: List<String> = listOf(
         "1", "2", "3", "4"
     )
-
     ComponenteTituloConBotonesHorizontal(txtTitulo, txtbotones)
 }

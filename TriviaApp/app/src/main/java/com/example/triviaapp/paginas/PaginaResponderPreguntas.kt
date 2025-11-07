@@ -46,7 +46,9 @@ val numPreguntas = "10"
 val txtAnterior = "Anterior"
 val txtSiguiente = "Siguiente"
 
-
+/**
+ * 
+ */
 @Composable
 fun PaginaResponderPreguntas() {
     Box(

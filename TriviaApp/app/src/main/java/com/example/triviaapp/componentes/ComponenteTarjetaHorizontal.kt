@@ -16,29 +16,45 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.triviaapp.R
 
-data class Tarjeta(val imagen: Int, val titulo: String, val accion: () -> Unit = {})
+/**
+ *@param imagen la imagen de la tarjeta
+ *@param titulo el titulo de la tarjeta
+ *@param accion lo que hara cuando se haga click en la tarjeta
+ */
+data class Tarjeta(
+    val imagen: Int,
+    val titulo: String,
+    val accion: () -> Unit = {}
+)
 
+/**
+ * crea una tarjeta
+ * @param tamanio cambia el tamaño de la imagen y texto de la tarjeta, predefinido a 40
+ */
 @Composable
-fun ComponenteTarjetaHorizontal(contenido: Tarjeta, tamanio: Int=40) {
+fun ComponenteTarjetaHorizontal(
+    contenido: Tarjeta,
+    tamanio: Int = 40
+) {
 
-    Row(verticalAlignment = Alignment.CenterVertically,
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .clickable(onClick = contenido.accion)
             .background(color = MaterialTheme.colorScheme.background)
             .padding(horizontal = 4.dp, vertical = 4.dp)
-            .height(height = (tamanio*1.25).dp)
+            .height(height = (tamanio * 1.25).dp)
             .fillMaxWidth()
     ) {
         ComponenteImagen(id = contenido.imagen, tamaño = tamanio)
         Text(
             text = contenido.titulo,
             modifier = Modifier.padding(vertical = 2.dp, horizontal = 4.dp),
-            fontSize = (tamanio*0.5).sp
+            fontSize = (tamanio * 0.5).sp
 
         )
     }
 }
-
 
 
 @Preview

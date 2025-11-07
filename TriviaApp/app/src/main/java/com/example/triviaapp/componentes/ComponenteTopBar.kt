@@ -15,6 +15,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 
+/**
+ * 
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ComponenteTopBar(

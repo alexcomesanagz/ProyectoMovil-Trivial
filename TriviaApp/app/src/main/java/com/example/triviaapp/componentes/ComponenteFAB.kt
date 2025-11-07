@@ -15,6 +15,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 
+/**
+ * 
+ */
 @Composable
 fun ComponenteFAB(onClick: () -> Unit) {
     FloatingActionButton(

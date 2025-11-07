@@ -31,6 +31,7 @@ import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.ComponenteTopBar
+import com.example.triviaapp.paginas.PaginaLista
 import kotlinx.coroutines.launch
 
 private val titulo: String = "Título de prueba"
@@ -194,8 +195,8 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.inverseSurface)
                     ) {
-                           PaginaPrincipal()
-//                            PaginaLista()
+//                           PaginaPrincipal()
+                            PaginaLista()
 //                            PaginaLogin()
 //                            PaginaResponderPreguntas()
 //                            PaginaElegirRespuestas()

@@ -16,6 +16,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.util.unpackFloat1
 
+
+/**
+ * @param msj texto que tendrá el boton
+ * @param modifier modificador del boton, es opcional
+ *
+ * @param coloresBoton lista de 4,
+ * se utiliza para determinar los colores del boton en orden: contenedor, contenido,
+ * contenedor en inactivo y contenido en inactivo
+ *
+ * @param accion accion del boton al hacer click
+ */
 class DatosBoton(
     val msj: String,
     val modifier: Modifier = Modifier,
@@ -38,6 +49,9 @@ fun ComponenteBoton(datos: DatosBoton) {
     }
 }
 
+/**
+ * crea un boton de color de fondo claro
+ */
 @Composable
 fun AceptartBoton(
     msj: String,
@@ -60,6 +74,9 @@ fun AceptartBoton(
     )
 }
 
+/**
+ * crea un boton de color de fondo oscuro
+ */
 @Composable
 fun DenegartBoton(
     msj: String,

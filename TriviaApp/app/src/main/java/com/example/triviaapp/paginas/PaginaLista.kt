@@ -22,6 +22,10 @@ private val tarjetas: List<Tarjeta> = listOf(
     Tarjeta(R.drawable.trivia,"Abuela"),
     Tarjeta(R.drawable.trivia,"Abuela"),
     Tarjeta(R.drawable.trivia,"Abuela"))
+
+/**
+ * 
+ */
 @Composable
 fun PaginaLista(){
         Column(

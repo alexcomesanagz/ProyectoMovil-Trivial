@@ -14,32 +14,53 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.triviaapp.componentes.ComponenteColumnaTextoUnFondo
 import com.example.triviaapp.componentes.ComponenteCreditoCreadores
 import com.example.triviaapp.componentes.ComponenteTitulo
+import com.example.triviaapp.componentes.DatosColumnaTexto
 import com.example.triviaapp.componentes.DenegartBoton
 
+/**
+ * 
+ */
 @Composable
-fun PaginaFinTrivia(preguntasAcertadas:Int=0,preguntasTotales:Int=10,) {
-    Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp),
+fun PaginaFinTrivia(preguntasAcertadas: Int = 0, preguntasTotales: Int = 10) {
+    Column(
+        modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp),
         verticalArrangement = Arrangement.spacedBy(space = 40.dp),
-        horizontalAlignment = Alignment.CenterHorizontally) {
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
 
-        Column(verticalArrangement = Arrangement.spacedBy(space = 40.dp),
-            horizontalAlignment = Alignment.CenterHorizontally){
-        ComponenteTitulo("Preguntas acertadas", 30)
-        ComponenteTitulo(""+preguntasAcertadas+"/"+preguntasTotales, 30)
+        Column(
+            verticalArrangement = Arrangement.spacedBy(space = 40.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.padding(vertical = 30.dp)
+        ) {
+            ComponenteColumnaTextoUnFondo(
+                DatosColumnaTexto(
+                    msj1 = "Preguntas acertadas",
+                    msj2 = ""+preguntasAcertadas+"/" +preguntasTotales,
+                    tamaño = 30
+                )
+            )
         }
-        
+
         ComponenteCreditoCreadores()
         Row(modifier = Modifier.fillMaxWidth()) {
-            Box(modifier = Modifier.weight(weight = 0.5f).fillMaxWidth()) {
+            Box(modifier = Modifier
+                .weight(weight = 0.5f)
+                .fillMaxWidth()) {
                 Text(text = "")
             }
-            Box(modifier = Modifier.weight(weight = 1f).fillMaxWidth()) {
-                DenegartBoton("salir",modifier = Modifier.fillMaxWidth())
+            Box(modifier = Modifier
+                .weight(weight = 1f)
+                .fillMaxWidth()) {
+                DenegartBoton("salir", modifier = Modifier.fillMaxWidth())
             }
 
-            Box(modifier = Modifier.weight(weight = 0.5f).fillMaxWidth()) {
+            Box(modifier = Modifier
+                .weight(weight = 0.5f)
+                .fillMaxWidth()) {
                 Text(text = "")
             }
         }
@@ -48,6 +69,6 @@ fun PaginaFinTrivia(preguntasAcertadas:Int=0,preguntasTotales:Int=10,) {
 
 @Preview(showSystemUi = true)
 @Composable
-fun PreviewFinTrivia(){
+fun PreviewFinTrivia() {
     PaginaFinTrivia()
 }

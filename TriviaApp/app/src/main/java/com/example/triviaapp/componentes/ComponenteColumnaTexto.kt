@@ -13,36 +13,60 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
+/**
+ * @param msj1 mensaje del primer texto
+ * @param msj2 mensaje del segundo texto
+ * @param tamaño tamaño que tendran los textos
+ */
+class DatosColumnaTexto(
+    var msj1: String,
+    var msj2: String,
+    var tamaño: Int = 15
+)
 
+/**
+ * genera dos textos en columna con el mismo fondo
+ */
 @Composable
-fun ComponenteColumnaTextoDobleFondo(msj1: String,msj2: String){
-    Column(verticalArrangement = Arrangement.spacedBy(5.dp),
+fun ComponenteColumnaTextoDobleFondo(datos: DatosColumnaTexto) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy((datos.tamaño / 3).dp),
         modifier = Modifier.fillMaxWidth()
-            .padding(vertical = 4.dp, horizontal = 100.dp)) {
-        ComponenteTitulo(titulo = msj1)
-        ComponenteTitulo(titulo = msj2)
+    ) {
+        ComponenteTitulo(titulo = datos.msj1, tamaño = datos.tamaño)
+        ComponenteTitulo(titulo = datos.msj2, tamaño = datos.tamaño)
     }
 }
 
+/**
+ * genera dos textos en columna, uno con fondo y otro sin el
+ */
 @Composable
-fun ComponenteColumnaTextoUnFondo(msj1: String,msj2: String){
-    Column(verticalArrangement = Arrangement.spacedBy(5.dp),
+fun ComponenteColumnaTextoUnFondo(datos: DatosColumnaTexto) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy((datos.tamaño / 3).dp),
         modifier = Modifier.fillMaxWidth()
-            .padding(vertical = 4.dp, horizontal = 100.dp)) {
-        ComponenteTitulo(titulo = msj1)
-        Text(text = msj2, modifier = Modifier.padding(vertical = 4.dp, horizontal = 20.dp)
-            .fillMaxWidth(),
-            textAlign = TextAlign.Center)
+    ) {
+        ComponenteTitulo(titulo = datos.msj1, tamaño = datos.tamaño)
+        Text(
+            text = datos.msj2,
+            modifier = Modifier
+                .padding(vertical = 4.dp, horizontal = 20.dp)
+                .fillMaxWidth(),
+            fontSize = datos.tamaño.sp,
+            textAlign = TextAlign.Center
+        )
     }
 }
 
 
-@Preview (showSystemUi = true)
+@Preview(showSystemUi = true)
 @Composable
-fun PreviewColumnTexto(){
-    Column {
-ComponenteColumnaTextoDobleFondo("si","no")
-        ComponenteColumnaTextoUnFondo("si","no")
+fun PreviewColumnTexto() {
+    Column(verticalArrangement = Arrangement.spacedBy(40.dp)) {
+        ComponenteColumnaTextoDobleFondo(datos = DatosColumnaTexto("si", "no"))
+        ComponenteColumnaTextoUnFondo(DatosColumnaTexto("allalli", "no", 30))
     }
 }

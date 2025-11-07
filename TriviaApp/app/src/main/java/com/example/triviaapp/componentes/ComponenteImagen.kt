@@ -12,12 +12,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.triviaapp.R
 
+/**
+ * Crea una imagen de la id de la imagen que se le pase
+ * @param id la imagen que se quiere que aparezca
+ * @param tamaño el tamaño de la imagen, por defecto a 20
+ */
 @Composable
-fun ComponenteImagen(id: Int,tamaño: Int=20) {
+fun ComponenteImagen(
+    id: Int,
+    tamaño: Int = 20
+) {
 
     Image(
         painter = painterResource(id = id),
-        modifier = Modifier.size(width = tamaño.dp, height = tamaño.dp)
+        modifier = Modifier
+            .size(width = tamaño.dp, height = tamaño.dp)
             .clip(shape = RoundedCornerShape(10.dp))
             .padding(vertical = 2.dp, horizontal = 2.dp),
         contentDescription = "imagen categoria"
@@ -27,6 +36,6 @@ fun ComponenteImagen(id: Int,tamaño: Int=20) {
 
 @Preview
 @Composable
-fun ImagenPreview(){
+fun ImagenPreview() {
     ComponenteImagen(R.drawable.trivia)
 }

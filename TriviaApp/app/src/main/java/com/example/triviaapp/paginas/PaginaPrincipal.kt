@@ -31,6 +31,9 @@ private val tarjetas: List<Tarjeta> = listOf(
     Tarjeta(R.drawable.ic_launcher_background, "Abuela")
 )
 
+/**
+ * 
+ */
 @Composable
 fun PaginaPrincipal() {
     Box(
