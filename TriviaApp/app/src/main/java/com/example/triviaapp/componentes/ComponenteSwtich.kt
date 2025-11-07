@@ -11,7 +11,8 @@ import androidx.compose.ui.tooling.preview.Preview
 /**
  * Componente con dos estados
  * cuando lo pulsas cambia de estado
- * con estado false por defecto
+ * @param isChecked estado del componente,
+ * siendo este false por defecto
  */
 @Composable
 fun ComponenteSwitch(){
