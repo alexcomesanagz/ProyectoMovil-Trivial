@@ -15,10 +15,13 @@ import androidx.compose.ui.unit.dp
 import com.example.triviaapp.paginas.txtTitulo
 
 /**
- * Componente con dos estados
- * cuando lo pulsas cambia de estado
- * @param isChecked estado del componente,
- * siendo este false por defecto
+ * Componente con los ajustes para crear un trivia
+ * @param txtTitulo texto de categoría
+ * @param txtBotones lista de textos con tipos de categoría
+ * @param tamañoTexto tamaño de la letra de los botones
+ * @param txtTextField texto del nombre trivial
+ * @param txtSlider texto del número de preguntas
+ * @param txtSwitch texto de si mostrar creador
  */
 @Composable
 fun ComponenteCajaDatosTrivia() {
