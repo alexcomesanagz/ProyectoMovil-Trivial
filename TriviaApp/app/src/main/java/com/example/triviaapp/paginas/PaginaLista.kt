@@ -18,10 +18,10 @@ import com.example.triviaapp.componentes.ComponenteTarjetaHorizontal
 import com.example.triviaapp.componentes.Tarjeta
 
 private val tarjetas: List<Tarjeta> = listOf(
-    Tarjeta(R.drawable.trivia,"Abuela"),
-    Tarjeta(R.drawable.trivia,"Abuela"),
-    Tarjeta(R.drawable.trivia,"Abuela"),
-    Tarjeta(R.drawable.trivia,"Abuela"))
+    Tarjeta(R.drawable.trivia,"Trivia 1"),
+    Tarjeta(R.drawable.trivia,"Trivia 2"),
+    Tarjeta(R.drawable.trivia,"Trivia 3"),
+    Tarjeta(R.drawable.trivia,"Trivia 4"))
 
 /**
  * Pagina que muestra todos los trivias disponibles

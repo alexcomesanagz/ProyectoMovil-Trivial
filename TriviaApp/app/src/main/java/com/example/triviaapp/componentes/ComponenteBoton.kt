@@ -113,7 +113,7 @@ fun DenegartBoton(
 @Composable
 fun BotonPreview() {
     Column {
-        AceptartBoton("aya")
-        DenegartBoton("aya")
+        AceptartBoton("Guardar")
+        DenegartBoton("Salir")
     }
 }

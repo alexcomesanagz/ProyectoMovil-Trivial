@@ -20,16 +20,14 @@ import com.example.triviaapp.componentes.DenegartBoton
 import com.example.triviaapp.componentes.Tarjeta
 
 val tarjetasUsuario: List<Tarjeta> = listOf(
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela"),
-    Tarjeta(R.drawable.ic_launcher_background, "Abuela")
+    Tarjeta(R.drawable.trivia, titulo ="Trivia 1"),
+    Tarjeta(R.drawable.trivia, titulo ="Trivia 2"),
+    Tarjeta(R.drawable.trivia, titulo ="Trivia 3"),
+    Tarjeta(R.drawable.trivia, titulo ="Trivia 4"),
+    Tarjeta(R.drawable.trivia, titulo ="Trivia 5"),
+    Tarjeta(R.drawable.trivia, titulo ="Trivia 6"),
+    Tarjeta(R.drawable.trivia, titulo ="Trivia 7"),
+    Tarjeta(R.drawable.trivia, titulo ="Trivia 8")
 )
 
 /**

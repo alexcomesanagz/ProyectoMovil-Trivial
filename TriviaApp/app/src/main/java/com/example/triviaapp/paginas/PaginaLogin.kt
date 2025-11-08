@@ -56,8 +56,8 @@ fun PaginaLogin() {
 
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(space = 35.dp)) {
-                ComponenteTitulo("aya")
-                ComponenteTitulo("aya")
+                ComponenteTitulo("correo usuario")
+                ComponenteTitulo("contraseña usuario")
             }
 
             Column(

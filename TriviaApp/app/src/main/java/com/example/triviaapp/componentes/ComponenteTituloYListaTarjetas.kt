@@ -35,26 +35,27 @@ fun prevComponenteTituloYListaTarjetas(){
     val titulo = "Título de prueba"
 
     val tarjetas: List<Tarjeta> = listOf(
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela"),
-        Tarjeta(R.drawable.ic_launcher_background,titulo ="Abuela")
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 1"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 2"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 3"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 4"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 5"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 6"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 7"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 8"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 9"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 10"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 11"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 12"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 13"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 14"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 15"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 16"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 17"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 18"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 19"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 20"),
+        Tarjeta(R.drawable.trivia, titulo ="Trivia 21")
     )
 
     ComponenteTituloYListaTarjetas(titulo, tarjetas)

@@ -66,7 +66,7 @@ fun ComponenteColumnaTextoUnFondo(datos: DatosColumnaTexto) {
 @Composable
 fun PreviewColumnTexto() {
     Column(verticalArrangement = Arrangement.spacedBy(40.dp)) {
-        ComponenteColumnaTextoDobleFondo(datos = DatosColumnaTexto("si", "no"))
-        ComponenteColumnaTextoUnFondo(DatosColumnaTexto("allalli", "no", 30))
+        ComponenteColumnaTextoDobleFondo(datos = DatosColumnaTexto("Guardar", "Salir"))
+        ComponenteColumnaTextoUnFondo(DatosColumnaTexto("Guardar", "Salir", 30))
     }
 }
