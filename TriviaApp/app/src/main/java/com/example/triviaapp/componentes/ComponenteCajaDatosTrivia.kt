@@ -24,22 +24,22 @@ import com.example.triviaapp.paginas.txtTitulo
 fun ComponenteCajaDatosTrivia() {
     val txtTitulo = "Tipo de categoría"
     val txtBotones: List<String> = listOf(
-        "Categoría 1" +
-                "Categoría 2" +
-                "Categoría 3" +
-                "Categoría 4"
+        "Terror",
+                "Accion",
+                "Puzzle",
+                "Tactico"
     )
     val txtTextField = "Nombre trivial"
     val txtSlider = "Número de preguntas"
     val txtSwitch = "Mostrar creador"
-
+    val tamañoTexto=10
 
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
         Column() {
-//            ComponenteTituloConBotonesHorizontal(txtTitulo, txtBotones)
+           ComponenteTituloConBotonesHorizontal(txtTitulo, txtBotones, tamañoTexto = tamañoTexto)
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {

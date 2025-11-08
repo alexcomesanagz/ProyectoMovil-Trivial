@@ -15,17 +15,19 @@ import com.example.triviaapp.R
  *set de cuatro botones en fila debajo de un texto
  * @param txtTitulo contenido del texto
  * @param txtbotones lista de contenido de cada boton, tiene que haber solo 4
+ * @param tamañoTexto tamaño de el texto que contienen los botones
  */
 @Composable
 fun ComponenteTituloConBotonesHorizontal(
     txtTitulo: String,
-    txtbotones: List<String>
+    txtbotones: List<String>,
+    tamañoTexto:Int=12
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(5.dp)
     ) {
         ComponenteTitulo(txtTitulo)
-        ComponenteBotonesHorizontal(txtbotones)
+        ComponenteBotonesHorizontal(txtbotones, tamañoTexto = tamañoTexto)
     }
 }
 

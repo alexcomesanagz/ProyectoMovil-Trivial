@@ -14,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.unpackFloat1
 
 
@@ -26,11 +27,14 @@ import androidx.compose.ui.util.unpackFloat1
  * contenedor en inactivo y contenido en inactivo
  *
  * @param accion accion del boton al hacer click
+ *
+ * @param tamañoTexto tamaño de el texto que contiene el boton
  */
 class DatosBoton(
     val msj: String,
     val modifier: Modifier = Modifier,
     val coloresBoton: List<Color>,
+    val tamañoTexto:Int=12,
     val accion: () -> Unit
 )
 
@@ -45,7 +49,8 @@ fun ComponenteBoton(datos: DatosBoton) {
         ),
         modifier = datos.modifier
     ) {
-        Text(text = datos.msj)
+        Text(text = datos.msj,
+            fontSize = datos.tamañoTexto.sp)
     }
 }
 
@@ -56,6 +61,7 @@ fun ComponenteBoton(datos: DatosBoton) {
 fun AceptartBoton(
     msj: String,
     modifier: Modifier = Modifier,
+    tamañoTexto: Int=12,
     accion: () -> Unit = { Log.e("Testing", "Aceptar boton cliqueado") }
 ) {
     var listaColor = listOf<Color>(
@@ -69,6 +75,7 @@ fun AceptartBoton(
             msj = msj,
             modifier = modifier,
             coloresBoton = listaColor,
+            tamañoTexto = tamañoTexto,
             accion = accion
         )
     )
@@ -81,6 +88,7 @@ fun AceptartBoton(
 fun DenegartBoton(
     msj: String,
     modifier: Modifier = Modifier,
+    tamañoTexto: Int=12,
     accion: () -> Unit = { Log.e("Testing", "Denegar boton cliqueado") }
 ) {
     var listaColor = listOf<Color>(
@@ -94,6 +102,7 @@ fun DenegartBoton(
             msj = msj,
             modifier = modifier,
             coloresBoton = listaColor,
+            tamañoTexto = tamañoTexto,
             accion = accion
         )
     )
