@@ -1,11 +1,14 @@
 package com.example.triviaapp.componentes
 
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Switch
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 /**
@@ -19,7 +22,8 @@ fun ComponenteSwitch(){
     var isChecked by remember { mutableStateOf(false) }
     Switch(
         checked = isChecked,
-        onCheckedChange = { isChecked = it}
+        onCheckedChange = { isChecked = it},
+        modifier = Modifier.fillMaxWidth()
     )
 }
 

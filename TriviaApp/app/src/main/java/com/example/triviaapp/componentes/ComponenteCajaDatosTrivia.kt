@@ -3,10 +3,13 @@ package com.example.triviaapp.componentes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.triviaapp.paginas.txtTitulo
@@ -33,32 +36,40 @@ fun ComponenteCajaDatosTrivia() {
 
     Column(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(5.dp)
+        verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
-//        ComponenteTituloConBotonesHorizontal(txtTitulo, txtBotones)
-        Box() {
+        Column() {
+//            ComponenteTituloConBotonesHorizontal(txtTitulo, txtBotones)
             Column(
-                verticalArrangement = Arrangement.spacedBy(5.dp)
+                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 ComponenteTitulo(txtTextField)
                 ComponenteTextField()
 
             }
         }
-        Box() {
-            Column {
+        Column {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
                 ComponenteTitulo(txtSlider)
                 ComponenteSlider()
             }
-            Column {
+
+            Column(
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
                 ComponenteTitulo(txtSwitch)
-                ComponenteSwitch()
+                Box(
+                    contentAlignment = Alignment.Center
+                ) {
+                    ComponenteSwitch()
+                }
             }
         }
-
-
     }
 }
+
 
 @Preview(showSystemUi = true)
 @Composable

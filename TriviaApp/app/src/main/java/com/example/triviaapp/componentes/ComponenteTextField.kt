@@ -1,10 +1,12 @@
 package com.example.triviaapp.componentes
 
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 /**
@@ -20,7 +22,8 @@ fun ComponenteTextField(){
         onValueChange = { txtNuevo ->
             txtContenido.value = txtNuevo
         },
-        label = { Text("Introduca aquí nombre del Trivial a crear") }
+        label = { Text("Introduca aquí nombre del Trivial a crear") },
+        modifier = Modifier.fillMaxWidth()
     )
 }
 
