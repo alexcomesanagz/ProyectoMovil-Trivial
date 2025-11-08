@@ -127,7 +127,7 @@ fun BotonesDobleAceptarColumna(datosBotones: DatosBotonDoble) {
             modifier = datosBotones.modifierBotones,
             tamañoTexto = datosBotones.tamañoTexto,
             accion = datosBotones.accionBoton1)
-        AceptartBoton(msj = datosBotones.msjBot1,
+        AceptartBoton(msj = datosBotones.msjBot2,
             modifier = datosBotones.modifierBotones,
             tamañoTexto = datosBotones.tamañoTexto,
             accion = datosBotones.accionBoton1)
@@ -139,7 +139,7 @@ fun BotonesDobleAceptarColumna(datosBotones: DatosBotonDoble) {
 @Composable
 fun PreviewDobleBoton() {
     Column {
-        var botones= DatosBotonDoble("si","no")
+        var botones= DatosBotonDoble("Salir","Guardar")
         BotonesAceptarDenegarLinea(botones)
         BotonesDobleAceptarLinea(botones)
         BotonesDobleAceptarColumna(botones)

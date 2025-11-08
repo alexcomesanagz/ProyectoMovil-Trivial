@@ -35,7 +35,7 @@ fun ComponenteCajaDatosTrivia() {
     val txtTextField = "Nombre trivial"
     val txtSlider = "Número de preguntas"
     val txtSwitch = "Mostrar creador"
-    val tamañoTexto=10
+    val tamañoTexto = 8
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -44,7 +44,7 @@ fun ComponenteCajaDatosTrivia() {
         Column() {
            ComponenteTituloConBotonesHorizontal(txtTitulo, txtBotones, tamañoTexto = tamañoTexto)
             Column(
-                verticalArrangement = Arrangement.spacedBy(10.dp)
+                verticalArrangement = Arrangement.spacedBy(15.dp)
             ) {
                 ComponenteTitulo(txtTextField)
                 ComponenteTextField()

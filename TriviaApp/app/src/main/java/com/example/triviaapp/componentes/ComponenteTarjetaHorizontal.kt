@@ -60,7 +60,7 @@ fun ComponenteTarjetaHorizontal(
 @Preview
 @Composable
 fun PrevioTarjHoriz() {
-    val contenido = Tarjeta(R.drawable.trivia, titulo = "abuela")
+    val contenido = Tarjeta(R.drawable.trivia, titulo = "Trivia")
 
     ComponenteTarjetaHorizontal(contenido)
 }

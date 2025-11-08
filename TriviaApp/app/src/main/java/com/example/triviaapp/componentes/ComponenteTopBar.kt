@@ -54,5 +54,5 @@ fun ComponenteTopBar(
 @Preview
 @Composable
 fun PreviewTop(){
-    ComponenteTopBar("awa",{},{},{})
+    ComponenteTopBar("Página 1",{},{},{})
 }
