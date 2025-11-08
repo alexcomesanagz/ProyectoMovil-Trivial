@@ -32,8 +32,12 @@ import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.ComponenteTopBar
 import com.example.triviaapp.paginas.PaginaAjustesTrivia
+import com.example.triviaapp.paginas.PaginaElegirRespuestas
 import com.example.triviaapp.paginas.PaginaFinTrivia
 import com.example.triviaapp.paginas.PaginaLista
+import com.example.triviaapp.paginas.PaginaLogin
+import com.example.triviaapp.paginas.PaginaPerfil
+import com.example.triviaapp.paginas.PaginaResponderPreguntas
 import kotlinx.coroutines.launch
 
 private val titulo: String = "Título de prueba"
@@ -203,7 +207,7 @@ class MainActivity : ComponentActivity() {
 //                            PaginaLogin()
 //                            PaginaPerfil()
 //                            PaginaPrincipal()
-//                            PaginaResponderPreguntas()
+                            PaginaResponderPreguntas()
                     }
                 }
             }
