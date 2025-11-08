@@ -29,10 +29,9 @@ fun ComponenteSlider(){
     var sliderPosition by remember { mutableStateOf(10f) }
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
+            .padding(10.dp)
     ) {
-        Text(text= "Valor: " + sliderPosition)
+        Text(text= "Número de preguntas: " + sliderPosition)
         Slider(
             value = sliderPosition,
             onValueChange = { sliderPosition = it },
