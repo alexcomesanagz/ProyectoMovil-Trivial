@@ -1,5 +1,6 @@
 package com.example.triviaapp.paginas
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -64,7 +65,10 @@ fun PaginaLogin() {
             Column(
                 verticalArrangement = Arrangement.spacedBy(space = 35.dp),
             ) {
-                BotonesDobleAceptarColumna(DatosBotonDoble(msjBot1 = "login", msjBot2 = "sign up", modifierBotones = Modifier.fillMaxWidth()))
+                BotonesDobleAceptarColumna(DatosBotonDoble(msjBot1 = "login",
+                    msjBot2 = "sign up", modifierBotones = Modifier.fillMaxWidth(),
+                    accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
+                    accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
             }
             Column(
             ) {

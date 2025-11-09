@@ -53,7 +53,7 @@ fun BotonesAceptarDenegarLinea(datosBotones: DatosBotonDoble) {
                 msj = datosBotones.msjBot1,
                 modifier = Modifier.fillMaxWidth(),
                 tamañoTexto = datosBotones.tamañoTexto,
-                accion = datosBotones.accionBoton2
+                accion = datosBotones.accionBoton1
             )
         }
         Box(modifier = Modifier.weight(1f)) {
@@ -130,7 +130,7 @@ fun BotonesDobleAceptarColumna(datosBotones: DatosBotonDoble) {
         AceptartBoton(msj = datosBotones.msjBot2,
             modifier = datosBotones.modifierBotones,
             tamañoTexto = datosBotones.tamañoTexto,
-            accion = datosBotones.accionBoton1)
+            accion = datosBotones.accionBoton2)
     }
 }
 

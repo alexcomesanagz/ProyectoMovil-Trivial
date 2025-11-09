@@ -1,5 +1,6 @@
 package com.example.triviaapp.componentes
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,6 +33,12 @@ fun ComponenteCajaDatosTrivia() {
                 "Puzzle",
                 "Tactico"
     )
+    val accionbotones: List<() -> Unit> = listOf(
+        { Log.e("Testing", "Aceptar boton cliqueado") },
+        { Log.e("Testing", "Aceptar boton cliqueado") },
+        { Log.e("Testing", "Aceptar boton cliqueado") },
+        { Log.e("Testing", "Aceptar boton cliqueado") }
+    )
     val txtTextField = "Nombre trivial"
     val txtSlider = "Número de preguntas"
     val txtSwitch = "Mostrar creador"
@@ -42,7 +49,9 @@ fun ComponenteCajaDatosTrivia() {
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
         Column() {
-           ComponenteTituloConBotonesHorizontal(txtTitulo, txtBotones, tamañoTexto = tamañoTexto)
+           ComponenteTituloConBotonesHorizontal(txtTitulo, txtBotones,
+               tamañoTexto = tamañoTexto,
+               accionBotones = accionbotones)
             Column(
                 verticalArrangement = Arrangement.spacedBy(15.dp)
             ) {

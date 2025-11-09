@@ -1,5 +1,6 @@
 package com.example.triviaapp.componentes
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -12,10 +13,12 @@ import androidx.compose.ui.tooling.preview.Preview
  * crea 4 botones divididos entre 2 filas y 2 columnas
  * @param txtBotones contiene el texto de cada boton, tienen que ser 4
  * @param tamañoTexto tamaño de el texto que contienen los botones
+ * @param accionBotones contiene las acciones de cada boton
  */
 @Composable
 fun ComponenteBotonesHorizontal(
     txtBotones: List<String>,
+    accionBotones:List<() -> Unit>,
     tamañoTexto:Int=12
 ) {
     Row(
@@ -29,6 +32,8 @@ fun ComponenteBotonesHorizontal(
             BotonesDobleAceptarLinea(DatosBotonDoble(
                 txtBotones.get(0),
                 txtBotones.get(1),
+                accionBoton1 = accionBotones.get(0),
+                accionBoton2 = accionBotones.get(1),
                 tamañoTexto = tamañoTexto)
             )
         }
@@ -38,6 +43,8 @@ fun ComponenteBotonesHorizontal(
             BotonesDobleAceptarLinea(DatosBotonDoble(
                 txtBotones.get(2),
                 txtBotones.get(3),
+                accionBoton1 = accionBotones.get(2),
+                accionBoton2 = accionBotones.get(3),
                 tamañoTexto = tamañoTexto)
             )
         }
@@ -50,6 +57,12 @@ fun PrevComponenteBotonesHorizontal() {
     val txtBotones: List<String> = listOf(
         "1", "2", "3", "4"
     )
+    val accionbotones: List<() -> Unit> = listOf(
+        { Log.e("Testing", "Aceptar boton cliqueado") },
+        { Log.e("Testing", "Aceptar boton cliqueado") },
+        { Log.e("Testing", "Aceptar boton cliqueado") },
+        { Log.e("Testing", "Aceptar boton cliqueado") }
+    )
 
-    ComponenteBotonesHorizontal(txtBotones)
+    ComponenteBotonesHorizontal(txtBotones, accionBotones = accionbotones)
 }

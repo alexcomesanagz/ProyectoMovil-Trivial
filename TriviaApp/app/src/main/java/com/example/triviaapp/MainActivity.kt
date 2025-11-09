@@ -31,8 +31,6 @@ import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.ComponenteTopBar
-import com.example.triviaapp.paginas.PaginaAjustesTrivia
-import com.example.triviaapp.paginas.PaginaElegirRespuestas
 import com.example.triviaapp.paginas.PaginaFinTrivia
 import com.example.triviaapp.paginas.PaginaLista
 import com.example.triviaapp.paginas.PaginaLogin
@@ -72,7 +70,7 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             val snackbarHostState = remember { SnackbarHostState() }
-            val scopeSnackbar = rememberCoroutineScope()
+            val scope = rememberCoroutineScope()
             val drawerState = rememberDrawerState(DrawerValue.Closed)
             val scopeDrawer = rememberCoroutineScope()
 
@@ -88,6 +86,7 @@ class MainActivity : ComponentActivity() {
                                     .fillMaxWidth()
                                     .clickable {
                                         // Handle click
+                                        Log.e("Testing","Inicio cliqueado")
                                         scopeDrawer.launch { drawerState.close() }
                                     }
                                     .padding(16.dp)
@@ -98,6 +97,7 @@ class MainActivity : ComponentActivity() {
                                     .fillMaxWidth()
                                     .clickable {
                                         // Handle click
+                                        Log.e("Testing","categorias cliqueado")
                                         scopeDrawer.launch { drawerState.close() }
                                     }
                                     .padding(16.dp)
@@ -107,10 +107,14 @@ class MainActivity : ComponentActivity() {
                 ) {
                         Scaffold(
                             modifier = Modifier.fillMaxSize(),
-                            topBar = { ComponenteTopBar(title = "Página de prueba") },
+                            topBar = {ComponenteTopBar(title = "Página de prueba",
+                                accioMenu = {
+                                    scope.launch {
+                                        drawerState.open()
+                                    }}) },
                             floatingActionButton = {
                                 ComponenteFAB {
-                                    scopeSnackbar.launch {
+                                    scope.launch {
                                         snackbarHostState.showSnackbar(message = "Perfil")
                                     }
                                 }
@@ -129,7 +133,7 @@ class MainActivity : ComponentActivity() {
 //                            PaginaLogin()
 //                            PaginaPerfil()
 //                            PaginaPrincipal()
-//                            PaginaResponderPreguntas()
+                            PaginaResponderPreguntas()
                             }
                         }
                 }
@@ -182,7 +186,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     topBar = { ComponenteTopBar(title = "Página de prueba",
-                        onMenuClick = {
+                        accioMenu = {
                             scope.launch {
                         drawerState.open()
                     }}) },

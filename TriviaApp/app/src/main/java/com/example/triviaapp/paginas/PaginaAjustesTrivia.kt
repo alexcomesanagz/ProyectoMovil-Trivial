@@ -1,5 +1,6 @@
 package com.example.triviaapp.paginas
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -20,12 +21,20 @@ import com.example.triviaapp.componentes.DatosBotonDoble
 fun PaginaAjustesTrivia() {
     val txtSalir = "Salir"
     val txtAceptar = "Aceptar"
-
+    val accionbotones: List<() -> Unit> = listOf(
+        { Log.e("Testing", "Aceptar boton cliqueado") },
+        { Log.e("Testing", "Aceptar boton cliqueado") },
+        { Log.e("Testing", "Aceptar boton cliqueado") },
+        { Log.e("Testing", "Aceptar boton cliqueado") }
+    )
     Column(
         modifier = Modifier.padding(vertical = 40.dp, horizontal = 15.dp),
         verticalArrangement = Arrangement.spacedBy(40.dp)
     ) {
-        BotonesAceptarDenegarLinea(datosBotones = DatosBotonDoble(txtSalir, txtAceptar))
+        BotonesAceptarDenegarLinea(datosBotones = DatosBotonDoble(txtSalir,
+            txtAceptar,
+            accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
+            accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
         ComponenteCajaDatosTrivia()
     }
 }

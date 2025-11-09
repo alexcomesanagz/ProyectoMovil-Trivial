@@ -1,5 +1,6 @@
 package com.example.triviaapp.paginas
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -61,7 +62,10 @@ fun PaginaResponderPreguntas() {
             verticalArrangement = Arrangement.spacedBy(30.dp)
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(70.dp)) {
-                BotonesAceptarDenegarLinea(datosBotones = DatosBotonDoble(txtSalir, txtFinalizar))
+                BotonesAceptarDenegarLinea(datosBotones = DatosBotonDoble(txtSalir,
+                    txtFinalizar,
+                    accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
+                    accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
                 ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
 
             }
@@ -69,7 +73,10 @@ fun PaginaResponderPreguntas() {
                 verticalArrangement = Arrangement.spacedBy(70.dp)
             ) {
                 ComponenteTitulo(preguntaActual + " / " + numPreguntas)
-                BotonesDobleAceptarLinea(DatosBotonDoble(txtAnterior, txtSiguiente))
+                BotonesDobleAceptarLinea(DatosBotonDoble(txtAnterior,
+                    txtSiguiente,
+                    accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
+                    accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
             }
         }
     }

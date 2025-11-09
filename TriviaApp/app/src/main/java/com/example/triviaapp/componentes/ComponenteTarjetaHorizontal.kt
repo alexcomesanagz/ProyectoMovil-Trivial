@@ -1,5 +1,6 @@
 package com.example.triviaapp.componentes
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -24,7 +25,7 @@ import com.example.triviaapp.R
 data class Tarjeta(
     val imagen: Int,
     val titulo: String,
-    val accion: () -> Unit = {}
+    val accion: () -> Unit = { Log.e("Testeo","tarjeta cliqueada")}
 )
 
 /**

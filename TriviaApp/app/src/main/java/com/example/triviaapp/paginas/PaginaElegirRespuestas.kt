@@ -1,5 +1,6 @@
 package com.example.triviaapp.paginas
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,6 +27,12 @@ val txtTitulo = "Opción correcta"
 val txtBotones: List<String> = listOf(
     "1", "2", "3", "4"
 )
+val accionbotones: List<() -> Unit> = listOf(
+    { Log.e("Testing", "Aceptar boton cliqueado") },
+    { Log.e("Testing", "Aceptar boton cliqueado") },
+    { Log.e("Testing", "Aceptar boton cliqueado") },
+    { Log.e("Testing", "Aceptar boton cliqueado") }
+)
 
 /**
  * Pagina para rellenar una preguntas a la hora de hacer un quiz
@@ -42,7 +49,10 @@ fun PaginaElegirRespuestas() {
             verticalArrangement = Arrangement.spacedBy(30.dp)
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(70.dp)) {
-                BotonesAceptarDenegarLinea(DatosBotonDoble(txtSalir, txtFinalizar))
+                BotonesAceptarDenegarLinea(DatosBotonDoble(txtSalir,
+                    txtFinalizar,
+                    accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
+                    accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
                 ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
 
             }
@@ -50,12 +60,15 @@ fun PaginaElegirRespuestas() {
                 verticalArrangement = Arrangement.spacedBy(30.dp)
             ) {
                 ComponenteTitulo(preguntaActual + " / " + numPreguntas)
-                BotonesDobleAceptarLinea(DatosBotonDoble(txtAnterior, txtSiguiente))
+                BotonesDobleAceptarLinea(DatosBotonDoble(txtAnterior,
+                    txtSiguiente,
+                    accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
+                    accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
             }
             Column(
                 modifier = Modifier.padding(vertical = 10.dp)
             ){
-                ComponenteTituloConBotonesHorizontal(txtTitulo, txtBotones)
+                ComponenteTituloConBotonesHorizontal(txtTitulo, txtBotones, accionBotones = accionbotones)
             }
         }
     }
