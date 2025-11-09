@@ -13,7 +13,8 @@ import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetas
 import com.example.triviaapp.componentes.Tarjeta
 
-private val titulo: String = "Título de prueba"
+private val titulo1: String = "Recomendados"
+private val titulo2: String = "Populares"
 private val tarjetas: List<Tarjeta> = listOf(
     Tarjeta(R.drawable.trivia, titulo ="Trivia 1"),
     Tarjeta(R.drawable.trivia, titulo ="Trivia 2"),
@@ -49,8 +50,8 @@ fun PaginaPrincipal() {
             .padding(vertical = 10.dp)
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-            ComponenteTituloYListaTarjetas(titulo, tarjetas)
-            ComponenteTituloYListaTarjetas(titulo, tarjetas)
+            ComponenteTituloYListaTarjetas(titulo1, tarjetas)
+            ComponenteTituloYListaTarjetas(titulo2, tarjetas)
         }
     }
 }

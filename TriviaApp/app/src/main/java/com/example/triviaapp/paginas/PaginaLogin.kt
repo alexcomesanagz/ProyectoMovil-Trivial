@@ -28,6 +28,7 @@ import com.example.triviaapp.componentes.BotonesDobleAceptarColumna
 import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.ComponenteListaTarjetas
 import com.example.triviaapp.componentes.ComponenteTarjetaHorizontal
+import com.example.triviaapp.componentes.ComponenteTextField
 import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetas
 import com.example.triviaapp.componentes.DatosBotonDoble
@@ -56,8 +57,8 @@ fun PaginaLogin() {
 
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(space = 35.dp)) {
-                ComponenteTitulo("correo usuario")
-                ComponenteTitulo("contraseña usuario")
+                ComponenteTextField("correo usuario")
+                ComponenteTextField("contraseña usuario")
             }
 
             Column(

@@ -15,14 +15,14 @@ import androidx.compose.ui.tooling.preview.Preview
  * @param txtNuevo texto introducido empleado para actualizar
  */
 @Composable
-fun ComponenteTextField(){
+fun ComponenteTextField(msjPregunta:String="Introduca aquí nombre del Trivial a crear"){
     val txtContenido = remember { mutableStateOf("") }
     TextField(
         value = txtContenido.value,
         onValueChange = { txtNuevo ->
             txtContenido.value = txtNuevo
         },
-        label = { Text("Introduca aquí nombre del Trivial a crear") },
+        label = { Text(msjPregunta) },
         modifier = Modifier.fillMaxWidth()
     )
 }
