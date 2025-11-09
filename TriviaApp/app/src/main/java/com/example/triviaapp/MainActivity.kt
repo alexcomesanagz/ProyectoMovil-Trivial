@@ -31,10 +31,6 @@ import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.ComponenteTopBar
-import com.example.triviaapp.paginas.PaginaFinTrivia
-import com.example.triviaapp.paginas.PaginaLista
-import com.example.triviaapp.paginas.PaginaLogin
-import com.example.triviaapp.paginas.PaginaPerfil
 import com.example.triviaapp.paginas.PaginaResponderPreguntas
 import kotlinx.coroutines.launch
 
@@ -108,7 +104,7 @@ class MainActivity : ComponentActivity() {
                         Scaffold(
                             modifier = Modifier.fillMaxSize(),
                             topBar = {ComponenteTopBar(title = "Página de prueba",
-                                accioMenu = {
+                                accionMenu = {
                                     scope.launch {
                                         drawerState.open()
                                     }}) },
@@ -186,7 +182,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     topBar = { ComponenteTopBar(title = "Página de prueba",
-                        accioMenu = {
+                        accionMenu = {
                             scope.launch {
                         drawerState.open()
                     }}) },
