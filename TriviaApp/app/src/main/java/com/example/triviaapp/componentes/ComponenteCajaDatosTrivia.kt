@@ -11,27 +11,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.triviaapp.paginas.txtTitulo
+import com.example.triviaapp.R
 
 /**
  * Componente con los ajustes para crear un trivia
- * @param txtTitulo texto de categoría
  * @param txtBotones lista de textos con tipos de categoría
  * @param tamañoTexto tamaño de la letra de los botones
- * @param txtTextField texto del nombre trivial
- * @param txtSlider texto del número de preguntas
- * @param txtSwitch texto de si mostrar creador
  */
 @Composable
 fun ComponenteCajaDatosTrivia() {
     val txtTitulo = "Tipo de categoría"
     val txtBotones: List<String> = listOf(
-        "Terror",
-                "Accion",
-                "Puzzle",
-                "Tactico"
+        stringResource(R.string.app_categoria1),
+        stringResource(R.string.app_categoria2),
+        stringResource(R.string.app_categoria3),
+        stringResource(R.string.app_categoria4)
     )
     val accionbotones: List<() -> Unit> = listOf(
         { Log.e("Testing", "Aceptar boton cliqueado") },
@@ -39,10 +36,7 @@ fun ComponenteCajaDatosTrivia() {
         { Log.e("Testing", "Aceptar boton cliqueado") },
         { Log.e("Testing", "Aceptar boton cliqueado") }
     )
-    val txtTextField = "Nombre trivial"
-    val txtSlider = "Número de preguntas"
-    val txtSwitch = "Mostrar creador"
-    val tamañoTexto = 8
+    val tamañoTexto = 10
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -55,7 +49,7 @@ fun ComponenteCajaDatosTrivia() {
             Column(
                 verticalArrangement = Arrangement.spacedBy(15.dp)
             ) {
-                ComponenteTitulo(txtTextField)
+                ComponenteTitulo(stringResource(R.string.app_titulo_nombreTrivia))
                 ComponenteTextField()
 
             }
@@ -64,14 +58,14 @@ fun ComponenteCajaDatosTrivia() {
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                ComponenteTitulo(txtSlider)
+                ComponenteTitulo(stringResource(R.string.app_titulo_tituloSlider))
                 ComponenteSlider()
             }
 
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                ComponenteTitulo(txtSwitch)
+                ComponenteTitulo(stringResource(R.string.app_titulo_tituloSwitch))
                 Box(
                     contentAlignment = Alignment.Center
                 ) {
