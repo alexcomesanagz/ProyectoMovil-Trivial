@@ -42,7 +42,7 @@ fun ComponenteCajaDatosTrivia() {
     val txtTextField = "Nombre trivial"
     val txtSlider = "Número de preguntas"
     val txtSwitch = "Mostrar creador"
-    val tamañoTexto = 8
+    val tamañoTexto = 12
 
     Column(
         modifier = Modifier.fillMaxSize(),

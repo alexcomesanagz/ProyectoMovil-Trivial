@@ -85,7 +85,7 @@ fun PaginaResponderPreguntas() {
 @Preview(showSystemUi = true)
 @Composable
 fun PrevPaginaResponderPreguntas() {
-    TriviaAppTheme {
+    TriviaAppTheme(darkTheme = true) {
         PaginaResponderPreguntas()
     }
 }

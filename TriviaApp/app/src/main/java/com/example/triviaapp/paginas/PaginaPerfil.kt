@@ -62,9 +62,10 @@ fun PaginaPerfil() {
             ComponenteTitulo("nombre usuario")
             ComponenteTitulo("correo usuario")
         }
-        Column(
+        Box(
             modifier = Modifier.padding(horizontal = 50.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+//            horizontalAlignment = Alignment.CenterHorizontally
+            contentAlignment = Alignment.Center
         )
         {
             ComponenteListaTarjetas(tarjetas = tarjetasUsuario, tamanioCaja = 350, tamanio = 50)

@@ -213,7 +213,7 @@ class MainActivity : ComponentActivity() {
 //                            PaginaLogin()
 //                            PaginaPerfil()
 //                            PaginaPrincipal()
-//                            PaginaResponderPreguntas()
+                            PaginaResponderPreguntas()
                     }
                 }
             }
