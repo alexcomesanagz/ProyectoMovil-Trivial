@@ -16,4 +16,15 @@
     <string name="app_titulo_tituloSlider">Número de preguntas</string>
     <string name="app_titulo_tituloSwitch">Mostrar creador</string>
     <string name="app_titulo_tituloPreguntasAcertadas">Preguntas acertadas</string>
+    <string name="app_login_msjCorreo">Correo usuario</string>
+    <string name="app_login_msjContraseña">Contraseña usuario</string>
+    <string name="app_login_btnLogIn">Log in</string>
+    <string name="app_login_btnSignUp">Sign up</string>
+    <string name="app_toolbar_Menu">Menu</string>
+    <string name="app_toolbar_Camara">Camara</string>
+    <string name="app_toolbar_Perfil">Perfil</string>
+    <string name="app_programadoPor">Programado por:</string>
+    <string name="app_creadores">Borja Pazo y Alex Comesaña</string>
+    <string name="app_creadores_creditos">Créditos</string>
+    <string name="app_creadores_usuario">Creado por:</string>
 </resources>

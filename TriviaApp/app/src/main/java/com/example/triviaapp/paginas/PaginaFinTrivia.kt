@@ -57,7 +57,7 @@ fun PaginaFinTrivia(preguntasAcertadas: Int = 0, preguntasTotales: Int = 10) {
             Box(modifier = Modifier
                 .weight(weight = 1f)
                 .fillMaxWidth()) {
-                DenegartBoton("salir", modifier = Modifier.fillMaxWidth())
+                DenegartBoton(stringResource(R.string.app_bt_salir), modifier = Modifier.fillMaxWidth())
             }
 
             Box(modifier = Modifier

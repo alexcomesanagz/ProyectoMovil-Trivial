@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.compose.TriviaAppTheme
@@ -29,9 +30,6 @@ import com.example.triviaapp.componentes.DatosBotonDoble
 import com.example.triviaapp.componentes.Tarjeta
 import kotlinx.coroutines.launch
 
-val txtSalir = "Salir"
-val txtFinalizar = "Finalizar"
-
 val enunciado =
     "¿La invasión de qué fortaleza por parte de los revolucionarios es considerada como el punto de inicio de la Revolución Francesa?"
 val textoBotonesRespuesta = listOf(
@@ -43,9 +41,6 @@ val textoBotonesRespuesta = listOf(
 
 val preguntaActual = "1"
 val numPreguntas = "10"
-
-val txtAnterior = "Anterior"
-val txtSiguiente = "Siguiente"
 
 /**
  * Pagina para responder una de las preguntas de un trivia ya creado
@@ -62,8 +57,9 @@ fun PaginaResponderPreguntas() {
             verticalArrangement = Arrangement.spacedBy(30.dp)
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(70.dp)) {
-                BotonesAceptarDenegarLinea(datosBotones = DatosBotonDoble(txtSalir,
-                    txtFinalizar,
+                BotonesAceptarDenegarLinea(datosBotones = DatosBotonDoble(
+                    stringResource(R.string.app_bt_salir),
+                    stringResource(R.string.app_bt_finalizar),
                     accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
                     accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
                 ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
@@ -73,8 +69,8 @@ fun PaginaResponderPreguntas() {
                 verticalArrangement = Arrangement.spacedBy(70.dp)
             ) {
                 ComponenteTitulo(preguntaActual + " / " + numPreguntas)
-                BotonesDobleAceptarLinea(DatosBotonDoble(txtAnterior,
-                    txtSiguiente,
+                BotonesDobleAceptarLinea(DatosBotonDoble(stringResource(R.string.app_bt_anterior),
+                    stringResource(R.string.app_bt_siguiente),
                     accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
                     accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
             }
