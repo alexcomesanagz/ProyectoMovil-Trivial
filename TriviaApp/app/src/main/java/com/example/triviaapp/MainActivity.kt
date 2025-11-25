@@ -204,7 +204,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .padding(innerPadding)
                             .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.inverseSurface)
+                            .background(MaterialTheme.colorScheme.onBackground)
                     ) {
 //                            PaginaAjustesTrivia()
 //                            PaginaElegirRespuestas()

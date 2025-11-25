@@ -65,8 +65,8 @@ fun AceptartBoton(
     accion: () -> Unit = { Log.e("Testing", "Aceptar boton cliqueado") }
 ) {
     var listaColor = listOf<Color>(
-        MaterialTheme.colorScheme.primaryContainer,
-        MaterialTheme.colorScheme.onPrimaryContainer,
+        MaterialTheme.colorScheme.surface,
+        MaterialTheme.colorScheme.onSurface,
         MaterialTheme.colorScheme.tertiary,
         MaterialTheme.colorScheme.onPrimaryContainer
     )
@@ -93,7 +93,7 @@ fun DenegartBoton(
 ) {
     var listaColor = listOf<Color>(
         MaterialTheme.colorScheme.error,
-        MaterialTheme.colorScheme.scrim,
+        MaterialTheme.colorScheme.onError,
         MaterialTheme.colorScheme.tertiary,
         MaterialTheme.colorScheme.onPrimaryContainer
     )
