@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
@@ -21,7 +22,9 @@ import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
 import com.example.triviaapp.componentes.BotonesDobleAceptarLinea
+import com.example.triviaapp.componentes.BotonesDobleAvanzarLinea
 import com.example.triviaapp.componentes.ComponenteFAB
+import com.example.triviaapp.componentes.ComponenteLinea
 import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
 import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetas
@@ -55,28 +58,41 @@ fun PaginaResponderPreguntas() {
     Box(
         Modifier
             .fillMaxSize()
-            .padding(20.dp)
+            .padding(vertical = 40.dp)
             .windowInsetsPadding(WindowInsets.safeDrawing)
     ) {
         Column(
-            verticalArrangement = Arrangement.spacedBy(30.dp)
+            verticalArrangement = Arrangement.spacedBy(70.dp)
         ) {
-            Column(verticalArrangement = Arrangement.spacedBy(70.dp)) {
-                BotonesAceptarDenegarLinea(datosBotones = DatosBotonDoble(txtSalir,
-                    txtFinalizar,
-                    accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
-                    accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
+            Column(verticalArrangement = Arrangement.spacedBy(40.dp)) {
                 ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
-
+                ComponenteTitulo(preguntaActual + " / " + numPreguntas)
             }
             Column(
-                verticalArrangement = Arrangement.spacedBy(70.dp)
+                verticalArrangement = Arrangement.spacedBy(20.dp)
             ) {
-                ComponenteTitulo(preguntaActual + " / " + numPreguntas)
-                BotonesDobleAceptarLinea(DatosBotonDoble(txtAnterior,
-                    txtSiguiente,
-                    accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
-                    accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
+
+                Box(
+                    modifier = Modifier.padding(bottom = 30.dp)
+                ) {
+                    BotonesDobleAvanzarLinea(
+                        DatosBotonDoble(
+                            txtAnterior,
+                            txtSiguiente,
+                            accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
+                            accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
+                    )
+                }
+                ComponenteLinea()
+
+                BotonesAceptarDenegarLinea(
+                    datosBotones = DatosBotonDoble(
+                        txtSalir,
+                        txtFinalizar,
+                        accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
+                        accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
+                )
+
             }
         }
     }

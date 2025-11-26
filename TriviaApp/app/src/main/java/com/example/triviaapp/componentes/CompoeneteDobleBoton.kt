@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,7 +26,7 @@ class DatosBotonDoble(
     var msjBot1: String,
     var msjBot2: String,
     var modifierBotones: Modifier= Modifier,
-    var tamañoTexto:Int=12,
+    var tamañoTexto:Int=18,
     var accionBoton1: () -> Unit = {},
     var accionBoton2: () -> Unit = {}
 )
@@ -49,7 +48,7 @@ fun BotonesAceptarDenegarLinea(datosBotones: DatosBotonDoble) {
 
         Box(modifier = Modifier.weight(1f)) {
 
-            DenegartBoton(
+            DenegarBoton(
                 msj = datosBotones.msjBot1,
                 modifier = Modifier.fillMaxWidth(),
                 tamañoTexto = datosBotones.tamañoTexto,
@@ -57,7 +56,7 @@ fun BotonesAceptarDenegarLinea(datosBotones: DatosBotonDoble) {
             )
         }
         Box(modifier = Modifier.weight(1f)) {
-            AceptartBoton(
+            AvanzarBoton(
                 msj = datosBotones.msjBot2,
                 modifier = Modifier.fillMaxWidth(),
                 tamañoTexto = datosBotones.tamañoTexto,
@@ -86,7 +85,7 @@ fun BotonesDobleAceptarLinea(datosBotones: DatosBotonDoble) {
         Box(
             modifier = Modifier.weight(1f)
         ) {
-            AceptartBoton(
+            AceptarBoton(
                 datosBotones.msjBot1, Modifier
                     .padding(horizontal = 8.dp)
                     .fillMaxWidth(),
@@ -97,7 +96,7 @@ fun BotonesDobleAceptarLinea(datosBotones: DatosBotonDoble) {
         Box(
             modifier = Modifier.weight(1f)
         ) {
-            AceptartBoton(
+            AceptarBoton(
                 datosBotones.msjBot2, Modifier
                     .padding(horizontal = 8.dp)
                     .fillMaxWidth(),
@@ -108,7 +107,42 @@ fun BotonesDobleAceptarLinea(datosBotones: DatosBotonDoble) {
     }
 }
 
-
+/**
+ * creación en linea de dos botones,
+ * tendrán el mismo tamaño los dos en base al espacio disponible
+ */
+@Composable
+fun BotonesDobleAvanzarLinea(datosBotones: DatosBotonDoble) {
+    Row(
+        modifier = Modifier
+            .padding(vertical = 5.dp)
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center,
+    ) {
+        Box(
+            modifier = Modifier.weight(1f)
+        ) {
+            AvanzarBoton(
+                datosBotones.msjBot1, Modifier
+                    .padding(horizontal = 8.dp)
+                    .fillMaxWidth(),
+                tamañoTexto = datosBotones.tamañoTexto,
+                accion = datosBotones.accionBoton1
+            )
+        }
+        Box(
+            modifier = Modifier.weight(1f)
+        ) {
+            AvanzarBoton(
+                datosBotones.msjBot2, Modifier
+                    .padding(horizontal = 8.dp)
+                    .fillMaxWidth(),
+                tamañoTexto = datosBotones.tamañoTexto,
+                accion = datosBotones.accionBoton2
+            )
+        }
+    }
+}
 
 /**
  * creación en columna de dos botones,
@@ -123,11 +157,11 @@ fun BotonesDobleAceptarColumna(datosBotones: DatosBotonDoble) {
             .fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
-        AceptartBoton(msj = datosBotones.msjBot1,
+        AceptarBoton(msj = datosBotones.msjBot1,
             modifier = datosBotones.modifierBotones,
             tamañoTexto = datosBotones.tamañoTexto,
             accion = datosBotones.accionBoton1)
-        AceptartBoton(msj = datosBotones.msjBot2,
+        AceptarBoton(msj = datosBotones.msjBot2,
             modifier = datosBotones.modifierBotones,
             tamañoTexto = datosBotones.tamañoTexto,
             accion = datosBotones.accionBoton2)
@@ -140,8 +174,10 @@ fun BotonesDobleAceptarColumna(datosBotones: DatosBotonDoble) {
 fun PreviewDobleBoton() {
     Column {
         var botones= DatosBotonDoble("Salir","Guardar")
+        var botonesAvanzar = DatosBotonDoble("Anterior","Siguiente")
         BotonesAceptarDenegarLinea(botones)
         BotonesDobleAceptarLinea(botones)
         BotonesDobleAceptarColumna(botones)
+        BotonesDobleAvanzarLinea(botonesAvanzar)
     }
 }

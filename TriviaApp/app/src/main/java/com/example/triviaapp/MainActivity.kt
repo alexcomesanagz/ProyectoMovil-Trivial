@@ -204,16 +204,16 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .padding(innerPadding)
                             .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.onBackground)
+                            .background(MaterialTheme.colorScheme.background)
                     ) {
-//                            PaginaAjustesTrivia()
+                            PaginaAjustesTrivia()
 //                            PaginaElegirRespuestas()
 //                            PaginaFinTrivia()
 //                            PaginaLista()
 //                            PaginaLogin()
 //                            PaginaPerfil()
 //                            PaginaPrincipal()
-                            PaginaResponderPreguntas()
+//                            PaginaResponderPreguntas()
                     }
                 }
             }

@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun ComponenteTitulo(
     titulo: String,
-    tamaño: Int=15
+    tamaño: Int=20
 ){
     Text(text = titulo,
         modifier = Modifier.background(MaterialTheme.colorScheme.primary,

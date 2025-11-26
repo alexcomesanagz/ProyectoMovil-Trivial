@@ -16,7 +16,7 @@ import com.example.triviaapp.R
 import com.example.triviaapp.componentes.ComponenteImagen
 import com.example.triviaapp.componentes.ComponenteListaTarjetas
 import com.example.triviaapp.componentes.ComponenteTitulo
-import com.example.triviaapp.componentes.DenegartBoton
+import com.example.triviaapp.componentes.DenegarBoton
 import com.example.triviaapp.componentes.Tarjeta
 
 val tarjetasUsuario: List<Tarjeta> = listOf(
@@ -47,7 +47,7 @@ fun PaginaPerfil() {
                 Text(text = "")
             }
             Box(modifier = Modifier.weight(weight = 1f)) {
-                DenegartBoton(msj = "salir", modifier = Modifier.fillMaxWidth())
+                DenegarBoton(msj = "salir", modifier = Modifier.fillMaxWidth())
             }
             Box(modifier = Modifier.weight(weight = 0.5f)) {
                 Text(text = "")

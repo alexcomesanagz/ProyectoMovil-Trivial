@@ -49,11 +49,9 @@ fun ComponenteCajaDatosTrivia() {
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
         Column() {
-           ComponenteTituloConBotonesHorizontal(txtTitulo, txtBotones,
-               tamañoTexto = tamañoTexto,
-               accionBotones = accionbotones)
+           ComponentePreguntaYRespuestas(txtTitulo, txtBotones, 10)
             Column(
-                verticalArrangement = Arrangement.spacedBy(15.dp)
+                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 ComponenteTitulo(txtTextField)
                 ComponenteTextField()

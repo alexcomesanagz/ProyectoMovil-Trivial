@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
 import com.example.triviaapp.componentes.BotonesDobleAceptarLinea
+import com.example.triviaapp.componentes.BotonesDobleAvanzarLinea
 import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
 import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.ComponenteTituloConBotonesHorizontal
@@ -60,7 +61,7 @@ fun PaginaElegirRespuestas() {
                 verticalArrangement = Arrangement.spacedBy(30.dp)
             ) {
                 ComponenteTitulo(preguntaActual + " / " + numPreguntas)
-                BotonesDobleAceptarLinea(DatosBotonDoble(txtAnterior,
+                BotonesDobleAvanzarLinea(DatosBotonDoble(txtAnterior,
                     txtSiguiente,
                     accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
                     accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))

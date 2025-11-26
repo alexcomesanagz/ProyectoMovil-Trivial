@@ -17,10 +17,11 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun ComponentePreguntaYRespuestas(
     enunciado: String,
-    textoBotonesRespuesta: List<String>
+    textoBotonesRespuesta: List<String>,
+    paddingBotonesTitulo: Int = 15
 ) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(15.dp)
+        verticalArrangement = Arrangement.spacedBy(paddingBotonesTitulo.dp)
     ) {
         ComponenteTitulo(enunciado)
         ComponenteRespuestas(textoBotonesRespuesta)
