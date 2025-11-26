@@ -27,7 +27,7 @@ fun ComponenteTitulo(
         modifier = Modifier.background(MaterialTheme.colorScheme.secondary, RoundedCornerShape(8.dp))
             .padding(vertical = 4.dp, horizontal = 20.dp)
             .fillMaxWidth(),
-        textAlign = TextAlign.Center,
+            textAlign = TextAlign.Center,
             fontSize = tamaño.sp
     )
 }

@@ -12,8 +12,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.triviaapp.R
 
 /**
  * Barra de navegacion de los escafolds
@@ -36,18 +38,18 @@ fun ComponenteTopBar(
         title = { Text(text = title, textAlign = TextAlign.Center) },
         navigationIcon = {
             IconButton(onClick = accionMenu) {
-                Icon(Icons.Default.Menu, contentDescription = "Menu")
+                Icon(Icons.Default.Menu, contentDescription = stringResource(R.string.app_toolbar_Menu))
             }
         },
         actions = {
             IconButton(onClick = accionLogin) {
-                Icon(Icons.Default.ExitToApp, contentDescription = "Search")
+                Icon(Icons.Default.ExitToApp, contentDescription = stringResource(R.string.app_login_btnLogIn))
             }
             IconButton(onClick = accionCamara) {
-                Icon(Icons.Default.Create, contentDescription = "Search")
+                Icon(Icons.Default.Create, contentDescription = stringResource(R.string.app_toolbar_Camara))
             }
             IconButton(onClick = accionPerfil) {
-                Icon(Icons.Default.AccountCircle, contentDescription = "More")
+                Icon(Icons.Default.AccountCircle, contentDescription = stringResource(R.string.app_toolbar_Perfil))
             }
         }
     )

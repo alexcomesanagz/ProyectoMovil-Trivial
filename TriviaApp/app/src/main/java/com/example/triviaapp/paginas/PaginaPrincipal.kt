@@ -7,14 +7,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetas
 import com.example.triviaapp.componentes.Tarjeta
-
-private val titulo1: String = "Recomendados"
-private val titulo2: String = "Populares"
 private val tarjetas: List<Tarjeta> = listOf(
     Tarjeta(R.drawable.trivia, titulo ="Trivia 1"),
     Tarjeta(R.drawable.trivia, titulo ="Trivia 2"),
@@ -40,7 +38,7 @@ private val tarjetas: List<Tarjeta> = listOf(
 )
 
 /**
- * Pagina que muestra unos trivias recomendados y mas populares
+ * Pagina que muestra unos trivias recomendados y ultimos trivias
  */
 @Composable
 fun PaginaPrincipal() {
@@ -50,8 +48,10 @@ fun PaginaPrincipal() {
             .padding(vertical = 10.dp)
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-            ComponenteTituloYListaTarjetas(titulo1, tarjetas)
-            ComponenteTituloYListaTarjetas(titulo2, tarjetas)
+            ComponenteTituloYListaTarjetas(stringResource(R.string.app_titulo_pagina_1),
+                tarjetas)
+            ComponenteTituloYListaTarjetas(stringResource(R.string.app_titulo_pagina_2),
+                tarjetas)
         }
     }
 }

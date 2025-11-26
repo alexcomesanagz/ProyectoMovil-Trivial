@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">TriviaApp</string>
+    <string name="app_titulo_pagina_1">Recomendados</string>
+    <string name="app_titulo_pagina_2">Ultimos Trivias</string>
+    <string name="app_bt_salir">Salir</string>
+    <string name="app_bt_aceptar">Aceptar</string>
+    <string name="app_bt_finalizar">Finalizar</string>
+    <string name="app_bt_anterior">Anterior</string>
+    <string name="app_bt_siguiente">Siguiente</string>
+    <string name="app_ttl_opcionCorrecta">Opcion correcta</string>
+    <string name="app_categoria1">Terror</string>
+    <string name="app_categoria2">Accion</string>
+    <string name="app_categoria3">Puzzle</string>
+    <string name="app_categoria4">Tactico</string>
+    <string name="app_titulo_nombreTrivia">Nombre Trivia</string>
+    <string name="app_titulo_tituloSlider">Número de preguntas</string>
+    <string name="app_titulo_tituloSwitch">Mostrar creador</string>
+    <string name="app_titulo_tituloPreguntasAcertadas">Preguntas acertadas</string>
+    <string name="app_login_msjCorreo">Correo usuario</string>
+    <string name="app_login_msjContraseña">Contraseña usuario</string>
+    <string name="app_login_btnLogIn">Log in</string>
+    <string name="app_login_btnSignUp">Sign up</string>
+    <string name="app_toolbar_Menu">Menu</string>
+    <string name="app_toolbar_Camara">Camara</string>
+    <string name="app_toolbar_Perfil">Perfil</string>
+    <string name="app_programadoPor">Programado por:</string>
+    <string name="app_creadores">Borja Pazo y Alex Comesaña</string>
+    <string name="app_creadores_creditos">Créditos</string>
+    <string name="app_creadores_usuario">Creado por:</string>
 </resources>
