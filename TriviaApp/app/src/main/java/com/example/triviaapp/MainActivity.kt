@@ -206,13 +206,13 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
                     ) {
-                            PaginaAjustesTrivia()
-//                            PaginaElegirRespuestas()//cambiar el salir aceptar hacia abajo y cambiar tamaño botones junto con padding
+//                            PaginaAjustesTrivia() //cambiar el salir aceptar hacia abajo
+//                            PaginaElegirRespuestas()
 //                            PaginaFinTrivia()
-//                            PaginaLista() posible cambio color fondo tarjeta
+//                            PaginaLista() //posible cambio color fondo tarjeta
 //                            PaginaLogin()
-//                            PaginaPerfil() posible cambio colores lista tarjetas (añadir un tercer color?) (cambiar boton salir para abajo?)
-//                            PaginaPrincipal() posible cambio colores lista tarjetas
+//                            PaginaPerfil() //posible cambio colores lista tarjetas (añadir un tercer color?) quitar salir
+//                            PaginaPrincipal() //posible cambio colores lista tarjetas
 //                            PaginaResponderPreguntas()
                     }
                 }
