@@ -42,7 +42,7 @@ fun ComponenteTarjetaHorizontal(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .clickable(onClick = contenido.accion)
-            .background(color = MaterialTheme.colorScheme.background)
+            .background(color = MaterialTheme.colorScheme.secondary)
             .padding(horizontal = 4.dp, vertical = 4.dp)
             .height(height = (tamanio * 1.25).dp)
             .fillMaxWidth()
@@ -51,7 +51,8 @@ fun ComponenteTarjetaHorizontal(
         Text(
             text = contenido.titulo,
             modifier = Modifier.padding(vertical = 2.dp, horizontal = 4.dp),
-            fontSize = (tamanio * 0.5).sp
+            fontSize = (tamanio * 0.5).sp,
+            color = MaterialTheme.colorScheme.onSecondary
 
         )
     }

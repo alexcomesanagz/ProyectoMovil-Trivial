@@ -42,7 +42,8 @@ fun ComponenteCreditoCreadores(
                         "Programado por:\n" +
                         " Borja Pazo y Alex Comesaña\n",
                 fontSize = 30.sp,
-                modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+                modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp),
+                color = MaterialTheme.colorScheme.onSecondary
             )
         else {
             Text(

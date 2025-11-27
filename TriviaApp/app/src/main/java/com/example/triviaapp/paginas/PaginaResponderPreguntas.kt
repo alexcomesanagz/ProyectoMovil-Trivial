@@ -58,22 +58,21 @@ fun PaginaResponderPreguntas() {
     Box(
         Modifier
             .fillMaxSize()
-            .padding(vertical = 40.dp)
+            .padding(vertical = 70.dp ,horizontal = 10.dp)
             .windowInsetsPadding(WindowInsets.safeDrawing)
     ) {
         Column(
-            verticalArrangement = Arrangement.spacedBy(70.dp)
+            verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            Column(verticalArrangement = Arrangement.spacedBy(40.dp)) {
+            Column(verticalArrangement = Arrangement.spacedBy(50.dp)) {
                 ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
                 ComponenteTitulo(preguntaActual + " / " + numPreguntas)
             }
             Column(
-                verticalArrangement = Arrangement.spacedBy(20.dp)
+                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-
                 Box(
-                    modifier = Modifier.padding(bottom = 30.dp)
+                    modifier = Modifier.padding(bottom = 60.dp)
                 ) {
                     BotonesDobleAvanzarLinea(
                         DatosBotonDoble(
@@ -84,7 +83,6 @@ fun PaginaResponderPreguntas() {
                     )
                 }
                 ComponenteLinea()
-
                 BotonesAceptarDenegarLinea(
                     datosBotones = DatosBotonDoble(
                         txtSalir,
@@ -92,7 +90,6 @@ fun PaginaResponderPreguntas() {
                         accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
                         accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
                 )
-
             }
         }
     }

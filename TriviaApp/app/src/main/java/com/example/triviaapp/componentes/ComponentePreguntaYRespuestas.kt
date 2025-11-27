@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 fun ComponentePreguntaYRespuestas(
     enunciado: String,
     textoBotonesRespuesta: List<String>,
-    paddingBotonesTitulo: Int = 15
+    paddingBotonesTitulo: Int = 8
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(paddingBotonesTitulo.dp)

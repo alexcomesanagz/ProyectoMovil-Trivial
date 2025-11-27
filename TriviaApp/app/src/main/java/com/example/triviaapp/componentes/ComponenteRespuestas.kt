@@ -32,7 +32,7 @@ fun ComponenteRespuestas(textoBotonesRespuesta: List<String>) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(10.dp)
-                            .height(60.dp))
+                            .height(50.dp))
                 }
             }
         }

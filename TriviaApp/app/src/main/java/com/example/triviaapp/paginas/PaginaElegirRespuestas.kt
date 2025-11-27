@@ -17,6 +17,7 @@ import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
 import com.example.triviaapp.componentes.BotonesDobleAceptarLinea
 import com.example.triviaapp.componentes.BotonesDobleAvanzarLinea
+import com.example.triviaapp.componentes.ComponenteLinea
 import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
 import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.ComponenteTituloConBotonesHorizontal
@@ -43,33 +44,42 @@ fun PaginaElegirRespuestas() {
     Box(
         Modifier
             .fillMaxSize()
-            .padding(20.dp)
+            .padding(vertical = 30.dp, horizontal = 10.dp)
             .windowInsetsPadding(WindowInsets.safeDrawing)
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(30.dp)
         ) {
-            Column(verticalArrangement = Arrangement.spacedBy(70.dp)) {
+            Column(verticalArrangement = Arrangement.spacedBy(30.dp)) {
+                ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
+                ComponenteTituloConBotonesHorizontal(
+                    txtTitulo,
+                    txtBotones,
+                    accionBotones = accionbotones
+                )
+            }
+            Column(
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+
+                ComponenteTitulo(preguntaActual + " / " + numPreguntas)
+                Box(
+                    modifier = Modifier.padding(bottom = 20.dp)
+                ) {
+                    BotonesDobleAvanzarLinea(DatosBotonDoble(txtAnterior,
+                        txtSiguiente,
+                        accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
+                        accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
+                }
+            }
+            Column(
+                verticalArrangement = Arrangement.spacedBy(10.dp)
+            ) {
+                ComponenteLinea()
                 BotonesAceptarDenegarLinea(DatosBotonDoble(txtSalir,
                     txtFinalizar,
                     accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
                     accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
-                ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
-
-            }
-            Column(
-                verticalArrangement = Arrangement.spacedBy(30.dp)
-            ) {
-                ComponenteTitulo(preguntaActual + " / " + numPreguntas)
-                BotonesDobleAvanzarLinea(DatosBotonDoble(txtAnterior,
-                    txtSiguiente,
-                    accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
-                    accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
-            }
-            Column(
-                modifier = Modifier.padding(vertical = 10.dp)
-            ){
-                ComponenteTituloConBotonesHorizontal(txtTitulo, txtBotones, accionBotones = accionbotones)
             }
         }
     }

@@ -11,6 +11,8 @@ import androidx.compose.ui.unit.dp
 import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
 import com.example.triviaapp.componentes.ComponenteBotonesHorizontal
 import com.example.triviaapp.componentes.ComponenteCajaDatosTrivia
+import com.example.triviaapp.componentes.ComponenteLinea
+import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.DatosBotonDoble
 
 /**
@@ -37,6 +39,7 @@ fun PaginaAjustesTrivia() {
             accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
         ComponenteCajaDatosTrivia()
     }
+
 }
 
 @Preview(showSystemUi = true)

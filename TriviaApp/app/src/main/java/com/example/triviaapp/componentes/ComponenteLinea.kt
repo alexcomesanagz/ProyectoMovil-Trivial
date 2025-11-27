@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun ComponenteLinea(
     modifier: Modifier = Modifier.fillMaxWidth(),
-    grosor: Dp = 12.dp,
+    grosor: Dp = 10.dp,
     color: Color = MaterialTheme.colorScheme.primary
 ){
     HorizontalDivider(modifier, grosor, color)

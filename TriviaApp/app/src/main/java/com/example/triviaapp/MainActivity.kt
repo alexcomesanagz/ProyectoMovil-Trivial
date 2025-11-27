@@ -207,12 +207,12 @@ class MainActivity : ComponentActivity() {
                             .background(MaterialTheme.colorScheme.background)
                     ) {
                             PaginaAjustesTrivia()
-//                            PaginaElegirRespuestas()
+//                            PaginaElegirRespuestas()//cambiar el salir aceptar hacia abajo y cambiar tamaño botones junto con padding
 //                            PaginaFinTrivia()
-//                            PaginaLista()
+//                            PaginaLista() posible cambio color fondo tarjeta
 //                            PaginaLogin()
-//                            PaginaPerfil()
-//                            PaginaPrincipal()
+//                            PaginaPerfil() posible cambio colores lista tarjetas (añadir un tercer color?) (cambiar boton salir para abajo?)
+//                            PaginaPrincipal() posible cambio colores lista tarjetas
 //                            PaginaResponderPreguntas()
                     }
                 }

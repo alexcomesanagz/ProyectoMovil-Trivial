@@ -29,9 +29,9 @@ fun ComponenteCajaDatosTrivia() {
     val txtTitulo = "Tipo de categoría"
     val txtBotones: List<String> = listOf(
         "Terror",
-                "Accion",
-                "Puzzle",
-                "Tactico"
+        "Accion",
+        "Puzzle",
+        "Tactico"
     )
     val accionbotones: List<() -> Unit> = listOf(
         { Log.e("Testing", "Aceptar boton cliqueado") },
@@ -48,8 +48,10 @@ fun ComponenteCajaDatosTrivia() {
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
-        Column() {
-           ComponentePreguntaYRespuestas(txtTitulo, txtBotones, 10)
+        Column(
+            verticalArrangement = Arrangement.spacedBy(15.dp)
+        ) {
+            ComponentePreguntaYRespuestas(txtTitulo, txtBotones, 1)
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
