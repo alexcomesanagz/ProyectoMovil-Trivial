@@ -11,7 +11,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.compose.TriviaAppTheme
-import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetas
+import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetasHorizontal
+import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetasVertical
 import com.example.triviaapp.componentes.Tarjeta
 private val tarjetas: List<Tarjeta> = listOf(
     Tarjeta(R.drawable.trivia, titulo ="Trivia 1"),
@@ -48,9 +49,9 @@ fun PaginaPrincipal() {
             .padding(vertical = 10.dp)
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-            ComponenteTituloYListaTarjetas(stringResource(R.string.app_titulo_pagina_1),
+            ComponenteTituloYListaTarjetasHorizontal(stringResource(R.string.app_titulo_pagina_1),
                 tarjetas)
-            ComponenteTituloYListaTarjetas(stringResource(R.string.app_titulo_pagina_2),
+            ComponenteTituloYListaTarjetasHorizontal(stringResource(R.string.app_titulo_pagina_2),
                 tarjetas)
         }
     }
