@@ -10,12 +10,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.ComponenteImagen
-import com.example.triviaapp.componentes.ComponenteListaTarjetas
+import com.example.triviaapp.componentes.ComponenteListaTarjetasHorizontal
+import com.example.triviaapp.componentes.ComponenteListaTarjetasVertical
 import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.DenegartBoton
 import com.example.triviaapp.componentes.Tarjeta
@@ -68,7 +68,7 @@ fun PaginaPerfil() {
             horizontalAlignment = Alignment.CenterHorizontally
         )
         {
-            ComponenteListaTarjetas(tarjetas = tarjetasUsuario, tamanioCaja = 350, tamanio = 50)
+            ComponenteListaTarjetasHorizontal(tarjetas = tarjetasUsuario, tamanioCaja = 250, tamanio = 40)
         }
     }
 }
