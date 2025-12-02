@@ -70,17 +70,17 @@ fun ComponenteTarjetaVertical(
 ) {
     Box( modifier = Modifier.clickable(onClick = contenido.accion)
         .background(color = MaterialTheme.colorScheme.background)
-        .padding(horizontal = 4.dp, vertical = 4.dp)
-        .width(width = (tamanio * 2).dp),
+        .padding(horizontal = 4.dp,)
+        .width(width = (tamanio*4).dp),
         contentAlignment = Alignment.Center
     ){
         Column (
             horizontalAlignment = Alignment.CenterHorizontally){
-            ComponenteImagen(id = contenido.imagen, tamaño = tamanio)
+            ComponenteImagen(id = contenido.imagen, tamaño = (tamanio*4))
             Text(
                 text = contenido.titulo,
-                modifier = Modifier.padding(vertical = 2.dp, horizontal = 4.dp),
-                fontSize = (tamanio * 0.5).sp,
+                modifier = Modifier.padding(horizontal = 4.dp),
+                fontSize = (tamanio).sp,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1
 

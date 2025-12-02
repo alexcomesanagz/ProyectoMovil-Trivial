@@ -68,7 +68,7 @@ fun PaginaPerfil() {
             horizontalAlignment = Alignment.CenterHorizontally
         )
         {
-            ComponenteListaTarjetasHorizontal(tarjetas = tarjetasUsuario, tamanioCaja = 250, tamanio = 40)
+            ComponenteListaTarjetasVertical(tarjetas = tarjetasUsuario, tamanioCaja = 250, tamanio = 40)
         }
     }
 }
