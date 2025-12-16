@@ -207,13 +207,13 @@ class MainActivity : ComponentActivity() {
                             .background(MaterialTheme.colorScheme.background)
                     ) {
 //                            PaginaAjustesTrivia() // cambiar el salir aceptar hacia abajo y cambiar tamaño botones junto con padding
-//                            PaginaElegirRespuestas()
-//                            PaginaFinTrivia()
+                            PaginaElegirRespuestas()
+//                            PaginaFinTrivia() // cambiar fondo de num preguntas
 //                            PaginaLista() // posible cambio color fondo tarjeta
-//                            PaginaLogin()
-//                            PaginaPerfil()
-//                            PaginaPrincipal()
-//                            PaginaResponderPreguntas()
+//                            PaginaLogin() // quitar cancelar
+//                            PaginaPerfil() // cambiar paddings
+//                            PaginaPrincipal() // cambiar padding top para dar forma de caja
+//                            PaginaResponderPreguntas() //cambiar fondo de cambio de paginas
                     }
                 }
             }
