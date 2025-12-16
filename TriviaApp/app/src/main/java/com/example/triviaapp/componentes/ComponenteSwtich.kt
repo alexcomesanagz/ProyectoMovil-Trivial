@@ -2,7 +2,9 @@ package com.example.triviaapp.componentes
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,7 +25,8 @@ fun ComponenteSwitch(){
     Switch(
         checked = isChecked,
         onCheckedChange = { isChecked = it},
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
+        colors = SwitchDefaults.colors(checkedTrackColor = MaterialTheme.colorScheme.secondary)
     )
 }
 

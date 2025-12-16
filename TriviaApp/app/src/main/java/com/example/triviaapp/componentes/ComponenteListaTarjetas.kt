@@ -38,7 +38,7 @@ fun ComponenteListaTarjetasVertical(
 
     Box(
         Modifier.background(
-            MaterialTheme.colorScheme.secondary,
+            MaterialTheme.colorScheme.primary,
             RoundedCornerShape(8.dp)
         )
     ) {

@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 
+
 /**
  * Crea un boton flotante
  * @param onClick accion que hara al hacerle click
@@ -23,8 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 fun ComponenteFAB(onClick: () -> Unit) {
     FloatingActionButton(
         onClick = onClick,
-        containerColor = MaterialTheme.colorScheme.secondary
+        containerColor = MaterialTheme.colorScheme.primary
     ) {
-        Icon(Icons.Default.Add, contentDescription = "Add")
+        Icon(Icons.Default.Add, contentDescription = "Add", tint = MaterialTheme.colorScheme.onPrimary)
     }
 }

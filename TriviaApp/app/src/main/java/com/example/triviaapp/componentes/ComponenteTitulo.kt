@@ -9,6 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -21,15 +22,19 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun ComponenteTitulo(
     titulo: String,
-    tamaño: Int=15
+    tamaño: Int=20
 ){
     Text(text = titulo,
-        modifier = Modifier.background(MaterialTheme.colorScheme.secondary, RoundedCornerShape(8.dp))
-            .padding(vertical = 4.dp, horizontal = 20.dp)
+        modifier = Modifier.background(MaterialTheme.colorScheme.primary,
+            RoundedCornerShape(topEnd = 12.dp, topStart = 12.dp))
+            .padding(vertical = 6.dp, horizontal = 20.dp)
             .fillMaxWidth(),
-            textAlign = TextAlign.Center,
-            fontSize = tamaño.sp
-    )
+        textAlign = TextAlign.Center,
+        fontSize = tamaño.sp,
+        color = MaterialTheme.colorScheme.onPrimary,
+        fontWeight = FontWeight.Bold,
+
+        )
 }
 
 @Preview

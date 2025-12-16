@@ -31,12 +31,15 @@ fun ComponenteSlider(){
         modifier = Modifier
             .padding(10.dp)
     ) {
-        Text(text= "Número de preguntas: " + sliderPosition)
+        Text(text= "Número de preguntas: " + sliderPosition,
+            color = MaterialTheme.colorScheme.onBackground
+        )
         Slider(
             value = sliderPosition,
             onValueChange = { sliderPosition = it },
             valueRange = 1f..20f,
             steps = 18,
+            colors = SliderDefaults.colors(activeTrackColor = MaterialTheme.colorScheme.secondary)
         )
     }
 }

@@ -9,6 +9,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -18,6 +21,9 @@ import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
 import com.example.triviaapp.componentes.BotonesDobleAceptarLinea
+import com.example.triviaapp.componentes.BotonesDobleAvanzarLinea
+import com.example.triviaapp.componentes.ComponenteFAB
+import com.example.triviaapp.componentes.ComponenteLinea
 import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
 import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.DatosBotonDoble
@@ -42,29 +48,38 @@ fun PaginaResponderPreguntas() {
     Box(
         Modifier
             .fillMaxSize()
-            .padding(20.dp)
+            .padding(vertical = 70.dp ,horizontal = 10.dp)
             .windowInsetsPadding(WindowInsets.safeDrawing)
     ) {
         Column(
-            verticalArrangement = Arrangement.spacedBy(30.dp)
+            verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            Column(verticalArrangement = Arrangement.spacedBy(70.dp)) {
-                BotonesAceptarDenegarLinea(datosBotones = DatosBotonDoble(
-                    stringResource(R.string.app_bt_salir),
-                    stringResource(R.string.app_bt_finalizar),
-                    accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
-                    accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
+            Column(verticalArrangement = Arrangement.spacedBy(50.dp)) {
                 ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
-
+                ComponenteTitulo(preguntaActual + " / " + numPreguntas)
             }
             Column(
-                verticalArrangement = Arrangement.spacedBy(70.dp)
+                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                ComponenteTitulo(preguntaActual + " / " + numPreguntas)
-                BotonesDobleAceptarLinea(DatosBotonDoble(stringResource(R.string.app_bt_anterior),
-                    stringResource(R.string.app_bt_siguiente),
-                    accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
-                    accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
+                Box(
+                    modifier = Modifier.padding(bottom = 60.dp)
+                ) {
+                    BotonesDobleAvanzarLinea(
+                        DatosBotonDoble(
+                            stringResource(R.string.app_bt_anterior),
+                            stringResource(R.string.app_bt_siguiente),
+                            accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
+                            accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
+                    )
+                }
+                ComponenteLinea()
+                BotonesAceptarDenegarLinea(
+                    datosBotones = DatosBotonDoble(
+                        stringResource(R.string.app_bt_salir),
+                        stringResource(R.string.app_bt_finalizar),
+                        accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
+                        accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
+                )
             }
         }
     }
@@ -73,7 +88,7 @@ fun PaginaResponderPreguntas() {
 @Preview(showSystemUi = true)
 @Composable
 fun PrevPaginaResponderPreguntas() {
-    TriviaAppTheme {
+    TriviaAppTheme(darkTheme = true) {
         PaginaResponderPreguntas()
     }
 }

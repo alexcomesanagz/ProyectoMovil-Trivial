@@ -107,27 +107,27 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                 ) {
-                        Scaffold(
-                            modifier = Modifier.fillMaxSize(),
-                            topBar = {ComponenteTopBar(title = "Página de prueba",
-                                accionMenu = {
-                                    scope.launch {
-                                        drawerState.open()
-                                    }}) },
-                            floatingActionButton = {
-                                ComponenteFAB {
-                                    scope.launch {
-                                        snackbarHostState.showSnackbar(message = "Perfil")
-                                    }
+                    Scaffold(
+                        modifier = Modifier.fillMaxSize(),
+                        topBar = {ComponenteTopBar(title = "Página de prueba",
+                            accionMenu = {
+                                scope.launch {
+                                    drawerState.open()
+                                }}) },
+                        floatingActionButton = {
+                            ComponenteFAB {
+                                scope.launch {
+                                    snackbarHostState.showSnackbar(message = "Perfil")
                                 }
                             }
-                        ) { innerPadding ->
-                            Box(
-                                modifier = Modifier
-                                    .padding(innerPadding)
-                                    .fillMaxSize()
-                                    .background(MaterialTheme.colorScheme.inverseSurface)
-                            ) {
+                        }
+                    ) { innerPadding ->
+                        Box(
+                            modifier = Modifier
+                                .padding(innerPadding)
+                                .fillMaxSize()
+                                .background(MaterialTheme.colorScheme.inverseSurface)
+                        ) {
 //                            PaginaAjustesTrivia()
 //                            PaginaElegirRespuestas()
 //                            PaginaFinTrivia()
@@ -136,8 +136,8 @@ class MainActivity : ComponentActivity() {
 //                            PaginaPerfil()
 //                            PaginaPrincipal()
                             PaginaResponderPreguntas()
-                            }
                         }
+                    }
                 }
             }
         }
@@ -154,7 +154,7 @@ class MainActivity : ComponentActivity() {
         val drawerState = rememberDrawerState(DrawerValue.Closed)
         val scopeDrawer = rememberCoroutineScope()
 
-        TriviaAppTheme {
+        TriviaAppTheme(darkTheme = false) {
             ModalNavigationDrawer(
                 drawerState = drawerState,
                 drawerContent = {
@@ -190,8 +190,8 @@ class MainActivity : ComponentActivity() {
                     topBar = { ComponenteTopBar(title = "Página de prueba",
                         accionMenu = {
                             scope.launch {
-                        drawerState.open()
-                    }}) },
+                                drawerState.open()
+                            }}) },
                     floatingActionButton = {
                         ComponenteFAB {
                             scope.launch {
@@ -204,12 +204,12 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier
                             .padding(innerPadding)
                             .fillMaxSize()
-                            .background(MaterialTheme.colorScheme.inverseSurface)
+                            .background(MaterialTheme.colorScheme.background)
                     ) {
-//                            PaginaAjustesTrivia()
+//                            PaginaAjustesTrivia() // cambiar el salir aceptar hacia abajo y cambiar tamaño botones junto con padding
 //                            PaginaElegirRespuestas()
 //                            PaginaFinTrivia()
-//                            PaginaLista()
+//                            PaginaLista() // posible cambio color fondo tarjeta
 //                            PaginaLogin()
 //                            PaginaPerfil()
 //                            PaginaPrincipal()

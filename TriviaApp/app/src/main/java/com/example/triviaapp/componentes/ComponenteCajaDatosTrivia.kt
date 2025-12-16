@@ -36,18 +36,18 @@ fun ComponenteCajaDatosTrivia() {
         { Log.e("Testing", "Aceptar boton cliqueado") },
         { Log.e("Testing", "Aceptar boton cliqueado") }
     )
-    val tamañoTexto = 10
+    val tamañoTexto = 12
 
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(20.dp)
     ) {
-        Column() {
-           ComponenteTituloConBotonesHorizontal(txtTitulo, txtBotones,
-               tamañoTexto = tamañoTexto,
-               accionBotones = accionbotones)
+        Column(
+            verticalArrangement = Arrangement.spacedBy(15.dp)
+        ) {
+            ComponentePreguntaYRespuestas(txtTitulo, txtBotones, 1)
             Column(
-                verticalArrangement = Arrangement.spacedBy(15.dp)
+                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 ComponenteTitulo(stringResource(R.string.app_titulo_nombreTrivia))
                 ComponenteTextField()

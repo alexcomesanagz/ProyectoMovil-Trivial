@@ -28,17 +28,17 @@ private val tarjetas: List<Tarjeta> = listOf(
  */
 @Composable
 fun PaginaLista(){
-        Column(
-            verticalArrangement = Arrangement.spacedBy(30.dp),
-            modifier = Modifier.padding(horizontal = 30.dp, vertical = 30.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            ComponenteTarjetaHorizontal(tarjetas.get(0), tamanio = 80)
-            ComponenteTarjetaHorizontal(tarjetas.get(1), tamanio = 80)
-            ComponenteTarjetaHorizontal(tarjetas.get(2), tamanio = 80)
-            ComponenteTarjetaHorizontal(tarjetas.get(3), tamanio = 80)
-        }
+    Column(
+        verticalArrangement = Arrangement.spacedBy(30.dp),
+        modifier = Modifier.padding(horizontal = 30.dp, vertical = 30.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        ComponenteTarjetaHorizontal(tarjetas.get(0), tamanio = 80)
+        ComponenteTarjetaHorizontal(tarjetas.get(1), tamanio = 80)
+        ComponenteTarjetaHorizontal(tarjetas.get(2), tamanio = 80)
+        ComponenteTarjetaHorizontal(tarjetas.get(3), tamanio = 80)
     }
+}
 
 @Preview
 @Composable

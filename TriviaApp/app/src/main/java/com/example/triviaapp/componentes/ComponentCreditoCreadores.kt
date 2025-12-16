@@ -46,7 +46,8 @@ fun ComponenteCreditoCreadores(
                         "\n"+
                         stringResource(R.string.app_creadores),
                 fontSize = 30.sp,
-                modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+                modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp),
+                color = MaterialTheme.colorScheme.onSecondary
             )
         else {
             Text(

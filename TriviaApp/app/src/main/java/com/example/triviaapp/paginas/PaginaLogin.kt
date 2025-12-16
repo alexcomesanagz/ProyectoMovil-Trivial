@@ -18,6 +18,7 @@ import com.example.triviaapp.R
 import com.example.triviaapp.componentes.BotonesDobleAceptarColumna
 import com.example.triviaapp.componentes.ComponenteTextField
 import com.example.triviaapp.componentes.DatosBotonDoble
+import com.example.triviaapp.componentes.DenegarBoton
 
 /**
  * Pagina para entrar en tu cuenta ya creada o crear una nueva
@@ -49,6 +50,10 @@ fun PaginaLogin() {
                     msjBot2 = stringResource(R.string.app_login_btnSignUp), modifierBotones = Modifier.fillMaxWidth(),
                     accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
                     accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
+            }
+            Column(
+            ) {
+                DenegarBoton("cancelar")
             }
         }
 
