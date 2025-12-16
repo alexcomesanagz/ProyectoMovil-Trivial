@@ -14,9 +14,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.compose.TriviaAppTheme
+import com.example.triviaapp.R
 import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
 import com.example.triviaapp.componentes.BotonesDobleAceptarLinea
 import com.example.triviaapp.componentes.BotonesDobleAvanzarLinea
@@ -78,8 +80,8 @@ fun PaginaElegirRespuestas() {
                 ) {
                     BotonesDobleAvanzarLinea(
                         DatosBotonDoble(
-                            txtAnterior,
-                            txtSiguiente,
+                            stringResource(R.string.app_bt_anterior),
+                            stringResource(R.string.app_bt_siguiente),
                             accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
                             accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
                     )
@@ -91,8 +93,8 @@ fun PaginaElegirRespuestas() {
                 ComponenteLinea()
                 BotonesAceptarDenegarLinea(
                     DatosBotonDoble(
-                        txtSalir,
-                        txtFinalizar,
+                        stringResource(R.string.app_bt_salir),
+                        stringResource(R.string.app_bt_finalizar),
                         accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
                         accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
                 )
