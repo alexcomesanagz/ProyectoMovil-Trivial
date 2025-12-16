@@ -20,14 +20,14 @@ import com.example.triviaapp.componentes.DenegarBoton
 import com.example.triviaapp.componentes.Tarjeta
 
 val tarjetasUsuario: List<Tarjeta> = listOf(
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 1"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 2"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 3"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 4"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 5"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 6"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 7"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 8")
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 1"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 2"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 3"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 4"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 5"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 6"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 7"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 8")
 )
 
 /**
@@ -36,10 +36,30 @@ val tarjetasUsuario: List<Tarjeta> = listOf(
 @Composable
 fun PaginaPerfil() {
     Column(verticalArrangement = Arrangement.spacedBy(space = 50.dp)) {
+        Box(
+            modifier = Modifier.padding(horizontal = 50.dp),
+        ) {
+            Column(
+                modifier = Modifier.padding(top = 40.dp),
+                verticalArrangement = Arrangement.spacedBy(30.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                ComponenteImagen(id = R.drawable.trivia, tamaño = 120)
+                ComponenteTitulo("nombre usuario")
+                ComponenteTitulo("correo usuario")
+            }
+        }
+        Box(
+            modifier = Modifier.padding(horizontal = 50.dp),
+            contentAlignment = Alignment.Center
+        )
+        {
+            ComponenteListaTarjetas(tarjetas = tarjetasUsuario, tamanioCaja = 250, tamanio = 50)
+        }
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 10.dp, vertical = 10.dp),
+                .padding(bottom = 10.dp),
             horizontalArrangement = Arrangement.End
         )
         {
@@ -52,23 +72,6 @@ fun PaginaPerfil() {
             Box(modifier = Modifier.weight(weight = 0.5f)) {
                 Text(text = "")
             }
-        }
-        Column(
-            modifier = Modifier.padding(horizontal = 50.dp),
-            verticalArrangement = Arrangement.spacedBy(30.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            ComponenteImagen(id = R.drawable.trivia, tamaño = 120)
-            ComponenteTitulo("nombre usuario")
-            ComponenteTitulo("correo usuario")
-        }
-        Box(
-            modifier = Modifier.padding(horizontal = 50.dp),
-//            horizontalAlignment = Alignment.CenterHorizontally
-            contentAlignment = Alignment.Center
-        )
-        {
-            ComponenteListaTarjetas(tarjetas = tarjetasUsuario, tamanioCaja = 350, tamanio = 50)
         }
     }
 }

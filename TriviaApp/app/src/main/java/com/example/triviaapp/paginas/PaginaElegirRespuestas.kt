@@ -1,6 +1,7 @@
 package com.example.triviaapp.paginas
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -49,6 +52,7 @@ fun PaginaElegirRespuestas() {
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(30.dp)
+
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(30.dp)) {
                 ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
@@ -59,27 +63,39 @@ fun PaginaElegirRespuestas() {
                 )
             }
             Column(
-                verticalArrangement = Arrangement.spacedBy(10.dp)
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+                modifier = Modifier
+                    .padding(bottom = 10.dp)
+                    .background(
+                        MaterialTheme.colorScheme.surface,
+                        RoundedCornerShape(12.dp)
+                    )
             ) {
 
                 ComponenteTitulo(preguntaActual + " / " + numPreguntas)
                 Box(
-                    modifier = Modifier.padding(bottom = 20.dp)
+                    modifier = Modifier.padding(bottom = 10.dp)
                 ) {
-                    BotonesDobleAvanzarLinea(DatosBotonDoble(txtAnterior,
-                        txtSiguiente,
-                        accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
-                        accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
+                    BotonesDobleAvanzarLinea(
+                        DatosBotonDoble(
+                            txtAnterior,
+                            txtSiguiente,
+                            accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
+                            accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
+                    )
                 }
             }
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 ComponenteLinea()
-                BotonesAceptarDenegarLinea(DatosBotonDoble(txtSalir,
-                    txtFinalizar,
-                    accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
-                    accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
+                BotonesAceptarDenegarLinea(
+                    DatosBotonDoble(
+                        txtSalir,
+                        txtFinalizar,
+                        accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
+                        accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
+                )
             }
         }
     }

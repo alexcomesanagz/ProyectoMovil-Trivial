@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
 import com.example.triviaapp.componentes.ComponenteBotonesHorizontal
 import com.example.triviaapp.componentes.ComponenteCajaDatosTrivia
@@ -46,8 +45,5 @@ fun PaginaAjustesTrivia() {
 @Preview(showSystemUi = true)
 @Composable
 fun PrevPaginaAjustesTrivia() {
-    TriviaAppTheme(darkTheme = false) {
-        PaginaAjustesTrivia()
-
-    }
+    PaginaAjustesTrivia()
 }

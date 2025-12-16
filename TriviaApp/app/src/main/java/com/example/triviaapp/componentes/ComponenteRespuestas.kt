@@ -25,7 +25,8 @@ fun ComponenteRespuestas(textoBotonesRespuesta: List<String>) {
         content = {
             items(textoBotonesRespuesta) { textoBoton ->
                 Box(
-                    contentAlignment = Alignment.Center
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier.padding(bottom = 10.dp)
                 ) {
                     AceptarBoton(
                         msj = textoBoton,

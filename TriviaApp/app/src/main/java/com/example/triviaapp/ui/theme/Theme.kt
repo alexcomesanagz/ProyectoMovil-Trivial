@@ -17,6 +17,8 @@ private val lightScheme = lightColorScheme(
     onPrimary = LightOnPrimary,
     secondary = LightSecondary,
     onSecondary = LightOnSecondary,
+    tertiary = LightTertiary,
+    onTertiary = LightOnTertiary,
     background = LightBackground,
     surface = LightSurface,
     onBackground = LightOnBackground,
@@ -30,6 +32,8 @@ private val darkScheme = darkColorScheme(
     onPrimary = DarkOnPrimary,
     secondary = DarkSecondary,
     onSecondary = DarkOnSecondary,
+    tertiary = DarkTertiary,
+    onTertiary = DarkOnTertiary,
     background = DarkBackground,
     surface = DarkSurface,
     onBackground = DarkOnBackground,
@@ -57,20 +61,20 @@ fun TriviaAppTheme(
     dynamicColor: Boolean = false,
     content: @Composable() () -> Unit
 ) {
-  val colorScheme = when {
-      dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-          val context = LocalContext.current
-          if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-      }
-      
-      darkTheme -> darkScheme
-      else -> lightScheme
-  }
+    val colorScheme = when {
+        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            val context = LocalContext.current
+            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        }
 
-  MaterialTheme(
-    colorScheme = colorScheme,
-    typography = AppTypography,
-    content = content
-  )
+        darkTheme -> darkScheme
+        else -> lightScheme
+    }
+
+    MaterialTheme(
+        colorScheme = colorScheme,
+        typography = AppTypography,
+        content = content
+    )
 }
 

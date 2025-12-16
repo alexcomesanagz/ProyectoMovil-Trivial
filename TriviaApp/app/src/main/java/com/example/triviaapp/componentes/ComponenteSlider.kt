@@ -33,7 +33,7 @@ fun ComponenteSlider(){
     ) {
         Text(text= "Número de preguntas: " + sliderPosition,
             color = MaterialTheme.colorScheme.onBackground
-            )
+        )
         Slider(
             value = sliderPosition,
             onValueChange = { sliderPosition = it },

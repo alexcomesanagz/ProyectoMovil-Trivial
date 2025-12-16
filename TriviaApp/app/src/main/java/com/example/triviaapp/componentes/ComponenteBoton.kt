@@ -56,7 +56,7 @@ fun ComponenteBoton(datos: DatosBoton) {
 fun AceptarBoton(
     msj: String,
     modifier: Modifier = Modifier,
-    tamañoTexto: Int=18,
+    tamañoTexto: Int=16,
     accion: () -> Unit = { Log.e("Testing", "Aceptar boton cliqueado") }
 ) {
     var listaColor = listOf<Color>(

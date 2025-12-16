@@ -26,15 +26,15 @@ fun ComponenteTitulo(
 ){
     Text(text = titulo,
         modifier = Modifier.background(MaterialTheme.colorScheme.primary,
-            RoundedCornerShape(12.dp))
+            RoundedCornerShape(topEnd = 12.dp, topStart = 12.dp))
             .padding(vertical = 6.dp, horizontal = 20.dp)
             .fillMaxWidth(),
         textAlign = TextAlign.Center,
-            fontSize = tamaño.sp,
+        fontSize = tamaño.sp,
         color = MaterialTheme.colorScheme.onPrimary,
         fontWeight = FontWeight.Bold,
 
-    )
+        )
 }
 
 @Preview

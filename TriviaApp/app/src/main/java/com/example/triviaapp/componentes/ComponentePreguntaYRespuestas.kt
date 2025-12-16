@@ -4,12 +4,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.compose.TriviaAppTheme
 
 /**
  * Crea un set de 4 botones organizados en
@@ -24,7 +24,8 @@ fun ComponentePreguntaYRespuestas(
     paddingBotonesTitulo: Int = 8
 ) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(paddingBotonesTitulo.dp)
+        verticalArrangement = Arrangement.spacedBy(paddingBotonesTitulo.dp),
+        modifier = Modifier.background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
     ) {
         ComponenteTitulo(enunciado)
         ComponenteRespuestas(textoBotonesRespuesta)
@@ -44,7 +45,5 @@ fun prevComponentePreguntaYRespuestas() {
         "Respuesta 4"
     )
 
-    TriviaAppTheme {
-        ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
-    }
+    ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
 }
