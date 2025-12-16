@@ -4,14 +4,20 @@ package com.example.triviaapp.componentes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -24,7 +30,7 @@ import com.example.triviaapp.R
  * @param tamanio tamaño de las tarjetas de dentro de la lista
  */
 @Composable
-fun ComponenteListaTarjetas(
+fun ComponenteListaTarjetasVertical(
     tarjetas: List<Tarjeta>,
     tamanioCaja: Int = 250,
     tamanio: Int = 20
@@ -39,7 +45,7 @@ fun ComponenteListaTarjetas(
 
         LazyColumn(
             modifier = Modifier
-                .padding(all = (tamanio / 1.8).dp)
+                .padding(all = (tamanio ).dp)
                 .fillMaxWidth()
                 .height(height = tamanioCaja.dp),
             verticalArrangement = Arrangement.spacedBy((tamanio * 0.5).dp)
@@ -52,12 +58,42 @@ fun ComponenteListaTarjetas(
     }
 }
 
+@Composable
+fun ComponenteListaTarjetasHorizontal(
+    tarjetas: List<Tarjeta>,
+    tamanioCaja: Int = 100,
+    tamanio: Int = 20
+) {
+
+    Box(
+        Modifier.background(
+            MaterialTheme.colorScheme.secondary,
+            RoundedCornerShape(8.dp)
+        )
+    ) {
+
+        LazyRow(
+            modifier = Modifier
+                .padding(all = (tamanio / 2).dp)
+                .fillMaxWidth()
+                .height(height = tamanioCaja.dp),
+            horizontalArrangement = Arrangement.spacedBy((tamanio * 0.5).dp),
+            verticalAlignment = Alignment.CenterVertically
+            )
+        {
+            items(tarjetas) { tarjeta ->
+                    ComponenteTarjetaVertical(contenido = tarjeta, tamanio = tamanio)
+            }
+        }
+    }
+}
+
 
 @Preview(showSystemUi = true)
 @Composable
 fun prevComponenteListaTarjetas() {
     val tarjetas: List<Tarjeta> = listOf(
-        Tarjeta(R.drawable.trivia, titulo ="Trivia 1"),
+        Tarjeta(R.drawable.trivia, titulo ="ciruelita macuquita"),
         Tarjeta(R.drawable.trivia, titulo ="Trivia 2"),
         Tarjeta(R.drawable.trivia, titulo ="Trivia 3"),
         Tarjeta(R.drawable.trivia, titulo ="Trivia 4"),
@@ -79,5 +115,8 @@ fun prevComponenteListaTarjetas() {
         Tarjeta(R.drawable.trivia, titulo ="Trivia 20"),
         Tarjeta(R.drawable.trivia, titulo ="Trivia 21")
     )
-    ComponenteListaTarjetas(tarjetas);
+    Column {
+    ComponenteListaTarjetasVertical(tarjetas);
+    ComponenteListaTarjetasHorizontal(tarjetas)
+    }
 }

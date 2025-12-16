@@ -14,7 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.ComponenteImagen
-import com.example.triviaapp.componentes.ComponenteListaTarjetas
+import com.example.triviaapp.componentes.ComponenteListaTarjetasHorizontal
+import com.example.triviaapp.componentes.ComponenteListaTarjetasVertical
 import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.DenegarBoton
 import com.example.triviaapp.componentes.Tarjeta
@@ -54,7 +55,7 @@ fun PaginaPerfil() {
             contentAlignment = Alignment.Center
         )
         {
-            ComponenteListaTarjetas(tarjetas = tarjetasUsuario, tamanioCaja = 250, tamanio = 50)
+            ComponenteListaTarjetasVertical(tarjetas = tarjetasUsuario, tamanioCaja = 250, tamanio = 50)
         }
         Row(
             modifier = Modifier

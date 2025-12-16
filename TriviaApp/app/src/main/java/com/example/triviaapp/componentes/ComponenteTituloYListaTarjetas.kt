@@ -2,7 +2,6 @@ package com.example.triviaapp.componentes
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -16,7 +15,7 @@ import com.example.triviaapp.R
  * @param tarjetas lista de tarjetas que estaran en la lista
  */
 @Composable
-fun ComponenteTituloYListaTarjetas(
+fun ComponenteTituloYListaTarjetasVertical(
     titulo: String,
     tarjetas: List<Tarjeta>
 ) {
@@ -24,7 +23,19 @@ fun ComponenteTituloYListaTarjetas(
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ){
         ComponenteTitulo(titulo)
-        ComponenteListaTarjetas(tarjetas)
+        ComponenteListaTarjetasVertical(tarjetas)
+    }
+}
+@Composable
+fun ComponenteTituloYListaTarjetasHorizontal(
+    titulo: String,
+    tarjetas: List<Tarjeta>
+) {
+    Column(modifier = Modifier.padding(vertical = 6.dp, horizontal = 30.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp)
+    ){
+        ComponenteTitulo(titulo)
+        ComponenteListaTarjetasHorizontal(tarjetas)
     }
 }
 
@@ -57,6 +68,8 @@ fun prevComponenteTituloYListaTarjetas(){
         Tarjeta(R.drawable.trivia, titulo ="Trivia 20"),
         Tarjeta(R.drawable.trivia, titulo ="Trivia 21")
     )
-
-    ComponenteTituloYListaTarjetas(titulo, tarjetas)
+    Column {
+    ComponenteTituloYListaTarjetasVertical(titulo, tarjetas)
+    ComponenteTituloYListaTarjetasHorizontal(titulo,tarjetas)
+    }
 }

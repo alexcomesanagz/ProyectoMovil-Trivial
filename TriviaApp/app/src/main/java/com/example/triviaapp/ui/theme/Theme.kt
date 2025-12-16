@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import com.example.ui.theme.AppTypography
 
+
 private val lightScheme = lightColorScheme(
     primary = LightPrimary,
     onPrimary = LightOnPrimary,

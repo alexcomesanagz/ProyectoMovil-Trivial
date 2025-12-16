@@ -13,9 +13,8 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.compose.TriviaAppTheme
@@ -27,13 +26,7 @@ import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.ComponenteLinea
 import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
 import com.example.triviaapp.componentes.ComponenteTitulo
-import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetas
 import com.example.triviaapp.componentes.DatosBotonDoble
-import com.example.triviaapp.componentes.Tarjeta
-import kotlinx.coroutines.launch
-
-val txtSalir = "Salir"
-val txtFinalizar = "Finalizar"
 
 val enunciado =
     "¿La invasión de qué fortaleza por parte de los revolucionarios es considerada como el punto de inicio de la Revolución Francesa?"
@@ -46,9 +39,6 @@ val textoBotonesRespuesta = listOf(
 
 val preguntaActual = "1"
 val numPreguntas = "10"
-
-val txtAnterior = "Anterior"
-val txtSiguiente = "Siguiente"
 
 /**
  * Pagina para responder una de las preguntas de un trivia ya creado
@@ -76,8 +66,8 @@ fun PaginaResponderPreguntas() {
                 ) {
                     BotonesDobleAvanzarLinea(
                         DatosBotonDoble(
-                            txtAnterior,
-                            txtSiguiente,
+                            stringResource(R.string.app_bt_anterior),
+                            stringResource(R.string.app_bt_siguiente),
                             accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
                             accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
                     )
@@ -85,8 +75,8 @@ fun PaginaResponderPreguntas() {
                 ComponenteLinea()
                 BotonesAceptarDenegarLinea(
                     datosBotones = DatosBotonDoble(
-                        txtSalir,
-                        txtFinalizar,
+                        stringResource(R.string.app_bt_salir),
+                        stringResource(R.string.app_bt_finalizar),
                         accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
                         accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
                 )

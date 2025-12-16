@@ -10,8 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.triviaapp.R
 import com.example.triviaapp.componentes.ComponenteColumnaTextoUnFondo
 import com.example.triviaapp.componentes.ComponenteCreditoCreadores
 import com.example.triviaapp.componentes.DatosColumnaTexto
@@ -35,7 +37,7 @@ fun PaginaFinTrivia(preguntasAcertadas: Int = 0, preguntasTotales: Int = 10) {
         ) {
             ComponenteColumnaTextoUnFondo(
                 DatosColumnaTexto(
-                    msj1 = "Preguntas acertadas",
+                    msj1 = stringResource(R.string.app_titulo_tituloPreguntasAcertadas),
                     msj2 = ""+preguntasAcertadas+"/" +preguntasTotales,
                     tamaño = 30
                 )
@@ -52,7 +54,7 @@ fun PaginaFinTrivia(preguntasAcertadas: Int = 0, preguntasTotales: Int = 10) {
             Box(modifier = Modifier
                 .weight(weight = 1f)
                 .fillMaxWidth()) {
-                DenegarBoton("salir", modifier = Modifier.fillMaxWidth())
+                DenegarBoton(stringResource(R.string.app_bt_salir), modifier = Modifier.fillMaxWidth())
             }
 
             Box(modifier = Modifier
