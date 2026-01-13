@@ -53,7 +53,7 @@ fun PaginaLogin() {
             }
             Column(
             ) {
-                DenegarBoton("cancelar")
+                DenegarBoton(stringResource(R.string.app_bt_salir))
             }
         }
 

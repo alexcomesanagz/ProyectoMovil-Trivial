@@ -82,6 +82,7 @@ fun ComponenteTarjetaVertical(
                 text = contenido.titulo,
                 modifier = Modifier.padding(horizontal = 4.dp),
                 fontSize = (tamanio).sp,
+                color = MaterialTheme.colorScheme.primary,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1
 
