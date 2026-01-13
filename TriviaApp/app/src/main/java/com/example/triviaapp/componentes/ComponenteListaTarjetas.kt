@@ -68,7 +68,12 @@ fun ComponenteListaTarjetasHorizontal(
     Box(
         Modifier.background(
             MaterialTheme.colorScheme.secondary,
-            RoundedCornerShape(8.dp)
+            shape = RoundedCornerShape(
+                topStart = 0.dp,
+                topEnd = 0.dp,
+                bottomStart = 8.dp,
+                bottomEnd = 8.dp
+            )
         )
     ) {
 

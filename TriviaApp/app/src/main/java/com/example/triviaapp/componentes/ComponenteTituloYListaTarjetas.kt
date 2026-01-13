@@ -31,8 +31,7 @@ fun ComponenteTituloYListaTarjetasHorizontal(
     titulo: String,
     tarjetas: List<Tarjeta>
 ) {
-    Column(modifier = Modifier.padding(vertical = 6.dp, horizontal = 30.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp)
+    Column(modifier = Modifier.padding(vertical = 6.dp, horizontal = 30.dp)
     ){
         ComponenteTitulo(titulo)
         ComponenteListaTarjetasHorizontal(tarjetas)

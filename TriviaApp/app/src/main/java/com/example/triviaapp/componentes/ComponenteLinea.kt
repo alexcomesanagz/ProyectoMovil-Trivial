@@ -24,11 +24,12 @@ fun ComponenteLinea(
     modifier: Modifier = Modifier.fillMaxWidth(),
     grosor: Dp = 6.dp,
     color: Color = MaterialTheme.colorScheme.primary
-){
+) {
     HorizontalDivider(modifier, grosor, color)
 }
+
 @Preview
 @Composable
-fun PrevComponenteLinea(){
+fun PrevComponenteLinea() {
     ComponenteLinea()
 }
