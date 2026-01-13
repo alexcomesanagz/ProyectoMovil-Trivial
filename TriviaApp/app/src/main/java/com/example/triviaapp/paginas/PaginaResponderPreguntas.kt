@@ -55,7 +55,7 @@ fun PaginaResponderPreguntas() {
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(50.dp)) {
-                ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
+                 ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
                 ComponenteTitulo(preguntaActual + " / " + numPreguntas)
             }
             Column(
