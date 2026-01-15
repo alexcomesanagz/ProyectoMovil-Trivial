@@ -43,7 +43,7 @@ fun PaginaLista(paginaListaViewModel: PaginaListaViewModel= viewModel()){
         modifier = Modifier.padding(horizontal = 30.dp, vertical = 30.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        tarjetas.forEach { it ->
+        uiState.mapaDatos.forEach { it ->
             ComponenteTituloYListaTarjetasHorizontal(it.key,it.value)
 
         }
