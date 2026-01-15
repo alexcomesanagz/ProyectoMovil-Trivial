@@ -68,7 +68,7 @@ fun ComponenteTarjetaVertical(
     tamanio: Int = 40
 ) {
     Box( modifier = Modifier.clickable(onClick = contenido.accion)
-        .background(color = MaterialTheme.colorScheme.background)
+        .background(color = MaterialTheme.colorScheme.secondary)
         .padding(horizontal = 4.dp,)
         .width(width = (tamanio*4).dp),
         contentAlignment = Alignment.Center
@@ -80,7 +80,7 @@ fun ComponenteTarjetaVertical(
                 text = contenido.titulo,
                 modifier = Modifier.padding(horizontal = 4.dp),
                 fontSize = (tamanio).sp,
-                color = MaterialTheme.colorScheme.primary,
+                color =MaterialTheme.colorScheme.onSecondary,
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1
 
