@@ -115,7 +115,7 @@ fun BotonesDobleAceptarLinea(datosBotones: DatosBotonDoble) {
 fun BotonesDobleAvanzarLinea(datosBotones: DatosBotonDoble) {
     Row(
         modifier = Modifier
-            .padding(vertical = 5.dp)
+            .padding(vertical = 8.dp, horizontal = 8.dp)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.Center,
     ) {

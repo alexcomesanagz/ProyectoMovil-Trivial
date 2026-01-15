@@ -42,27 +42,27 @@ import kotlinx.coroutines.launch
 
 private val titulo: String = "Título de prueba"
 private val tarjetas: List<Tarjeta> = listOf(
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 1"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 2"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 3"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 4"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 5"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 6"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 7"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 8"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 9"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 10"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 11"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 12"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 13"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 14"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 15"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 16"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 17"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 18"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 19"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 20"),
-    Tarjeta(R.drawable.trivia, titulo ="Trivia 21")
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 1"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 2"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 3"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 4"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 5"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 6"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 7"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 8"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 9"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 10"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 11"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 12"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 13"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 14"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 15"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 16"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 17"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 18"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 19"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 20"),
+    Tarjeta(R.drawable.trivia, titulo = "Trivia 21")
 )
 
 class MainActivity : ComponentActivity() {
@@ -88,7 +88,7 @@ class MainActivity : ComponentActivity() {
                                     .fillMaxWidth()
                                     .clickable {
                                         // Handle click
-                                        Log.e("Testing","Inicio cliqueado")
+                                        Log.e("Testing", "Inicio cliqueado")
                                         scopeDrawer.launch { drawerState.close() }
                                     }
                                     .padding(16.dp)
@@ -99,7 +99,7 @@ class MainActivity : ComponentActivity() {
                                     .fillMaxWidth()
                                     .clickable {
                                         // Handle click
-                                        Log.e("Testing","categorias cliqueado")
+                                        Log.e("Testing", "categorias cliqueado")
                                         scopeDrawer.launch { drawerState.close() }
                                     }
                                     .padding(16.dp)
@@ -109,11 +109,15 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Scaffold(
                         modifier = Modifier.fillMaxSize(),
-                        topBar = {ComponenteTopBar(title = "Página de prueba",
-                            accionMenu = {
-                                scope.launch {
-                                    drawerState.open()
-                                }}) },
+                        topBar = {
+                            ComponenteTopBar(
+                                title = "Página de prueba",
+                                accionMenu = {
+                                    scope.launch {
+                                        drawerState.open()
+                                    }
+                                })
+                        },
                         floatingActionButton = {
                             ComponenteFAB {
                                 scope.launch {
@@ -144,8 +148,6 @@ class MainActivity : ComponentActivity() {
     }
 
 
-
-
     @Preview(showBackground = true)
     @Composable
     fun prevPagina() {
@@ -166,7 +168,7 @@ class MainActivity : ComponentActivity() {
                                 .fillMaxWidth()
                                 .clickable {
                                     // Handle click
-                                    Log.e("Testing","Inicio cliqueado")
+                                    Log.e("Testing", "Inicio cliqueado")
                                     scopeDrawer.launch { drawerState.close() }
                                 }
                                 .padding(16.dp)
@@ -177,7 +179,7 @@ class MainActivity : ComponentActivity() {
                                 .fillMaxWidth()
                                 .clickable {
                                     // Handle click
-                                    Log.e("Testing","categorias cliqueado")
+                                    Log.e("Testing", "categorias cliqueado")
                                     scopeDrawer.launch { drawerState.close() }
                                 }
                                 .padding(16.dp)
@@ -187,15 +189,19 @@ class MainActivity : ComponentActivity() {
             ) {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
-                    topBar = { ComponenteTopBar(title = "Página de prueba",
-                        accionMenu = {
-                            scope.launch {
-                                drawerState.open()
-                            }}) },
+                    topBar = {
+                        ComponenteTopBar(
+                            title = "Página de prueba",
+                            accionMenu = {
+                                scope.launch {
+                                    drawerState.open()
+                                }
+                            })
+                    },
                     floatingActionButton = {
                         ComponenteFAB {
                             scope.launch {
-                                snackbarHostState.showSnackbar( message = "Perfil")
+                                snackbarHostState.showSnackbar(message = "Perfil")
                             }
                         }
                     }
@@ -206,14 +212,14 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
                     ) {
-//                            PaginaAjustesTrivia() // cambiar el salir aceptar hacia abajo y cambiar tamaño botones junto con padding
+                        PaginaAjustesTrivia() // cambiar tamaño botones y cajas unificadas
 //                            PaginaElegirRespuestas()
-//                            PaginaFinTrivia() // cambiar fondo de num preguntas
-                            PaginaLista() // posible cambio color fondo tarjeta
-//                            PaginaLogin() // quitar cancelar
-//                            PaginaPerfil() // cambiar paddings
-//                            PaginaPrincipal() // cambiar padding top para dar forma de caja
-//                            PaginaResponderPreguntas() //cambiar fondo de cambio de paginas
+//                            PaginaFinTrivia() //hacerlo mas bonito/visual(ej: poner imagen de felicidades)
+//                            PaginaLista()
+//                            PaginaLogin()
+//                            PaginaPerfil()
+//                            PaginaPrincipal()
+//                            PaginaResponderPreguntas()
                     }
                 }
             }

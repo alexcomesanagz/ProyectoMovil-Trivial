@@ -3,7 +3,6 @@ package com.example.triviaapp.componentes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -27,7 +26,7 @@ fun ComponentePreguntaYRespuestas(
         verticalArrangement = Arrangement.spacedBy(paddingBotonesTitulo.dp),
         modifier = Modifier.background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
     ) {
-        ComponenteTitulo(enunciado)
+        ComponenteTituloCaja(enunciado)
         ComponenteRespuestas(textoBotonesRespuesta)
     }
 }

@@ -13,8 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.triviaapp.R
-import com.example.triviaapp.componentes.ComponenteImagen
-import com.example.triviaapp.componentes.ComponenteListaTarjetasHorizontal
+import com.example.triviaapp.componentes.ComponenteImagenRedondeada
+import com.example.triviaapp.componentes.ComponenteLinea
 import com.example.triviaapp.componentes.ComponenteListaTarjetasVertical
 import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.DenegarBoton
@@ -45,7 +45,7 @@ fun PaginaPerfil() {
                 verticalArrangement = Arrangement.spacedBy(30.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                ComponenteImagen(id = R.drawable.trivia, tamaño = 120)
+                ComponenteImagenRedondeada(id = R.drawable.perfil, tamanio = 120)
                 ComponenteTitulo("nombre usuario")
                 ComponenteTitulo("correo usuario")
             }
@@ -55,26 +55,23 @@ fun PaginaPerfil() {
             contentAlignment = Alignment.Center
         )
         {
-            ComponenteListaTarjetasVertical(tarjetas = tarjetasUsuario, tamanioCaja = 250, tamanio = 50)
+            ComponenteListaTarjetasVertical(
+                tarjetas = tarjetasUsuario,
+                tamanioCaja = 220,
+                tamanio = 50
+            )
         }
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 10.dp),
-            horizontalArrangement = Arrangement.End
-        )
-        {
-            Box(modifier = Modifier.weight(weight = 0.5f)) {
-                Text(text = "")
-            }
-            Box(modifier = Modifier.weight(weight = 1f)) {
-                DenegarBoton(msj = "salir", modifier = Modifier.fillMaxWidth())
-            }
-            Box(modifier = Modifier.weight(weight = 0.5f)) {
-                Text(text = "")
-            }
+                .padding(horizontal = 50.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            ComponenteLinea(grosor = 8.dp)
+            DenegarBoton(msj = "salir", modifier = Modifier.fillMaxWidth())
         }
     }
+
 }
 
 @Preview(showSystemUi = true)
