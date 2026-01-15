@@ -1,10 +1,14 @@
 package com.example.triviaapp.componentes
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,13 +27,13 @@ import androidx.compose.ui.unit.sp
  *
  * @param accion accion del boton al hacer click
  *
- * @param tamañoTexto tamaño de el texto que contiene el boton
+ * @param tamanioTexto tamaño de el texto que contiene el boton
  */
 class DatosBoton(
     val msj: String,
     val modifier: Modifier = Modifier,
     val coloresBoton: List<Color>,
-    val tamañoTexto:Int=12,
+    val tamanioTexto:Int=12,
     val accion: () -> Unit
 )
 
@@ -45,7 +49,26 @@ fun ComponenteBoton(datos: DatosBoton) {
         modifier = datos.modifier
     ) {
         Text(text = datos.msj,
-            fontSize = datos.tamañoTexto.sp)
+            fontSize = datos.tamanioTexto.sp)
+    }
+}
+
+@Composable
+fun ComponenteRadioButon(msj: String) {
+    Row(modifier = Modifier.background(MaterialTheme.colorScheme.secondary)){
+    RadioButton(
+        selected = true,
+        colors = RadioButtonColors(selectedColor = MaterialTheme.colorScheme.onSecondary,
+            unselectedColor = MaterialTheme.colorScheme.primary,
+            disabledSelectedColor = MaterialTheme.colorScheme.onPrimary,
+            disabledUnselectedColor =    MaterialTheme.colorScheme.secondary ),
+        onClick = ,
+
+        modifier = datos.modifier
+    )
+    Text(text = datos.msj,
+        fontSize = datos.tamanioTexto.sp)
+
     }
 }
 
@@ -56,7 +79,7 @@ fun ComponenteBoton(datos: DatosBoton) {
 fun AceptarBoton(
     msj: String,
     modifier: Modifier = Modifier,
-    tamañoTexto: Int=16,
+    tamanioTexto: Int=16,
     accion: () -> Unit = { Log.e("Testing", "Aceptar boton cliqueado") }
 ) {
     var listaColor = listOf<Color>(
@@ -70,7 +93,7 @@ fun AceptarBoton(
             msj = msj,
             modifier = modifier,
             coloresBoton = listaColor,
-            tamañoTexto = tamañoTexto,
+            tamanioTexto = tamanioTexto,
             accion = accion
         )
     )
@@ -83,7 +106,7 @@ fun AceptarBoton(
 fun DenegarBoton(
     msj: String,
     modifier: Modifier = Modifier,
-    tamañoTexto: Int=18,
+    tamanioTexto: Int=18,
     accion: () -> Unit = { Log.e("Testing", "Denegar boton cliqueado") }
 ) {
     var listaColor = listOf<Color>(
@@ -97,7 +120,7 @@ fun DenegarBoton(
             msj = msj,
             modifier = modifier,
             coloresBoton = listaColor,
-            tamañoTexto = tamañoTexto,
+            tamanioTexto = tamanioTexto,
             accion = accion
         )
     )
@@ -110,7 +133,7 @@ fun DenegarBoton(
 fun AvanzarBoton(
     msj: String,
     modifier: Modifier = Modifier,
-    tamañoTexto: Int=18,
+    tamanioTexto: Int=18,
     accion: () -> Unit = { Log.e("Testing", "Denegar boton cliqueado") }
 ) {
     var listaColor = listOf<Color>(
@@ -124,7 +147,7 @@ fun AvanzarBoton(
             msj = msj,
             modifier = modifier,
             coloresBoton = listaColor,
-            tamañoTexto = tamañoTexto,
+            tamanioTexto = tamanioTexto,
             accion = accion
         )
     )
@@ -137,5 +160,6 @@ fun BotonPreview() {
         AceptarBoton("Guardar")
         DenegarBoton("Salir")
         AvanzarBoton("Siguiente")
+        ComponenteBoton(DatosBoton(msj = "Guardar", accion = {}))
     }
 }

@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
  * @param msjBot1 mensaje que aparecera dentro del primer boton
  * @param msjBot2 mensaje que aparecera dentro del segundo boton
  * @param modifierBotones modificador que se puede usar para cambiar el modificador de los botones llamados
- * @param tamañoTexto Tamaño del texto de dentro de los botones
+ * @param tamanioTexto Tamaño del texto de dentro de los botones
  * @param accionBoton1 acccion que tomara el primer boton al hacerle click
  * @param accionBoton2 acccion que tomara el primer boton al hacerle click
  */
@@ -26,7 +26,7 @@ class DatosBotonDoble(
     var msjBot1: String,
     var msjBot2: String,
     var modifierBotones: Modifier= Modifier,
-    var tamañoTexto:Int=18,
+    var tamanioTexto:Int=18,
     var accionBoton1: () -> Unit = {},
     var accionBoton2: () -> Unit = {}
 )
@@ -51,7 +51,7 @@ fun BotonesAceptarDenegarLinea(datosBotones: DatosBotonDoble) {
             DenegarBoton(
                 msj = datosBotones.msjBot1,
                 modifier = Modifier.fillMaxWidth(),
-                tamañoTexto = datosBotones.tamañoTexto,
+                tamanioTexto = datosBotones.tamanioTexto,
                 accion = datosBotones.accionBoton1
             )
         }
@@ -59,7 +59,7 @@ fun BotonesAceptarDenegarLinea(datosBotones: DatosBotonDoble) {
             AvanzarBoton(
                 msj = datosBotones.msjBot2,
                 modifier = Modifier.fillMaxWidth(),
-                tamañoTexto = datosBotones.tamañoTexto,
+                tamanioTexto = datosBotones.tamanioTexto,
                 accion = datosBotones.accionBoton2
 
 
@@ -89,7 +89,7 @@ fun BotonesDobleAceptarLinea(datosBotones: DatosBotonDoble) {
                 datosBotones.msjBot1, Modifier
                     .padding(horizontal = 8.dp)
                     .fillMaxWidth(),
-                tamañoTexto = datosBotones.tamañoTexto,
+                tamanioTexto = datosBotones.tamanioTexto,
                 accion = datosBotones.accionBoton1
             )
         }
@@ -100,7 +100,7 @@ fun BotonesDobleAceptarLinea(datosBotones: DatosBotonDoble) {
                 datosBotones.msjBot2, Modifier
                     .padding(horizontal = 8.dp)
                     .fillMaxWidth(),
-                tamañoTexto = datosBotones.tamañoTexto,
+                tamanioTexto = datosBotones.tamanioTexto,
                 accion = datosBotones.accionBoton2
             )
         }
@@ -126,7 +126,7 @@ fun BotonesDobleAvanzarLinea(datosBotones: DatosBotonDoble) {
                 datosBotones.msjBot1, Modifier
                     .padding(horizontal = 8.dp)
                     .fillMaxWidth(),
-                tamañoTexto = datosBotones.tamañoTexto,
+                tamanioTexto = datosBotones.tamanioTexto,
                 accion = datosBotones.accionBoton1
             )
         }
@@ -137,7 +137,7 @@ fun BotonesDobleAvanzarLinea(datosBotones: DatosBotonDoble) {
                 datosBotones.msjBot2, Modifier
                     .padding(horizontal = 8.dp)
                     .fillMaxWidth(),
-                tamañoTexto = datosBotones.tamañoTexto,
+                tamanioTexto = datosBotones.tamanioTexto,
                 accion = datosBotones.accionBoton2
             )
         }
@@ -159,11 +159,11 @@ fun BotonesDobleAceptarColumna(datosBotones: DatosBotonDoble) {
     ) {
         AceptarBoton(msj = datosBotones.msjBot1,
             modifier = datosBotones.modifierBotones,
-            tamañoTexto = datosBotones.tamañoTexto,
+            tamanioTexto = datosBotones.tamanioTexto,
             accion = datosBotones.accionBoton1)
         AceptarBoton(msj = datosBotones.msjBot2,
             modifier = datosBotones.modifierBotones,
-            tamañoTexto = datosBotones.tamañoTexto,
+            tamanioTexto = datosBotones.tamanioTexto,
             accion = datosBotones.accionBoton2)
     }
 }

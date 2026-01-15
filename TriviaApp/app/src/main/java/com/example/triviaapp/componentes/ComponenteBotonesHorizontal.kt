@@ -14,14 +14,14 @@ import androidx.compose.ui.unit.dp
 /**
  * crea 4 botones divididos entre 2 filas y 2 columnas
  * @param txtBotones contiene el texto de cada boton, tienen que ser 4
- * @param tamañoTexto tamaño de el texto que contienen los botones
+ * @param tamanioTexto tamaño de el texto que contienen los botones
  * @param accionBotones contiene las acciones de cada boton
  */
 @Composable
 fun ComponenteBotonesHorizontal(
     txtBotones: List<String>,
     accionBotones:List<() -> Unit>,
-    tamañoTexto:Int=12
+    tamanioTexto:Int=12
 ) {
     Row(
         modifier = Modifier
@@ -37,7 +37,7 @@ fun ComponenteBotonesHorizontal(
                 txtBotones.get(1),
                 accionBoton1 = accionBotones.get(0),
                 accionBoton2 = accionBotones.get(1),
-                tamañoTexto = tamañoTexto)
+                tamanioTexto = tamanioTexto)
             )
         }
         Box(
@@ -48,7 +48,7 @@ fun ComponenteBotonesHorizontal(
                 txtBotones.get(3),
                 accionBoton1 = accionBotones.get(2),
                 accionBoton2 = accionBotones.get(3),
-                tamañoTexto = tamañoTexto)
+                tamanioTexto = tamanioTexto)
             )
         }
     }
