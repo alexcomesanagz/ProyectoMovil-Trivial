@@ -11,10 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -23,12 +20,10 @@ import androidx.compose.ui.unit.dp
 import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
-import com.example.triviaapp.componentes.BotonesDobleAceptarLinea
 import com.example.triviaapp.componentes.BotonesDobleAvanzarLinea
-import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.ComponenteLinea
 import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
-import com.example.triviaapp.componentes.ComponenteTitulo
+import com.example.triviaapp.componentes.ComponenteTituloCaja
 import com.example.triviaapp.componentes.DatosBotonDoble
 
 val enunciado =
@@ -59,7 +54,7 @@ fun PaginaResponderPreguntas() {
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(50.dp)) {
                 ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
-                ComponenteTitulo(preguntaActual + " / " + numPreguntas)
+                ComponenteTituloCaja(preguntaActual + " / " + numPreguntas)
             }
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp)

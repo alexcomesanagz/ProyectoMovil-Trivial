@@ -20,11 +20,10 @@ import androidx.compose.ui.unit.dp
 import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
-import com.example.triviaapp.componentes.BotonesDobleAceptarLinea
 import com.example.triviaapp.componentes.BotonesDobleAvanzarLinea
 import com.example.triviaapp.componentes.ComponenteLinea
 import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
-import com.example.triviaapp.componentes.ComponenteTitulo
+import com.example.triviaapp.componentes.ComponenteTituloCaja
 import com.example.triviaapp.componentes.ComponenteTituloConBotonesHorizontal
 import com.example.triviaapp.componentes.DatosBotonDoble
 
@@ -74,7 +73,7 @@ fun PaginaElegirRespuestas() {
                     )
             ) {
 
-                ComponenteTitulo(preguntaActual + " / " + numPreguntas)
+                ComponenteTituloCaja(preguntaActual + " / " + numPreguntas)
                 Box(
                     modifier = Modifier.padding(bottom = 10.dp)
                 ) {

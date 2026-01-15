@@ -6,7 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -21,7 +20,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.triviaapp.R
-import java.nio.file.WatchEvent
 
 /**
  *@param imagen la imagen de la tarjeta
@@ -53,7 +51,7 @@ fun ComponenteTarjetaHorizontal(
             .height(height = (tamanio * 1.25).dp)
             .fillMaxWidth()
     ) {
-        ComponenteImagen(id = contenido.imagen, tamaño = tamanio)
+        ComponenteImagen(id = contenido.imagen, tamanio = tamanio)
         Text(
             text = contenido.titulo,
             modifier = Modifier.padding(vertical = 2.dp, horizontal = 4.dp),
@@ -77,7 +75,7 @@ fun ComponenteTarjetaVertical(
     ){
         Column (
             horizontalAlignment = Alignment.CenterHorizontally){
-            ComponenteImagen(id = contenido.imagen, tamaño = (tamanio*4))
+            ComponenteImagen(id = contenido.imagen, tamanio = (tamanio*4))
             Text(
                 text = contenido.titulo,
                 modifier = Modifier.padding(horizontal = 4.dp),

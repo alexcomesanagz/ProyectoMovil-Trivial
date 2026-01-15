@@ -11,8 +11,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -38,8 +36,8 @@ fun ComponenteColumnaTextoDobleFondo(datos: DatosColumnaTexto) {
         verticalArrangement = Arrangement.spacedBy((datos.tamaño / 3).dp),
         modifier = Modifier.fillMaxWidth()
     ) {
-        ComponenteTitulo(titulo = datos.msj1, tamaño = datos.tamaño)
-        ComponenteTitulo(titulo = datos.msj2, tamaño = datos.tamaño)
+        ComponenteTituloCaja(titulo = datos.msj1, tamaño = datos.tamaño)
+        ComponenteTituloCaja(titulo = datos.msj2, tamaño = datos.tamaño)
     }
 }
 
@@ -51,7 +49,7 @@ fun ComponenteColumnaTextoUnFondo(datos: DatosColumnaTexto) {
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
-        ComponenteTitulo(titulo = datos.msj1, tamaño = datos.tamaño)
+        ComponenteTituloCaja(titulo = datos.msj1, tamaño = datos.tamaño)
         Box(
             modifier = Modifier
                 .background(

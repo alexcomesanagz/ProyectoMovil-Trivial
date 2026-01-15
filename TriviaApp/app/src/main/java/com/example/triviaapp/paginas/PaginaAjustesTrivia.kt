@@ -2,21 +2,17 @@ package com.example.triviaapp.paginas
 
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
-import com.example.triviaapp.componentes.ComponenteBotonesHorizontal
 import com.example.triviaapp.componentes.ComponenteCajaDatosTrivia
 import com.example.triviaapp.componentes.ComponenteLinea
-import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.DatosBotonDoble
 
 /**
@@ -32,7 +28,7 @@ fun PaginaAjustesTrivia() {
         { Log.e("Testing", "Aceptar boton cliqueado") }
     )
     Column(
-        modifier = Modifier.padding(vertical = 40.dp, horizontal = 15.dp),
+        modifier = Modifier.padding(vertical = 15.dp, horizontal = 15.dp),
         verticalArrangement = Arrangement.spacedBy(40.dp)
     ) {
         ComponenteCajaDatosTrivia()
@@ -52,7 +48,7 @@ fun PaginaAjustesTrivia() {
 
 }
 
-@Preview(showSystemUi = true)
+@Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun PrevPaginaAjustesTrivia() {
     PaginaAjustesTrivia()

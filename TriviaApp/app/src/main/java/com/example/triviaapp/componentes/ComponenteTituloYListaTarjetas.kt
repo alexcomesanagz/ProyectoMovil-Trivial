@@ -22,7 +22,7 @@ fun ComponenteTituloYListaTarjetasVertical(
     Column(modifier = Modifier.padding(vertical = 6.dp, horizontal = 30.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ){
-        ComponenteTitulo(titulo)
+        ComponenteTituloCaja(titulo)
         ComponenteListaTarjetasVertical(tarjetas)
     }
 }
@@ -33,7 +33,7 @@ fun ComponenteTituloYListaTarjetasHorizontal(
 ) {
     Column(modifier = Modifier.padding(vertical = 6.dp, horizontal = 30.dp)
     ){
-        ComponenteTitulo(titulo)
+        ComponenteTituloCaja(titulo)
         ComponenteListaTarjetasHorizontal(tarjetas)
     }
 }

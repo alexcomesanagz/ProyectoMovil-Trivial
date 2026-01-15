@@ -45,10 +45,10 @@ fun ComponenteListaTarjetasVertical(
 
         LazyColumn(
             modifier = Modifier
-                .padding(all = (tamanio ).dp)
+                .padding(all = (tamanio/2.5 ).dp)
                 .fillMaxWidth()
                 .height(height = tamanioCaja.dp),
-            verticalArrangement = Arrangement.spacedBy((tamanio * 0.5).dp)
+            verticalArrangement = Arrangement.spacedBy((tamanio * 0.3).dp)
         )
         {
             items(tarjetas) { tarjeta ->

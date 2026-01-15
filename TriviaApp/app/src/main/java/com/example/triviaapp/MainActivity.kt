@@ -214,10 +214,10 @@ class MainActivity : ComponentActivity() {
                     ) {
                         PaginaAjustesTrivia() // cambiar tamaño botones y cajas unificadas
 //                            PaginaElegirRespuestas()
-//                            PaginaFinTrivia()
-//                            PaginaLista() // cambiar estilo tarjeta
+//                            PaginaFinTrivia() //hacerlo mas bonito/visual(ej: poner imagen de felicidades)
+//                            PaginaLista()
 //                            PaginaLogin()
-//                            PaginaPerfil() // cambiar paddings, caja texto a circleshape entero
+//                            PaginaPerfil()
 //                            PaginaPrincipal()
 //                            PaginaResponderPreguntas()
                     }
