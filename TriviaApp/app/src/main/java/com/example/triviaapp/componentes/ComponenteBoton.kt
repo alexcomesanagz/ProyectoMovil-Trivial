@@ -2,8 +2,13 @@ package com.example.triviaapp.componentes
 
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.MaterialTheme
@@ -11,9 +16,13 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
@@ -54,20 +63,28 @@ fun ComponenteBoton(datos: DatosBoton) {
 }
 
 @Composable
-fun ComponenteRadioButon(msj: String) {
-    Row(modifier = Modifier.background(MaterialTheme.colorScheme.secondary)){
+fun ComponenteRadioButon(msj: String,tamanioTexto: Int=16) {
+    Row(verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.background(
+            MaterialTheme.colorScheme.secondary,
+            RoundedCornerShape(25.dp)),
+        horizontalArrangement = Arrangement.Center
+    ){
     RadioButton(
-        selected = true,
+        selected = false,
         colors = RadioButtonColors(selectedColor = MaterialTheme.colorScheme.onSecondary,
             unselectedColor = MaterialTheme.colorScheme.primary,
             disabledSelectedColor = MaterialTheme.colorScheme.onPrimary,
             disabledUnselectedColor =    MaterialTheme.colorScheme.secondary ),
-        onClick = ,
-
-        modifier = datos.modifier
+        onClick = {},
+        modifier = Modifier
     )
-    Text(text = datos.msj,
-        fontSize = datos.tamanioTexto.sp)
+        Text(
+            modifier = Modifier.padding(end = 10.dp),
+            text = msj,
+            fontSize = tamanioTexto.sp,
+            textAlign = TextAlign.Center
+        )
 
     }
 }
@@ -156,10 +173,10 @@ fun AvanzarBoton(
 @Preview
 @Composable
 fun BotonPreview() {
-    Column {
+    Column(Modifier.fillMaxSize()) {
         AceptarBoton("Guardar")
         DenegarBoton("Salir")
         AvanzarBoton("Siguiente")
-        ComponenteBoton(DatosBoton(msj = "Guardar", accion = {}))
+        ComponenteRadioButon("aaaaaaaaaaaaaaaaaaaa")
     }
 }
