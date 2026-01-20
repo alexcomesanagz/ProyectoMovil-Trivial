@@ -14,6 +14,6 @@ class PaginaFinViewModel : ViewModel() {
 }
 
 data class PaginaFinUiState(
-    val preguntasAcertadas: Integer = 0,
-    val preguntasTotales: Integer = 10,
+    val preguntasAcertadas: Int = 0,
+    val preguntasTotales: Int = 10,
 )
