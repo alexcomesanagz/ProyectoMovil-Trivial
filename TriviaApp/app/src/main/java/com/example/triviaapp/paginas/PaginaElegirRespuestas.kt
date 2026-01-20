@@ -13,6 +13,10 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,6 +30,7 @@ import com.example.triviaapp.componentes.ComponenteLinea
 import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
 import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.ComponenteTituloConBotonesHorizontal
+import com.example.triviaapp.componentes.ComponenteTituloConRadioButonHorizontal
 import com.example.triviaapp.componentes.DatosBotonDoble
 
 
@@ -46,6 +51,9 @@ val accionbotones: List<() -> Unit> = listOf(
  */
 @Composable
 fun PaginaElegirRespuestas() {
+    val opcion=listOf("a","b","c","d")
+    var recuerda by remember { mutableStateOf(opcion[0]) }
+
     Box(
         Modifier
             .fillMaxSize()
@@ -58,10 +66,10 @@ fun PaginaElegirRespuestas() {
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(30.dp)) {
                 ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
-                ComponenteTituloConBotonesHorizontal(
+                ComponenteTituloConRadioButonHorizontal(
                     txtTitulo,
                     txtBotones,
-                    accionBotones = accionbotones
+                    remember = recuerda
                 )
             }
             Column(

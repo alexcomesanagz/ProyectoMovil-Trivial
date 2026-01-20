@@ -39,6 +39,27 @@ fun ComponenteTituloConBotonesHorizontal(
     }
 }
 
+@Composable
+fun ComponenteTituloConRadioButonHorizontal(
+    txtTitulo: String,
+    txtbotones: List<String>,
+    tamanioTexto: Int = 18,
+    remember: String
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(5.dp),
+        modifier = Modifier
+            .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
+    ) {
+        ComponenteTitulo(txtTitulo)
+        ComponenteRadioButonsHorizontal(
+            txtBotones = txtbotones,
+            tamanioTexto = tamanioTexto,
+            remember = remember
+        )
+    }
+}
+
 @Preview
 @Composable
 fun PrevComponenteTituloConBotonesHorizontal() {

@@ -62,8 +62,15 @@ fun ComponenteBoton(datos: DatosBoton) {
     }
 }
 
+class DatosRadioBoton(
+    val msj: String,
+    val coloresBoton: List<Color>,
+    val tamanioTexto:Int=12,
+    var remeber: String
+)
 @Composable
-fun ComponenteRadioButon(msj: String,tamanioTexto: Int=16) {
+fun ComponenteRadioButon(
+    datos: DatosRadioBoton) {
     Row(verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.background(
             MaterialTheme.colorScheme.secondary,
@@ -71,18 +78,18 @@ fun ComponenteRadioButon(msj: String,tamanioTexto: Int=16) {
         horizontalArrangement = Arrangement.Center
     ){
     RadioButton(
-        selected = false,
-        colors = RadioButtonColors(selectedColor = MaterialTheme.colorScheme.onSecondary,
-            unselectedColor = MaterialTheme.colorScheme.primary,
-            disabledSelectedColor = MaterialTheme.colorScheme.onPrimary,
-            disabledUnselectedColor =    MaterialTheme.colorScheme.secondary ),
-        onClick = {},
+        selected = (datos.msj== datos.remeber),
+        colors = RadioButtonColors(selectedColor = datos.coloresBoton.get(0),
+            unselectedColor = datos.coloresBoton.get(1),
+            disabledSelectedColor = datos.coloresBoton.get(2),
+            disabledUnselectedColor =    datos.coloresBoton.get(3) ),
+        onClick = {datos.remeber= datos.msj},
         modifier = Modifier
     )
         Text(
             modifier = Modifier.padding(end = 10.dp),
-            text = msj,
-            fontSize = tamanioTexto.sp,
+            text = datos.msj,
+            fontSize = datos.tamanioTexto.sp,
             textAlign = TextAlign.Center
         )
 
@@ -177,6 +184,5 @@ fun BotonPreview() {
         AceptarBoton("Guardar")
         DenegarBoton("Salir")
         AvanzarBoton("Siguiente")
-        ComponenteRadioButon("aaaaaaaaaaaaaaaaaaaa")
     }
 }
