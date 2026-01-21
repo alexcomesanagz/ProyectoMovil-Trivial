@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,12 +28,22 @@ import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
 import com.example.triviaapp.componentes.ComponenteTituloCaja
 import com.example.triviaapp.componentes.ComponenteTituloConBotonesHorizontal
 import com.example.triviaapp.componentes.DatosBotonDoble
+import com.example.triviaapp.componentes.DatosCreaPregunta
 
 
 val txtTitulo = "Opción correcta"
 
 val txtBotones: List<String> = listOf(
     "1", "2", "3", "4"
+)
+
+val enunciado =mutableStateOf("")
+
+val textoBotonesRespuestas = listOf(
+    mutableStateOf(""),
+    mutableStateOf(""),
+    mutableStateOf(""),
+    mutableStateOf("")
 )
 val accionbotones: List<() -> Unit> = listOf(
     { Log.e("Testing", "Aceptar boton cliqueado") },
@@ -45,6 +57,9 @@ val accionbotones: List<() -> Unit> = listOf(
  */
 @Composable
 fun PaginaElegirRespuestas() {
+
+    var recuerdaRadioButon = remember { mutableStateOf(txtBotones[0]) }
+
     Box(
         Modifier
             .fillMaxSize()
@@ -56,11 +71,11 @@ fun PaginaElegirRespuestas() {
 
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(30.dp)) {
-                ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
-                ComponenteTituloConBotonesHorizontal(
+                ComponentePreguntaYRespuestasRellenar(DatosCreaPregunta(enunciado, textoBotonesRespuestas))
+                ComponenteTituloConRadioButonHorizontal(
                     txtTitulo,
                     txtBotones,
-                    accionBotones = accionbotones
+                    remember = recuerdaRadioButon
                 )
             }
             Column(

@@ -13,6 +13,9 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,14 +28,14 @@ import com.example.triviaapp.componentes.ComponenteLinea
 import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
 import com.example.triviaapp.componentes.ComponenteTituloCaja
 import com.example.triviaapp.componentes.DatosBotonDoble
+import com.example.triviaapp.componentes.DatosRespondePregunta
 
-val enunciado =
-    "¿La invasión de qué fortaleza por parte de los revolucionarios es considerada como el punto de inicio de la Revolución Francesa?"
+
 val textoBotonesRespuesta = listOf(
-    "Respuesta 1",
-    "Respuesta 2",
-    "Respuesta 3",
-    "Respuesta 4"
+    "1 a",
+    "2 a",
+    "3 a",
+    "4 a"
 )
 
 val preguntaActual = "1"
@@ -43,6 +46,7 @@ val numPreguntas = "10"
  */
 @Composable
 fun PaginaResponderPreguntas() {
+    var respuesta = remember { mutableStateOf(textoBotonesRespuesta[0]) }
     Box(
         Modifier
             .fillMaxSize()

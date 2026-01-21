@@ -10,6 +10,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -31,6 +35,8 @@ fun ComponenteCajaDatosTrivia() {
         stringResource(R.string.app_categoria3),
         stringResource(R.string.app_categoria4)
     )
+    val recuerda = remember { mutableStateOf(txtBotones[0]) }
+    val remember= remember{ mutableStateOf("") }
     val accionbotones: List<() -> Unit> = listOf(
         { Log.e("Testing", "Aceptar boton cliqueado") },
         { Log.e("Testing", "Aceptar boton cliqueado") },

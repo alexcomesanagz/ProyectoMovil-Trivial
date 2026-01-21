@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -16,14 +17,14 @@ import androidx.compose.ui.unit.dp
  * @param txtTitulo contenido del texto
  * @param txtbotones lista de contenido de cada boton, tiene que haber solo 4
  * @param accionBotones contiene las acciones de cada boton
- * @param tamañoTexto tamaño de el texto que contienen los botones
+ * @param tamanioTexto tamaño de el texto que contienen los botones
  */
 @Composable
 fun ComponenteTituloConBotonesHorizontal(
     txtTitulo: String,
     txtbotones: List<String>,
     accionBotones: List<() -> Unit>,
-    tamañoTexto: Int = 18
+    tamanioTexto: Int = 18
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(5.dp),
@@ -34,7 +35,29 @@ fun ComponenteTituloConBotonesHorizontal(
         ComponenteBotonesHorizontal(
             txtbotones,
             accionBotones = accionBotones,
-            tamañoTexto = tamañoTexto
+            tamanioTexto = tamanioTexto
+        )
+    }
+}
+
+@Composable
+fun ComponenteTituloConRadioButonHorizontal(
+    txtTitulo: String,
+    txtbotones: List<String>,
+    tamanioTexto: Int = 18,
+    remember: MutableState<String>
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(5.dp),
+        modifier = Modifier
+            .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
+    ) {
+        ComponenteTitulo(txtTitulo)
+        ComponenteRadioButonsHorizontal(
+            DatosRadioBotones(txtBotones = txtbotones,
+            tamanioTexto = tamanioTexto,
+            remember = remember
+            )
         )
     }
 }
