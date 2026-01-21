@@ -52,10 +52,16 @@ fun ComponenteCajaDatosTrivia() {
         Column(
             verticalArrangement = Arrangement.spacedBy(15.dp)
         ) {
-            ComponentePreguntaYRespuestas(txtTitulo, txtBotones, 1)
+            ComponentePreguntaYRespuestas(
+                DatosRespondePregunta(
+                txtTitulo,
+                    txtBotones,
+                    1,
+                    recuerda)
+            )
             Column() {
                 ComponenteTituloCaja(stringResource(R.string.app_titulo_nombreTrivia))
-                ComponenteTextField()
+                ComponenteTextField(DatosTextField(txtContenido = remember))
             }
         }
         Column(

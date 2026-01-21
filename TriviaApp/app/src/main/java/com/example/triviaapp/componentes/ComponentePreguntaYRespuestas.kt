@@ -44,12 +44,12 @@ datos: DatosRespondePregunta
 }
 
 
-
 class DatosCreaPregunta(
     val enunciado: MutableState<String>,
     val textoBotonesRespuesta: List<MutableState<String>>,
-    val paddingBotonesTitulo: Int = 8
+    val paddingBotonesTitulo: Int = 8,
 )
+
 @Composable
 fun ComponentePreguntaYRespuestasRellenar(
    datos: DatosCreaPregunta
@@ -58,8 +58,15 @@ fun ComponentePreguntaYRespuestasRellenar(
         verticalArrangement = Arrangement.spacedBy(datos.paddingBotonesTitulo.dp),
         modifier = Modifier.background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
     ) {
-        ComponenteTituloCaja(enunciado)
-        ComponenteRespuestas(textoBotonesRespuesta)
+        ComponenteTextField(
+                DatosTextField(
+                "introduzca la pregunta ",
+                datos.enunciado
+                )
+        )
+        ComponenteRespuestasTextBox(
+            datos.textoBotonesRespuesta
+        )
     }
 }
 

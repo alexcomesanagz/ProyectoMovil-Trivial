@@ -25,10 +25,13 @@ import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
 import com.example.triviaapp.componentes.BotonesDobleAvanzarLinea
 import com.example.triviaapp.componentes.ComponenteLinea
 import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
+import com.example.triviaapp.componentes.ComponentePreguntaYRespuestasRellenar
 import com.example.triviaapp.componentes.ComponenteTituloCaja
 import com.example.triviaapp.componentes.ComponenteTituloConBotonesHorizontal
+import com.example.triviaapp.componentes.ComponenteTituloConRadioButonHorizontal
 import com.example.triviaapp.componentes.DatosBotonDoble
 import com.example.triviaapp.componentes.DatosCreaPregunta
+import com.example.triviaapp.componentes.DatosRespondePregunta
 
 
 val txtTitulo = "Opción correcta"
@@ -71,7 +74,12 @@ fun PaginaElegirRespuestas() {
 
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(30.dp)) {
-                ComponentePreguntaYRespuestasRellenar(DatosCreaPregunta(enunciado, textoBotonesRespuestas))
+                ComponentePreguntaYRespuestasRellenar(
+                    DatosCreaPregunta(
+                        enunciado,
+                        textoBotonesRespuestas
+                    )
+                )
                 ComponenteTituloConRadioButonHorizontal(
                     txtTitulo,
                     txtBotones,
