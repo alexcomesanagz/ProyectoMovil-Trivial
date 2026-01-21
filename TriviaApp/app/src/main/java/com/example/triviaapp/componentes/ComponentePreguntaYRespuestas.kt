@@ -3,7 +3,6 @@ package com.example.triviaapp.componentes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -59,14 +58,8 @@ fun ComponentePreguntaYRespuestasRellenar(
         verticalArrangement = Arrangement.spacedBy(datos.paddingBotonesTitulo.dp),
         modifier = Modifier.background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
     ) {
-        ComponenteTextField(
-            DatosTextField(
-            msjPregunta = "introduzca la pregunta",
-            txtContenido = datos.enunciado,
-            modif = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.secondary)
-            )
-        )
-        ComponenteRespuestasTextBox(datos.textoBotonesRespuesta)
+        ComponenteTituloCaja(enunciado)
+        ComponenteRespuestas(textoBotonesRespuesta)
     }
 }
 

@@ -31,7 +31,7 @@ fun ComponenteTituloConBotonesHorizontal(
         modifier = Modifier
             .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
     ) {
-        ComponenteTitulo(txtTitulo)
+        ComponenteTituloCaja(txtTitulo)
         ComponenteBotonesHorizontal(
             txtbotones,
             accionBotones = accionBotones,

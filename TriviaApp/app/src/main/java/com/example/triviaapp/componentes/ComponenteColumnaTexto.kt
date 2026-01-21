@@ -2,6 +2,7 @@ package com.example.triviaapp.componentes
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -35,8 +36,8 @@ fun ComponenteColumnaTextoDobleFondo(datos: DatosColumnaTexto) {
         verticalArrangement = Arrangement.spacedBy((datos.tamaño / 3).dp),
         modifier = Modifier.fillMaxWidth()
     ) {
-        ComponenteTitulo(titulo = datos.msj1, tamaño = datos.tamaño)
-        ComponenteTitulo(titulo = datos.msj2, tamaño = datos.tamaño)
+        ComponenteTituloCaja(titulo = datos.msj1, tamaño = datos.tamaño)
+        ComponenteTituloCaja(titulo = datos.msj2, tamaño = datos.tamaño)
     }
 }
 
@@ -46,18 +47,32 @@ fun ComponenteColumnaTextoDobleFondo(datos: DatosColumnaTexto) {
 @Composable
 fun ComponenteColumnaTextoUnFondo(datos: DatosColumnaTexto) {
     Column(
-        verticalArrangement = Arrangement.spacedBy((datos.tamaño / 3).dp),
         modifier = Modifier.fillMaxWidth()
     ) {
-        ComponenteTitulo(titulo = datos.msj1, tamaño = datos.tamaño)
-        Text(
-            text = datos.msj2,
+        ComponenteTituloCaja(titulo = datos.msj1, tamaño = datos.tamaño)
+        Box(
             modifier = Modifier
-                .padding(vertical = 4.dp, horizontal = 20.dp)
-                .fillMaxWidth(),
-            fontSize = datos.tamaño.sp,
-            textAlign = TextAlign.Center
-        )
+                .background(
+                MaterialTheme.colorScheme.surface,
+                    shape = RoundedCornerShape(
+                        topStart = 0.dp,
+                        topEnd = 0.dp,
+                        bottomStart = 12.dp,
+                        bottomEnd = 12.dp
+                    )
+            ),
+
+            ) {
+            Text(
+                text = datos.msj2,
+                modifier = Modifier
+                    .padding(horizontal = 20.dp, vertical = (datos.tamaño/3).dp)
+                    .fillMaxWidth(),
+                fontSize = datos.tamaño.sp,
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+        }
     }
 }
 

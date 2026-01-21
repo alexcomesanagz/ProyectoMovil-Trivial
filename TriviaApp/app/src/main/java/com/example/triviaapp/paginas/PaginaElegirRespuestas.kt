@@ -24,9 +24,9 @@ import com.example.triviaapp.R
 import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
 import com.example.triviaapp.componentes.BotonesDobleAvanzarLinea
 import com.example.triviaapp.componentes.ComponenteLinea
-import com.example.triviaapp.componentes.ComponentePreguntaYRespuestasRellenar
-import com.example.triviaapp.componentes.ComponenteTitulo
-import com.example.triviaapp.componentes.ComponenteTituloConRadioButonHorizontal
+import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
+import com.example.triviaapp.componentes.ComponenteTituloCaja
+import com.example.triviaapp.componentes.ComponenteTituloConBotonesHorizontal
 import com.example.triviaapp.componentes.DatosBotonDoble
 import com.example.triviaapp.componentes.DatosCreaPregunta
 
@@ -88,7 +88,7 @@ fun PaginaElegirRespuestas() {
                     )
             ) {
 
-                ComponenteTitulo(preguntaActual + " / " + numPreguntas)
+                ComponenteTituloCaja(preguntaActual + " / " + numPreguntas)
                 Box(
                     modifier = Modifier.padding(bottom = 10.dp)
                 ) {

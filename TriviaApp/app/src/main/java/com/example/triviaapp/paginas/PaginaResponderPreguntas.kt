@@ -1,6 +1,7 @@
 package com.example.triviaapp.paginas
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,7 +26,7 @@ import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
 import com.example.triviaapp.componentes.BotonesDobleAvanzarLinea
 import com.example.triviaapp.componentes.ComponenteLinea
 import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
-import com.example.triviaapp.componentes.ComponenteTitulo
+import com.example.triviaapp.componentes.ComponenteTituloCaja
 import com.example.triviaapp.componentes.DatosBotonDoble
 import com.example.triviaapp.componentes.DatosRespondePregunta
 
@@ -47,26 +50,31 @@ fun PaginaResponderPreguntas() {
     Box(
         Modifier
             .fillMaxSize()
-            .padding(vertical = 70.dp ,horizontal = 10.dp)
+            .padding(vertical = 70.dp, horizontal = 10.dp)
             .windowInsetsPadding(WindowInsets.safeDrawing)
     ) {
         Column(
-            verticalArrangement = Arrangement.spacedBy(10.dp)
+
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(50.dp)) {
-                ComponentePreguntaYRespuestas(
-                        DatosRespondePregunta("aaaaaaaa",
-                        textoBotonesRespuesta =  textoBotonesRespuesta,
-                        respuesta = respuesta
-                        )
-                    )
-                ComponenteTitulo(preguntaActual + " / " + numPreguntas)
+                ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
+                ComponenteTituloCaja(preguntaActual + " / " + numPreguntas)
             }
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 Box(
-                    modifier = Modifier.padding(bottom = 60.dp)
+                    modifier = Modifier
+                        .padding(bottom = 60.dp)
+                        .background(
+                            MaterialTheme.colorScheme.surface,
+                            shape = RoundedCornerShape(
+                                topStart = 0.dp,
+                                topEnd = 0.dp,
+                                bottomStart = 12.dp,
+                                bottomEnd = 12.dp
+                            )
+                        )
                 ) {
                     BotonesDobleAvanzarLinea(
                         DatosBotonDoble(
