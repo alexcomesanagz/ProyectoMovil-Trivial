@@ -3,10 +3,11 @@ package com.example.triviaapp.componentes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -17,18 +18,55 @@ import androidx.compose.ui.unit.dp
  * @param enunciado contenido de la pregunta
  * @param textoBotonesRespuesta lista de contenido de cada boton, tiene que haber solo 4
  */
+class DatosRespondePregunta(
+    val enunciado: String,
+    val textoBotonesRespuesta: List<String>,
+    val paddingBotonesTitulo: Int = 8,
+    val respuesta: MutableState<String>
+)
+
+
 @Composable
 fun ComponentePreguntaYRespuestas(
-    enunciado: String,
-    textoBotonesRespuesta: List<String>,
-    paddingBotonesTitulo: Int = 8
+datos: DatosRespondePregunta
 ) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(paddingBotonesTitulo.dp),
+        verticalArrangement = Arrangement.spacedBy(datos.paddingBotonesTitulo.dp),
         modifier = Modifier.background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
     ) {
-        ComponenteTitulo(enunciado)
-        ComponenteRespuestas(textoBotonesRespuesta)
+        ComponenteTitulo(datos.enunciado)
+        ComponenteRespuestasRadioButon(
+            DatosRadioBotones(
+                txtBotones = datos.textoBotonesRespuesta,
+                remember = datos.respuesta
+            )
+        )
+    }
+}
+
+
+
+class DatosCreaPregunta(
+    val enunciado: MutableState<String>,
+    val textoBotonesRespuesta: List<MutableState<String>>,
+    val paddingBotonesTitulo: Int = 8
+)
+@Composable
+fun ComponentePreguntaYRespuestasRellenar(
+   datos: DatosCreaPregunta
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(datos.paddingBotonesTitulo.dp),
+        modifier = Modifier.background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
+    ) {
+        ComponenteTextField(
+            DatosTextField(
+            msjPregunta = "introduzca la pregunta",
+            txtContenido = datos.enunciado,
+            modif = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.secondary)
+            )
+        )
+        ComponenteRespuestasTextBox(datos.textoBotonesRespuesta)
     }
 }
 
@@ -45,5 +83,5 @@ fun prevComponentePreguntaYRespuestas() {
         "Respuesta 4"
     )
 
-    ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
+    //ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
 }

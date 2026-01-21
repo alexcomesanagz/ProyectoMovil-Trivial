@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -44,7 +45,7 @@ fun ComponenteTituloConRadioButonHorizontal(
     txtTitulo: String,
     txtbotones: List<String>,
     tamanioTexto: Int = 18,
-    remember: String
+    remember: MutableState<String>
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(5.dp),
@@ -53,9 +54,10 @@ fun ComponenteTituloConRadioButonHorizontal(
     ) {
         ComponenteTitulo(txtTitulo)
         ComponenteRadioButonsHorizontal(
-            txtBotones = txtbotones,
+            DatosRadioBotones(txtBotones = txtbotones,
             tamanioTexto = tamanioTexto,
             remember = remember
+            )
         )
     }
 }

@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -18,6 +20,7 @@ import com.example.triviaapp.R
 import com.example.triviaapp.componentes.BotonesDobleAceptarColumna
 import com.example.triviaapp.componentes.ComponenteTextField
 import com.example.triviaapp.componentes.DatosBotonDoble
+import com.example.triviaapp.componentes.DatosTextField
 import com.example.triviaapp.componentes.DenegarBoton
 
 /**
@@ -25,6 +28,8 @@ import com.example.triviaapp.componentes.DenegarBoton
  */
 @Composable
 fun PaginaLogin() {
+    val nombre = remember { mutableStateOf("") }
+    val pasword = remember { mutableStateOf("") }
 
     Box(
         Modifier
@@ -39,8 +44,8 @@ fun PaginaLogin() {
 
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(space = 35.dp)) {
-                ComponenteTextField(stringResource(R.string.app_login_msjCorreo))
-                ComponenteTextField(stringResource(R.string.app_login_msjContraseña))
+                ComponenteTextField(DatosTextField(stringResource(R.string.app_login_msjCorreo), txtContenido = nombre))
+                ComponenteTextField(DatosTextField(stringResource(R.string.app_login_msjContraseña),txtContenido = pasword))
             }
 
             Column(

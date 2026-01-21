@@ -2,6 +2,7 @@ package com.example.triviaapp.componentes
 
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,8 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -46,6 +49,8 @@ class DatosBoton(
     val accion: () -> Unit
 )
 
+
+
 @Composable
 fun ComponenteBoton(datos: DatosBoton) {
     Button(
@@ -62,39 +67,6 @@ fun ComponenteBoton(datos: DatosBoton) {
     }
 }
 
-class DatosRadioBoton(
-    val msj: String,
-    val coloresBoton: List<Color>,
-    val tamanioTexto:Int=12,
-    var remeber: String
-)
-@Composable
-fun ComponenteRadioButon(
-    datos: DatosRadioBoton) {
-    Row(verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.background(
-            MaterialTheme.colorScheme.secondary,
-            RoundedCornerShape(25.dp)),
-        horizontalArrangement = Arrangement.Center
-    ){
-    RadioButton(
-        selected = (datos.msj== datos.remeber),
-        colors = RadioButtonColors(selectedColor = datos.coloresBoton.get(0),
-            unselectedColor = datos.coloresBoton.get(1),
-            disabledSelectedColor = datos.coloresBoton.get(2),
-            disabledUnselectedColor =    datos.coloresBoton.get(3) ),
-        onClick = {datos.remeber= datos.msj},
-        modifier = Modifier
-    )
-        Text(
-            modifier = Modifier.padding(end = 10.dp),
-            text = datos.msj,
-            fontSize = datos.tamanioTexto.sp,
-            textAlign = TextAlign.Center
-        )
-
-    }
-}
 
 /**
  * crea un boton de color de fondo claro

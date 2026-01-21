@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -57,24 +58,24 @@ fun ComponenteBotonesHorizontal(
         }
     }
 }
-
+class DatosRadioBotones( val txtBotones: List<String>,
+                         val tamanioTexto:Int=12,
+                         var remember: MutableState<String>)
 @Composable
 fun ComponenteRadioButonsHorizontal(
-    txtBotones: List<String>,
-    tamanioTexto:Int=12,
-    remember: String
+   datos: DatosRadioBotones
 ) {
     var listaColor = listOf<Color>(
-        MaterialTheme.colorScheme.secondary,
-        MaterialTheme.colorScheme.onSecondary,
+        MaterialTheme.colorScheme.surface,
+        MaterialTheme.colorScheme.surface,
         MaterialTheme.colorScheme.primary,
         MaterialTheme.colorScheme.onPrimary
     )
     var i=1
     var listaPrimerPart: ArrayList<String> = arrayListOf()
     var listaSegundaPart: ArrayList<String> = arrayListOf()
-    var x=txtBotones.size
-    txtBotones.forEach { it->
+    var x=datos.txtBotones.size
+    datos.txtBotones.forEach { it->
         if(i<=x/2) listaPrimerPart.add(it)
         else listaSegundaPart.add(it)
         i++
@@ -82,7 +83,7 @@ fun ComponenteRadioButonsHorizontal(
 
     Row(
         modifier = Modifier
-            .padding(bottom = 10.dp)
+            .padding(bottom = 10.dp, top = 5.dp)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
@@ -93,13 +94,21 @@ fun ComponenteRadioButonsHorizontal(
                 modifier = Modifier
                 .padding(bottom = 10.dp)
             ) {
+
                 listaPrimerPart.forEach { prim->
-                    ComponenteRadioButon(DatosRadioBoton(
-                        msj = prim,
-                        coloresBoton = listaColor,
-                        tamanioTexto = tamanioTexto,
-                        remeber =remember)
-                    )
+                    Box(
+                        modifier = Modifier.weight(1f),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        ComponenteRadioButon(
+                            DatosRadioBoton(
+                                msj = prim,
+                                coloresBoton = listaColor,
+                                tamanioTexto = datos.tamanioTexto,
+                                remember = datos.remember,
+                            )
+                        )
+                    }
                 }
             }
         }
@@ -111,12 +120,19 @@ fun ComponenteRadioButonsHorizontal(
                 .padding(bottom = 10.dp)
             ) {
                 listaSegundaPart.forEach { seg->
-                    ComponenteRadioButon(DatosRadioBoton(
-                        msj = seg,
-                        coloresBoton = listaColor,
-                        tamanioTexto = tamanioTexto,
-                        remeber =remember)
-                    )
+                    Box(
+                        modifier = Modifier.weight(1f),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        ComponenteRadioButon(
+                            DatosRadioBoton(
+                                msj = seg,
+                                coloresBoton = listaColor,
+                                tamanioTexto = datos.tamanioTexto,
+                                remember = datos.remember,
+                            )
+                        )
+                    }
                 }
             }
         }

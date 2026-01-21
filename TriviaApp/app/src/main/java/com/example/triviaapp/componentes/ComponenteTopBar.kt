@@ -5,6 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.ExitToApp
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -43,7 +44,7 @@ fun ComponenteTopBar(
         },
         actions = {
             IconButton(onClick = accionLogin) {
-                Icon(Icons.Default.ExitToApp, contentDescription = stringResource(R.string.app_login_btnLogIn))
+                Icon(Icons.Default.Face, contentDescription = stringResource(R.string.app_login_btnLogIn))
             }
             IconButton(onClick = accionCamara) {
                 Icon(Icons.Default.Create, contentDescription = stringResource(R.string.app_toolbar_Camara))

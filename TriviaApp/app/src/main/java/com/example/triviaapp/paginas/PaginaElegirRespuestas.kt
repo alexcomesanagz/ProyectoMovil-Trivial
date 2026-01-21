@@ -13,10 +13,8 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,20 +22,28 @@ import androidx.compose.ui.unit.dp
 import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
-import com.example.triviaapp.componentes.BotonesDobleAceptarLinea
 import com.example.triviaapp.componentes.BotonesDobleAvanzarLinea
 import com.example.triviaapp.componentes.ComponenteLinea
-import com.example.triviaapp.componentes.ComponentePreguntaYRespuestas
+import com.example.triviaapp.componentes.ComponentePreguntaYRespuestasRellenar
 import com.example.triviaapp.componentes.ComponenteTitulo
-import com.example.triviaapp.componentes.ComponenteTituloConBotonesHorizontal
 import com.example.triviaapp.componentes.ComponenteTituloConRadioButonHorizontal
 import com.example.triviaapp.componentes.DatosBotonDoble
+import com.example.triviaapp.componentes.DatosCreaPregunta
 
 
 val txtTitulo = "Opción correcta"
 
 val txtBotones: List<String> = listOf(
     "1", "2", "3", "4"
+)
+
+val enunciado =mutableStateOf("")
+
+val textoBotonesRespuestas = listOf(
+    mutableStateOf(""),
+    mutableStateOf(""),
+    mutableStateOf(""),
+    mutableStateOf("")
 )
 val accionbotones: List<() -> Unit> = listOf(
     { Log.e("Testing", "Aceptar boton cliqueado") },
@@ -51,8 +57,8 @@ val accionbotones: List<() -> Unit> = listOf(
  */
 @Composable
 fun PaginaElegirRespuestas() {
-    val opcion=listOf("a","b","c","d")
-    var recuerda by remember { mutableStateOf(opcion[0]) }
+
+    var recuerdaRadioButon = remember { mutableStateOf(txtBotones[0]) }
 
     Box(
         Modifier
@@ -65,11 +71,11 @@ fun PaginaElegirRespuestas() {
 
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(30.dp)) {
-                ComponentePreguntaYRespuestas(enunciado, textoBotonesRespuesta)
+                ComponentePreguntaYRespuestasRellenar(DatosCreaPregunta(enunciado, textoBotonesRespuestas))
                 ComponenteTituloConRadioButonHorizontal(
                     txtTitulo,
                     txtBotones,
-                    remember = recuerda
+                    remember = recuerdaRadioButon
                 )
             }
             Column(
