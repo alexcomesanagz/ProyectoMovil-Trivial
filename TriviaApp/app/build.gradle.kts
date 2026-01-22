@@ -1,3 +1,4 @@
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -55,6 +56,8 @@ dependencies {
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
     testImplementation(libs.junit)
     implementation(libs.androidx.navigation.compose)
     androidTestImplementation(libs.androidx.junit)
