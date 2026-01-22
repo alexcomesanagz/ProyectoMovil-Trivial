@@ -83,7 +83,7 @@ fun ComponenteRadioButonsHorizontal(
 
     Row(
         modifier = Modifier
-            .padding(10.dp)
+            .padding(bottom = 10.dp, top = 5.dp)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
@@ -97,7 +97,8 @@ fun ComponenteRadioButonsHorizontal(
 
                 listaPrimerPart.forEach { prim->
                     Box(
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.weight(1f)
+                            .padding(5.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         ComponenteRadioButon(
@@ -121,7 +122,8 @@ fun ComponenteRadioButonsHorizontal(
             ) {
                 listaSegundaPart.forEach { seg->
                     Box(
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.weight(1f)
+                        .padding(5.dp),
                         contentAlignment = Alignment.Center
                     ) {
                         ComponenteRadioButon(

@@ -66,7 +66,7 @@ fun ComponenteRespuestasRadioButon(
             items(datos.txtBotones) { textoBoton ->
                 Box(
                     contentAlignment = Alignment.Center,
-                    modifier = Modifier.padding(bottom = 10.dp)
+                    modifier = Modifier.padding( 5.dp)
                     .fillMaxWidth()
                 ) {
                     ComponenteRadioButon(
