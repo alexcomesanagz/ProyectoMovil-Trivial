@@ -13,6 +13,7 @@ import androidx.compose.material3.RadioButtonColors
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,32 +25,35 @@ class DatosRadioBoton(
     val msj: String,
     val coloresBoton: List<Color>,
     val tamanioTexto:Int=12,
-    var remember: MutableState<String>,
-    var accion: (String) -> Unit={it->remember.value=it}
+    var rememberCadena: String ="",
+    var accion: (String) -> String = {" "}
 )
 
 
 @Composable
 fun ComponenteRadioButon(
-    datos: DatosRadioBoton) {
+    datos: DatosRadioBoton
+) {
     Row(verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.background(
-            MaterialTheme.colorScheme.secondary,
-            RoundedCornerShape(25.dp))
+        modifier = Modifier
+            .background(
+                MaterialTheme.colorScheme.secondary,
+                RoundedCornerShape(25.dp)
+            )
             .fillMaxWidth()
-            .clickable{
+            .clickable {
                 datos.accion(datos.msj)
             }
             ,
         horizontalArrangement = Arrangement.Center
     ){
         RadioButton(
-            selected = (datos.msj== datos.remember.value),
+            selected = (datos.msj== datos.rememberCadena),
             colors = RadioButtonColors(selectedColor = datos.coloresBoton.get(0),
                 unselectedColor = datos.coloresBoton.get(1),
                 disabledSelectedColor = datos.coloresBoton.get(2),
                 disabledUnselectedColor =    datos.coloresBoton.get(3) ),
-            onClick = { datos.accion(datos.msj) },
+            onClick = { datos.rememberCadena = datos.accion(datos.msj) },
             modifier = Modifier
         )
         Text(

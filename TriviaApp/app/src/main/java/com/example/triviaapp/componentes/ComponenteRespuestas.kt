@@ -73,7 +73,8 @@ fun ComponenteRespuestasRadioButon(
                         DatosRadioBoton(
                             textoBoton,
                             listaColor,
-                            remember = datos.remember
+                            rememberCadena = datos.remember,
+                            accion = datos.accion
                         )
                     )
                 }

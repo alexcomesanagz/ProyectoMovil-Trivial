@@ -58,9 +58,13 @@ fun ComponenteBotonesHorizontal(
         }
     }
 }
-class DatosRadioBotones( val txtBotones: List<String>,
-                         val tamanioTexto:Int=12,
-                         var remember: MutableState<String>)
+class DatosRadioBotones(
+    val txtBotones: List<String>,
+    val tamanioTexto:Int=12,
+    var remember: String,
+    val accion: (String) -> String = {""}
+
+)
 @Composable
 fun ComponenteRadioButonsHorizontal(
    datos: DatosRadioBotones
@@ -71,6 +75,7 @@ fun ComponenteRadioButonsHorizontal(
         MaterialTheme.colorScheme.primary,
         MaterialTheme.colorScheme.onPrimary
     )
+
     var i=1
     var listaPrimerPart: ArrayList<String> = arrayListOf()
     var listaSegundaPart: ArrayList<String> = arrayListOf()
@@ -106,7 +111,8 @@ fun ComponenteRadioButonsHorizontal(
                                 msj = prim,
                                 coloresBoton = listaColor,
                                 tamanioTexto = datos.tamanioTexto,
-                                remember = datos.remember,
+                                rememberCadena = datos.remember,
+                                accion = datos.accion
                             )
                         )
                     }
@@ -131,7 +137,8 @@ fun ComponenteRadioButonsHorizontal(
                                 msj = seg,
                                 coloresBoton = listaColor,
                                 tamanioTexto = datos.tamanioTexto,
-                                remember = datos.remember,
+                                rememberCadena = datos.remember,
+                                accion = datos.accion
                             )
                         )
                     }

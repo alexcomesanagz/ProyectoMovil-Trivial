@@ -21,7 +21,7 @@ class DatosRespondePregunta(
     val enunciado: String,
     val textoBotonesRespuesta: List<String>,
     val paddingBotonesTitulo: Int = 8,
-    val respuesta: MutableState<String>
+    val respuesta: String
 )
 
 
