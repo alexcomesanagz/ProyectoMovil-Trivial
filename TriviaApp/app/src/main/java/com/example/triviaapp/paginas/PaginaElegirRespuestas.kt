@@ -95,7 +95,6 @@ fun PaginaElegirRespuestas() {
                         RoundedCornerShape(12.dp)
                     )
             ) {
-
                 ComponenteTituloCaja(preguntaActual + " / " + numPreguntas)
                 Box(
                     modifier = Modifier.padding(bottom = 10.dp)

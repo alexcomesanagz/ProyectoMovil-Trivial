@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -35,9 +36,11 @@ fun ComponenteRadioButon(
         modifier = Modifier.background(
             MaterialTheme.colorScheme.secondary,
             RoundedCornerShape(25.dp))
+            .fillMaxWidth()
             .clickable{
                 datos.accion(datos.msj)
-            },
+            }
+            ,
         horizontalArrangement = Arrangement.Center
     ){
         RadioButton(

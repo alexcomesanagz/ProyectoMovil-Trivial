@@ -60,13 +60,14 @@ fun ComponenteRespuestasRadioButon(
     MaterialTheme.colorScheme.primary,
     MaterialTheme.colorScheme.onPrimary
 )
-    LazyVerticalGrid(
+    LazyVerticalGrid(modifier = Modifier.padding(5.dp),
         columns = GridCells.Fixed(2),
         content = {
             items(datos.txtBotones) { textoBoton ->
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.padding(bottom = 10.dp)
+                    .fillMaxWidth()
                 ) {
                     ComponenteRadioButon(
                         DatosRadioBoton(

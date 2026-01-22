@@ -83,7 +83,7 @@ fun ComponenteRadioButonsHorizontal(
 
     Row(
         modifier = Modifier
-            .padding(bottom = 10.dp, top = 5.dp)
+            .padding(10.dp)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
