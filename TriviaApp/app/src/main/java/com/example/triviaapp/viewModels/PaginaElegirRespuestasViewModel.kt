@@ -1,7 +1,6 @@
 package com.example.triviaapp.viewModels
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -25,7 +24,7 @@ class ElegirRespViewModel : ViewModel() {
         return _uiState.value.preguntas.size
     }
 
-    fun cambiaRespuestaBoton(cadena: String): String {
+    fun cambiaRespuestaCorrecta(cadena: String): String {
         _uiState.update { state ->
             val preguntasActualizadas = state.preguntas.mapIndexed { idx, pregunta ->
                 if (idx == state.i) {

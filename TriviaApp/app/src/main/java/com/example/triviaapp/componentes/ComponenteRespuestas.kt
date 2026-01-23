@@ -41,7 +41,7 @@ fun ComponenteRespuestasTextBox(
                 ) {
                     ComponenteTextFieldLista(
                         DatosTextFieldLista(
-                            msjPregunta = "introduzca respuesta ",
+                            msjPregunta = "introduzca respuesta "+(i+1),
                             txtContenido = textoBoton,
                             i = i,
                             modif = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.secondary),
@@ -80,7 +80,7 @@ fun ComponenteRespuestasRadioButon(
                     ComponenteRadioButon(
                         DatosRadioBoton(
                             msj = textoBoton,
-                            boton = ""+i,
+                            boton = ""+(i+1),
                             coloresBoton = listaColor,
                             rememberCadena = datos.remember,
                             accion = datos.accion
