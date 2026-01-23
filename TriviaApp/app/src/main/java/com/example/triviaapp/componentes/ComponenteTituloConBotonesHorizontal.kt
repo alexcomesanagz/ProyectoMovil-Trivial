@@ -45,7 +45,8 @@ fun ComponenteTituloConRadioButonHorizontal(
     txtTitulo: String,
     txtbotones: List<String>,
     tamanioTexto: Int = 18,
-    remember: MutableState<String>
+    remember: String,
+    accion: (String) -> String ={""}
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(5.dp),
@@ -54,9 +55,11 @@ fun ComponenteTituloConRadioButonHorizontal(
     ) {
         ComponenteTitulo(txtTitulo)
         ComponenteRadioButonsHorizontal(
-            DatosRadioBotones(txtBotones = txtbotones,
+            DatosRadioBotones(
+            txtBotones = txtbotones,
             tamanioTexto = tamanioTexto,
-            remember = remember
+            remember = remember,
+            accion =   accion
             )
         )
     }

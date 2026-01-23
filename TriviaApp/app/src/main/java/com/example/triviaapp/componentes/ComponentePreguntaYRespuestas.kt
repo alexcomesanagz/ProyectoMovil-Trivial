@@ -2,7 +2,11 @@ package com.example.triviaapp.componentes
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -21,7 +25,7 @@ class DatosRespondePregunta(
     val enunciado: String,
     val textoBotonesRespuesta: List<String>,
     val paddingBotonesTitulo: Int = 8,
-    val respuesta: MutableState<String>
+    val respuesta: String
 )
 
 
@@ -45,9 +49,11 @@ datos: DatosRespondePregunta
 
 
 class DatosCreaPregunta(
-    val enunciado: MutableState<String>,
-    val textoBotonesRespuesta: List<MutableState<String>>,
+    val enunciado: String,
+    val textoBotonesRespuesta: List <String>,
     val paddingBotonesTitulo: Int = 8,
+    val accionEnunciado: (String) -> String={""},
+    val accionRespuestas: (Int,String) -> String={i,it-> ""}
 )
 
 @Composable
@@ -58,14 +64,22 @@ fun ComponentePreguntaYRespuestasRellenar(
         verticalArrangement = Arrangement.spacedBy(datos.paddingBotonesTitulo.dp),
         modifier = Modifier.background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
     ) {
-        ComponenteTextField(
-                DatosTextField(
-                "introduzca la pregunta ",
-                datos.enunciado
-                )
+        Box( modifier = Modifier.background(MaterialTheme.colorScheme.primary,
+            shape = RoundedCornerShape(topEnd = 12.dp, topStart = 12.dp)
         )
+            .padding(vertical = 6.dp, horizontal = 20.dp)
+            .fillMaxWidth()) {
+            ComponenteTextField(
+                DatosTextField(
+                    msjPregunta = "introduzca la pregunta ",
+                    txtContenido = datos.enunciado,
+                    accion = datos.accionEnunciado
+                )
+            )
+        }
         ComponenteRespuestasTextBox(
-            datos.textoBotonesRespuesta
+            textoBotonesRespuesta = datos.textoBotonesRespuesta,
+            accion = datos.accionRespuestas
         )
     }
 }

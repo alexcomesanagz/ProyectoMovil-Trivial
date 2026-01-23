@@ -27,4 +27,11 @@
     <string name="app_creadores">Borja Pazo y Alex Comesaña</string>
     <string name="app_creadores_creditos">Créditos</string>
     <string name="app_creadores_usuario">Creado por:</string>
+    <string name="app_sleccion_resp_1">1</string>
+    <string name="app_sleccion_resp_2">2</string>
+    <string name="app_sleccion_resp_3">3</string>
+    <string name="app_sleccion_resp_4">4</string>
+    <string name="app_opcion_correcta">Opción correcta</string>
+
+
 </resources>

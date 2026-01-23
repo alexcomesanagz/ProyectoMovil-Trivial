@@ -28,8 +28,8 @@ import com.example.triviaapp.componentes.DenegarBoton
  */
 @Composable
 fun PaginaLogin() {
-    val nombre = remember { mutableStateOf("") }
-    val pasword = remember { mutableStateOf("") }
+    var nombre = ""
+    var pasword = ""
 
     Box(
         Modifier
@@ -44,17 +44,37 @@ fun PaginaLogin() {
 
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(space = 35.dp)) {
-                ComponenteTextField(DatosTextField(stringResource(R.string.app_login_msjCorreo), txtContenido = nombre))
-                ComponenteTextField(DatosTextField(stringResource(R.string.app_login_msjContraseña),txtContenido = pasword))
+                ComponenteTextField(
+                    DatosTextField(
+                        msjPregunta = stringResource(R.string.app_login_msjCorreo),
+                        txtContenido = nombre,
+                        accion = { it ->
+                            nombre = it
+                            return@DatosTextField nombre
+                        }
+                    )
+                )
+                ComponenteTextField(
+                    DatosTextField(
+                        stringResource(R.string.app_login_msjContraseña),
+                        txtContenido = pasword,
+                        accion = {it-> pasword=it
+                            return@DatosTextField pasword }
+                    )
+                )
             }
 
             Column(
                 verticalArrangement = Arrangement.spacedBy(space = 35.dp),
             ) {
-                BotonesDobleAceptarColumna(DatosBotonDoble(msjBot1 = stringResource(R.string.app_login_btnLogIn),
-                    msjBot2 = stringResource(R.string.app_login_btnSignUp), modifierBotones = Modifier.fillMaxWidth(),
-                    accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
-                    accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") }))
+                BotonesDobleAceptarColumna(
+                    DatosBotonDoble(
+                        msjBot1 = stringResource(R.string.app_login_btnLogIn),
+                        msjBot2 = stringResource(R.string.app_login_btnSignUp),
+                        modifierBotones = Modifier.fillMaxWidth(),
+                        accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
+                        accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
+                )
             }
             Column(
             ) {

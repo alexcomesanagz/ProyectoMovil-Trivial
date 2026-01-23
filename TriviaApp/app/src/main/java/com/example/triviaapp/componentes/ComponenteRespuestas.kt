@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -24,25 +25,30 @@ import androidx.compose.ui.unit.dp
  */
 @Composable
 fun ComponenteRespuestasTextBox(
-    textoBotonesRespuesta: List<MutableState<String>>
+    textoBotonesRespuesta: List <String>,
+    accion: (Int, String) -> String={i,it ->""}
+
 ) {
-    var i=0
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         content = {
-            items(textoBotonesRespuesta) { textoBoton ->
+            itemsIndexed(items = textoBotonesRespuesta,
+                key ={ index, _ -> index }
+            ){i, textoBoton ->
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.padding( 10.dp)
                 ) {
-                    ComponenteTextField(
-                        DatosTextField(
-                            msjPregunta = "introduzca respuesta "+i,
+                    ComponenteTextFieldLista(
+                        DatosTextFieldLista(
+                            msjPregunta = "introduzca respuesta ",
                             txtContenido = textoBoton,
-                            modif = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.secondary)
+                            i = i,
+                            modif = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.secondary),
+                            accion = accion
                         )
                     )
-                    i++
+
                 }
             }
         }
@@ -73,7 +79,8 @@ fun ComponenteRespuestasRadioButon(
                         DatosRadioBoton(
                             textoBoton,
                             listaColor,
-                            remember = datos.remember
+                            rememberCadena = datos.remember,
+                            accion = datos.accion
                         )
                     )
                 }

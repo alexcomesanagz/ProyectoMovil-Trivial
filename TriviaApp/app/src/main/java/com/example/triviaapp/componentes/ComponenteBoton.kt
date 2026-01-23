@@ -54,7 +54,8 @@ class DatosBoton(
 @Composable
 fun ComponenteBoton(datos: DatosBoton) {
     Button(
-        onClick = datos.accion, colors = ButtonColors(
+        onClick = datos.accion,
+        colors = ButtonColors(
             containerColor = datos.coloresBoton.get(0),
             contentColor = datos.coloresBoton.get(1),
             disabledContainerColor = datos.coloresBoton.get(2),
@@ -130,7 +131,7 @@ fun AvanzarBoton(
     msj: String,
     modifier: Modifier = Modifier,
     tamanioTexto: Int=18,
-    accion: () -> Unit = { Log.e("Testing", "Denegar boton cliqueado") }
+    accion: () -> Unit = {}
 ) {
     var listaColor = listOf<Color>(
         MaterialTheme.colorScheme.onBackground,
