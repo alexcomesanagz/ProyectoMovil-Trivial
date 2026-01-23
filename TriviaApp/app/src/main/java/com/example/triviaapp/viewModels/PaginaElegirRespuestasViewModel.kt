@@ -26,19 +26,48 @@ class ElegirRespViewModel : ViewModel() {
     }
 
     fun cambiaRespuestaBoton(cadena: String): String {
-        getPregunta().botonRespuesta.value=cadena
-        return  getPregunta().botonRespuesta.value
+        _uiState.update { state ->
+            val preguntasActualizadas = state.preguntas.mapIndexed { idx, pregunta ->
+                if (idx == state.i) {
+                    pregunta.copy(respuestaCorrecta = cadena)
+                }
+                else{pregunta}
+            }
+            state.copy(preguntas = preguntasActualizadas)
+        }
+        return getPregunta().respuestaCorrecta
+
     }
 
     fun cambiaTextoBoton(i: Int ,cadena: String): String {
-        getPregunta().textoBotonesRespuestas[i].value=cadena
-        return getPregunta().textoBotonesRespuestas[i].value
+        _uiState.update { state ->
+                val preguntasActualizadas = state.preguntas.mapIndexed { idx, pregunta ->
+                    if (idx == state.i) {
+                        val botonesActualizados = pregunta.textoBotonesRespuestas.mapIndexed { j, texto ->
+                            if (j == i) cadena else texto
+                        }
+                        pregunta.copy(textoBotonesRespuestas = botonesActualizados)
+                    } else pregunta
+                }
+                state.copy(preguntas = preguntasActualizadas)
+            }
+        return _uiState.value.preguntas[getNumPreguntaActual()].textoBotonesRespuestas[i]
+
     }
 
     fun cambiaPregunta(cadena: String): String {
-        getPregunta().pregunta.value= cadena
-        return  cadena
+        _uiState.update { state ->
+            val preguntasActualizadas = state.preguntas.mapIndexed { idx, pregunta ->
+                if (idx == state.i) {
+                    pregunta.copy(pregunta = cadena)
+                }
+                else{pregunta}
+            }
+            state.copy(preguntas = preguntasActualizadas)
+        }
+        return _uiState.value.preguntas[getNumPreguntaActual()].pregunta
     }
+
     fun siguientePregunta() {
         _uiState.update { state ->
             if (state.i < state.preguntas.lastIndex) {
@@ -75,12 +104,9 @@ data class ElegirRespUIState(
     val i: Int = 0
 )
 
-class Pregunta(
-    var textoBotonesRespuestas: List<MutableState<String>> =listOf(
-        mutableStateOf(""),
-        mutableStateOf(""),
-        mutableStateOf(""),
-        mutableStateOf("")),
-    var botonRespuesta: MutableState<String> =mutableStateOf(""),
-    var pregunta: MutableState<String> = mutableStateOf("")
+data class Pregunta(
+    val textoBotonesRespuestas: List<String> =List(4){""},
+    var respuestaCorrecta: String="1",
+    var pregunta: String = "",
+    var respuestaSeleccionada:String =""
 )

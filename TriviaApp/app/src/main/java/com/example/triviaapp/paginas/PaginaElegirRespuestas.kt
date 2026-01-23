@@ -62,8 +62,8 @@ fun PaginaElegirRespuestas(elegirRespuestas: ElegirRespViewModel = viewModel()) 
             Column(verticalArrangement = Arrangement.spacedBy(30.dp)) {
                 ComponentePreguntaYRespuestasRellenar(
                     DatosCreaPregunta(
-                        enunciado = elegirRespuestas.getPregunta().pregunta.value,
-                        elegirRespuestas.getPregunta().textoBotonesRespuestas,
+                        enunciado = elegirRespuestas.getPregunta().pregunta,
+                        textoBotonesRespuesta = elegirRespuestas.getPregunta().textoBotonesRespuestas,
                         accionEnunciado = {it-> elegirRespuestas.cambiaPregunta(it)},
                         accionRespuestas = {i,it->elegirRespuestas.cambiaTextoBoton(i,it)}
                     )
@@ -71,7 +71,7 @@ fun PaginaElegirRespuestas(elegirRespuestas: ElegirRespViewModel = viewModel()) 
                 ComponenteTituloConRadioButonHorizontal(
                     stringResource(R.string.app_opcion_correcta),
                     txtBotones,
-                    remember = elegirRespuestas.getPregunta().botonRespuesta.value,
+                    remember = elegirRespuestas.getPregunta().respuestaCorrecta,
                     accion = {it-> elegirRespuestas.cambiaRespuestaBoton(it)}
                 )
             }

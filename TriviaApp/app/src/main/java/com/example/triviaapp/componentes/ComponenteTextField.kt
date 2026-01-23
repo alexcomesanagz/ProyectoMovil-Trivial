@@ -48,16 +48,16 @@ fun ComponenteTextField(datos: DatosTextField){
     TextField(
         colors = TextFieldDefaults.colors(
             focusedContainerColor = datos.listaColor.get(0),
-            unfocusedContainerColor = datos.listaColor.get(1),
+            unfocusedContainerColor = datos.listaColor.get(0),
             focusedIndicatorColor = datos.listaColor.get(2),
-            cursorColor = datos.listaColor.get(3)
+            cursorColor = datos.listaColor.get(3),
+            focusedTextColor = datos.listaColor.get(1),
+            unfocusedTextColor = datos.listaColor.get(1)
         ),
         modifier = datos.modif,
         value = datos.txtContenido,
-        onValueChange = { txtNuevo ->
-            datos.txtContenido = datos.accion(txtNuevo)
-        },
-        label = { Text(datos.msjPregunta) },
+        onValueChange = {txtNuevo -> datos.txtContenido=datos.accion(txtNuevo)},
+        label = { Text(datos.msjPregunta, color = datos.listaColor.get(1)) },
 
     )
 }
@@ -74,16 +74,18 @@ fun ComponenteTextFieldLista(datos: DatosTextFieldLista){
     TextField(
         colors = TextFieldDefaults.colors(
             focusedContainerColor = datos.listaColor.get(0),
-            unfocusedContainerColor = datos.listaColor.get(1),
+            unfocusedContainerColor = datos.listaColor.get(0),
             focusedIndicatorColor = datos.listaColor.get(2),
-            cursorColor = datos.listaColor.get(3)
+            cursorColor = datos.listaColor.get(3),
+            focusedTextColor = datos.listaColor.get(1),
+            unfocusedTextColor = datos.listaColor.get(1)
         ),
         modifier = datos.modif,
         value = datos.txtContenido,
         onValueChange = { txtNuevo ->
-            datos.txtContenido = datos.accion(datos.i,txtNuevo)
+            datos.txtContenido=datos.accion(datos.i,txtNuevo)
         },
-        label = { Text(datos.msjPregunta) },
+        label = { Text(datos.msjPregunta, color = datos.listaColor.get(1)) },
 
         )
 }
