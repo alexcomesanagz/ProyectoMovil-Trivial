@@ -25,7 +25,9 @@ class DatosRespondePregunta(
     val enunciado: String,
     val textoBotonesRespuesta: List<String>,
     val paddingBotonesTitulo: Int = 8,
-    val respuesta: String
+    val respuesta: String,
+    val accionRespuestas: (String) -> String={""}
+
 )
 
 
@@ -41,7 +43,8 @@ datos: DatosRespondePregunta
         ComponenteRespuestasRadioButon(
             DatosRadioBotones(
                 txtBotones = datos.textoBotonesRespuesta,
-                remember = datos.respuesta
+                remember = datos.respuesta,
+                accion = datos.accionRespuestas
             )
         )
     }

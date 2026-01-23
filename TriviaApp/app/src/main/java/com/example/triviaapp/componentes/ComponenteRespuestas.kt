@@ -41,7 +41,7 @@ fun ComponenteRespuestasTextBox(
                 ) {
                     ComponenteTextFieldLista(
                         DatosTextFieldLista(
-                            msjPregunta = "introduzca respuesta ",
+                            msjPregunta = "introduzca respuesta "+(i+1),
                             txtContenido = textoBoton,
                             i = i,
                             modif = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.secondary),
@@ -69,7 +69,9 @@ fun ComponenteRespuestasRadioButon(
     LazyVerticalGrid(modifier = Modifier.padding(5.dp),
         columns = GridCells.Fixed(2),
         content = {
-            items(datos.txtBotones) { textoBoton ->
+            itemsIndexed(items = datos.txtBotones,
+                key ={ index, _ -> index }
+            ) {i, textoBoton ->
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.padding( 5.dp)
@@ -77,8 +79,9 @@ fun ComponenteRespuestasRadioButon(
                 ) {
                     ComponenteRadioButon(
                         DatosRadioBoton(
-                            textoBoton,
-                            listaColor,
+                            msj = textoBoton,
+                            boton = ""+(i+1),
+                            coloresBoton = listaColor,
                             rememberCadena = datos.remember,
                             accion = datos.accion
                         )

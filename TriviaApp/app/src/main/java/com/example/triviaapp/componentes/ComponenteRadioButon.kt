@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 
 class DatosRadioBoton(
     val msj: String,
+    val boton:String,
     val coloresBoton: List<Color>,
     val tamanioTexto:Int=12,
     var rememberCadena: String ="",
@@ -42,18 +43,18 @@ fun ComponenteRadioButon(
             )
             .fillMaxWidth()
             .clickable {
-                datos.accion(datos.msj)
+               datos.rememberCadena= datos.accion(datos.boton)
             }
             ,
         horizontalArrangement = Arrangement.Center
     ){
         RadioButton(
-            selected = (datos.msj== datos.rememberCadena),
+            selected = (datos.boton== datos.rememberCadena),
             colors = RadioButtonColors(selectedColor = datos.coloresBoton.get(0),
                 unselectedColor = datos.coloresBoton.get(1),
                 disabledSelectedColor = datos.coloresBoton.get(2),
                 disabledUnselectedColor =    datos.coloresBoton.get(3) ),
-            onClick = { datos.rememberCadena = datos.accion(datos.msj) },
+            onClick = { datos.rememberCadena = datos.accion(datos.boton) },
             modifier = Modifier
         )
         Text(

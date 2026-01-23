@@ -72,7 +72,7 @@ fun PaginaElegirRespuestas(elegirRespuestas: ElegirRespViewModel = viewModel()) 
                     stringResource(R.string.app_opcion_correcta),
                     txtBotones,
                     remember = elegirRespuestas.getPregunta().respuestaCorrecta,
-                    accion = {it-> elegirRespuestas.cambiaRespuestaBoton(it)}
+                    accion = {it-> elegirRespuestas.cambiaRespuestaCorrecta(it)}
                 )
             }
             Column(

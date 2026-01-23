@@ -133,13 +133,13 @@ class MainActivity : ComponentActivity() {
                                 .background(MaterialTheme.colorScheme.inverseSurface)
                         ) {
 //                            PaginaAjustesTrivia()
-//                            PaginaElegirRespuestas()
+                            PaginaElegirRespuestas()
 //                            PaginaFinTrivia()
 //                            PaginaLista()
 //                            PaginaLogin()
 //                            PaginaPerfil()
 //                            PaginaPrincipal()
-                            PaginaResponderPreguntas()
+//                            PaginaResponderPreguntas()
                         }
                     }
                 }
@@ -212,14 +212,14 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .background(MaterialTheme.colorScheme.background)
                     ) {
-                        PaginaAjustesTrivia() // cambiar tamaño botones y cajas unificadas
+//                        PaginaAjustesTrivia() // cambiar tamaño botones y cajas unificadas
 //                            PaginaElegirRespuestas()
 //                            PaginaFinTrivia() //hacerlo mas bonito/visual(ej: poner imagen de felicidades)
 //                            PaginaLista()
 //                            PaginaLogin()
 //                            PaginaPerfil()
 //                            PaginaPrincipal()
-//                            PaginaResponderPreguntas()
+                            PaginaResponderPreguntas()
                     }
                 }
             }
