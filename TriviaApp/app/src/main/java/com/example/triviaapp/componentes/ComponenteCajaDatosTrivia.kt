@@ -62,7 +62,7 @@ fun ComponenteCajaDatosTrivia() {
             )
             Column() {
                 ComponenteTituloCaja(stringResource(R.string.app_titulo_nombreTrivia))
-                ComponenteTextField(DatosTextField(txtContenido = remember))
+                ComponenteTextField(DatosTextField(txtContenido = ""))
             }
         }
         Column(

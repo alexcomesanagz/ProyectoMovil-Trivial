@@ -15,8 +15,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -50,7 +48,6 @@ fun PaginaElegirRespuestas(elegirRespuestas: ElegirRespViewModel = viewModel()) 
     )
 
 
-      elegirRespuestas.getPregunta().botonRespuesta = remember { mutableStateOf(txtBotones[0]) }
 
     Box(
         Modifier
@@ -65,8 +62,10 @@ fun PaginaElegirRespuestas(elegirRespuestas: ElegirRespViewModel = viewModel()) 
             Column(verticalArrangement = Arrangement.spacedBy(30.dp)) {
                 ComponentePreguntaYRespuestasRellenar(
                     DatosCreaPregunta(
-                        enunciado = elegirRespuestas.getPregunta().pregunta,
-                        elegirRespuestas.getPregunta().textoBotonesRespuestas
+                        enunciado = elegirRespuestas.getPregunta().pregunta.value,
+                        elegirRespuestas.getPregunta().textoBotonesRespuestas,
+                        accionEnunciado = {it-> elegirRespuestas.cambiaPregunta(it)},
+                        accionRespuestas = {i,it->elegirRespuestas.cambiaTextoBoton(i,it)}
                     )
                 )
                 ComponenteTituloConRadioButonHorizontal(
@@ -85,7 +84,7 @@ fun PaginaElegirRespuestas(elegirRespuestas: ElegirRespViewModel = viewModel()) 
                         RoundedCornerShape(12.dp)
                     )
             ) {
-                ComponenteTituloCaja( "" + uiState.i + " / " + elegirRespuestas.getNumPreguntas())
+                ComponenteTituloCaja( "${uiState.i+1} / ${elegirRespuestas.getNumPreguntas()}")
                 Box(
                     modifier = Modifier.padding(bottom = 10.dp)
                 ) {

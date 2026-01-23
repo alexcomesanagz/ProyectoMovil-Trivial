@@ -54,7 +54,7 @@ class DatosBoton(
 @Composable
 fun ComponenteBoton(datos: DatosBoton) {
     Button(
-        onClick = {datos.accion},
+        onClick = datos.accion,
         colors = ButtonColors(
             containerColor = datos.coloresBoton.get(0),
             contentColor = datos.coloresBoton.get(1),

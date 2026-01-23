@@ -45,9 +45,11 @@ datos: DatosRespondePregunta
 
 
 class DatosCreaPregunta(
-    val enunciado: MutableState<String>,
-    val textoBotonesRespuesta: List<MutableState<String>>,
+    val enunciado: String,
+    val textoBotonesRespuesta: List <MutableState<String>>,
     val paddingBotonesTitulo: Int = 8,
+    val accionEnunciado: (String) -> String={""},
+    val accionRespuestas: (Int,String) -> String={i,it-> ""}
 )
 
 @Composable
@@ -61,11 +63,13 @@ fun ComponentePreguntaYRespuestasRellenar(
         ComponenteTextField(
                 DatosTextField(
                 "introduzca la pregunta ",
-                datos.enunciado
+                datos.enunciado,
+                    accion =datos.accionEnunciado
                 )
         )
         ComponenteRespuestasTextBox(
-            datos.textoBotonesRespuesta
+            datos.textoBotonesRespuesta,
+            accion = datos.accionRespuestas
         )
     }
 }

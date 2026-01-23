@@ -24,9 +24,10 @@ import androidx.compose.ui.unit.dp
  */
 @Composable
 fun ComponenteRespuestasTextBox(
-    textoBotonesRespuesta: List<MutableState<String>>
+    textoBotonesRespuesta: List <MutableState<String>>,
+    accion: (Int, String) -> String={i,it ->""}
+
 ) {
-    var i=0
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         content = {
@@ -35,14 +36,16 @@ fun ComponenteRespuestasTextBox(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.padding( 10.dp)
                 ) {
-                    ComponenteTextField(
-                        DatosTextField(
-                            msjPregunta = "introduzca respuesta "+i,
-                            txtContenido = textoBoton,
-                            modif = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.secondary)
+                    ComponenteTextFieldLista(
+                        DatosTextFieldLista(
+                            msjPregunta = "introduzca respuesta ",
+                            txtContenido = textoBoton.value,
+                            i = textoBotonesRespuesta.indexOf(textoBoton),
+                            modif = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.secondary),
+                            accion = accion
                         )
                     )
-                    i++
+
                 }
             }
         }
