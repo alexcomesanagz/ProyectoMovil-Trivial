@@ -58,7 +58,8 @@ fun ComponenteCajaDatosTrivia() {
                 txtTitulo,
                     txtBotones,
                     1,
-                    recuerda)
+                    recuerda
+                )
             )
             Column() {
                 ComponenteTituloCaja(stringResource(R.string.app_titulo_nombreTrivia))

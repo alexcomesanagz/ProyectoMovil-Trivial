@@ -100,6 +100,7 @@ fun ComponenteRadioButonsHorizontal(
                             ComponenteRadioButon(
                                 DatosRadioBoton(
                                     msj = it,
+                                    boton = it,
                                     coloresBoton = listaColor,
                                     tamanioTexto = datos.tamanioTexto,
                                     rememberCadena = datos.remember,

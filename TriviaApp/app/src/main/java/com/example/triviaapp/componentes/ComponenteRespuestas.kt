@@ -69,7 +69,9 @@ fun ComponenteRespuestasRadioButon(
     LazyVerticalGrid(modifier = Modifier.padding(5.dp),
         columns = GridCells.Fixed(2),
         content = {
-            items(datos.txtBotones) { textoBoton ->
+            itemsIndexed(items = datos.txtBotones,
+                key ={ index, _ -> index }
+            ) {i, textoBoton ->
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.padding( 5.dp)
@@ -77,8 +79,9 @@ fun ComponenteRespuestasRadioButon(
                 ) {
                     ComponenteRadioButon(
                         DatosRadioBoton(
-                            textoBoton,
-                            listaColor,
+                            msj = textoBoton,
+                            boton = ""+i,
+                            coloresBoton = listaColor,
                             rememberCadena = datos.remember,
                             accion = datos.accion
                         )
