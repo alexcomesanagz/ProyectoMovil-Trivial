@@ -107,5 +107,5 @@ data class Pregunta(
     val textoBotonesRespuestas: List<String> =List(4){""},
     var respuestaCorrecta: String="1",
     var pregunta: String = "",
-    var respuestaSeleccionada:String =""
+    var respuestaSeleccionada:String ="1"
 )
