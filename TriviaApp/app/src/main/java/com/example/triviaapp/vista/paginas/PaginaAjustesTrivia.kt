@@ -1,4 +1,4 @@
-package com.example.triviaapp.paginas
+package com.example.triviaapp.vista.paginas
 
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement

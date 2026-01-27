@@ -4,11 +4,7 @@ import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
-import androidx.lifecycle.viewModelScope
 import com.example.triviaapp.componentes.Tarjeta
-import com.example.triviaapp.paginas.tarjetasUsuario
-import kotlinx.coroutines.launch
 
 class PrincipalViewModel : ViewModel() {
 

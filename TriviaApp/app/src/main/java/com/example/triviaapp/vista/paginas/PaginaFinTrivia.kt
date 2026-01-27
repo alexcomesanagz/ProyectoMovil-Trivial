@@ -1,4 +1,4 @@
-package com.example.triviaapp.paginas
+package com.example.triviaapp.vista.paginas
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,7 +22,6 @@ import com.example.triviaapp.componentes.ComponenteCreditoCreadores
 import com.example.triviaapp.componentes.DatosColumnaTexto
 import com.example.triviaapp.componentes.DenegarBoton
 import com.example.triviaapp.viewModels.PaginaFinViewModel
-import com.example.triviaapp.viewModels.PrincipalViewModel
 
 /**
  * Pagina que muestra los resultados del trivia hecho
