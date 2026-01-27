@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetasHorizontal
 import com.example.triviaapp.componentes.Tarjeta
@@ -60,7 +59,6 @@ fun PaginaLista(paginaListaViewModel: PaginaListaViewModel= viewModel()){
 @Preview
 @Composable
 fun PrevPaginaLista() {
-    TriviaAppTheme {
         PaginaLista()
-    }
+
 }
