@@ -14,13 +14,18 @@ class PaginaAjustesViewModel : ViewModel(){
 
     private val repo : IRepo = RepoLocal()
 
-    fun prueba(){
-        _uiState.value= _uiState.value.copy(name="Ana")
+    fun getPreguntasAcertadas(): Int{
+        return _uiState.value.respuestasCorrectas
+    }
+
+    fun getPreguntasTotales(): Int{
+        return _uiState.value.respuestasTotales
     }
 
 
 }
 
 data class PaginaAjustesUiState(
-    val name : String
+    val respuestasCorrectas: Int = 4,
+    val respuestasTotales: Int = 10
 )
