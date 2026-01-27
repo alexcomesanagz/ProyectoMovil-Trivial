@@ -28,23 +28,23 @@ import com.example.triviaapp.R
  * @param tamañoTexto tamaño de la letra de los botones
  */
 @Composable
-fun ComponenteCajaDatosTrivia() {
-    val txtTitulo = "Tipo de categoría"
+fun ComponenteCajaDatosTrivia(
+    radioButonSeleccionado: String,
+    accionRadioButons: (String) -> String={""},
+    cadenaField: String,
+    accionTextField: (String) ->String={""},
+    estadoSlider: Float,
+    accionSlider:(Float)->Float={1f},
+    estadoSwitch: Boolean,
+    accionSwitch:(Boolean)-> Boolean={false}
+
+) {
     val txtBotones: List<String> = listOf(
         stringResource(R.string.app_categoria1),
         stringResource(R.string.app_categoria2),
         stringResource(R.string.app_categoria3),
         stringResource(R.string.app_categoria4)
     )
-    val recuerda by remember { mutableStateOf(txtBotones[0]) }
-    val remember= remember{ mutableStateOf("") }
-    val accionbotones: List<() -> Unit> = listOf(
-        { Log.e("Testing", "Aceptar boton cliqueado") },
-        { Log.e("Testing", "Aceptar boton cliqueado") },
-        { Log.e("Testing", "Aceptar boton cliqueado") },
-        { Log.e("Testing", "Aceptar boton cliqueado") }
-    )
-    val tamañoTexto = 12
 
     Column(
         modifier = Modifier.fillMaxWidth(),
@@ -55,15 +55,16 @@ fun ComponenteCajaDatosTrivia() {
         ) {
             ComponentePreguntaYRespuestas(
                 DatosRespondePregunta(
-                txtTitulo,
+                stringResource(R.string.app_titulo_categorias),
                     txtBotones,
                     1,
-                    recuerda
+                    radioButonSeleccionado,
+                    accionRespuestas = accionRadioButons
                 )
             )
             Column() {
                 ComponenteTituloCaja(stringResource(R.string.app_titulo_nombreTrivia))
-                ComponenteTextField(DatosTextField(txtContenido = ""))
+                ComponenteTextField(DatosTextField(txtContenido = cadenaField, accion = accionTextField))
             }
         }
         Column(
@@ -79,7 +80,7 @@ fun ComponenteCajaDatosTrivia() {
                     .padding(bottom = 10.dp)
             ) {
                 ComponenteTituloCaja(stringResource(R.string.app_titulo_tituloSlider))
-                ComponenteSlider()
+                ComponenteSlider(DatosSlider(estadoSlider,accionSlider))
             }
 
             Column(
@@ -95,7 +96,7 @@ fun ComponenteCajaDatosTrivia() {
                 Box(
                     contentAlignment = Alignment.Center
                 ) {
-                    ComponenteSwitch()
+                    ComponenteSwitch(DatoSwitch(estadoSwitch,accionSwitch))
                 }
             }
         }
@@ -106,5 +107,9 @@ fun ComponenteCajaDatosTrivia() {
 @Preview(showSystemUi = true)
 @Composable
 fun PrevComponenteCajaDatosTrivia() {
-    ComponenteCajaDatosTrivia()
+    ComponenteCajaDatosTrivia(
+        "",
+        cadenaField = "",
+        estadoSlider = 0f,
+        estadoSwitch = false)
 }

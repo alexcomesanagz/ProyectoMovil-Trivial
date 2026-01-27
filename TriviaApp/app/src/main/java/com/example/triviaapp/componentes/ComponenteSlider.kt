@@ -24,8 +24,11 @@ import androidx.compose.ui.unit.dp
  * @param sliderPosition posicion del componente,
  * siendo esta 10 por defecto
  */
+class DatosSlider(var estadoSlider: Float,val accionSlider: (Float)-> Float={1f})
 @Composable
-fun ComponenteSlider(){
+fun ComponenteSlider(
+    datos: DatosSlider
+  ){
     var sliderPosition by remember { mutableStateOf(10f) }
     Column(
         modifier = Modifier
@@ -35,8 +38,8 @@ fun ComponenteSlider(){
             color = MaterialTheme.colorScheme.onBackground
         )
         Slider(
-            value = sliderPosition,
-            onValueChange = { sliderPosition = it },
+            value = datos.estadoSlider,
+            onValueChange = { datos.estadoSlider = datos.accionSlider(it) },
             valueRange = 1f..20f,
             steps = 18,
             colors = SliderDefaults.colors(activeTrackColor = MaterialTheme.colorScheme.secondary)
@@ -47,5 +50,5 @@ fun ComponenteSlider(){
 @Preview
 @Composable
 fun PrevComponenteSlider(){
-    ComponenteSlider()
+    ComponenteSlider(DatosSlider(1f))
 }

@@ -19,12 +19,15 @@ import androidx.compose.ui.tooling.preview.Preview
  * @param isChecked estado del componente,
  * siendo este false por defecto
  */
+class DatoSwitch(var valorSwitch: Boolean,val accionSwitch:(Boolean)-> Boolean={true})
 @Composable
-fun ComponenteSwitch(){
+fun ComponenteSwitch(
+    datos: DatoSwitch
+){
     var isChecked by remember { mutableStateOf(false) }
     Switch(
-        checked = isChecked,
-        onCheckedChange = { isChecked = it},
+        checked = datos.valorSwitch,
+        onCheckedChange = { datos.valorSwitch = datos.accionSwitch(it)},
         modifier = Modifier.fillMaxWidth(),
         colors = SwitchDefaults.colors(checkedTrackColor = MaterialTheme.colorScheme.secondary)
     )
@@ -33,5 +36,6 @@ fun ComponenteSwitch(){
 @Preview
 @Composable
 fun PrevComponenteSwitch(){
-    ComponenteSwitch()
+
+    ComponenteSwitch(DatoSwitch(false))
 }

@@ -20,13 +20,8 @@ import com.example.triviaapp.componentes.DatosBotonDoble
  */
 
 @Composable
-fun PaginaAjustesTrivia() {
-    val accionbotones: List<() -> Unit> = listOf(
-        { Log.e("Testing", "Aceptar boton cliqueado") },
-        { Log.e("Testing", "Aceptar boton cliqueado") },
-        { Log.e("Testing", "Aceptar boton cliqueado") },
-        { Log.e("Testing", "Aceptar boton cliqueado") }
-    )
+fun PaginaAjustesTrivia(
+) {
     Column(
         modifier = Modifier.padding(vertical = 15.dp, horizontal = 15.dp),
         verticalArrangement = Arrangement.spacedBy(40.dp)
