@@ -1,7 +1,8 @@
-package com.example.triviaapp.viewModels
+package com.example.triviaapp.viewModels.vm
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.triviaapp.viewModels.Uis.ElegirRespUIState
+import com.example.triviaapp.viewModels.Uis.Pregunta
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -93,19 +94,3 @@ class ElegirRespViewModel : ViewModel() {
 
 
 
-data class ElegirRespUIState(
-    val preguntas: List<Pregunta> =listOf(
-        Pregunta(),
-        Pregunta(),
-        Pregunta(),
-        Pregunta()
-    ),
-    val i: Int = 0
-)
-
-data class Pregunta(
-    val textoBotonesRespuestas: List<String> =List(4){""},
-    var respuestaCorrecta: String="1",
-    var pregunta: String = "",
-    var respuestaSeleccionada:String ="1"
-)

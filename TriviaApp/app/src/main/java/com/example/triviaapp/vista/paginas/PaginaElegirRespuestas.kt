@@ -20,7 +20,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
 import com.example.triviaapp.componentes.BotonesDobleAvanzarLinea
@@ -30,7 +29,7 @@ import com.example.triviaapp.componentes.ComponenteTituloCaja
 import com.example.triviaapp.componentes.ComponenteTituloConRadioButonHorizontal
 import com.example.triviaapp.componentes.DatosBotonDoble
 import com.example.triviaapp.componentes.DatosCreaPregunta
-import com.example.triviaapp.viewModels.ElegirRespViewModel
+import com.example.triviaapp.viewModels.vm.ElegirRespViewModel
 
 
 
@@ -117,7 +116,7 @@ fun PaginaElegirRespuestas(elegirRespuestas: ElegirRespViewModel = viewModel()) 
 @Preview(showSystemUi = true)
 @Composable
 fun PrevPaginaElegirRespuestas() {
-    TriviaAppTheme {
+//    TriviaAppTheme {
         PaginaElegirRespuestas()
-    }
+//    }
 }

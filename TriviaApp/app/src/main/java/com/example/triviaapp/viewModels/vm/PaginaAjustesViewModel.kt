@@ -1,11 +1,10 @@
-package com.example.triviaapp.viewModels
+package com.example.triviaapp.viewModels.vm
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.triviaapp.viewModels.Uis.PaginaAjustesUi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 
 class PaginaAjustesViewModel : ViewModel() {
 
@@ -43,11 +42,5 @@ class PaginaAjustesViewModel : ViewModel() {
 
 
 
-data class PaginaAjustesUi(
-   val nombreTriv:String="",
-    val categoria: String="1",
-    val muestraCreador: Boolean=false,
-    val preguntas: Float=0f,
 
-)
 

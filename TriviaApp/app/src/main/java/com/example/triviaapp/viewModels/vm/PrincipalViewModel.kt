@@ -1,10 +1,11 @@
-package com.example.triviaapp.viewModels
+package com.example.triviaapp.viewModels.vm
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import com.example.triviaapp.componentes.Tarjeta
+import com.example.triviaapp.viewModels.Uis.PrincipalUiState
 
 class PrincipalViewModel : ViewModel() {
 
@@ -13,7 +14,3 @@ class PrincipalViewModel : ViewModel() {
 
 }
 
-data class PrincipalUiState(
-    val tarjetasLista1: List<Tarjeta> = listOf<Tarjeta>(),
-    val tarjetasLista2: List<Tarjeta> = listOf<Tarjeta>(),
-)

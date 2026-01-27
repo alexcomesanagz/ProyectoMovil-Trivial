@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetasHorizontal
-import com.example.triviaapp.viewModels.PrincipalViewModel
+import com.example.triviaapp.viewModels.vm.PrincipalViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 

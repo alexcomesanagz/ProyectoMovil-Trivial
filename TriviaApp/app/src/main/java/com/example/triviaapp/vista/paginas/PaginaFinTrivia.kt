@@ -21,7 +21,7 @@ import com.example.triviaapp.componentes.ComponenteColumnaTextoUnFondo
 import com.example.triviaapp.componentes.ComponenteCreditoCreadores
 import com.example.triviaapp.componentes.DatosColumnaTexto
 import com.example.triviaapp.componentes.DenegarBoton
-import com.example.triviaapp.viewModels.PaginaFinViewModel
+import com.example.triviaapp.viewModels.vm.PaginaFinViewModel
 
 /**
  * Pagina que muestra los resultados del trivia hecho

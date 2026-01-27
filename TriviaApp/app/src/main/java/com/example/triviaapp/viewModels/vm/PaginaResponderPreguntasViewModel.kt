@@ -1,9 +1,8 @@
-package com.example.triviaapp.viewModels
+package com.example.triviaapp.viewModels.vm
 
-import android.util.Log
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import com.example.triviaapp.viewModels.Uis.Pregunta
+import com.example.triviaapp.viewModels.Uis.ResponderPregUIState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -75,12 +74,3 @@ class ResponderPreguntasViewModel : ViewModel() {
 
 
 
-data class ResponderPregUIState(
-    val preguntas: List<Pregunta> =listOf(
-        Pregunta(),
-        Pregunta(),
-        Pregunta(),
-        Pregunta()
-    ),
-    val i: Int = 0
-)

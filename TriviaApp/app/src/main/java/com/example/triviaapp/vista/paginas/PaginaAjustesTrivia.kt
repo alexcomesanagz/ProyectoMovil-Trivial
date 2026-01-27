@@ -26,7 +26,7 @@ fun PaginaAjustesTrivia(
         modifier = Modifier.padding(vertical = 15.dp, horizontal = 15.dp),
         verticalArrangement = Arrangement.spacedBy(40.dp)
     ) {
-        ComponenteCajaDatosTrivia()
+        ComponenteCajaDatosTrivia(estadoSwitch = false, estadoSlider = 0f, cadenaField = "", radioButonSeleccionado = "1")
         Column(
             verticalArrangement = Arrangement.spacedBy(3.dp)
         ) {

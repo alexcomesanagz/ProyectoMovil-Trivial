@@ -18,7 +18,7 @@ import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetasHorizontal
 import com.example.triviaapp.componentes.Tarjeta
-import com.example.triviaapp.viewModels.PaginaListaViewModel
+import com.example.triviaapp.viewModels.vm.PaginaListaViewModel
 
 private val tarjetas: Map<String, List<Tarjeta>> = mapOf("miedo" to
    listOf(Tarjeta(R.drawable.trivia,"Trivia 1")) ,
