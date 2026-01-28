@@ -13,7 +13,7 @@ class PaginaFinViewModel : ViewModel() {
     val uiState: StateFlow<PaginaFinUiState> = _uiState.asStateFlow()
 
     fun cambioImagen() {
-        if (_uiState.value.preguntasAcertadas < _uiState.value.preguntasTotales / 2) {
+        _uiState.value = if (_uiState.value.preguntasAcertadas < _uiState.value.preguntasTotales / 2) {
             _uiState.value.copy(imagenResultado = R.drawable.ic_launcher_background)
         } else {
             _uiState.value.copy(imagenResultado = R.drawable.trivia)

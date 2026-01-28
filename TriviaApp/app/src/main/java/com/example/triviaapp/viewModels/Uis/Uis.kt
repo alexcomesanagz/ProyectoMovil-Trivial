@@ -30,9 +30,9 @@ data class Pregunta(
 
 
 data class PaginaFinUiState(
-    val preguntasAcertadas: Int = 7,
+    val preguntasAcertadas: Int = 3,
     val preguntasTotales: Int = 10,
-    val imagenResultado: Int = 0
+    val imagenResultado: Int = R.drawable.trivia
 )
 
 data class PaginaListaUiState(

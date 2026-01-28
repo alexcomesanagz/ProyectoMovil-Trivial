@@ -53,7 +53,6 @@ fun PaginaFinTrivia(paginaFinViewModel: PaginaFinViewModel = viewModel()) {
                 )
             )
         }
-
         ComponenteImagen(uiState.imagenResultado, 300)
         Row(modifier = Modifier.fillMaxWidth()) {
             Box(
