@@ -15,12 +15,6 @@ data class PaginaPerfilUi(
     )
 )
 
-data class Trivia(
-    val imagen: Int = R.drawable.trivia,
-    val titulo: String = "",
-    val accion: () -> Unit = {}
-)
-
 data class PaginaAjustesUi(
     val nombreTriv:String="",
     val categoria: String="1",
