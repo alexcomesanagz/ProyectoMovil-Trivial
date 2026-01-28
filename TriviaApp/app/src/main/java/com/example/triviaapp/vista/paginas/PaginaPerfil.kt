@@ -6,10 +6,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.ComponenteImagenRedondeada
 import com.example.triviaapp.componentes.ComponenteLinea
@@ -17,6 +20,7 @@ import com.example.triviaapp.componentes.ComponenteListaTarjetasVertical
 import com.example.triviaapp.componentes.ComponenteTitulo
 import com.example.triviaapp.componentes.DenegarBoton
 import com.example.triviaapp.componentes.Tarjeta
+import com.example.triviaapp.viewModels.vm.PaginaPerfilViewModel
 
 val tarjetasUsuario: List<Tarjeta> = listOf(
     Tarjeta(R.drawable.trivia, titulo = "Trivia 1"),
@@ -33,7 +37,10 @@ val tarjetasUsuario: List<Tarjeta> = listOf(
  * pagina donde un usuario que inicio sesion mira sus datos de la cuenta
  */
 @Composable
-fun PaginaPerfil() {
+fun PaginaPerfil(paginaPerfilUi: PaginaPerfilViewModel = viewModel()) {
+
+    val uiState by paginaPerfilUi.uiState.collectAsState()
+
     Column(verticalArrangement = Arrangement.spacedBy(space = 50.dp)) {
         Box(
             modifier = Modifier.padding(horizontal = 50.dp),
