@@ -29,7 +29,8 @@ import com.example.triviaapp.R
 data class Tarjeta(
     val imagen: Int=R.drawable.trivia,
     val titulo: String="",
-    val accion: () -> Unit = { Log.e("Testeo","tarjeta cliqueada")}
+    val accion: () -> Unit = { Log.e("Testeo","tarjeta cliqueada")},
+    val id: String = ""
 )
 
 /**
