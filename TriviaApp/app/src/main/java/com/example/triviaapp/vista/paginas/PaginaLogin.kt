@@ -19,6 +19,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.BotonesDobleAceptarColumna
 import com.example.triviaapp.componentes.ComponenteTextField
+import com.example.triviaapp.componentes.ComponenteTextFieldContrasena
 import com.example.triviaapp.componentes.DatosBotonDoble
 import com.example.triviaapp.componentes.DatosTextField
 import com.example.triviaapp.componentes.DenegarBoton
@@ -51,7 +52,7 @@ fun PaginaLogin(paginaLoginUi : PaginaLoginViewModel = viewModel()) {
                         }
                     )
                 )
-                ComponenteTextField(
+                ComponenteTextFieldContrasena(
                     DatosTextField(
                         stringResource(R.string.app_login_msjContraseña),
                         txtContenido = uiState.stringContrasena,

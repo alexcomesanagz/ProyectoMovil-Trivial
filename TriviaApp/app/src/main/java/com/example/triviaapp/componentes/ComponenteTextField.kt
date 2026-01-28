@@ -1,6 +1,7 @@
 package com.example.triviaapp.componentes
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -11,6 +12,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 
 
@@ -88,6 +91,34 @@ fun ComponenteTextFieldLista(datos: DatosTextFieldLista){
         label = { Text(datos.msjPregunta, color = datos.listaColor.get(1)) },
 
         )
+}
+
+@Composable
+fun ComponenteTextFieldContrasena(datos: DatosTextField){
+    datos.listaColor=listOf(
+        MaterialTheme.colorScheme.secondary,
+        MaterialTheme.colorScheme.onSecondary,
+        MaterialTheme.colorScheme.primary,
+        MaterialTheme.colorScheme.onPrimary)
+
+    TextField(
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = datos.listaColor.get(0),
+            unfocusedContainerColor = datos.listaColor.get(0),
+            focusedIndicatorColor = datos.listaColor.get(2),
+            cursorColor = datos.listaColor.get(3),
+            focusedTextColor = datos.listaColor.get(1),
+            unfocusedTextColor = datos.listaColor.get(1)
+        ),
+        modifier = datos.modif,
+        value = datos.txtContenido,
+        onValueChange = {txtNuevo -> datos.txtContenido=datos.accion(txtNuevo)},
+        label = { Text(datos.msjPregunta, color = datos.listaColor.get(1)) },
+        visualTransformation = PasswordVisualTransformation(),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Password
+        )
+    )
 }
 
 @Preview
