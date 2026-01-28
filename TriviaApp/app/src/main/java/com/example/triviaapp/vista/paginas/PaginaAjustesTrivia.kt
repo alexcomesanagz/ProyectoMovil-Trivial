@@ -19,19 +19,26 @@ import com.example.triviaapp.componentes.ComponenteLinea
 import com.example.triviaapp.componentes.DatosBotonDoble
 import com.example.triviaapp.viewModels.PaginaFinViewModel
 import com.example.triviaapp.viewModels.Uis.PaginaAjustesUi
+import com.example.triviaapp.viewModels.vm.PaginaAjustesViewModel
 
 /**
  * Pagina para introducir datos del trivia a crear
  */
 
 @Composable
-fun PaginaAjustesTrivia(paginaAjustesUi: PaginaFinViewModel= viewModel()) {
+fun PaginaAjustesTrivia(paginaAjustesUi: PaginaAjustesViewModel = viewModel()) {
     val uiState by paginaAjustesUi.uiState.collectAsState()
     Column(
         modifier = Modifier.padding(vertical = 15.dp, horizontal = 15.dp),
         verticalArrangement = Arrangement.spacedBy(40.dp)
     ) {
-        ComponenteCajaDatosTrivia(estadoSlider = 0f, cadenaField = "", radioButonSeleccionado = "1")
+        ComponenteCajaDatosTrivia(
+            estadoSlider = uiState.preguntas,
+            accionSlider = { paginaAjustesUi.setPreguntas(it) },
+            cadenaField = uiState.nombreTriv,
+            accionTextField = { paginaAjustesUi.setNombreTrivia(it) },
+            radioButonSeleccionado = uiState.categoria,
+            accionRadioButons = { paginaAjustesUi.setCategoria(it) })
         Column(
             verticalArrangement = Arrangement.spacedBy(3.dp)
         ) {

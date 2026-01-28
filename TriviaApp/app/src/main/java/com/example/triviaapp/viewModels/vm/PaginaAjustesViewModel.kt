@@ -11,31 +11,20 @@ class PaginaAjustesViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(PaginaAjustesUi())
     val uiState: StateFlow<PaginaAjustesUi> = _uiState.asStateFlow()
 
-//    fun getPregunta(): Pregunta {
-//        return _uiState.value.preguntas[getNumPreguntaActual()]
-//    }
-//
-//    fun getNumPreguntaActual(): Int {
-//        return _uiState.value.i
-//    }
-//
-//    fun getNumPreguntas(): Int {
-//        return _uiState.value.preguntas.size
-//    }
-//
-//    fun cambiaRespuestaCorrecta(cadena: String): String {
-//        _uiState.update { state ->
-//            val preguntasActualizadas = state.preguntas.mapIndexed { idx, pregunta ->
-//                if (idx == state.i) {
-//                    pregunta.copy(respuestaCorrecta = cadena)
-//                }
-//                else{pregunta}
-//            }
-//            state.copy(preguntas = preguntasActualizadas)
-//        }
-//        return getPregunta().respuestaCorrecta
-//
-//    }
+    fun setCategoria(categoria: String): String{
+        _uiState.value = _uiState.value.copy(categoria = categoria)
+        return categoria
+    }
+
+    fun setNombreTrivia(nombre: String): String{
+        _uiState.value = _uiState.value.copy(nombreTriv = nombre)
+        return nombre
+    }
+
+    fun setPreguntas(numPreguntas: Float): Float{
+        _uiState.value = _uiState.value.copy(preguntas = numPreguntas)
+        return numPreguntas
+    }
 
 }
 

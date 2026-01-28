@@ -7,7 +7,6 @@ data class PaginaAjustesUi(
     val nombreTriv:String="",
     val categoria: String="1",
     val preguntas: Float=0f
-
     )
 
 data class ElegirRespUIState(
@@ -47,7 +46,6 @@ data class ResponderPregUIState(
     ),
     val i: Int = 0
 )
-
 
 data class PrincipalUiState(
     val tarjetasLista1: List<Tarjeta> = listOf<Tarjeta>(),
