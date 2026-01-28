@@ -30,11 +30,11 @@ import com.example.triviaapp.R
 @Composable
 fun ComponenteCajaDatosTrivia(
     radioButonSeleccionado: String,
-    accionRadioButons: (String) -> String={""},
+    accionRadioButons: (String) -> String = { "" },
     cadenaField: String,
-    accionTextField: (String) ->String={""},
+    accionTextField: (String) -> String = { "" },
     estadoSlider: Float,
-    accionSlider:(Float)->Float={1f}
+    accionSlider: (Float) -> Float = { 1f }
 
 ) {
     val txtBotones: List<String> = listOf(
@@ -53,7 +53,7 @@ fun ComponenteCajaDatosTrivia(
         ) {
             ComponentePreguntaYRespuestas(
                 DatosRespondePregunta(
-                stringResource(R.string.app_titulo_categorias),
+                    stringResource(R.string.app_titulo_categorias),
                     txtBotones,
                     1,
                     radioButonSeleccionado,
@@ -62,7 +62,12 @@ fun ComponenteCajaDatosTrivia(
             )
             Column() {
                 ComponenteTituloCaja(stringResource(R.string.app_titulo_nombreTrivia))
-                ComponenteTextField(DatosTextField(txtContenido = cadenaField, accion = accionTextField))
+                ComponenteTextField(
+                    DatosTextField(
+                        txtContenido = cadenaField,
+                        accion = accionTextField
+                    )
+                )
             }
         }
         Column(
@@ -78,19 +83,7 @@ fun ComponenteCajaDatosTrivia(
                     .padding(bottom = 10.dp)
             ) {
                 ComponenteTituloCaja(stringResource(R.string.app_titulo_tituloSlider))
-                ComponenteSlider(DatosSlider(estadoSlider,accionSlider))
-            }
-
-            Column(
-                verticalArrangement = Arrangement.spacedBy(10.dp),
-                modifier = Modifier
-                    .background(
-                        color = MaterialTheme.colorScheme.surface,
-                        RoundedCornerShape(12.dp)
-                    )
-                    .padding(bottom = 5.dp)
-            ) {
-                ComponenteTituloCaja(stringResource(R.string.app_titulo_tituloSwitch))
+                ComponenteSlider(DatosSlider(estadoSlider, accionSlider))
             }
         }
     }
@@ -103,6 +96,6 @@ fun PrevComponenteCajaDatosTrivia() {
     ComponenteCajaDatosTrivia(
         "",
         cadenaField = "",
-        estadoSlider = 0f,
-        estadoSwitch = false)
+        estadoSlider = 0f
+    )
 }
