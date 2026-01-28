@@ -19,9 +19,10 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.ComponenteColumnaTextoUnFondo
 import com.example.triviaapp.componentes.ComponenteCreditoCreadores
+import com.example.triviaapp.componentes.ComponenteImagen
 import com.example.triviaapp.componentes.DatosColumnaTexto
 import com.example.triviaapp.componentes.DenegarBoton
-import com.example.triviaapp.viewModels.vm.PaginaFinViewModel
+import com.example.triviaapp.viewModels.PaginaFinViewModel
 
 /**
  * Pagina que muestra los resultados del trivia hecho
@@ -29,6 +30,9 @@ import com.example.triviaapp.viewModels.vm.PaginaFinViewModel
 @Composable
 fun PaginaFinTrivia(paginaFinViewModel: PaginaFinViewModel = viewModel()) {
     val uiState by paginaFinViewModel.uiState.collectAsState()
+
+    paginaFinViewModel.cargaDatos()
+    paginaFinViewModel.cambioImagen()
 
     Column(
         modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp),
@@ -44,28 +48,37 @@ fun PaginaFinTrivia(paginaFinViewModel: PaginaFinViewModel = viewModel()) {
             ComponenteColumnaTextoUnFondo(
                 DatosColumnaTexto(
                     msj1 = stringResource(R.string.app_titulo_tituloPreguntasAcertadas),
-                    msj2 = ""+uiState.preguntasAcertadas+"/" +uiState.preguntasTotales,
+                    msj2 = "" + uiState.preguntasAcertadas + "/" + uiState.preguntasTotales,
                     tamaño = 30
                 )
             )
         }
 
-        ComponenteCreditoCreadores()
+        ComponenteImagen(uiState.imagenResultado, 300)
         Row(modifier = Modifier.fillMaxWidth()) {
-            Box(modifier = Modifier
-                .weight(weight = 0.5f)
-                .fillMaxWidth()) {
+            Box(
+                modifier = Modifier
+                    .weight(weight = 0.5f)
+                    .fillMaxWidth()
+            ) {
                 Text(text = "")
             }
-            Box(modifier = Modifier
-                .weight(weight = 1f)
-                .fillMaxWidth()) {
-                DenegarBoton(stringResource(R.string.app_bt_salir), modifier = Modifier.fillMaxWidth())
+            Box(
+                modifier = Modifier
+                    .weight(weight = 1f)
+                    .fillMaxWidth()
+            ) {
+                DenegarBoton(
+                    stringResource(R.string.app_bt_salir),
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
 
-            Box(modifier = Modifier
-                .weight(weight = 0.5f)
-                .fillMaxWidth()) {
+            Box(
+                modifier = Modifier
+                    .weight(weight = 0.5f)
+                    .fillMaxWidth()
+            ) {
                 Text(text = "")
             }
         }

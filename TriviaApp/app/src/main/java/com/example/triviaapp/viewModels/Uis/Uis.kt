@@ -1,5 +1,6 @@
 package com.example.triviaapp.viewModels.Uis
 
+import com.example.triviaapp.R
 import com.example.triviaapp.componentes.Tarjeta
 
 data class PaginaAjustesUi(
@@ -29,8 +30,9 @@ data class Pregunta(
 
 
 data class PaginaFinUiState(
-    val preguntasAcertadas: Int = 0,
+    val preguntasAcertadas: Int = 7,
     val preguntasTotales: Int = 10,
+    val imagenResultado: Int = 0
 )
 
 data class PaginaListaUiState(
