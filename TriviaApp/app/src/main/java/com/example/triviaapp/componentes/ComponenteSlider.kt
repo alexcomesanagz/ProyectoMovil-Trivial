@@ -34,7 +34,7 @@ fun ComponenteSlider(
         modifier = Modifier
             .padding(10.dp)
     ) {
-        Text(text= "Número de preguntas: " + datos.estadoSlider,
+        Text(text= "Número de preguntas: " + datos.estadoSlider.toInt(),
             color = MaterialTheme.colorScheme.onBackground
         )
         Slider(
