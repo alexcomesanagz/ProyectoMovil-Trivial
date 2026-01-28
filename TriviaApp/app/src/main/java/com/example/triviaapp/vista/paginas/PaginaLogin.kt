@@ -8,26 +8,28 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.BotonesDobleAceptarColumna
 import com.example.triviaapp.componentes.ComponenteTextField
 import com.example.triviaapp.componentes.DatosBotonDoble
 import com.example.triviaapp.componentes.DatosTextField
 import com.example.triviaapp.componentes.DenegarBoton
+import com.example.triviaapp.viewModels.vm.PaginaLoginViewModel
 
 /**
  * Pagina para entrar en tu cuenta ya creada o crear una nueva
  */
 @Composable
-fun PaginaLogin() {
-    var nombre = ""
-    var pasword = ""
-
+fun PaginaLogin(paginaLoginUi : PaginaLoginViewModel = viewModel()) {
+    val uiState by paginaLoginUi.uiState.collectAsState()
     Box(
         Modifier
             .fillMaxSize()
@@ -44,19 +46,16 @@ fun PaginaLogin() {
                 ComponenteTextField(
                     DatosTextField(
                         msjPregunta = stringResource(R.string.app_login_msjCorreo),
-                        txtContenido = nombre,
-                        accion = { it ->
-                            nombre = it
-                            return@DatosTextField nombre
+                        txtContenido = uiState.stringCorreo,
+                        accion = { paginaLoginUi.setCorreo(it)
                         }
                     )
                 )
                 ComponenteTextField(
                     DatosTextField(
                         stringResource(R.string.app_login_msjContraseña),
-                        txtContenido = pasword,
-                        accion = {it-> pasword=it
-                            return@DatosTextField pasword }
+                        txtContenido = uiState.stringContrasena,
+                        accion = {paginaLoginUi.setContrasena(it) }
                     )
                 )
             }

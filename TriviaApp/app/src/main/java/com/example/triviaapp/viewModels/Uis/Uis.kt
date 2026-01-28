@@ -3,6 +3,11 @@ package com.example.triviaapp.viewModels.Uis
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.Tarjeta
 
+data class PaginaLoginUi(
+    val stringCorreo: String = "",
+    val stringContrasena: String = ""
+)
+
 data class PaginaPerfilUi(
     val imagenPerfil: Int = R.drawable.perfil,
     val nombreUsuario: String="",
