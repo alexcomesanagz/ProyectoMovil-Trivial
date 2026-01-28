@@ -54,7 +54,23 @@ data class PaginaFinUiState(
 )
 
 data class PaginaListaUiState(
-    val mapaDatos: Map<String, List<Tarjeta>> = mapOf<String,List<Tarjeta>>(),
+    val mapaDatos: Map<String, List<Tarjeta>> = mapOf<String,List<Tarjeta>>( "susto" to
+            listOf(Tarjeta(R.drawable.trivia,"Trivia 2"),
+                Tarjeta(R.drawable.trivia,"Trivia 2"),
+                Tarjeta(R.drawable.trivia,"Trivia 2"),
+                Tarjeta(R.drawable.trivia,"Trivia 2"),
+                Tarjeta(R.drawable.trivia,"Trivia 2")),
+        "resusto" to
+                listOf(Tarjeta(R.drawable.trivia,"Trivia 2"),
+                    Tarjeta(R.drawable.trivia,"Trivia 2"),
+                    Tarjeta(R.drawable.trivia,"Trivia 2"),
+                    Tarjeta(R.drawable.trivia,"Trivia 2"),
+                    Tarjeta(R.drawable.trivia,"Trivia 2")),
+        "cagao" to  listOf(Tarjeta(R.drawable.trivia,"Trivia 2"),
+            Tarjeta(R.drawable.trivia,"Trivia 2"),
+            Tarjeta(R.drawable.trivia,"Trivia 2"),
+            Tarjeta(R.drawable.trivia,"Trivia 2"),
+            Tarjeta(R.drawable.trivia,"Trivia 2")))
 )
 
 data class ResponderPregUIState(
@@ -68,6 +84,6 @@ data class ResponderPregUIState(
 )
 
 data class PrincipalUiState(
-    val tarjetasLista1: List<Tarjeta> = listOf<Tarjeta>(),
-    val tarjetasLista2: List<Tarjeta> = listOf<Tarjeta>(),
+    val tarjetasLista1: List<Tarjeta> = listOf<Tarjeta>(Tarjeta(),Tarjeta()),
+    val tarjetasLista2: List<Tarjeta> = listOf<Tarjeta>(Tarjeta(),Tarjeta()),
 )

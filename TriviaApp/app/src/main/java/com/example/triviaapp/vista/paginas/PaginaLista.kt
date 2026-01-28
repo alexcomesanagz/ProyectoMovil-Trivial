@@ -40,15 +40,13 @@ private val tarjetas: Map<String, List<Tarjeta>> = mapOf("miedo" to
 fun PaginaLista(paginaListaViewModel: PaginaListaViewModel= viewModel()){
 
     val uiState by paginaListaViewModel.uiState.collectAsState()
-    val listaSecciones = remember(tarjetas) { tarjetas.entries.toList() }
-
     Column(
         modifier = Modifier.padding(horizontal = 30.dp, vertical = 30.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         LazyColumn(verticalArrangement = Arrangement.spacedBy(30.dp)) {
 
-            items(items =listaSecciones, key = {it.key} ){ entry ->
+            items(items =uiState.mapaDatos.entries.toList(), key = {it.key} ){ entry ->
                 ComponenteTituloYListaTarjetasHorizontal(entry.key,entry.value)
             }
         }

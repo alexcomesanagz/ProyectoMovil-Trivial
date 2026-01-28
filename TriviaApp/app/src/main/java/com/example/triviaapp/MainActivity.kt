@@ -32,6 +32,7 @@ import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.ComponenteTopBar
 import com.example.triviaapp.vista.paginas.PaginaElegirRespuestas
+import com.example.triviaapp.vista.paginas.PaginaPerfil
 import com.example.triviaapp.vista.paginas.PaginaResponderPreguntas
 import kotlinx.coroutines.launch
 
@@ -128,11 +129,11 @@ class MainActivity : ComponentActivity() {
                                 .background(MaterialTheme.colorScheme.inverseSurface)
                         ) {
 //                            PaginaAjustesTrivia()
-                            PaginaElegirRespuestas()
+//                            PaginaElegirRespuestas()
 //                            PaginaFinTrivia()
 //                            PaginaLista()
 //                            PaginaLogin()
-//                            PaginaPerfil()
+                            PaginaPerfil()
 //                            PaginaPrincipal()
 //                            PaginaResponderPreguntas()
                         }
