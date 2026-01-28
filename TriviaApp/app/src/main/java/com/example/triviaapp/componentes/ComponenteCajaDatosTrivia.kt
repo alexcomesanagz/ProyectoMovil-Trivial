@@ -34,9 +34,7 @@ fun ComponenteCajaDatosTrivia(
     cadenaField: String,
     accionTextField: (String) ->String={""},
     estadoSlider: Float,
-    accionSlider:(Float)->Float={1f},
-    estadoSwitch: Boolean,
-    accionSwitch:(Boolean)-> Boolean={false}
+    accionSlider:(Float)->Float={1f}
 
 ) {
     val txtBotones: List<String> = listOf(
@@ -93,11 +91,6 @@ fun ComponenteCajaDatosTrivia(
                     .padding(bottom = 5.dp)
             ) {
                 ComponenteTituloCaja(stringResource(R.string.app_titulo_tituloSwitch))
-                Box(
-                    contentAlignment = Alignment.Center
-                ) {
-                    ComponenteSwitch(DatoSwitch(estadoSwitch,accionSwitch))
-                }
             }
         }
     }

@@ -6,8 +6,7 @@ import com.example.triviaapp.componentes.Tarjeta
 data class PaginaAjustesUi(
     val nombreTriv:String="",
     val categoria: String="1",
-    val muestraCreador: Boolean=false,
-    val preguntas: Float=0f,
+    val preguntas: Float=0f
 
     )
 
@@ -30,7 +29,7 @@ data class Pregunta(
 
 
 data class PaginaFinUiState(
-    val preguntasAcertadas: Int = 3,
+    val preguntasAcertadas: Int = 5,
     val preguntasTotales: Int = 10,
     val imagenResultado: Int = R.drawable.trivia
 )
