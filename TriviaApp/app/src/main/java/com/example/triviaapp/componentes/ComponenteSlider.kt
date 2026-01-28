@@ -29,12 +29,12 @@ class DatosSlider(var estadoSlider: Float,val accionSlider: (Float)-> Float={1f}
 fun ComponenteSlider(
     datos: DatosSlider
   ){
-    var sliderPosition by remember { mutableStateOf(10f) }
+//    var sliderPosition by remember { mutableStateOf(10f) }
     Column(
         modifier = Modifier
             .padding(10.dp)
     ) {
-        Text(text= "Número de preguntas: " + sliderPosition,
+        Text(text= "Número de preguntas: " + datos.estadoSlider,
             color = MaterialTheme.colorScheme.onBackground
         )
         Slider(
