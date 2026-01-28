@@ -66,7 +66,7 @@ fun PaginaPerfil(paginaPerfilUi: PaginaPerfilViewModel = viewModel()) {
         )
         {
             ComponenteListaTarjetasVertical(
-                tarjetas = uiState.trajetas,
+                tarjetas = uiState.tarjetasUsuario,
                 tamanioCaja = 220,
                 tamanio = 50,
 

@@ -7,11 +7,19 @@ data class PaginaPerfilUi(
     val imagenPerfil: Int = R.drawable.perfil,
     val nombreUsuario: String="",
     val correoUsuario: String="@gmail.com",
-    val trajetas: List<Tarjeta> =listOf(
-        Tarjeta(),
-        Tarjeta(),
-        Tarjeta(),
-        Tarjeta()
+    val tarjetasUsuario: List<Tarjeta> = listOf(
+        Tarjeta(
+            imagen = R.drawable.trivia,
+            titulo = "Cultura General"),
+        Tarjeta(
+            imagen = R.drawable.trivia,
+            titulo = "Historia"),
+        Tarjeta(
+            imagen = R.drawable.trivia,
+            titulo = "Ciencia"),
+        Tarjeta(
+            imagen = R.drawable.trivia,
+            titulo = "Deportes")
     )
 )
 
