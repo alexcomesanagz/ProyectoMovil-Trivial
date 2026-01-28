@@ -41,6 +41,7 @@ fun PaginaPerfil(paginaPerfilUi: PaginaPerfilViewModel = viewModel()) {
 
     val uiState by paginaPerfilUi.uiState.collectAsState()
 
+    paginaPerfilUi.cargaDatos()
     Column(verticalArrangement = Arrangement.spacedBy(space = 50.dp)) {
         Box(
             modifier = Modifier.padding(horizontal = 50.dp),
@@ -50,9 +51,9 @@ fun PaginaPerfil(paginaPerfilUi: PaginaPerfilViewModel = viewModel()) {
                 verticalArrangement = Arrangement.spacedBy(30.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                ComponenteImagenRedondeada(id = R.drawable.perfil, tamanio = 120)
-                ComponenteTitulo("nombre usuario")
-                ComponenteTitulo("correo usuario")
+                ComponenteImagenRedondeada(id = uiState.imagenPerfil, tamanio = 120)
+                ComponenteTitulo(uiState.nombreUsuario)
+                ComponenteTitulo(uiState.correoUsuario)
             }
         }
         Box(
@@ -61,9 +62,10 @@ fun PaginaPerfil(paginaPerfilUi: PaginaPerfilViewModel = viewModel()) {
         )
         {
             ComponenteListaTarjetasVertical(
-                tarjetas = tarjetasUsuario,
+                tarjetas = uiState.trajetas,
                 tamanioCaja = 220,
-                tamanio = 50
+                tamanio = 50,
+
             )
         }
         Column(

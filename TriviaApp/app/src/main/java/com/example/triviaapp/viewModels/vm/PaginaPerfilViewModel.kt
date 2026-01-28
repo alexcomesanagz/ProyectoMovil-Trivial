@@ -1,6 +1,7 @@
 package com.example.triviaapp.viewModels.vm
 
 import com.example.triviaapp.viewModels.Uis.PaginaAjustesUi
+import com.example.triviaapp.viewModels.Uis.PaginaFinUiState
 import com.example.triviaapp.viewModels.Uis.PaginaPerfilUi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -11,6 +12,8 @@ class PaginaPerfilViewModel {
     private val _uiState = MutableStateFlow(PaginaPerfilUi())
     val uiState: StateFlow<PaginaPerfilUi> = _uiState.asStateFlow()
 
-
+    fun cargaDatos() {
+        _uiState.value = PaginaPerfilUi()
+    }
 
 }

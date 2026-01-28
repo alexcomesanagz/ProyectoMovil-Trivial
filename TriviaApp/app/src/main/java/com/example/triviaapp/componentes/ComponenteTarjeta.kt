@@ -27,8 +27,8 @@ import com.example.triviaapp.R
  *@param accion lo que hara cuando se haga click en la tarjeta
  */
 data class Tarjeta(
-    val imagen: Int,
-    val titulo: String,
+    val imagen: Int = R.drawable.trivia,
+    val titulo: String = "",
     val accion: () -> Unit = { Log.e("Testeo","tarjeta cliqueada")}
 )
 
