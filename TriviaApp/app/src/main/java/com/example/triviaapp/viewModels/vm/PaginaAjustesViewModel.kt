@@ -22,8 +22,8 @@ class PaginaAjustesViewModel : ViewModel() {
     }
 
     fun setPreguntas(numPreguntas: Float): Float{
-        _uiState.value = _uiState.value.copy(preguntas = numPreguntas)
-        return numPreguntas
+        _uiState.value = _uiState.value.copy(preguntas = numPreguntas.toInt())
+        return _uiState.value.preguntas.toFloat()
     }
 
 }

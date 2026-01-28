@@ -33,7 +33,7 @@ fun PaginaAjustesTrivia(paginaAjustesUi: PaginaAjustesViewModel = viewModel()) {
         verticalArrangement = Arrangement.spacedBy(40.dp)
     ) {
         ComponenteCajaDatosTrivia(
-            estadoSlider = uiState.preguntas,
+            estadoSlider = uiState.preguntas.toFloat(),
             accionSlider = { paginaAjustesUi.setPreguntas(it) },
             cadenaField = uiState.nombreTriv,
             accionTextField = { paginaAjustesUi.setNombreTrivia(it) },

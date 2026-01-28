@@ -24,7 +24,7 @@ data class Trivia(
 data class PaginaAjustesUi(
     val nombreTriv:String="",
     val categoria: String="1",
-    val preguntas: Float=0f
+    val preguntas: Int=0
     )
 
 data class ElegirRespUIState(
