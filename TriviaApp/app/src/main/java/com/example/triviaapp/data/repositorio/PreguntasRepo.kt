@@ -1,4 +1,7 @@
 package com.example.triviaapp.data.repositorio
 
-class PreguntasRepo {
-}
+import com.example.triviaapp.modelo.RespuestaDTO
+
+ class PreguntasRepo {
+
+ }

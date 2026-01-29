@@ -1,4 +1,3 @@
 package com.example.triviaapp.modelo
 
-class TrivialDTO {
-}
+data class TrivialDTO (var id: String, var nombre: String, var categoria: String)
