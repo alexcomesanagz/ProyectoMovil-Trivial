@@ -25,47 +25,31 @@ class ResponderPreguntasViewModel : ViewModel() {
         return _uiState.value.preguntas.size
     }
 
-    fun getRespuestasCorrectas(): Int {
-        var i=0
-        _uiState.value.preguntas.forEach {
-            if(it.respuestaSeleccionada.equals(it.respuestaCorrecta))i++
-        }
-        return i
-    }
 
     fun cambiaRespuestaBoton(cadena: String): String {
-        _uiState.update { state ->
-            val preguntasActualizadas = state.preguntas.mapIndexed { idx, pregunta ->
-                if (idx == state.i) {
-                    pregunta.copy(respuestaSeleccionada = cadena)
-                }
-                else{pregunta}
-            }
-            state.copy(preguntas = preguntasActualizadas)
+        _uiState.value=_uiState.value.copy(
+            preguntas = _uiState.value.preguntas.mapIndexed{
+            id,pregunta ->
+                if(id==_uiState.value.i){
+                pregunta.copy(respuestaSeleccionada = cadena)
+            }else pregunta
         }
+        )
         return getPregunta().respuestaSeleccionada
     }
 
 
 
     fun siguientePregunta() {
-        _uiState.update { state ->
-            if (state.i < state.preguntas.lastIndex) {
-                state.copy(i = state.i + 1)
-            } else {
-                state
-            }
-        }
+        _uiState.value=_uiState.value.copy(i =
+        if(_uiState.value.i < _uiState.value.preguntas.lastIndex)_uiState.value.i+1
+        else _uiState.value.i)
     }
 
     fun anteriorPregunta() {
-        _uiState.update { state ->
-            if (state.i > 0) {
-                state.copy(i = state.i - 1)
-            } else {
-                state
-            }
-        }
+        _uiState.value=_uiState.value.copy(i =
+            if(_uiState.value.i > 0)_uiState.value.i-1
+            else _uiState.value.i)
     }
 
 
