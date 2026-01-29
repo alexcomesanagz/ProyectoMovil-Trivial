@@ -32,7 +32,7 @@ fun PaginaLista(paginaListaViewModel: PaginaListaViewModel= viewModel()){
     ) {
         LazyColumn(verticalArrangement = Arrangement.spacedBy(30.dp)) {
 
-            items(items =uiState.mapaDatos.entries.toList(), key = {it.key} ){ entry ->
+            items(items =paginaListaViewModel.transformaLista().entries.toList(), key = {it.key} ){ entry ->
                 ComponenteTituloYListaTarjetasHorizontal(entry.key,entry.value)
             }
         }
