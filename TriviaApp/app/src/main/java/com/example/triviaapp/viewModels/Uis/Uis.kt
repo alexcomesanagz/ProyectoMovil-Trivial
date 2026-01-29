@@ -44,45 +44,33 @@ data class ElegirRespUIState(
     ),
     val i: Int = 0
 )
-
-data class Pregunta(
-    val textoBotonesRespuestas: List<String> =List(4){""},
-    var respuestaCorrecta: String="1",
-    var pregunta: String = "",
-    var respuestaSeleccionada:String ="1"
-)
-
-
 data class PaginaFinUiState(
+    val id:String="",
     val preguntasAcertadas: Int = 5,
     val preguntasTotales: Int = 10,
     val imagenResultado: Int = R.drawable.trivia
 )
 
-data class TagetaUiDatos(
-    val imagen: Int=R.drawable.trivia,
-    val titulo: String="",
-    val accion: () -> Unit = { Log.e("Testeo","tarjeta cliqueada")},
-    val id: String = ""
-)
+
 data class PaginaListaUiState(
-    val mapaDatos: Map<String, List<TagetaUiDatos>> = mapOf<String,List<TagetaUiDatos>>( "susto" to
-            listOf(TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                TagetaUiDatos(R.drawable.trivia,"Trivia 2")),
+    val mapaDatos: Map<String, List<TajetaUiDatos>> = mapOf<String,List<TajetaUiDatos>>(
+        "susto" to
+            listOf(TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                TajetaUiDatos(R.drawable.trivia,"Trivia 2")),
         "resusto" to
-                listOf(TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                    TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                    TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                    TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                    TagetaUiDatos(R.drawable.trivia,"Trivia 2")),
-        "cagao" to  listOf(TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
-            TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
-            TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
-            TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
-            TagetaUiDatos(R.drawable.trivia,"Trivia 2")))
+                listOf(TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                    TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                    TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                    TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                    TajetaUiDatos(R.drawable.trivia,"Trivia 2")),
+        "cagao" to  listOf(TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
+            TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
+            TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
+            TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
+            TajetaUiDatos(R.drawable.trivia,"Trivia 2")))
 )
 
 data class ResponderPregUIState(
@@ -96,6 +84,21 @@ data class ResponderPregUIState(
 )
 
 data class PrincipalUiState(
-    val tarjetasLista1: List<Tarjeta> = listOf<Tarjeta>(Tarjeta(),Tarjeta()),
-    val tarjetasLista2: List<Tarjeta> = listOf<Tarjeta>(Tarjeta(),Tarjeta()),
+    val tarjetasLista1: List<TajetaUiDatos> = listOf<TajetaUiDatos>(TajetaUiDatos(),TajetaUiDatos()),
+    val tarjetasLista2: List<TajetaUiDatos> = listOf<TajetaUiDatos>(TajetaUiDatos(),TajetaUiDatos()),
+)
+
+data class Pregunta(
+    val textoBotonesRespuestas: List<String> =List(4){""},
+    var respuestaCorrecta: String="1",
+    var pregunta: String = "",
+    var respuestaSeleccionada:String ="1",
+    var id: String=""
+)
+
+data class TajetaUiDatos(
+    val imagen: Int=R.drawable.trivia,
+    val titulo: String="",
+    val accion: () -> Unit = { Log.e("Testeo","tarjeta cliqueada")},
+    val id: String = ""
 )

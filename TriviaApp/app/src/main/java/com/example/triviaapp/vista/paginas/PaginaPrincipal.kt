@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetasHorizontal
 import com.example.triviaapp.viewModels.vm.PrincipalViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
-
+import com.example.triviaapp.componentes.Tarjeta
 
 
 /**
@@ -31,10 +31,22 @@ fun PaginaPrincipal(principalViewmodel: PrincipalViewModel = viewModel()) {
             .padding(vertical = 10.dp)
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-            ComponenteTituloYListaTarjetasHorizontal(stringResource(R.string.app_titulo_pagina_1),
-                uiState.tarjetasLista1)
-            ComponenteTituloYListaTarjetasHorizontal(stringResource(R.string.app_titulo_pagina_2),
-                uiState.tarjetasLista2)
+            ComponenteTituloYListaTarjetasHorizontal(
+                stringResource(R.string.app_titulo_pagina_1),
+                uiState.tarjetasLista1.map {
+                    Tarjeta(it.imagen,
+                        it.titulo,
+                        it.accion,
+                        it.id)
+                })
+            ComponenteTituloYListaTarjetasHorizontal(
+                stringResource(R.string.app_titulo_pagina_2),
+                uiState.tarjetasLista2.map {
+                    Tarjeta(it.imagen,
+                        it.titulo,
+                        it.accion,
+                        it.id)
+                })
         }
     }
 }
@@ -43,6 +55,6 @@ fun PaginaPrincipal(principalViewmodel: PrincipalViewModel = viewModel()) {
 @Preview(showBackground = true)
 @Composable
 fun prevPaginaPrincipal() {
-        PaginaPrincipal()
+    PaginaPrincipal()
 
 }

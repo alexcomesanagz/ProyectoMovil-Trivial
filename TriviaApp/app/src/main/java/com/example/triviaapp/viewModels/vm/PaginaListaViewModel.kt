@@ -1,13 +1,11 @@
 package com.example.triviaapp.viewModels.vm
 
-import androidx.compose.runtime.key
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.viewModels.Uis.PaginaListaUiState
-import com.example.triviaapp.viewModels.Uis.TagetaUiDatos
 
 class PaginaListaViewModel : ViewModel() {
 
