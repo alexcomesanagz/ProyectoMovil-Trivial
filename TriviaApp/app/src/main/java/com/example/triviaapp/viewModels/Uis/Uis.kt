@@ -66,23 +66,23 @@ data class TagetaUiDatos(
     val id: String = ""
 )
 data class PaginaListaUiState(
-    val mapaDatos: Map<String, List<Tarjeta>> = mapOf<String,List<Tarjeta>>( "susto" to
-            listOf(Tarjeta(R.drawable.trivia,"Trivia 2"),
-                Tarjeta(R.drawable.trivia,"Trivia 2"),
-                Tarjeta(R.drawable.trivia,"Trivia 2"),
-                Tarjeta(R.drawable.trivia,"Trivia 2"),
-                Tarjeta(R.drawable.trivia,"Trivia 2")),
+    val mapaDatos: Map<String, List<TagetaUiDatos>> = mapOf<String,List<TagetaUiDatos>>( "susto" to
+            listOf(TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                TagetaUiDatos(R.drawable.trivia,"Trivia 2")),
         "resusto" to
-                listOf(Tarjeta(R.drawable.trivia,"Trivia 2"),
-                    Tarjeta(R.drawable.trivia,"Trivia 2"),
-                    Tarjeta(R.drawable.trivia,"Trivia 2"),
-                    Tarjeta(R.drawable.trivia,"Trivia 2"),
-                    Tarjeta(R.drawable.trivia,"Trivia 2")),
-        "cagao" to  listOf(Tarjeta(R.drawable.trivia,"Trivia 2"),
-            Tarjeta(R.drawable.trivia,"Trivia 2"),
-            Tarjeta(R.drawable.trivia,"Trivia 2"),
-            Tarjeta(R.drawable.trivia,"Trivia 2"),
-            Tarjeta(R.drawable.trivia,"Trivia 2")))
+                listOf(TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                    TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                    TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                    TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                    TagetaUiDatos(R.drawable.trivia,"Trivia 2")),
+        "cagao" to  listOf(TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
+            TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
+            TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
+            TagetaUiDatos(R.drawable.trivia,"Trivia 2"),
+            TagetaUiDatos(R.drawable.trivia,"Trivia 2")))
 )
 
 data class ResponderPregUIState(
