@@ -19,20 +19,6 @@ import com.example.triviaapp.componentes.ComponenteTituloYListaTarjetasHorizonta
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.viewModels.vm.PaginaListaViewModel
 
-private val tarjetas: Map<String, List<Tarjeta>> = mapOf("miedo" to
-   listOf(Tarjeta(R.drawable.trivia,"Trivia 1")) ,
-    "susto" to
-            listOf(Tarjeta(R.drawable.trivia,"Trivia 2"),
-                Tarjeta(R.drawable.trivia,"Trivia 2"),
-                Tarjeta(R.drawable.trivia,"Trivia 2"),
-                Tarjeta(R.drawable.trivia,"Trivia 2"),
-                Tarjeta(R.drawable.trivia,"Trivia 2")),
-    "resusto" to
-            listOf( Tarjeta(R.drawable.trivia,"Trivia 3")),
-    "cagao" to  listOf(Tarjeta(R.drawable.trivia,"Trivia 4")),
-
-    "zagao" to  listOf(Tarjeta(R.drawable.trivia,"Trivia 4")))
-
 /**
  * Pagina que muestra todos los trivias disponibles
  */

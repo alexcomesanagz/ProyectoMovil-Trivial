@@ -1,5 +1,6 @@
 package com.example.triviaapp.viewModels.Uis
 
+import android.util.Log
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.Tarjeta
 
@@ -58,6 +59,12 @@ data class PaginaFinUiState(
     val imagenResultado: Int = R.drawable.trivia
 )
 
+data class TagetaUiDatos(
+    val imagen: Int=R.drawable.trivia,
+    val titulo: String="",
+    val accion: () -> Unit = { Log.e("Testeo","tarjeta cliqueada")},
+    val id: String = ""
+)
 data class PaginaListaUiState(
     val mapaDatos: Map<String, List<Tarjeta>> = mapOf<String,List<Tarjeta>>( "susto" to
             listOf(Tarjeta(R.drawable.trivia,"Trivia 2"),
