@@ -29,7 +29,7 @@ import com.example.triviaapp.R
 data class Tarjeta(
     val imagen: Int=R.drawable.trivia,
     val titulo: String="",
-    val accion: () -> Unit = { Log.e("Testeo","tarjeta cliqueada")},
+    val accion: (String) -> Unit = { Log.e("Testeo","tarjeta cliqueada")},
     val id: String = ""
 )
 
@@ -46,7 +46,7 @@ fun ComponenteTarjetaHorizontal(
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .clickable(onClick = contenido.accion)
+            .clickable(onClick = {contenido.accion(contenido.id)})
             .background(color = MaterialTheme.colorScheme.secondary)
             .padding(horizontal = 4.dp, vertical = 4.dp)
             .height(height = (tamanio * 1.25).dp)
@@ -68,7 +68,7 @@ fun ComponenteTarjetaVertical(
     contenido: Tarjeta,
     tamanio: Int = 40
 ) {
-    Box( modifier = Modifier.clickable(onClick = contenido.accion)
+    Box( modifier = Modifier.clickable(onClick ={contenido.accion(contenido.id)})
         .background(color = MaterialTheme.colorScheme.secondary)
         .padding(horizontal = 4.dp,)
         .width(width = (tamanio*4).dp),

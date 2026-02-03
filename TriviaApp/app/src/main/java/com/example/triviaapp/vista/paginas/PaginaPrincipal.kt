@@ -22,7 +22,7 @@ import com.example.triviaapp.componentes.Tarjeta
  * Pagina que muestra unos trivias recomendados y ultimos trivias
  */
 @Composable
-fun PaginaPrincipal(principalViewmodel: PrincipalViewModel = viewModel()) {
+fun PaginaPrincipal(principalViewmodel: PrincipalViewModel = viewModel(), onItemClick: (String) -> Unit) {
     val uiState by principalViewmodel.uiState.collectAsState()
 
     Box(
@@ -36,7 +36,9 @@ fun PaginaPrincipal(principalViewmodel: PrincipalViewModel = viewModel()) {
                 uiState.tarjetasLista1.map {
                     Tarjeta(it.imagen,
                         it.titulo,
-                        it.accion,
+                        {contenido ->
+                            onItemClick(contenido)
+                        },
                         it.id)
                 })
             ComponenteTituloYListaTarjetasHorizontal(
@@ -44,7 +46,9 @@ fun PaginaPrincipal(principalViewmodel: PrincipalViewModel = viewModel()) {
                 uiState.tarjetasLista2.map {
                     Tarjeta(it.imagen,
                         it.titulo,
-                        it.accion,
+                        {contenido ->
+                            onItemClick(contenido)
+                        },
                         it.id)
                 })
         }
@@ -55,6 +59,6 @@ fun PaginaPrincipal(principalViewmodel: PrincipalViewModel = viewModel()) {
 @Preview(showBackground = true)
 @Composable
 fun prevPaginaPrincipal() {
-    PaginaPrincipal()
+    PaginaPrincipal(onItemClick = {""})
 
 }

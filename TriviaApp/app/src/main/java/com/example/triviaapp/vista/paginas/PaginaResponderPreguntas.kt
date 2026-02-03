@@ -45,7 +45,7 @@ val numPreguntas = "10"
  * Pagina para responder una de las preguntas de un trivia ya creado
  */
 @Composable
-fun PaginaResponderPreguntas(responderPregunta: ResponderPreguntasViewModel = viewModel()) {
+fun PaginaResponderPreguntas(idTrivia:String, responderPregunta: ResponderPreguntasViewModel = viewModel()) {
     val uiState by responderPregunta.uiState.collectAsState()
     Box(
         Modifier
@@ -108,6 +108,6 @@ fun PaginaResponderPreguntas(responderPregunta: ResponderPreguntasViewModel = vi
 @Composable
 fun PrevPaginaResponderPreguntas() {
 //    TriviaAppTheme(darkTheme = true) {
-        PaginaResponderPreguntas()
+        PaginaResponderPreguntas("a")
 //    }
 }
