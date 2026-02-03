@@ -55,11 +55,10 @@ fun PokemonNavGraph() {
         ) { backStackEntry ->
             val idTrivia = backStackEntry.arguments?.getString("idTrivia") ?: return@composable
             PaginaElegirRespuestas(
-                idTrivia = "34124",
+                idTrivia = idTrivia,
                 onClickSalir =  { navController.navigate("principal") },
                 onClickAceptar =  { navController.navigate("principal") }
             )
-            PaginaResponderPreguntas(idTrivia= idTrivia)
         }
     }
 }
