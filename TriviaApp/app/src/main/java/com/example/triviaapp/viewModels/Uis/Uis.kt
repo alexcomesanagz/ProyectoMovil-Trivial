@@ -99,6 +99,6 @@ data class Pregunta(
 data class TajetaUiDatos(
     val imagen: Int=R.drawable.trivia,
     val titulo: String="",
-    val accion: () -> Unit = { Log.e("Testeo","tarjeta cliqueada")},
+    val accion: (String) -> Unit = { Log.e("Testeo","tarjeta cliqueada")},
     val id: String = ""
 )

@@ -26,7 +26,7 @@ import com.example.triviaapp.viewModels.vm.PaginaAjustesViewModel
  */
 
 @Composable
-fun PaginaAjustesTrivia(paginaAjustesUi: PaginaAjustesViewModel = viewModel()) {
+fun PaginaAjustesTrivia(paginaAjustesUi: PaginaAjustesViewModel = viewModel(), onClickSalir: () -> Unit, onClickAceptar: (String) -> Unit ) {
     val uiState by paginaAjustesUi.uiState.collectAsState()
     Column(
         modifier = Modifier.padding(vertical = 15.dp, horizontal = 15.dp),
@@ -47,8 +47,8 @@ fun PaginaAjustesTrivia(paginaAjustesUi: PaginaAjustesViewModel = viewModel()) {
                 datosBotones = DatosBotonDoble(
                     stringResource(R.string.app_bt_salir),
                     stringResource(R.string.app_bt_aceptar),
-                    accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
-                    accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
+                    accionBoton1 = { onClickSalir },
+                    accionBoton2 = { onClickAceptar(paginaAjustesUi.guardarAjustesConNuevoId()) })
             )
         }
     }
@@ -58,5 +58,5 @@ fun PaginaAjustesTrivia(paginaAjustesUi: PaginaAjustesViewModel = viewModel()) {
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
 fun PrevPaginaAjustesTrivia() {
-    PaginaAjustesTrivia()
+    PaginaAjustesTrivia(onClickSalir = {""},onClickAceptar = {""})
 }

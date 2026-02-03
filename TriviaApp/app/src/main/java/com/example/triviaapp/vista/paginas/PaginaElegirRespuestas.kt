@@ -37,7 +37,7 @@ import com.example.triviaapp.viewModels.vm.ElegirRespViewModel
  * Pagina para rellenar una preguntas a la hora de hacer un quiz
  */
 @Composable
-fun PaginaElegirRespuestas(elegirRespuestas: ElegirRespViewModel = viewModel()) {
+fun PaginaElegirRespuestas(idTrivia:String, elegirRespuestas: ElegirRespViewModel = viewModel(), onClickSalir: () -> Unit, onClickAceptar: (String) -> Unit) {
     val uiState by elegirRespuestas.uiState.collectAsState()
     val txtBotones: List<String> = listOf(
         stringResource(R.string.app_sleccion_resp_1),
@@ -104,8 +104,8 @@ fun PaginaElegirRespuestas(elegirRespuestas: ElegirRespViewModel = viewModel()) 
                     DatosBotonDoble(
                         stringResource(R.string.app_bt_salir),
                         stringResource(R.string.app_bt_finalizar),
-                        accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
-                        accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
+                        accionBoton1 = { onClickSalir },
+                        accionBoton2 = { onClickAceptar })
                 )
             }
         }
@@ -117,6 +117,6 @@ fun PaginaElegirRespuestas(elegirRespuestas: ElegirRespViewModel = viewModel()) 
 @Composable
 fun PrevPaginaElegirRespuestas() {
 //    TriviaAppTheme {
-        PaginaElegirRespuestas()
+        PaginaElegirRespuestas("1" ,onClickSalir ={""}, onClickAceptar = {""})
 //    }
 }
