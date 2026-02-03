@@ -26,9 +26,11 @@ fun PokemonNavGraph() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Routes.principal) {
         composable(Routes.principal) {
-            PaginaPrincipal(onItemClick =  { idTrivia ->
-                navController.navigate("preguntas/$idTrivia")
-            }
+            PaginaPrincipal(
+                onItemClick =  { idTrivia ->
+                    navController.navigate("preguntas/$idTrivia")
+                }
+            )
         }
         composable(
             route = Routes.paginaRespondePreguntas,
