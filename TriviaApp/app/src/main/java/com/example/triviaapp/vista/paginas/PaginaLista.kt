@@ -23,7 +23,10 @@ import com.example.triviaapp.viewModels.vm.PaginaListaViewModel
  * Pagina que muestra todos los trivias disponibles
  */
 @Composable
-fun PaginaLista(paginaListaViewModel: PaginaListaViewModel= viewModel()){
+fun PaginaLista(
+    paginaListaViewModel: PaginaListaViewModel= viewModel(),
+    onItemClick: (String) -> Unit
+    ){
 
     val uiState by paginaListaViewModel.uiState.collectAsState()
     Column(
@@ -32,7 +35,7 @@ fun PaginaLista(paginaListaViewModel: PaginaListaViewModel= viewModel()){
     ) {
         LazyColumn(verticalArrangement = Arrangement.spacedBy(30.dp)) {
 
-            items(items =paginaListaViewModel.transformaLista().entries.toList(), key = {it.key} ){ entry ->
+            items(items =paginaListaViewModel.transformaLista(onItemClick).entries.toList(), key = {it.key} ){ entry ->
                 ComponenteTituloYListaTarjetasHorizontal(entry.key,entry.value)
             }
         }
@@ -43,6 +46,6 @@ fun PaginaLista(paginaListaViewModel: PaginaListaViewModel= viewModel()){
 @Preview
 @Composable
 fun PrevPaginaLista() {
-        PaginaLista()
+        PaginaLista(onItemClick = {})
 
 }

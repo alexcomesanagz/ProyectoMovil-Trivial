@@ -29,7 +29,10 @@ import com.example.triviaapp.viewModels.vm.PaginaLoginViewModel
  * Pagina para entrar en tu cuenta ya creada o crear una nueva
  */
 @Composable
-fun PaginaLogin(paginaLoginUi : PaginaLoginViewModel = viewModel()) {
+fun PaginaLogin(
+    paginaLoginUi : PaginaLoginViewModel = viewModel(),
+    onItemClick: (String) -> Unit
+) {
     val uiState by paginaLoginUi.uiState.collectAsState()
     Box(
         Modifier
@@ -69,13 +72,16 @@ fun PaginaLogin(paginaLoginUi : PaginaLoginViewModel = viewModel()) {
                         msjBot1 = stringResource(R.string.app_login_btnLogIn),
                         msjBot2 = stringResource(R.string.app_login_btnSignUp),
                         modifierBotones = Modifier.fillMaxWidth(),
-                        accionBoton1 = { Log.e("Testing", "Aceptar boton cliqueado") },
-                        accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
+                        accionBoton1 = { onItemClick },
+                        accionBoton2 = { onItemClick})
                 )
             }
             Column(
             ) {
-                DenegarBoton(stringResource(R.string.app_bt_salir))
+                DenegarBoton(
+                    stringResource(R.string.app_bt_salir),
+                    accion = {onItemClick}
+                )
             }
         }
 
@@ -86,5 +92,5 @@ fun PaginaLogin(paginaLoginUi : PaginaLoginViewModel = viewModel()) {
 @Preview(showSystemUi = true)
 @Composable
 fun PrevPaginaLogin() {
-        PaginaLogin()
+        PaginaLogin(onItemClick = {})
 }

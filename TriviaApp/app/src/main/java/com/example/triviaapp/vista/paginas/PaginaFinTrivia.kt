@@ -28,7 +28,11 @@ import com.example.triviaapp.viewModels.PaginaFinViewModel
  * Pagina que muestra los resultados del trivia hecho
  */
 @Composable
-fun PaginaFinTrivia(paginaFinViewModel: PaginaFinViewModel = viewModel()) {
+fun PaginaFinTrivia(
+    idTrivia: String,
+    paginaFinViewModel: PaginaFinViewModel = viewModel(),
+    accionSalir: ()->Unit
+) {
     val uiState by paginaFinViewModel.uiState.collectAsState()
 
     paginaFinViewModel.cargaDatos()
@@ -69,7 +73,8 @@ fun PaginaFinTrivia(paginaFinViewModel: PaginaFinViewModel = viewModel()) {
             ) {
                 DenegarBoton(
                     stringResource(R.string.app_bt_salir),
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    accion = {accionSalir}
                 )
             }
 
@@ -87,5 +92,5 @@ fun PaginaFinTrivia(paginaFinViewModel: PaginaFinViewModel = viewModel()) {
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewFinTrivia() {
-    PaginaFinTrivia()
+    PaginaFinTrivia("", accionSalir = {})
 }

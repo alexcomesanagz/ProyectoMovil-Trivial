@@ -13,17 +13,17 @@ data class PaginaPerfilUi(
     val imagenPerfil: Int = R.drawable.perfil,
     val nombreUsuario: String="",
     val correoUsuario: String="@gmail.com",
-    val tarjetasUsuario: List<Tarjeta> = listOf(
-        Tarjeta(
+    val tarjetasUsuario: List<TajetaUiDatos> = listOf(
+        TajetaUiDatos(
             imagen = R.drawable.trivia,
             titulo = "Cultura General"),
-        Tarjeta(
+        TajetaUiDatos(
             imagen = R.drawable.trivia,
             titulo = "Historia"),
-        Tarjeta(
+        TajetaUiDatos(
             imagen = R.drawable.trivia,
             titulo = "Ciencia"),
-        Tarjeta(
+        TajetaUiDatos(
             imagen = R.drawable.trivia,
             titulo = "Deportes")
     )
@@ -99,6 +99,5 @@ data class Pregunta(
 data class TajetaUiDatos(
     val imagen: Int=R.drawable.trivia,
     val titulo: String="",
-    val accion: () -> Unit = { Log.e("Testeo","tarjeta cliqueada")},
     val id: String = ""
 )
