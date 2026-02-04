@@ -12,15 +12,15 @@ class PaginaListaViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(PaginaListaUiState())
     val uiState: StateFlow<PaginaListaUiState> = _uiState.asStateFlow()
 
-    fun transformaLista(): Map<String, List<Tarjeta>> {
+    fun transformaLista(accion: (String)->Unit): Map<String, List<Tarjeta>> {
         val mapaTarjetas: Map<String, List<Tarjeta>> =
             _uiState.value.mapaDatos.mapValues { (_, listaTagetas) ->
-                listaTagetas.map { tageta ->
+                listaTagetas.map { targeta ->
                     Tarjeta(
-                        imagen = tageta.imagen,
-                        titulo = tageta.titulo,
-                        accion = tageta.accion,
-                        id = tageta.id
+                        imagen = targeta.imagen,
+                        titulo = targeta.titulo,
+                        accion = accion,
+                        id = targeta.id
                     )
                 }
             }

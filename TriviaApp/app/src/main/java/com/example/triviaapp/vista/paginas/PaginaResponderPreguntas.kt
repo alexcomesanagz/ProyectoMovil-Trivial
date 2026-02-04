@@ -38,14 +38,16 @@ val textoBotonesRespuesta = listOf(
     "4 a"
 )
 
-val preguntaActual = "1"
-val numPreguntas = "10"
-
 /**
  * Pagina para responder una de las preguntas de un trivia ya creado
  */
 @Composable
-fun PaginaResponderPreguntas(idTrivia:String, responderPregunta: ResponderPreguntasViewModel = viewModel()) {
+fun PaginaResponderPreguntas(
+    idTrivia: String,
+    responderPregunta: ResponderPreguntasViewModel = viewModel(),
+    accionFin: (String)-> Unit,
+    accionCancelar: ()->Unit
+) {
     val uiState by responderPregunta.uiState.collectAsState()
     Box(
         Modifier
@@ -62,10 +64,10 @@ fun PaginaResponderPreguntas(idTrivia:String, responderPregunta: ResponderPregun
                         enunciado = "enunciado",
                         textoBotonesRespuesta,
                         respuesta = responderPregunta.getPregunta().respuestaSeleccionada,
-                        accionRespuestas = {it->responderPregunta.cambiaRespuestaBoton(it)}
+                        accionRespuestas = { it -> responderPregunta.cambiaRespuestaBoton(it) }
                     )
                 )
-                ComponenteTituloCaja("${uiState.i+1} / ${responderPregunta.getNumPreguntas()}")
+                ComponenteTituloCaja("${uiState.i + 1} / ${responderPregunta.getNumPreguntas()}")
             }
             Column(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
@@ -87,8 +89,8 @@ fun PaginaResponderPreguntas(idTrivia:String, responderPregunta: ResponderPregun
                         DatosBotonDoble(
                             stringResource(R.string.app_bt_anterior),
                             stringResource(R.string.app_bt_siguiente),
-                            accionBoton1 = { responderPregunta.anteriorPregunta()},
-                            accionBoton2 = { responderPregunta.siguientePregunta()})
+                            accionBoton1 = { responderPregunta.anteriorPregunta() },
+                            accionBoton2 = { responderPregunta.siguientePregunta() })
                     )
                 }
                 ComponenteLinea()
@@ -96,8 +98,8 @@ fun PaginaResponderPreguntas(idTrivia:String, responderPregunta: ResponderPregun
                     datosBotones = DatosBotonDoble(
                         stringResource(R.string.app_bt_salir),
                         stringResource(R.string.app_bt_finalizar),
-                        accionBoton1 = { Log.e("Testing", "Denegar boton cliqueado") },
-                        accionBoton2 = { Log.e("Testing", "Aceptar boton cliqueado") })
+                        accionBoton1 = accionCancelar ,
+                        accionBoton2 = { accionFin(idTrivia) })
                 )
             }
         }
@@ -108,6 +110,6 @@ fun PaginaResponderPreguntas(idTrivia:String, responderPregunta: ResponderPregun
 @Composable
 fun PrevPaginaResponderPreguntas() {
 //    TriviaAppTheme(darkTheme = true) {
-        PaginaResponderPreguntas("a")
+    PaginaResponderPreguntas("a", accionFin = {}, accionCancelar = {})
 //    }
 }

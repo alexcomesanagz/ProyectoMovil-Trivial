@@ -1,6 +1,8 @@
 package com.example.triviaapp.viewModels.Uis
 
 import android.util.Log
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.Tarjeta
 
@@ -9,21 +11,24 @@ data class PaginaLoginUi(
     val stringContrasena: String = ""
 )
 
+data class MainUi(
+    val scaffold: Boolean=true,
+)
 data class PaginaPerfilUi(
     val imagenPerfil: Int = R.drawable.perfil,
     val nombreUsuario: String="",
     val correoUsuario: String="@gmail.com",
-    val tarjetasUsuario: List<Tarjeta> = listOf(
-        Tarjeta(
+    val tarjetasUsuario: List<TajetaUiDatos> = listOf(
+        TajetaUiDatos(
             imagen = R.drawable.trivia,
             titulo = "Cultura General"),
-        Tarjeta(
+        TajetaUiDatos(
             imagen = R.drawable.trivia,
             titulo = "Historia"),
-        Tarjeta(
+        TajetaUiDatos(
             imagen = R.drawable.trivia,
             titulo = "Ciencia"),
-        Tarjeta(
+        TajetaUiDatos(
             imagen = R.drawable.trivia,
             titulo = "Deportes")
     )
@@ -99,6 +104,5 @@ data class Pregunta(
 data class TajetaUiDatos(
     val imagen: Int=R.drawable.trivia,
     val titulo: String="",
-    val accion: (String) -> Unit = { Log.e("Testeo","tarjeta cliqueada")},
     val id: String = ""
 )

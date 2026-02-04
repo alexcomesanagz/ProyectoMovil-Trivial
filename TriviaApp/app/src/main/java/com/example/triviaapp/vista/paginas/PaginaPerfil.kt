@@ -38,7 +38,11 @@ val tarjetasUsuario: List<Tarjeta> = listOf(
  * pagina donde un usuario que inicio sesion mira sus datos de la cuenta
  */
 @Composable
-fun PaginaPerfil(paginaPerfilUi: PaginaPerfilViewModel = viewModel()) {
+fun PaginaPerfil(
+    paginaPerfilUi: PaginaPerfilViewModel = viewModel(),
+    onItemClick: (String) -> Unit,
+    onSalida:()->Unit
+) {
 
     val uiState by paginaPerfilUi.uiState.collectAsState()
 
@@ -66,11 +70,17 @@ fun PaginaPerfil(paginaPerfilUi: PaginaPerfilViewModel = viewModel()) {
         )
         {
             ComponenteListaTarjetasVertical(
-                tarjetas = uiState.tarjetasUsuario,
+                tarjetas = uiState.tarjetasUsuario.map {
+                    Tarjeta(it.imagen,
+                        it.titulo,
+                        {contenido ->
+                            onItemClick(contenido)
+                        },
+                        it.id)
+                },
                 tamanioCaja = 220,
                 tamanio = 50,
-
-            )
+                )
         }
         Column(
             modifier = Modifier
@@ -79,7 +89,10 @@ fun PaginaPerfil(paginaPerfilUi: PaginaPerfilViewModel = viewModel()) {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             ComponenteLinea(grosor = 8.dp)
-            DenegarBoton(msj = "salir", modifier = Modifier.fillMaxWidth())
+            DenegarBoton(
+                msj = "salir",
+                modifier = Modifier.fillMaxWidth(),
+                accion = onSalida)
         }
     }
 
@@ -88,5 +101,5 @@ fun PaginaPerfil(paginaPerfilUi: PaginaPerfilViewModel = viewModel()) {
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewPerfil() {
-    PaginaPerfil()
+    PaginaPerfil(onItemClick = {}, onSalida = {})
 }

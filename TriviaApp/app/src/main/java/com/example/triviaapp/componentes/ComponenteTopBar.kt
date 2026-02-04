@@ -30,7 +30,7 @@ import com.example.triviaapp.R
 @Composable
 fun ComponenteTopBar(
     title: String,
-    accionMenu: () -> Unit={},
+    accionMenu: () -> Unit={ },
     accionLogin:()->Unit={ Log.e("Testeo","inicio sesion cliqueada")},
     accionCamara: () -> Unit={ Log.e("Testeo","camara cliqueada")},
     accionPerfil: () -> Unit={Log.e("Testeo","perfil cliqueada")}

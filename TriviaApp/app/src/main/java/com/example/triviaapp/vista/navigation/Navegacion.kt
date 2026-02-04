@@ -1,14 +1,18 @@
 package com.example.triviaapp.vista.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.triviaapp.PaginaPrincipal
-import com.example.triviaapp.vista.paginas.PaginaAjustesTrivia
-import com.example.triviaapp.vista.paginas.PaginaElegirRespuestas
+import com.example.triviaapp.viewModels.vm.MainViewModel
+import com.example.triviaapp.vista.paginas.PaginaFinTrivia
+import com.example.triviaapp.vista.paginas.PaginaLista
+import com.example.triviaapp.vista.paginas.PaginaLogin
+import com.example.triviaapp.vista.paginas.PaginaPerfil
 import com.example.triviaapp.vista.paginas.PaginaResponderPreguntas
 
 
@@ -24,22 +28,59 @@ object Routes {
 }
 
 @Composable
-fun PokemonNavGraph() {
-    val navController = rememberNavController()
+fun TrivialNavGraph(navController: NavHostController ,viewMain: MainViewModel) {
     NavHost(navController = navController, startDestination = Routes.principal) {
         composable(Routes.principal) {
             PaginaPrincipal(
-                onItemClick =  { idTrivia ->
-                    navController.navigate("preguntas/$idTrivia")
+                onItemClick = { idTrivia ->
+                    navController.navigate("preguntasResponder/$idTrivia")
                 }
             )
         }
+
+        composable(Routes.perfil) {
+            PaginaPerfil(
+                onItemClick = { idTrivia ->
+                    navController.navigate("preguntasResponder/$idTrivia")
+                },
+                onSalida = {navController.navigate("principal")}
+            )
+        }
+
+        composable(Routes.lista) {
+            PaginaLista(
+                onItemClick = { idTrivia ->
+                    navController.navigate("preguntasResponder/$idTrivia")
+                }
+            )
+        }
+
+        composable(Routes.login) {
+            PaginaLogin(
+                onItemClick = { navController.navigate("principal") }
+            )
+        }
+
         composable(
             route = Routes.paginaRespondePreguntas,
             arguments = listOf(navArgument("idTrivia") { type = NavType.StringType })
         ) { backStackEntry ->
             val idTrivia = backStackEntry.arguments?.getString("idTrivia") ?: return@composable
-            PaginaResponderPreguntas(idTrivia= idTrivia)
+            PaginaResponderPreguntas(
+                idTrivia = idTrivia,
+                accionFin = {idTrivia-> navController.navigate("preguntasFin/$idTrivia")},
+                accionCancelar = { navController.navigate("principal") })
+        }
+
+        composable(
+            route = Routes.paginaFinPreguntas,
+            arguments = listOf(navArgument("idTrivia") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val idTrivia = backStackEntry.arguments?.getString("idTrivia") ?: return@composable
+            PaginaFinTrivia(
+                idTrivia = idTrivia,
+                accionSalir = {navController.navigate("principal")}
+            )
         }
 
         composable(Routes.paginaAjustes) {
