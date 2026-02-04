@@ -80,7 +80,7 @@ class MainActivity : ComponentActivity() {
             val drawerState = rememberDrawerState(DrawerValue.Closed)
             val scopeDrawer = rememberCoroutineScope()
 
-            TriviaAppTheme(darkTheme = false) {
+            TriviaAppTheme(darkTheme = true) {
                 ModalNavigationDrawer(
                     drawerState = drawerState,
                     drawerContent = {
