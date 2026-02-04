@@ -50,10 +50,12 @@ fun ComponenteRadioButon(
     ){
         RadioButton(
             selected = (datos.boton== datos.rememberCadena),
-            colors = RadioButtonColors(selectedColor = datos.coloresBoton.get(0),
-                unselectedColor = datos.coloresBoton.get(1),
-                disabledSelectedColor = datos.coloresBoton.get(2),
-                disabledUnselectedColor =    datos.coloresBoton.get(3) ),
+            colors = RadioButtonColors(
+                selectedColor = datos.coloresBoton.get(0),
+                unselectedColor = datos.coloresBoton.get(0),
+                disabledSelectedColor = datos.coloresBoton.get(1),
+                disabledUnselectedColor =    datos.coloresBoton.get(2)
+            ),
             onClick = { datos.rememberCadena = datos.accion(datos.boton) },
             modifier = Modifier
         )
@@ -61,7 +63,8 @@ fun ComponenteRadioButon(
             modifier = Modifier.padding(end = 10.dp),
             text = datos.msj,
             fontSize = datos.tamanioTexto.sp,
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
+            color = datos.coloresBoton.get(0)
         )
 
     }

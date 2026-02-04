@@ -80,7 +80,7 @@ class MainActivity : ComponentActivity() {
             val drawerState = rememberDrawerState(DrawerValue.Closed)
             val scopeDrawer = rememberCoroutineScope()
 
-            TriviaAppTheme {
+            TriviaAppTheme(darkTheme = false) {
                 ModalNavigationDrawer(
                     drawerState = drawerState,
                     drawerContent = {
@@ -134,11 +134,10 @@ class MainActivity : ComponentActivity() {
                             }
                         },
                         floatingActionButton = {
-                            if (uiState.scaffold){
+                            if (uiState.botonFlotante){
 
                                 ComponenteFAB {
                                     scope.launch {
-                                        snackbarHostState.showSnackbar(message = "Perfil")
                                         navController.navigate("ajustes")
                                     }
                                 }

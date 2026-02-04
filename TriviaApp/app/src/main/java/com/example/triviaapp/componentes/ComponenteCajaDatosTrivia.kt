@@ -65,6 +65,11 @@ fun ComponenteCajaDatosTrivia(
                 ComponenteTextField(
                     DatosTextField(
                         txtContenido = cadenaField,
+                        listaColor = listOf(
+                            MaterialTheme.colorScheme.secondary,
+                            MaterialTheme.colorScheme.onSecondary,
+                            MaterialTheme.colorScheme.primary,
+                            MaterialTheme.colorScheme.onPrimary),
                         accion = accionTextField
                     )
                 )

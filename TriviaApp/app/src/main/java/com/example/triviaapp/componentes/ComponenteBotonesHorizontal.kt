@@ -71,7 +71,6 @@ fun ComponenteRadioButonsHorizontal(
 ) {
     var listaColor = listOf<Color>(
         MaterialTheme.colorScheme.surface,
-        MaterialTheme.colorScheme.surface,
         MaterialTheme.colorScheme.primary,
         MaterialTheme.colorScheme.onPrimary
     )

@@ -2,8 +2,13 @@ package com.example.triviaapp.vista.paginas
 
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -28,28 +33,35 @@ import com.example.triviaapp.viewModels.vm.PaginaAjustesViewModel
 @Composable
 fun PaginaAjustesTrivia(paginaAjustesUi: PaginaAjustesViewModel = viewModel(), onClickSalir: () -> Unit, onClickAceptar: (String) -> Unit ) {
     val uiState by paginaAjustesUi.uiState.collectAsState()
-    Column(
-        modifier = Modifier.padding(vertical = 15.dp, horizontal = 15.dp),
-        verticalArrangement = Arrangement.spacedBy(40.dp)
+    Box(
+        Modifier
+            .fillMaxSize()
+            .padding(vertical = 30.dp, horizontal = 10.dp)
+            .windowInsetsPadding(WindowInsets.safeDrawing)
     ) {
-        ComponenteCajaDatosTrivia(
-            estadoSlider = uiState.preguntas.toFloat(),
-            accionSlider = { paginaAjustesUi.setPreguntas(it) },
-            cadenaField = uiState.nombreTriv,
-            accionTextField = { paginaAjustesUi.setNombreTrivia(it) },
-            radioButonSeleccionado = uiState.categoria,
-            accionRadioButons = { paginaAjustesUi.setCategoria(it) })
         Column(
-            verticalArrangement = Arrangement.spacedBy(3.dp)
+            modifier = Modifier.padding(vertical = 15.dp, horizontal = 15.dp),
+            verticalArrangement = Arrangement.spacedBy(40.dp)
         ) {
-            ComponenteLinea()
-            BotonesAceptarDenegarLinea(
-                datosBotones = DatosBotonDoble(
-                    stringResource(R.string.app_bt_salir),
-                    stringResource(R.string.app_bt_aceptar),
-                    accionBoton1 = onClickSalir,
-                    accionBoton2 = { onClickAceptar(paginaAjustesUi.guardarAjustesConNuevoId()) })
-            )
+            ComponenteCajaDatosTrivia(
+                estadoSlider = uiState.preguntas.toFloat(),
+                accionSlider = { paginaAjustesUi.setPreguntas(it) },
+                cadenaField = uiState.nombreTriv,
+                accionTextField = { paginaAjustesUi.setNombreTrivia(it) },
+                radioButonSeleccionado = uiState.categoria,
+                accionRadioButons = { paginaAjustesUi.setCategoria(it) })
+            Column(
+                verticalArrangement = Arrangement.spacedBy(3.dp)
+            ) {
+                ComponenteLinea()
+                BotonesAceptarDenegarLinea(
+                    datosBotones = DatosBotonDoble(
+                        stringResource(R.string.app_bt_salir),
+                        stringResource(R.string.app_bt_aceptar),
+                        accionBoton1 = onClickSalir,
+                        accionBoton2 = { onClickAceptar(paginaAjustesUi.guardarAjustesConNuevoId()) })
+                )
+            }
         }
     }
 

@@ -42,11 +42,6 @@ class DatosTextFieldLista(
 )
 @Composable
 fun ComponenteTextField(datos: DatosTextField){
-    datos.listaColor=listOf(
-        MaterialTheme.colorScheme.secondary,
-        MaterialTheme.colorScheme.onSecondary,
-        MaterialTheme.colorScheme.primary,
-        MaterialTheme.colorScheme.onPrimary)
 
     TextField(
         colors = TextFieldDefaults.colors(
@@ -96,8 +91,8 @@ fun ComponenteTextFieldLista(datos: DatosTextFieldLista){
 @Composable
 fun ComponenteTextFieldContrasena(datos: DatosTextField){
     datos.listaColor=listOf(
-        MaterialTheme.colorScheme.secondary,
-        MaterialTheme.colorScheme.onSecondary,
+        MaterialTheme.colorScheme.background,
+        MaterialTheme.colorScheme.onBackground,
         MaterialTheme.colorScheme.primary,
         MaterialTheme.colorScheme.onPrimary)
 

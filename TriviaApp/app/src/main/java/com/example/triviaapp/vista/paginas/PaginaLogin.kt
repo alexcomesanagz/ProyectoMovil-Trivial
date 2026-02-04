@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -50,6 +51,11 @@ fun PaginaLogin(
                 ComponenteTextField(
                     DatosTextField(
                         msjPregunta = stringResource(R.string.app_login_msjCorreo),
+                        listaColor = listOf(
+                            MaterialTheme.colorScheme.background,
+                            MaterialTheme.colorScheme.onBackground,
+                            MaterialTheme.colorScheme.primary,
+                            MaterialTheme.colorScheme.onPrimary),
                         txtContenido = uiState.stringCorreo,
                         accion = { paginaLoginUi.setCorreo(it)
                         }
@@ -58,6 +64,11 @@ fun PaginaLogin(
                 ComponenteTextFieldContrasena(
                     DatosTextField(
                         stringResource(R.string.app_login_msjContraseña),
+                        listaColor = listOf(
+                            MaterialTheme.colorScheme.background,
+                            MaterialTheme.colorScheme.onBackground,
+                            MaterialTheme.colorScheme.primary,
+                            MaterialTheme.colorScheme.onPrimary),
                         txtContenido = uiState.stringContrasena,
                         accion = {paginaLoginUi.setContrasena(it) }
                     )

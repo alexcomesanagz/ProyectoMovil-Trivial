@@ -30,9 +30,10 @@ object Routes {
 }
 
 @Composable
-fun TrivialNavGraph(navController: NavHostController ,viewMain: MainViewModel) {
+fun TrivialNavGraph(navController: NavHostController, viewMain: MainViewModel) {
     NavHost(navController = navController, startDestination = Routes.principal) {
         composable(Routes.principal) {
+            viewMain.ponTodo()
             PaginaPrincipal(
                 onItemClick = { idTrivia ->
                     navController.navigate("preguntasResponder/$idTrivia")
@@ -41,15 +42,17 @@ fun TrivialNavGraph(navController: NavHostController ,viewMain: MainViewModel) {
         }
 
         composable(Routes.perfil) {
+            viewMain.quitaTodo()
             PaginaPerfil(
                 onItemClick = { idTrivia ->
                     navController.navigate("preguntasResponder/$idTrivia")
                 },
-                onSalida = {navController.navigate("principal")}
+                onSalida = { navController.navigate("principal") }
             )
         }
 
         composable(Routes.lista) {
+            viewMain.ponTodo()
             PaginaLista(
                 onItemClick = { idTrivia ->
                     navController.navigate("preguntasResponder/$idTrivia")
@@ -58,6 +61,7 @@ fun TrivialNavGraph(navController: NavHostController ,viewMain: MainViewModel) {
         }
 
         composable(Routes.login) {
+            viewMain.quitaBoton()
             PaginaLogin(
                 onItemClick = { navController.navigate("principal") }
             )
@@ -68,9 +72,10 @@ fun TrivialNavGraph(navController: NavHostController ,viewMain: MainViewModel) {
             arguments = listOf(navArgument("idTrivia") { type = NavType.StringType })
         ) { backStackEntry ->
             val idTrivia = backStackEntry.arguments?.getString("idTrivia") ?: return@composable
+            viewMain.quitaTodo()
             PaginaResponderPreguntas(
                 idTrivia = idTrivia,
-                accionFin = {idTrivia-> navController.navigate("preguntasFin/$idTrivia")},
+                accionFin = { idTrivia -> navController.navigate("preguntasFin/$idTrivia") },
                 accionCancelar = { navController.navigate("principal") })
         }
 
@@ -79,28 +84,35 @@ fun TrivialNavGraph(navController: NavHostController ,viewMain: MainViewModel) {
             arguments = listOf(navArgument("idTrivia") { type = NavType.StringType })
         ) { backStackEntry ->
             val idTrivia = backStackEntry.arguments?.getString("idTrivia") ?: return@composable
+            viewMain.quitaTodo()
             PaginaFinTrivia(
                 idTrivia = idTrivia,
-                accionSalir = {navController.navigate("principal")}
+                accionSalir = { navController.navigate("principal") }
             )
         }
 
         composable(Routes.paginaAjustes) {
+            viewMain.quitaTodo()
             PaginaAjustesTrivia(
-                onClickSalir =  { navController.navigate("principal") },
-                onClickAceptar =  { idTrivia ->
+                onClickSalir = { navController.navigate("principal") },
+                onClickAceptar = { idTrivia ->
                     navController.navigate("preguntasCrear/$idTrivia")
                 }
             )
         }
 
-        composable(Routes.paginaCreaPreguntas,arguments = listOf(navArgument("idTrivia") { type = NavType.StringType })
+        composable(
+                Routes.paginaCreaPreguntas,
+                arguments = listOf(navArgument("idTrivia")
+                { type = NavType.StringType }
+            )
         ) { backStackEntry ->
             val idTrivia = backStackEntry.arguments?.getString("idTrivia") ?: return@composable
+            viewMain.quitaTodo()
             PaginaElegirRespuestas(
                 idTrivia = idTrivia,
-                onClickSalir =  { navController.navigate("principal") },
-                onClickAceptar =  { navController.navigate("principal") }
+                onClickSalir = { navController.navigate("principal") },
+                onClickAceptar = { navController.navigate("principal") }
             )
         }
     }

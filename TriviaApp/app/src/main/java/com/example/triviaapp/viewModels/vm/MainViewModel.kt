@@ -12,10 +12,18 @@ class MainViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(MainUi())
     val uiState: StateFlow<MainUi> = _uiState.asStateFlow()
 
-    fun cambioEstadoScafold(nombre: String): String{
-        _uiState.value = _uiState.value.copy(scaffold = !uiState.value.scaffold)
-        return nombre
+    fun quitaTodo(){
+        _uiState.value = _uiState.value.copy(scaffold = false, botonFlotante =false )
     }
+
+    fun ponTodo(){
+        _uiState.value = _uiState.value.copy(scaffold = true, botonFlotante =true )
+    }
+
+    fun quitaBoton(){
+        _uiState.value = _uiState.value.copy(botonFlotante =false )
+    }
+
 
 
 

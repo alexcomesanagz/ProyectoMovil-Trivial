@@ -73,6 +73,11 @@ fun ComponentePreguntaYRespuestasRellenar(
             ComponenteTextField(
                 DatosTextField(
                     msjPregunta = "introduzca la pregunta ",
+                    listaColor = listOf(
+                        MaterialTheme.colorScheme.secondary,
+                        MaterialTheme.colorScheme.onSecondary,
+                        MaterialTheme.colorScheme.primary,
+                        MaterialTheme.colorScheme.onPrimary),
                     txtContenido = datos.enunciado,
                     accion = datos.accionEnunciado
                 )
