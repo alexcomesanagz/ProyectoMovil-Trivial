@@ -11,6 +11,9 @@ class PaginaAjustesViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(PaginaAjustesUi())
     val uiState: StateFlow<PaginaAjustesUi> = _uiState.asStateFlow()
 
+    fun guardarAjustesConNuevoId():String {
+        return ""
+    }
     fun setCategoria(categoria: String): String{
         _uiState.value = _uiState.value.copy(categoria = categoria)
         return categoria

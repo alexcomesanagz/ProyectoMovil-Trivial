@@ -82,5 +82,24 @@ fun TrivialNavGraph(navController: NavHostController ,viewMain: MainViewModel) {
                 accionSalir = {navController.navigate("principal")}
             )
         }
+
+        composable(Routes.paginaAjustes) {
+            PaginaAjustesTrivia(
+                onClickSalir =  { navController.navigate("principal") },
+                onClickAceptar =  { idTrivia ->
+                    navController.navigate("preguntasCrear/$idTrivia")
+                }
+            )
+        }
+
+        composable(Routes.paginaCreaPreguntas,arguments = listOf(navArgument("idTrivia") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val idTrivia = backStackEntry.arguments?.getString("idTrivia") ?: return@composable
+            PaginaElegirRespuestas(
+                idTrivia = idTrivia,
+                onClickSalir =  { navController.navigate("principal") },
+                onClickAceptar =  { navController.navigate("principal") }
+            )
+        }
     }
 }
