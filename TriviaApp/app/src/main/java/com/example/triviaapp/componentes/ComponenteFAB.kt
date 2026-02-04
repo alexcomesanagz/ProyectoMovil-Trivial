@@ -26,6 +26,8 @@ fun ComponenteFAB(onClick: () -> Unit) {
         onClick = onClick,
         containerColor = MaterialTheme.colorScheme.primary
     ) {
-        Icon(Icons.Default.Add, contentDescription = "Add", tint = MaterialTheme.colorScheme.onPrimary)
+        Icon(Icons.Default.Add,
+            contentDescription = "Add",
+            tint = MaterialTheme.colorScheme.onPrimary)
     }
 }
