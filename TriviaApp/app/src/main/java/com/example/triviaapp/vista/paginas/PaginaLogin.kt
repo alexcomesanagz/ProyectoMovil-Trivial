@@ -31,7 +31,7 @@ import com.example.triviaapp.viewModels.vm.PaginaLoginViewModel
 @Composable
 fun PaginaLogin(
     paginaLoginUi : PaginaLoginViewModel = viewModel(),
-    onItemClick: (String) -> Unit
+    onItemClick: () -> Unit
 ) {
     val uiState by paginaLoginUi.uiState.collectAsState()
     Box(
@@ -80,7 +80,7 @@ fun PaginaLogin(
             ) {
                 DenegarBoton(
                     stringResource(R.string.app_bt_salir),
-                    accion = {onItemClick}
+                    accion = onItemClick
                 )
             }
         }

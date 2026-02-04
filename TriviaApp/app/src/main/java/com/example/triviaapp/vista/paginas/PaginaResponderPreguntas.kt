@@ -98,7 +98,7 @@ fun PaginaResponderPreguntas(
                     datosBotones = DatosBotonDoble(
                         stringResource(R.string.app_bt_salir),
                         stringResource(R.string.app_bt_finalizar),
-                        accionBoton1 = { accionCancelar },
+                        accionBoton1 = accionCancelar ,
                         accionBoton2 = { accionFin(idTrivia) })
                 )
             }

@@ -22,15 +22,20 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.ComponenteTopBar
+import com.example.triviaapp.viewModels.vm.MainViewModel
+import com.example.triviaapp.vista.navigation.TrivialNavGraph
 import com.example.triviaapp.vista.paginas.PaginaElegirRespuestas
 import com.example.triviaapp.vista.paginas.PaginaPerfil
 import com.example.triviaapp.vista.paginas.PaginaResponderPreguntas
@@ -63,10 +68,13 @@ private val tarjetas: List<Tarjeta> = listOf(
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val viewMain= MainViewModel()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
 
+            val uiState by viewMain.uiState.collectAsState()
+            val navController = rememberNavController()
             val snackbarHostState = remember { SnackbarHostState() }
             val scope = rememberCoroutineScope()
             val drawerState = rememberDrawerState(DrawerValue.Closed)
@@ -85,7 +93,10 @@ class MainActivity : ComponentActivity() {
                                     .clickable {
                                         // Handle click
                                         Log.e("Testing", "Inicio cliqueado")
-                                        scopeDrawer.launch { drawerState.close() }
+                                        scopeDrawer.launch {
+                                            drawerState.close()
+                                            navController.navigate("principal")
+                                        }
                                     }
                                     .padding(16.dp)
                             )
@@ -96,7 +107,10 @@ class MainActivity : ComponentActivity() {
                                     .clickable {
                                         // Handle click
                                         Log.e("Testing", "categorias cliqueado")
-                                        scopeDrawer.launch { drawerState.close() }
+                                        scopeDrawer.launch {
+                                            drawerState.close()
+                                            navController.navigate("lista")
+                                        }
                                     }
                                     .padding(16.dp)
                             )
@@ -106,18 +120,27 @@ class MainActivity : ComponentActivity() {
                     Scaffold(
                         modifier = Modifier.fillMaxSize(),
                         topBar = {
+                            if (uiState.scaffold){
                             ComponenteTopBar(
                                 title = "Página de prueba",
                                 accionMenu = {
                                     scope.launch {
                                         drawerState.open()
                                     }
-                                })
+                                },
+                                accionLogin = {navController.navigate("login")},
+                                accionPerfil = {navController.navigate("perfil")}
+                             )
+                            }
                         },
                         floatingActionButton = {
-                            ComponenteFAB {
-                                scope.launch {
-                                    snackbarHostState.showSnackbar(message = "Perfil")
+                            if (uiState.scaffold){
+
+                                ComponenteFAB {
+                                    scope.launch {
+                                        snackbarHostState.showSnackbar(message = "Perfil")
+                                        navController.navigate("ajustes")
+                                    }
                                 }
                             }
                         }
@@ -128,14 +151,7 @@ class MainActivity : ComponentActivity() {
                                 .fillMaxSize()
                                 .background(MaterialTheme.colorScheme.inverseSurface)
                         ) {
-//                            PaginaAjustesTrivia()
-//                            PaginaElegirRespuestas()
-//                            PaginaFinTrivia()
-//                            PaginaLista()
-//                            PaginaLogin()
-                            PaginaPerfil()
-//                            PaginaPrincipal()
-//                            PaginaResponderPreguntas()
+                          TrivialNavGraph(navController,viewMain)
                         }
                     }
                 }

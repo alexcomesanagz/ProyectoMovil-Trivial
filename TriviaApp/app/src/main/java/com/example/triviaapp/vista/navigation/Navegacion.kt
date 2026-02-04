@@ -1,12 +1,14 @@
 package com.example.triviaapp.vista.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.triviaapp.PaginaPrincipal
+import com.example.triviaapp.viewModels.vm.MainViewModel
 import com.example.triviaapp.vista.paginas.PaginaFinTrivia
 import com.example.triviaapp.vista.paginas.PaginaLista
 import com.example.triviaapp.vista.paginas.PaginaLogin
@@ -26,8 +28,7 @@ object Routes {
 }
 
 @Composable
-fun PokemonNavGraph() {
-    val navController = rememberNavController()
+fun TrivialNavGraph(navController: NavHostController ,viewMain: MainViewModel) {
     NavHost(navController = navController, startDestination = Routes.principal) {
         composable(Routes.principal) {
             PaginaPrincipal(
@@ -67,7 +68,7 @@ fun PokemonNavGraph() {
             val idTrivia = backStackEntry.arguments?.getString("idTrivia") ?: return@composable
             PaginaResponderPreguntas(
                 idTrivia = idTrivia,
-                accionFin = {},
+                accionFin = {idTrivia-> navController.navigate("preguntasFin/$idTrivia")},
                 accionCancelar = { navController.navigate("principal") })
         }
 

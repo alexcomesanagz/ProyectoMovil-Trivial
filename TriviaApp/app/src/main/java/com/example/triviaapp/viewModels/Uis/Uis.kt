@@ -1,6 +1,8 @@
 package com.example.triviaapp.viewModels.Uis
 
 import android.util.Log
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.Tarjeta
 
@@ -9,6 +11,9 @@ data class PaginaLoginUi(
     val stringContrasena: String = ""
 )
 
+data class MainUi(
+    val scaffold: Boolean=true,
+)
 data class PaginaPerfilUi(
     val imagenPerfil: Int = R.drawable.perfil,
     val nombreUsuario: String="",

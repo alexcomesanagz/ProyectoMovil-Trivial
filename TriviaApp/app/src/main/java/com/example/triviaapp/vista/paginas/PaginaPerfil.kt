@@ -92,7 +92,7 @@ fun PaginaPerfil(
             DenegarBoton(
                 msj = "salir",
                 modifier = Modifier.fillMaxWidth(),
-                accion = {onSalida})
+                accion = onSalida)
         }
     }
 

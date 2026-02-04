@@ -74,7 +74,7 @@ fun PaginaFinTrivia(
                 DenegarBoton(
                     stringResource(R.string.app_bt_salir),
                     modifier = Modifier.fillMaxWidth(),
-                    accion = {accionSalir}
+                    accion = accionSalir
                 )
             }
 
