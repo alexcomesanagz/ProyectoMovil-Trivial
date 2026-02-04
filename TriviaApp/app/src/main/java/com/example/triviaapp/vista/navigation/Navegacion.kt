@@ -9,6 +9,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.triviaapp.PaginaPrincipal
 import com.example.triviaapp.viewModels.vm.MainViewModel
+import com.example.triviaapp.vista.paginas.PaginaAjustesTrivia
+import com.example.triviaapp.vista.paginas.PaginaElegirRespuestas
 import com.example.triviaapp.vista.paginas.PaginaFinTrivia
 import com.example.triviaapp.vista.paginas.PaginaLista
 import com.example.triviaapp.vista.paginas.PaginaLogin

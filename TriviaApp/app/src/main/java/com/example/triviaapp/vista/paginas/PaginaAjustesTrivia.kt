@@ -47,7 +47,7 @@ fun PaginaAjustesTrivia(paginaAjustesUi: PaginaAjustesViewModel = viewModel(), o
                 datosBotones = DatosBotonDoble(
                     stringResource(R.string.app_bt_salir),
                     stringResource(R.string.app_bt_aceptar),
-                    accionBoton1 = { onClickSalir },
+                    accionBoton1 = onClickSalir,
                     accionBoton2 = { onClickAceptar(paginaAjustesUi.guardarAjustesConNuevoId()) })
             )
         }

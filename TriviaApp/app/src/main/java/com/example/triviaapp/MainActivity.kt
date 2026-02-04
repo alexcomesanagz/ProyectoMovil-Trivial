@@ -225,7 +225,7 @@ class MainActivity : ComponentActivity() {
                             .background(MaterialTheme.colorScheme.background)
                     ) {
 //                        PaginaAjustesTrivia() // cambiar tamaño botones y cajas unificadas
-                            PaginaElegirRespuestas()
+//                            PaginaElegirRespuestas()
 //                            PaginaFinTrivia() //hacerlo mas bonito/visual(ej: poner imagen de felicidades)
 //                            PaginaLista()
 //                            PaginaLogin()
