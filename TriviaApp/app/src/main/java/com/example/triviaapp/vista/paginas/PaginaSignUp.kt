@@ -1,6 +1,5 @@
 package com.example.triviaapp.vista.paginas
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,24 +17,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.triviaapp.R
-import com.example.triviaapp.componentes.BotonesDobleAceptarColumna
+import com.example.triviaapp.componentes.AceptarBoton
 import com.example.triviaapp.componentes.ComponenteTextField
 import com.example.triviaapp.componentes.ComponenteTextFieldContrasena
-import com.example.triviaapp.componentes.DatosBotonDoble
 import com.example.triviaapp.componentes.DatosTextField
 import com.example.triviaapp.componentes.DenegarBoton
 import com.example.triviaapp.viewModels.vm.PaginaLoginViewModel
+import com.example.triviaapp.viewModels.vm.PaginaSignUpViewModel
 
 /**
  * Pagina para entrar en tu cuenta ya creada o crear una nueva
  */
 @Composable
-fun PaginaLogin(
-    paginaLoginUi : PaginaLoginViewModel = viewModel(),
+fun PaginaSignUp(
+    paginaSignUi : PaginaSignUpViewModel = viewModel(),
     onItemClick: () -> Unit,
-    onSignUpClick:()->Unit
+    onSignUpClick:()-> Unit
 ) {
-    val uiState by paginaLoginUi.uiState.collectAsState()
+    val uiState by paginaSignUi.uiState.collectAsState()
     Box(
         Modifier
             .fillMaxSize()
@@ -51,6 +50,19 @@ fun PaginaLogin(
             Column(verticalArrangement = Arrangement.spacedBy(space = 35.dp)) {
                 ComponenteTextField(
                     DatosTextField(
+                        msjPregunta = stringResource(R.string.app_signUp_msjnombre),
+                        listaColor = listOf(
+                            MaterialTheme.colorScheme.background,
+                            MaterialTheme.colorScheme.onBackground,
+                            MaterialTheme.colorScheme.primary,
+                            MaterialTheme.colorScheme.onPrimary),
+                        txtContenido = uiState.nombreUsuario,
+                        accion = { paginaSignUi.setnombre(it)
+                        }
+                    )
+                )
+                ComponenteTextField(
+                    DatosTextField(
                         msjPregunta = stringResource(R.string.app_login_msjCorreo),
                         listaColor = listOf(
                             MaterialTheme.colorScheme.background,
@@ -58,20 +70,21 @@ fun PaginaLogin(
                             MaterialTheme.colorScheme.primary,
                             MaterialTheme.colorScheme.onPrimary),
                         txtContenido = uiState.stringCorreo,
-                        accion = { paginaLoginUi.setCorreo(it)
+                        accion = { paginaSignUi.setCorreo(it)
                         }
                     )
                 )
-                ComponenteTextFieldContrasena(
+                ComponenteTextField(
                     DatosTextField(
-                        stringResource(R.string.app_login_msjContraseña),
+                        msjPregunta = stringResource(R.string.app_login_msjCorreo),
                         listaColor = listOf(
                             MaterialTheme.colorScheme.background,
                             MaterialTheme.colorScheme.onBackground,
                             MaterialTheme.colorScheme.primary,
                             MaterialTheme.colorScheme.onPrimary),
                         txtContenido = uiState.stringContrasena,
-                        accion = {paginaLoginUi.setContrasena(it) }
+                        accion = {paginaSignUi.setContrasena(it)
+                        }
                     )
                 )
             }
@@ -79,13 +92,9 @@ fun PaginaLogin(
             Column(
                 verticalArrangement = Arrangement.spacedBy(space = 35.dp),
             ) {
-                BotonesDobleAceptarColumna(
-                    DatosBotonDoble(
-                        msjBot1 = stringResource(R.string.app_login_btnLogIn),
-                        msjBot2 = stringResource(R.string.app_login_btnSignUp),
-                        modifierBotones = Modifier.fillMaxWidth(),
-                        accionBoton1 =  onItemClick ,
-                        accionBoton2 =  onSignUpClick)
+                AceptarBoton(msj = stringResource(R.string.app_login_btnSignUp),
+                    modifier = Modifier.fillMaxWidth(),
+                    accion =  onSignUpClick
                 )
             }
             Column(
@@ -103,6 +112,6 @@ fun PaginaLogin(
 
 @Preview(showSystemUi = true)
 @Composable
-fun PrevPaginaLogin() {
-        PaginaLogin(onItemClick = {}, onSignUpClick = {})
+fun PrevSignUp() {
+        PaginaSignUp(onItemClick = {}, onSignUpClick = {})
 }
