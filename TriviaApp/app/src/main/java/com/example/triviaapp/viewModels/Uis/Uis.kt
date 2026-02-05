@@ -8,7 +8,8 @@ import com.example.triviaapp.componentes.Tarjeta
 
 data class PaginaLoginUi(
     val stringCorreo: String = "",
-    val stringContrasena: String = ""
+    val stringContrasena: String = "",
+    val contrasenaVisible: Boolean=false
 )
 
 data class MainUi(

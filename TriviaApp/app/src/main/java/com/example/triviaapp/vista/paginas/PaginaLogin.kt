@@ -73,7 +73,9 @@ fun PaginaLogin(
                             MaterialTheme.colorScheme.onPrimary),
                         txtContenido = uiState.stringContrasena,
                         accion = {paginaLoginUi.setContrasena(it) }
-                    )
+                    ),
+                    onclickIcon = {paginaLoginUi.setVisibilidad()},
+                    visible = uiState.contrasenaVisible
                 )
             }
 

@@ -17,6 +17,11 @@ class PaginaLoginViewModel : ViewModel(){
         return _uiState.value.stringCorreo
     }
 
+    fun setVisibilidad() {
+        _uiState.value = _uiState.value.copy(contrasenaVisible = !uiState.value.contrasenaVisible)
+    }
+
+
     fun setContrasena(contrasena : String): String{
         _uiState.value = _uiState.value.copy(stringContrasena = contrasena)
         return _uiState.value.stringContrasena

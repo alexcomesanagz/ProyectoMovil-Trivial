@@ -2,7 +2,15 @@ package com.example.triviaapp.componentes
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SegmentedButtonDefaults.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -14,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 
 
@@ -23,25 +32,26 @@ import androidx.compose.ui.tooling.preview.Preview
  * @param txtNuevo texto introducido empleado para actualizar
  */
 class DatosTextField(
-    val msjPregunta:String="Introduca aquí nombre del Trivial a crear",
-    var txtContenido : String="",
-    val modif: Modifier= Modifier.fillMaxWidth(),
+    val msjPregunta: String = "Introduca aquí nombre del Trivial a crear",
+    var txtContenido: String = "",
+    val modif: Modifier = Modifier.fillMaxWidth(),
     var listaColor: List<Color> = listOf(),
-    val accion: (String) -> String={""}
+    val accion: (String) -> String = { "" }
 
 )
 
 class DatosTextFieldLista(
-    val msjPregunta:String="Introduca aquí nombre del Trivial a crear",
-    var txtContenido : String="",
+    val msjPregunta: String = "Introduca aquí nombre del Trivial a crear",
+    var txtContenido: String = "",
     val i: Int,
-    val modif: Modifier= Modifier.fillMaxWidth(),
+    val modif: Modifier = Modifier.fillMaxWidth(),
     var listaColor: List<Color> = listOf(),
-    val accion: (Int ,String) -> String={i, it->""}
+    val accion: (Int, String) -> String = { i, it -> "" }
 
 )
+
 @Composable
-fun ComponenteTextField(datos: DatosTextField){
+fun ComponenteTextField(datos: DatosTextField) {
 
     TextField(
         colors = TextFieldDefaults.colors(
@@ -54,20 +64,21 @@ fun ComponenteTextField(datos: DatosTextField){
         ),
         modifier = datos.modif,
         value = datos.txtContenido,
-        onValueChange = {txtNuevo -> datos.txtContenido=datos.accion(txtNuevo)},
+        onValueChange = { txtNuevo -> datos.txtContenido = datos.accion(txtNuevo) },
         label = { Text(datos.msjPregunta, color = datos.listaColor.get(1)) },
 
-    )
+        )
 }
 
 
 @Composable
-fun ComponenteTextFieldLista(datos: DatosTextFieldLista){
-    datos.listaColor=listOf(
+fun ComponenteTextFieldLista(datos: DatosTextFieldLista) {
+    datos.listaColor = listOf(
         MaterialTheme.colorScheme.secondary,
         MaterialTheme.colorScheme.onSecondary,
         MaterialTheme.colorScheme.primary,
-        MaterialTheme.colorScheme.onPrimary)
+        MaterialTheme.colorScheme.onPrimary
+    )
 
     TextField(
         colors = TextFieldDefaults.colors(
@@ -81,7 +92,7 @@ fun ComponenteTextFieldLista(datos: DatosTextFieldLista){
         modifier = datos.modif,
         value = datos.txtContenido,
         onValueChange = { txtNuevo ->
-            datos.txtContenido=datos.accion(datos.i,txtNuevo)
+            datos.txtContenido = datos.accion(datos.i, txtNuevo)
         },
         label = { Text(datos.msjPregunta, color = datos.listaColor.get(1)) },
 
@@ -89,12 +100,17 @@ fun ComponenteTextFieldLista(datos: DatosTextFieldLista){
 }
 
 @Composable
-fun ComponenteTextFieldContrasena(datos: DatosTextField){
-    datos.listaColor=listOf(
+fun ComponenteTextFieldContrasena(
+    datos: DatosTextField,
+    visible: Boolean = false,
+    onclickIcon: () -> Unit
+) {
+    datos.listaColor = listOf(
         MaterialTheme.colorScheme.background,
         MaterialTheme.colorScheme.onBackground,
         MaterialTheme.colorScheme.primary,
-        MaterialTheme.colorScheme.onPrimary)
+        MaterialTheme.colorScheme.onPrimary
+    )
 
     TextField(
         colors = TextFieldDefaults.colors(
@@ -107,18 +123,36 @@ fun ComponenteTextFieldContrasena(datos: DatosTextField){
         ),
         modifier = datos.modif,
         value = datos.txtContenido,
-        onValueChange = {txtNuevo -> datos.txtContenido=datos.accion(txtNuevo)},
+        onValueChange = { txtNuevo -> datos.txtContenido = datos.accion(txtNuevo) },
         label = { Text(datos.msjPregunta, color = datos.listaColor.get(1)) },
-        visualTransformation = PasswordVisualTransformation(),
+        visualTransformation =
+            if (visible) VisualTransformation.None
+            else PasswordVisualTransformation(),
         keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Password
-        )
-    )
-}
+        ),
+            trailingIcon = {
+                IconButton(onClick = onclickIcon
+                ) {
+                    Icon(
+                        imageVector = if (visible)
+                            Icons.Default.Visibility
+                        else
+                            Icons.Default.VisibilityOff,
+                        contentDescription = if (visible)
+                            "Ocultar contraseña"
+                        else
+                            "Mostrar contraseña",
+                        tint = datos.listaColor[1]
+                    )
+                }
 
+            }
+        )
+    }
 @Preview
 @Composable
-fun PrevComponenteTextField(){
-    val mu: MutableState<String> = remember { mutableStateOf(value = "as")}
+fun PrevComponenteTextField() {
+    val mu: MutableState<String> = remember { mutableStateOf(value = "as") }
     //ComponenteTextField(DatosTextField(txtContenido = mu))
 }
