@@ -96,8 +96,8 @@ data class ResponderPregUIState(
 )
 
 data class PrincipalUiState(
-    val tarjetasLista1: List<TajetaUiDatos> = listOf<TajetaUiDatos>(TajetaUiDatos(),TajetaUiDatos()),
-    val tarjetasLista2: List<TajetaUiDatos> = listOf<TajetaUiDatos>(TajetaUiDatos(),TajetaUiDatos()),
+    val tarjetasLista1: List<TajetaUiDatos> = listOf<TajetaUiDatos>(TajetaUiDatos(titulo = "awawa"),TajetaUiDatos(titulo = "awawa")),
+    val tarjetasLista2: List<TajetaUiDatos> = listOf<TajetaUiDatos>(TajetaUiDatos(titulo = "awawa"),TajetaUiDatos(titulo = "awawa")),
 )
 
 data class Pregunta(

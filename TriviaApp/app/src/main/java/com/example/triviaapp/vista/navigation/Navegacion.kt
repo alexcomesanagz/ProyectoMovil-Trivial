@@ -34,7 +34,7 @@ object Routes {
 
 @Composable
 fun TrivialNavGraph(navController: NavHostController, viewMain: MainViewModel) {
-    NavHost(navController = navController, startDestination = Routes.principal) {
+    NavHost(navController = navController, startDestination = Routes.login) {
         composable(Routes.principal) {
             viewMain.ponTodo()
             PaginaPrincipal(
