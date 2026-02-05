@@ -16,6 +16,7 @@ import com.example.triviaapp.vista.paginas.PaginaLista
 import com.example.triviaapp.vista.paginas.PaginaLogin
 import com.example.triviaapp.vista.paginas.PaginaPerfil
 import com.example.triviaapp.vista.paginas.PaginaResponderPreguntas
+import com.example.triviaapp.vista.paginas.PaginaSignUp
 
 
 object Routes {
@@ -23,6 +24,8 @@ object Routes {
     const val lista = "lista"
     const val login = "login"
     const val perfil = "perfil"
+
+    const val sign = "sign"
     const val paginaAjustes = "ajustes"
     const val paginaCreaPreguntas = "preguntasCrear/{idTrivia}"
     const val paginaRespondePreguntas = "preguntasResponder/{idTrivia}"
@@ -50,6 +53,16 @@ fun TrivialNavGraph(navController: NavHostController, viewMain: MainViewModel) {
                 onSalida = { navController.navigate("principal") }
             )
         }
+        composable(Routes.sign) {
+            viewMain.quitaTodo()
+            PaginaSignUp(
+                onItemClick = {
+                    navController.navigate("login")
+                },
+                onSignUpClick = {navController.navigate("perfil")}
+            )
+
+        }
 
         composable(Routes.lista) {
             viewMain.ponTodo()
@@ -63,7 +76,8 @@ fun TrivialNavGraph(navController: NavHostController, viewMain: MainViewModel) {
         composable(Routes.login) {
             viewMain.quitaBoton()
             PaginaLogin(
-                onItemClick = { navController.navigate("principal") }
+                onItemClick = { navController.navigate("perfil") },
+                onSignUpClick = {navController.navigate("sign")}
             )
         }
 

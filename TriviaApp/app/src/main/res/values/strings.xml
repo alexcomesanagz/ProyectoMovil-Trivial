@@ -16,6 +16,7 @@
     <string name="app_titulo_tituloSlider">Número de preguntas</string>
     <string name="app_titulo_tituloSwitch">Mostrar creador</string>
     <string name="app_titulo_tituloPreguntasAcertadas">Preguntas acertadas</string>
+    <string name="app_signUp_msjnombre">Nombre usuario</string>
     <string name="app_login_msjCorreo">Correo usuario</string>
     <string name="app_login_msjContraseña">Contraseña usuario</string>
     <string name="app_login_btnLogIn">Log in</string>

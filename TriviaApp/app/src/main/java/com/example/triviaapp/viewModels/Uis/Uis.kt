@@ -35,6 +35,11 @@ data class PaginaPerfilUi(
     )
 )
 
+data class PaginaSignUpUi(
+    val nombreUsuario:String="",
+    val stringCorreo: String = "",
+    val stringContrasena: String = ""
+)
 data class PaginaAjustesUi(
     val nombreTriv:String="",
     val categoria: String="1",
