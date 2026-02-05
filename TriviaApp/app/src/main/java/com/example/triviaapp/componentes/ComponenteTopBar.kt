@@ -2,6 +2,7 @@ package com.example.triviaapp.componentes
 
 import android.util.Log
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.ExitToApp
@@ -30,8 +31,10 @@ import com.example.triviaapp.R
 @Composable
 fun ComponenteTopBar(
     title: String,
+    logueado: Boolean,
     accionMenu: () -> Unit={ },
     accionLogin:()->Unit={ Log.e("Testeo","inicio sesion cliqueada")},
+    accionCerrarSesion:()->Unit={ Log.e("Testeo","inicio sesion cliqueada")},
     accionCamara: () -> Unit={ Log.e("Testeo","camara cliqueada")},
     accionPerfil: () -> Unit={Log.e("Testeo","perfil cliqueada")}
 ) {
@@ -43,12 +46,25 @@ fun ComponenteTopBar(
             }
         },
         actions = {
-            IconButton(onClick = accionLogin) {
-                Icon(Icons.Default.Face, contentDescription = stringResource(R.string.app_login_btnLogIn))
+            if (!logueado) {
+                IconButton(onClick = accionLogin) {
+                    Icon(
+                        Icons.Default.Face,
+                        contentDescription = stringResource(R.string.app_login_btnLogIn)
+                    )
+                }
             }
-            IconButton(onClick = accionCamara) {
-                Icon(Icons.Default.Create, contentDescription = stringResource(R.string.app_toolbar_Camara))
+            else{
+                IconButton(onClick = accionCerrarSesion) {
+                    Icon(
+                        Icons.AutoMirrored.Filled.ExitToApp,
+                        contentDescription = stringResource(R.string.app_login_Out)
+                    )
+                }
             }
+//            IconButton(onClick = accionCamara) {
+//                Icon(Icons.Default.Create, contentDescription = stringResource(R.string.app_toolbar_Camara))
+//            }
             IconButton(onClick = accionPerfil) {
                 Icon(Icons.Default.AccountCircle, contentDescription = stringResource(R.string.app_toolbar_Perfil))
             }
@@ -59,5 +75,5 @@ fun ComponenteTopBar(
 @Preview
 @Composable
 fun PreviewTop(){
-    ComponenteTopBar("Página 1",{},{},{})
+    ComponenteTopBar("Página 1", logueado = false,{},{},{})
 }

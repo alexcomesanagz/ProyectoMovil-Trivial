@@ -77,7 +77,8 @@ fun TrivialNavGraph(navController: NavHostController, viewMain: MainViewModel) {
             viewMain.quitaBoton()
             PaginaLogin(
                 onItemClick = { navController.navigate("perfil") },
-                onSignUpClick = {navController.navigate("sign")}
+                onSignUpClick = {navController.navigate("sign")},
+                onSalirClick={navController.navigate("principal")}
             )
         }
 

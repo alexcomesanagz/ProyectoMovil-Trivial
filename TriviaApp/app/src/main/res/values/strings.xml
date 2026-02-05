@@ -34,6 +34,7 @@
     <string name="app_sleccion_resp_4">4</string>
     <string name="app_opcion_correcta">Opción correcta</string>
     <string name="app_titulo_categorias">Tipo de categoría</string>
+    <string name="app_login_Out">Cerrar sesion\n</string>
 
 
 </resources>

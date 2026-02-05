@@ -24,7 +24,9 @@ class MainViewModel : ViewModel() {
         _uiState.value = _uiState.value.copy(botonFlotante =false )
     }
 
-
+    fun cambioLogueado(estado: Boolean){
+        _uiState.value = _uiState.value.copy(logueado = estado )
+    }
 
 
 }

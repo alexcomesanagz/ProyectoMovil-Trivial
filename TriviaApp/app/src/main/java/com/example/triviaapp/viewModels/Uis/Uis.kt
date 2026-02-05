@@ -13,7 +13,8 @@ data class PaginaLoginUi(
 
 data class MainUi(
     val scaffold: Boolean=true,
-    val botonFlotante: Boolean=true
+    val botonFlotante: Boolean=true,
+    val logueado: Boolean=false
 )
 data class PaginaPerfilUi(
     val imagenPerfil: Int = R.drawable.perfil,
