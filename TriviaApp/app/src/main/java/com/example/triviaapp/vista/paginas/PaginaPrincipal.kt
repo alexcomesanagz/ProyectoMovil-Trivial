@@ -36,20 +36,20 @@ fun PaginaPrincipal(principalViewmodel: PrincipalViewModel = viewModel(), onItem
                 uiState.tarjetasLista1.map {
                     Tarjeta(it.imagen,
                         it.titulo,
-                        {contenido ->
-                            onItemClick(contenido)
-                        },
-                        it.id)
+                        {
+                            onItemClick(it.id)
+                        }
+                       )
                 })
             ComponenteTituloYListaTarjetasHorizontal(
                 stringResource(R.string.app_titulo_pagina_2),
                 uiState.tarjetasLista2.map {
                     Tarjeta(it.imagen,
                         it.titulo,
-                        {contenido ->
-                            onItemClick(contenido)
-                        },
-                        it.id)
+                        {
+                            onItemClick(it.id)
+                        }
+                    )
                 })
         }
     }

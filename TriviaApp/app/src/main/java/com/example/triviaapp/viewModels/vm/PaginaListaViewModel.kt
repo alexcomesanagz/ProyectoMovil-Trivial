@@ -19,8 +19,7 @@ class PaginaListaViewModel : ViewModel() {
                     Tarjeta(
                         imagen = targeta.imagen,
                         titulo = targeta.titulo,
-                        accion = accion,
-                        id = targeta.id
+                        accion = {accion(targeta.id)},
                     )
                 }
             }

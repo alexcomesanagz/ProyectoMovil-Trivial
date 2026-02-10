@@ -34,6 +34,7 @@ import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.ComponenteTopBar
+import com.example.triviaapp.data.repositorio.LogueadoRepo
 import com.example.triviaapp.viewModels.vm.MainViewModel
 import com.example.triviaapp.vista.navigation.TrivialNavGraph
 import com.example.triviaapp.vista.paginas.PaginaElegirRespuestas
@@ -72,7 +73,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-
+            val usuarioLogeado= LogueadoRepo()
             val uiState by viewMain.uiState.collectAsState()
             val navController = rememberNavController()
             val snackbarHostState = remember { SnackbarHostState() }
@@ -123,15 +124,22 @@ class MainActivity : ComponentActivity() {
                             if (uiState.scaffold){
                             ComponenteTopBar(
                                 title = "Página de prueba",
-                                logueado = uiState.logueado,
+                                logueado = viewMain.cambioLogueado(),
                                 accionMenu = {
                                     scope.launch {
                                         drawerState.open()
                                     }
                                 },
-                                accionLogin = {viewMain.cambioLogueado(true)
-                                    navController.navigate("login")},
-                                accionCerrarSesion = {viewMain.cambioLogueado(false)},
+                                accionLogin = {
+                                    navController.navigate("login")
+                                              },
+                                accionCerrarSesion = {
+                                    usuarioLogeado.cerrarSesion(
+                                        onSuccess = {
+                                            viewMain.cambioLogueado()
+                                                },
+                                        onError = {})
+                                    },
                                 accionPerfil = {navController.navigate("perfil")}
                              )
                             }

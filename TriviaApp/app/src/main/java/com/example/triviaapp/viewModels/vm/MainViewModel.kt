@@ -1,6 +1,7 @@
 package com.example.triviaapp.viewModels.vm
 
 import androidx.lifecycle.ViewModel
+import com.example.triviaapp.data.repositorio.LogueadoRepo
 import com.example.triviaapp.viewModels.Uis.MainUi
 import com.example.triviaapp.viewModels.Uis.PaginaAjustesUi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -11,7 +12,7 @@ class MainViewModel : ViewModel() {
 
     private val _uiState = MutableStateFlow(MainUi())
     val uiState: StateFlow<MainUi> = _uiState.asStateFlow()
-
+    val log= LogueadoRepo()
     fun quitaTodo(){
         _uiState.value = _uiState.value.copy(scaffold = false, botonFlotante =false )
     }
@@ -24,8 +25,9 @@ class MainViewModel : ViewModel() {
         _uiState.value = _uiState.value.copy(botonFlotante =false )
     }
 
-    fun cambioLogueado(estado: Boolean){
-        _uiState.value = _uiState.value.copy(logueado = estado )
+    fun cambioLogueado(): Boolean{
+        _uiState.value = _uiState.value.copy(logueado = log.getLogueado() )
+        return uiState.value.logueado
     }
 
 

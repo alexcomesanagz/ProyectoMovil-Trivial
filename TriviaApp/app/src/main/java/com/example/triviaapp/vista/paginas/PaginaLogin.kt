@@ -87,7 +87,14 @@ fun PaginaLogin(
                         msjBot1 = stringResource(R.string.app_login_btnLogIn),
                         msjBot2 = stringResource(R.string.app_login_btnSignUp),
                         modifierBotones = Modifier.fillMaxWidth(),
-                        accionBoton1 =  onItemClick ,
+                        accionBoton1 =
+                            {
+                                paginaLoginUi.logIn(
+                                    correo = uiState.stringCorreo,
+                                    contrasena =uiState.stringContrasena,
+                                    onSucces = onItemClick
+                                )
+                            },
                         accionBoton2 =  onSignUpClick)
                 )
             }
