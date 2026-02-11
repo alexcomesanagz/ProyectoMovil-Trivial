@@ -35,6 +35,7 @@ import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.ComponenteTopBar
 import com.example.triviaapp.data.repositorio.LogueadoRepo
+import com.example.triviaapp.data.repositorio.UsuarioLogueadoRepo
 import com.example.triviaapp.viewModels.vm.MainViewModel
 import com.example.triviaapp.vista.navigation.TrivialNavGraph
 import com.example.triviaapp.vista.paginas.PaginaElegirRespuestas
@@ -73,7 +74,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val usuarioLogeado= LogueadoRepo()
+            val usuarioLogeado= UsuarioLogueadoRepo.repo
             val uiState by viewMain.uiState.collectAsState()
             val navController = rememberNavController()
             val snackbarHostState = remember { SnackbarHostState() }

@@ -1,12 +1,16 @@
 package com.example.triviaapp.data.repositorio
 
+import com.example.triviaapp.R
 import com.example.triviaapp.modelo.UsuarioDTO
 
+object UsuarioLogueadoRepo {
+    val repo = LogueadoRepo()
+}
 class LogueadoRepo {
     private var logueado = false
     private var usuario = UsuarioDTO(
         "",
-        1,
+        R.drawable.trivia,
         "",
         "",
         ""
@@ -18,9 +22,9 @@ class LogueadoRepo {
     fun getUsuario(): UsuarioDTO{
         return usuario
     }
-    fun registraUsuario(usuario: UsuarioDTO?, onSuccess: () -> Unit, onError: () -> Unit){
+    fun registraUsuario(usuario: UsuarioDTO, onSuccess: () -> Unit, onError: () -> Unit){
         this.logueado = true
-        this.usuario = usuario!!
+        this.usuario = usuario
         onSuccess()
     }
 
@@ -28,7 +32,7 @@ class LogueadoRepo {
         this.logueado=false
         this.usuario=UsuarioDTO(
             "",
-            1,
+            R.drawable.trivia,
             "",
             "",
             "")

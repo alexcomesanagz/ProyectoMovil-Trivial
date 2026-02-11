@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.data.repositorio.LogueadoRepo
+import com.example.triviaapp.data.repositorio.UsuarioLogueadoRepo
 import com.example.triviaapp.data.repositorio.UsuarioRepo
 import com.example.triviaapp.viewModels.Uis.PaginaAjustesUi
 import com.example.triviaapp.viewModels.Uis.PaginaFinUiState
@@ -16,7 +17,7 @@ class PaginaPerfilViewModel : ViewModel(){
 
     private val _uiState = MutableStateFlow(PaginaPerfilUi())
     val uiState: StateFlow<PaginaPerfilUi> = _uiState.asStateFlow()
-    val repoUsuarios = LogueadoRepo()
+    val repoUsuarios = UsuarioLogueadoRepo.repo
 
 
     fun cargaDatos() {

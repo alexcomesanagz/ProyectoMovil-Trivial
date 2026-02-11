@@ -90,9 +90,8 @@ fun PaginaLogin(
                         accionBoton1 =
                             {
                                 paginaLoginUi.logIn(
-                                    correo = uiState.stringCorreo,
-                                    contrasena =uiState.stringContrasena,
-                                    onSucces = onItemClick
+                                    onSucces = onItemClick,
+                                    onError = {}
                                 )
                             },
                         accionBoton2 =  onSignUpClick)

@@ -1,32 +1,43 @@
 package com.example.triviaapp.data.repositorio
 
+import com.example.triviaapp.R
 import com.example.triviaapp.modelo.UsuarioDTO
 
+
+object UsuarioRepoGeneral {
+    val repo = UsuarioRepo()
+}
 class UsuarioRepo {
-    private val loged= LogueadoRepo()
     private val datos = arrayListOf(
-        UsuarioDTO(id = "1",imagen =1, nombre = "Ana",correo = "ana@gmail.com",contrasena = "1"),
-        UsuarioDTO(id = "2", imagen =1 , nombre = "Luis", correo = "luis@gmail.com", contrasena = "1")
+        UsuarioDTO(id = "1",imagen =R.drawable.trivia, nombre = "Ana",correo = "ana@gmail.com",contrasena = "1"),
+        UsuarioDTO(id = "2", imagen =R.drawable.trivia , nombre = "Luis", correo = "luis@gmail.com", contrasena = "1")
     )
 
-    fun obtener(correo: String, contasena: String, onSuccess: (UsuarioDTO?) -> Unit, onError: () -> Unit) {
-        onSuccess(datos.find { it.correo == correo && it.contrasena==contasena })
-
+    fun obtener(correo: String, contasena: String, onSuccess: (UsuarioDTO) -> Unit, onError: () -> Unit) {
+        val usuario = datos.find {
+            it.correo == correo && it.contrasena == contasena
+        }
+        if (usuario != null) {
+            onSuccess(usuario)
+        } else {
+            onError()
+        }
     }
 
-    fun registrar(nombre:String, correo: String, contasena: String, onSuccess: (UsuarioDTO?) -> Unit, onError: () -> Unit) {
+    fun registrar(nombre:String, correo: String, contasena: String, onSuccess: (UsuarioDTO) -> Unit, onError: () -> Unit) {
 
         if(datos.find {it.correo == correo}==null) {
+
             datos.add(
                 UsuarioDTO(
-                    id = "3",
-                    imagen = 1,
+                    id = ""+datos.size,
+                    imagen = R.drawable.trivia,
                     nombre = nombre,
                     contrasena = contasena,
                     correo = correo
                 )
             )
-            onSuccess(datos.find { it.correo==correo })
+            onSuccess(datos.find { it.correo==correo }!!)
         }
         else onError
     }

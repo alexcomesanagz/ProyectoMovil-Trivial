@@ -94,7 +94,12 @@ fun PaginaSignUp(
             ) {
                 AceptarBoton(msj = stringResource(R.string.app_login_btnSignUp),
                     modifier = Modifier.fillMaxWidth(),
-                    accion =  onSignUpClick
+                    accion = {
+                        paginaSignUi.registrar(
+                            onSuccess = onSignUpClick,
+                            onError = {}
+                        )
+                    }
                 )
             }
             Column(
