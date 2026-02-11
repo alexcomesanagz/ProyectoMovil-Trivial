@@ -59,7 +59,7 @@ fun TrivialNavGraph(navController: NavHostController, viewMain: MainViewModel) {
                 onItemClick = {
                     navController.navigate("login")
                 },
-                onSignUpClick = {navController.navigate("perfil")}
+                onSignUpClick = {navController.navigate("principal")}
             )
 
         }
@@ -76,9 +76,8 @@ fun TrivialNavGraph(navController: NavHostController, viewMain: MainViewModel) {
         composable(Routes.login) {
             viewMain.quitaBoton()
             PaginaLogin(
-                onItemClick = { navController.navigate("perfil") },
-                onSignUpClick = {navController.navigate("sign")},
-                onSalirClick={navController.navigate("principal")}
+                onItemClick = { navController.navigate("principal") },
+                onSignUpClick = {navController.navigate("sign")}
             )
         }
 

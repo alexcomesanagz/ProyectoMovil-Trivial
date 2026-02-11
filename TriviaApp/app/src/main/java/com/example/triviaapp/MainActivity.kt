@@ -125,19 +125,16 @@ class MainActivity : ComponentActivity() {
                             if (uiState.scaffold){
                             ComponenteTopBar(
                                 title = "Página de prueba",
-                                logueado = viewMain.cambioLogueado(),
                                 accionMenu = {
                                     scope.launch {
                                         drawerState.open()
                                     }
                                 },
-                                accionLogin = {
-                                    navController.navigate("login")
-                                              },
                                 accionCerrarSesion = {
                                     usuarioLogeado.cerrarSesion(
                                         onSuccess = {
                                             viewMain.cambioLogueado()
+                                            navController.navigate("login")
                                                 },
                                         onError = {})
                                     },
@@ -215,7 +212,6 @@ class MainActivity : ComponentActivity() {
                     topBar = {
                         ComponenteTopBar(
                             title = "Página de prueba",
-                            logueado = false,
                             accionMenu = {
                                 scope.launch {
                                     drawerState.open()
