@@ -1,10 +1,6 @@
 package com.example.triviaapp.viewModels.Uis
 
-import android.util.Log
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.example.triviaapp.R
-import com.example.triviaapp.componentes.Tarjeta
 
 data class PaginaLoginUi(
     val stringCorreo: String = "",
@@ -21,17 +17,17 @@ data class PaginaPerfilUi(
     val imagenPerfil: Int = R.drawable.perfil,
     val nombreUsuario: String="",
     val correoUsuario: String="@gmail.com",
-    val tarjetasUsuario: List<TajetaUiDatos> = listOf(
-        TajetaUiDatos(
+    val tarjetasUsuario: List<TarjetaUiDatos> = listOf(
+        TarjetaUiDatos(
             imagen = R.drawable.trivia,
             titulo = "Cultura General"),
-        TajetaUiDatos(
+        TarjetaUiDatos(
             imagen = R.drawable.trivia,
             titulo = "Historia"),
-        TajetaUiDatos(
+        TarjetaUiDatos(
             imagen = R.drawable.trivia,
             titulo = "Ciencia"),
-        TajetaUiDatos(
+        TarjetaUiDatos(
             imagen = R.drawable.trivia,
             titulo = "Deportes")
     )
@@ -66,24 +62,24 @@ data class PaginaFinUiState(
 
 
 data class PaginaListaUiState(
-    val mapaDatos: Map<String, List<TajetaUiDatos>> = mapOf<String,List<TajetaUiDatos>>(
+    val mapaDatos: Map<String, List<TarjetaUiDatos>> = mapOf<String,List<TarjetaUiDatos>>(
         "susto" to
-            listOf(TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                TajetaUiDatos(R.drawable.trivia,"Trivia 2")),
+            listOf(TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                TarjetaUiDatos(R.drawable.trivia,"Trivia 2")),
         "resusto" to
-                listOf(TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                    TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                    TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                    TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                    TajetaUiDatos(R.drawable.trivia,"Trivia 2")),
-        "cagao" to  listOf(TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
-            TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
-            TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
-            TajetaUiDatos(R.drawable.trivia,"Trivia 2"),
-            TajetaUiDatos(R.drawable.trivia,"Trivia 2")))
+                listOf(TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                    TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                    TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                    TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
+                    TarjetaUiDatos(R.drawable.trivia,"Trivia 2")),
+        "cagao" to  listOf(TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
+            TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
+            TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
+            TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
+            TarjetaUiDatos(R.drawable.trivia,"Trivia 2")))
 )
 
 data class ResponderPregUIState(
@@ -97,8 +93,8 @@ data class ResponderPregUIState(
 )
 
 data class PrincipalUiState(
-    val tarjetasLista1: List<TajetaUiDatos> = listOf<TajetaUiDatos>(TajetaUiDatos(titulo = "awawa"),TajetaUiDatos(titulo = "awawa")),
-    val tarjetasLista2: List<TajetaUiDatos> = listOf<TajetaUiDatos>(TajetaUiDatos(titulo = "awawa"),TajetaUiDatos(titulo = "awawa")),
+    val tarjetasLista1: List<TarjetaUiDatos> = listOf<TarjetaUiDatos>(TarjetaUiDatos(titulo = "awawa"),TarjetaUiDatos(titulo = "awawa")),
+    val tarjetasLista2: List<TarjetaUiDatos> = listOf<TarjetaUiDatos>(TarjetaUiDatos(titulo = "awawa"),TarjetaUiDatos(titulo = "awawa")),
 )
 
 data class Pregunta(
@@ -109,7 +105,7 @@ data class Pregunta(
     var id: String=""
 )
 
-data class TajetaUiDatos(
+data class TarjetaUiDatos(
     val imagen: Int=R.drawable.trivia,
     val titulo: String="",
     val id: String = ""

@@ -3,7 +3,6 @@ package com.example.triviaapp.viewModels.vm
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
 import com.example.triviaapp.data.repositorio.PreferencesRepo
 import com.example.triviaapp.data.repositorio.UsuarioRepoGeneral
 import com.example.triviaapp.modelo.PreferenceDTO
@@ -18,7 +17,7 @@ class PaginaSignUpViewModel(application: Application) : AndroidViewModel(applica
     val uiState: StateFlow<PaginaSignUpUi> = _uiState.asStateFlow()
     private val context: Context?
         get() = getApplication<Application>().applicationContext
-    val usuarioLogueado= PreferencesRepo(context!!)
+    val usuarioActual= PreferencesRepo(context!!)
     val repoUsuarios = UsuarioRepoGeneral.repo
 
     fun setCorreo(correo: String): String {
@@ -42,7 +41,7 @@ class PaginaSignUpViewModel(application: Application) : AndroidViewModel(applica
             correo = uiState.value.stringCorreo,
             contasena = uiState.value.stringContrasena,
             onSuccess = { it->
-                usuarioLogueado.registraUsuario(
+                usuarioActual.registraUsuario(
                         usuario = PreferenceDTO(
                             it.id,
                             nombre = it.nombre,

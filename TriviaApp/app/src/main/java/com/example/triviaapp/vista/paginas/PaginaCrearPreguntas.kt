@@ -28,7 +28,7 @@ import com.example.triviaapp.componentes.ComponenteTituloCaja
 import com.example.triviaapp.componentes.ComponenteTituloConRadioButonHorizontal
 import com.example.triviaapp.componentes.DatosBotonDoble
 import com.example.triviaapp.componentes.DatosCreaPregunta
-import com.example.triviaapp.viewModels.vm.ElegirRespViewModel
+import com.example.triviaapp.viewModels.vm.CrearRespViewModel
 
 
 
@@ -36,7 +36,7 @@ import com.example.triviaapp.viewModels.vm.ElegirRespViewModel
  * Pagina para rellenar una preguntas a la hora de hacer un quiz
  */
 @Composable
-fun PaginaElegirRespuestas(idTrivia:String, elegirRespuestas: ElegirRespViewModel = viewModel(), onClickSalir: () -> Unit, onClickAceptar: () -> Unit) {
+fun PaginaElegirRespuestas(idTrivia:String, elegirRespuestas: CrearRespViewModel = viewModel(), onClickSalir: () -> Unit, onClickAceptar: () -> Unit) {
     val uiState by elegirRespuestas.uiState.collectAsState()
     val txtBotones: List<String> = listOf(
         stringResource(R.string.app_sleccion_resp_1),
@@ -82,7 +82,7 @@ fun PaginaElegirRespuestas(idTrivia:String, elegirRespuestas: ElegirRespViewMode
                         RoundedCornerShape(12.dp)
                     )
             ) {
-                ComponenteTituloCaja( "${uiState.i+1} / ${elegirRespuestas.getNumPreguntas()}")
+                ComponenteTituloCaja( "${uiState.i+1} / ${elegirRespuestas.getNumPreguntas()} ${idTrivia}")
                 Box(
                     modifier = Modifier.padding(bottom = 10.dp)
                 ) {
@@ -103,7 +103,12 @@ fun PaginaElegirRespuestas(idTrivia:String, elegirRespuestas: ElegirRespViewMode
                     DatosBotonDoble(
                         stringResource(R.string.app_bt_salir),
                         stringResource(R.string.app_bt_finalizar),
-                        accionBoton1 = onClickSalir,
+                        accionBoton1 = {
+                            elegirRespuestas.cancelarCreacion(
+                            idTrivia = idTrivia,
+                            onSucces = onClickSalir,
+                            onError = {}
+                        )},
                         accionBoton2 = onClickAceptar)
                 )
             }

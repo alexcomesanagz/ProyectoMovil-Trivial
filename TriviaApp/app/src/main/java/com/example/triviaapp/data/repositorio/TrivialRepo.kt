@@ -14,31 +14,30 @@ class TrivialRepo: TrivialRepoInterface{
         TrivialDTO(id = "1", idCreador ="1", nombre = "wana",categoria = "miedo"),
         TrivialDTO(id = "2", idCreador ="1", nombre = "nana",categoria = "miedo"),
     )
-     override fun obtenerTrivialsPersona(idCreador: String, onSuccess: () -> Unit, onError: () -> Unit): List<TrivialDTO> {
+     override fun obtenerTrivialsPersona(idCreador: String, onSuccess: (List<TrivialDTO>) -> Unit, onError: (List<TrivialDTO>) -> Unit){
         var Trivials = datos.filter { it.idCreador == idCreador }
         if (Trivials.isEmpty()) {
-            onError()
-            return listOf<TrivialDTO>()
+            onError(Trivials)
         }
-         onSuccess()
-         return Trivials
+         onSuccess(Trivials)
      }
 
     override fun registrar(idCreador: String, nombre: String, categoria: String, onSuccess: (TrivialDTO) -> Unit, onError: () -> Unit) {
             datos.add(
                 TrivialDTO(
-                    id = ""+datos.size,
+                    id = "${datos.size+1}",
                     idCreador = idCreador,
                     nombre = nombre,
                     categoria = categoria
                 )
             )
-            onSuccess(datos.find { it.idCreador==idCreador && it.nombre==nombre && it.categoria==categoria }!!)
+            onSuccess(datos.find { it.id=="${datos.size}"}!!)
     }
 
     override fun borrar(idTrivia: String, onSuccess: () -> Unit, onError: () -> Unit) {
-        if(datos.find { it.id==idTrivia }!=null){
-        datos.remove(datos.find { it.id==idTrivia }!!)
+        val trivia=datos.find { it.id==idTrivia }
+        if(trivia!=null){
+        datos.remove(trivia)
         onSuccess()
         }
         else onError()

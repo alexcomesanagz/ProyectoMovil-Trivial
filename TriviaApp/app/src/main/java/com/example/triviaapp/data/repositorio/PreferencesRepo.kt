@@ -60,7 +60,7 @@ class PreferencesRepo(var context: Context): PreferencesRepoInterface {
     }
 
 
-    private fun getSharedPref(): SharedPreferences {
+    override fun getSharedPref(): SharedPreferences {
         val sp = context.getSharedPreferences(
             context.getString(R.string.preferences_file),
             Context.MODE_PRIVATE
