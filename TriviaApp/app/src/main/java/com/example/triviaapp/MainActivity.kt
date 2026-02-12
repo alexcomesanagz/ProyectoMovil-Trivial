@@ -29,12 +29,13 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.ComponenteTopBar
-import com.example.triviaapp.data.repositorio.PreferencesLogueadoRepo
+import com.example.triviaapp.data.repositorio.PreferencesRepo
 import com.example.triviaapp.viewModels.vm.MainViewModel
 import com.example.triviaapp.vista.navigation.TrivialNavGraph
 import kotlinx.coroutines.launch
@@ -66,11 +67,12 @@ private val tarjetas: List<Tarjeta> = listOf(
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val viewMain= MainViewModel()
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val usuarioLogeado= PreferencesLogueadoRepo.repo
+            val viewMain: MainViewModel=viewModel()
+            viewMain.cargar()
             val uiState by viewMain.uiState.collectAsState()
             val navController = rememberNavController()
             val snackbarHostState = remember { SnackbarHostState() }
@@ -127,13 +129,11 @@ class MainActivity : ComponentActivity() {
                                     }
                                 },
                                 accionCerrarSesion = {
-                                    usuarioLogeado.cerrarSesion(
-                                        onSuccess = {
-                                            viewMain.cambioLogueado()
-                                            navController.navigate("login")
-                                                },
-                                        onError = {})
-                                    },
+                                    viewMain.salirLogueado(
+                                        onSuccess = {navController.navigate("login")},
+                                        onError = {}
+                                    )
+                                },
                                 accionPerfil = {navController.navigate("perfil")}
                              )
                             }

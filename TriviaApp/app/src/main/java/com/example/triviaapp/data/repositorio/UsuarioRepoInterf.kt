@@ -17,9 +17,4 @@ interface UsuarioRepoInterf {
         onSuccess: (UsuarioDTO) -> Unit,
         onError: () -> Unit
     )
-
-    fun obtenerNombreUsuario(idUsuario: String, onSuccess: () -> Unit, onError: () -> Unit) : String
-
-    fun obtenerCorreoUsuario(idUsuario: String, onSuccess: () -> Unit, onError: () -> Unit): String
-
 }

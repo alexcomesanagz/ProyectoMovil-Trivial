@@ -1,17 +1,28 @@
 package com.example.triviaapp.viewModels.vm
 
+import android.app.Application
+import android.content.Context
+import androidx.lifecycle.AndroidViewModel
+
 import androidx.lifecycle.ViewModel
-import com.example.triviaapp.data.repositorio.PreferencesLogueadoRepo
+import com.example.triviaapp.data.repositorio.PreferencesRepo
 import com.example.triviaapp.viewModels.Uis.MainUi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class MainViewModel : ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _uiState = MutableStateFlow(MainUi())
     val uiState: StateFlow<MainUi> = _uiState.asStateFlow()
-    val log= PreferencesLogueadoRepo.repo
+    private val context: Context?
+        get() = getApplication<Application>().applicationContext
+    val log= PreferencesRepo(context!!)
+
+    fun cargar(){
+        val currentUser = log.getUsuario()
+        if(currentUser!=null)_uiState.value=_uiState.value.copy(logueado = true)
+    }
     fun quitaTodo(){
         _uiState.value = _uiState.value.copy(scaffold = false, botonFlotante =false )
     }
@@ -24,9 +35,14 @@ class MainViewModel : ViewModel() {
         _uiState.value = _uiState.value.copy(botonFlotante =false )
     }
 
-    fun cambioLogueado(): Boolean{
-        _uiState.value = _uiState.value.copy(logueado = log.getLogueado() )
-        return uiState.value.logueado
+    fun salirLogueado(onSuccess:()-> Unit, onError: ()->Unit){
+        log.cerrarSesion(
+            onSuccess = {
+                _uiState.value=_uiState.value.copy(logueado = false)
+                onSuccess()
+                },
+        onError = onError
+        )
     }
 
 

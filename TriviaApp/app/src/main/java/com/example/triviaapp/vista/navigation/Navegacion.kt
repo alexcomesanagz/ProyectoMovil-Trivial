@@ -17,6 +17,7 @@ import com.example.triviaapp.vista.paginas.PaginaLogin
 import com.example.triviaapp.vista.paginas.PaginaPerfil
 import com.example.triviaapp.vista.paginas.PaginaResponderPreguntas
 import com.example.triviaapp.vista.paginas.PaginaSignUp
+import androidx.compose.runtime.collectAsState
 
 
 object Routes {
@@ -74,11 +75,14 @@ fun TrivialNavGraph(navController: NavHostController, viewMain: MainViewModel) {
         }
 
         composable(Routes.login) {
-            viewMain.quitaBoton()
-            PaginaLogin(
-                onItemClick = { navController.navigate("principal") },
-                onSignUpClick = {navController.navigate("sign")}
-            )
+            if(!viewMain.uiState.collectAsState().value.logueado) {
+                viewMain.quitaBoton()
+                PaginaLogin(
+                    onItemClick = { navController.navigate("principal") },
+                    onSignUpClick = { navController.navigate("sign") }
+                )
+            }
+            else navController.navigate("principal")
         }
 
         composable(

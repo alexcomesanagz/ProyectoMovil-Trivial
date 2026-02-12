@@ -42,29 +42,6 @@ class UsuarioRepo: UsuarioRepoInterf{
         else onError
     }
 
-    override fun obtenerNombreUsuario(
-        idUsuario: String,
-        onSuccess: () -> Unit,
-        onError: () -> Unit
-    ):String {
-        if (datos.find { it.id == idUsuario } != null){
-            return datos.find { it.id == idUsuario }!!.nombre
-
-        }
-        else return ""
-    }
-
-    override fun obtenerCorreoUsuario(
-        idUsuario: String,
-        onSuccess: () -> Unit,
-        onError: () -> Unit
-    ):String {
-        if (datos.find { it.id == idUsuario } != null){
-                return datos.find { it.id == idUsuario }!!.correo
-        }
-        else return ""
-    }
-
 
 //    fun cambioImagenUsuario(id:String,imagen:Int, onSuccess: (UsuarioDTO?) -> Unit, onError: () -> Unit) {
 //

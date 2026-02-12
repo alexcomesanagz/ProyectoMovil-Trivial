@@ -1,7 +1,10 @@
 package com.example.triviaapp.viewModels.vm
 
+import android.app.Application
+import android.content.Context
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
-import com.example.triviaapp.data.repositorio.PreferencesLogueadoRepo
+import com.example.triviaapp.data.repositorio.PreferencesRepo
 import com.example.triviaapp.data.repositorio.UsuarioRepoGeneral
 import com.example.triviaapp.modelo.PreferenceDTO
 import com.example.triviaapp.viewModels.Uis.PaginaSignUpUi
@@ -9,11 +12,13 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class PaginaSignUpViewModel : ViewModel() {
+class PaginaSignUpViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _uiState = MutableStateFlow(PaginaSignUpUi())
     val uiState: StateFlow<PaginaSignUpUi> = _uiState.asStateFlow()
-    val usuarioLogueado = PreferencesLogueadoRepo.repo
+    private val context: Context?
+        get() = getApplication<Application>().applicationContext
+    val usuarioLogueado= PreferencesRepo(context!!)
     val repoUsuarios = UsuarioRepoGeneral.repo
 
     fun setCorreo(correo: String): String {
@@ -38,8 +43,11 @@ class PaginaSignUpViewModel : ViewModel() {
             contasena = uiState.value.stringContrasena,
             onSuccess = { it->
                 usuarioLogueado.registraUsuario(
-                        usuario = PreferenceDTO(it.id),
-                    onSuccess = {},
+                        usuario = PreferenceDTO(
+                            it.id,
+                            nombre = it.nombre,
+                            correo = it.correo),
+                    onSuccess = onSuccess,
                     onError = {}
                     )
                 },

@@ -1,8 +1,11 @@
 package com.example.triviaapp.viewModels.vm
 
+import android.app.Application
+import android.content.Context
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import com.example.triviaapp.R
-import com.example.triviaapp.data.repositorio.PreferencesLogueadoRepo
+import com.example.triviaapp.data.repositorio.PreferencesRepo
 import com.example.triviaapp.data.repositorio.TriviasRepoGeneral
 import com.example.triviaapp.data.repositorio.UsuarioRepoGeneral
 import com.example.triviaapp.viewModels.Uis.PaginaPerfilUi
@@ -11,35 +14,37 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class PaginaPerfilViewModel : ViewModel() {
+class PaginaPerfilViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _uiState = MutableStateFlow(PaginaPerfilUi())
     val uiState: StateFlow<PaginaPerfilUi> = _uiState.asStateFlow()
-    val preferencias = PreferencesLogueadoRepo.repo
+    private val context: Context?
+        get() = getApplication<Application>().applicationContext
+    val preferencias= PreferencesRepo(context!!)
     val usuariorepo = UsuarioRepoGeneral.repo
 
     val trivialsRepo = TriviasRepoGeneral.repo
 
 
     fun cargaDatos() {
-        _uiState.value = _uiState.value.copy(
-            nombreUsuario = usuariorepo.obtenerNombreUsuario(
-                preferencias.getUsuario(),
-                onSuccess = {},
-                onError = {}),
-            correoUsuario = usuariorepo.obtenerCorreoUsuario(
-                preferencias.getUsuario(),
-                onSuccess = {},
-                onError = {}),
-            tarjetasUsuario = trivialsRepo.obtenerTrivialsPersona(preferencias.getUsuario(), {}, {})
-                .map { it ->
-                    TajetaUiDatos(
-                        id = it.id,
-                        titulo = it.nombre,
-                        imagen = R.drawable.trivia
-                    )
-                }
-        )
+        val usuario= preferencias.getUsuario()
+        if (usuario!=null) {
+            _uiState.value = _uiState.value.copy(
+                nombreUsuario = usuario.nombre,
+                correoUsuario = usuario.correo,
+                tarjetasUsuario = trivialsRepo.obtenerTrivialsPersona(
+                    usuario.id,
+                    {},
+                    {})
+                    .map { it ->
+                        TajetaUiDatos(
+                            id = it.id,
+                            titulo = it.nombre,
+                            imagen = R.drawable.trivia
+                        )
+                    }
+            )
+        }
     }
 
 }
