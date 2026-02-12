@@ -20,9 +20,9 @@ class TrivialRepo: TrivialRepoInterface{
             onError()
             return listOf<TrivialDTO>()
         }
+         onSuccess()
          return Trivials
-        onSuccess()
-    }
+     }
 
     override fun registrar(idCreador: String, nombre: String, categoria: String, onSuccess: (TrivialDTO) -> Unit, onError: () -> Unit) {
             datos.add(

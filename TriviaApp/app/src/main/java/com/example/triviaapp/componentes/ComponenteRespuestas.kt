@@ -4,7 +4,6 @@ package com.example.triviaapp.componentes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -12,7 +11,6 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -57,7 +55,7 @@ fun ComponenteRespuestasTextBox(
 
 
 @Composable
-fun ComponenteRespuestasRadioButon(
+fun ComponenteRadioButonCategorias(
     datos: DatosRadioBotones
 ) {
     var listaColor = listOf<Color>(
@@ -68,13 +66,48 @@ fun ComponenteRespuestasRadioButon(
     LazyVerticalGrid(modifier = Modifier.padding(5.dp),
         columns = GridCells.Fixed(2),
         content = {
+            items(items = datos.txtBotones)
+                { textoBoton ->
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier.padding( 5.dp)
+                    .fillMaxWidth()
+                ) {
+                    ComponenteRadioButon(
+                        DatosRadioBoton(
+                            msj = textoBoton,
+                            boton = textoBoton,
+                            coloresBoton = listaColor,
+                            rememberCadena = datos.remember,
+                            accion = datos.accion
+                        )
+                    )
+                }
+            }
+        }
+    )
+}
+
+
+@Composable
+fun ComponenteRespuestasRadioButon(
+    datos: DatosRadioBotones
+) {
+    var listaColor = listOf<Color>(
+        MaterialTheme.colorScheme.surface,
+        MaterialTheme.colorScheme.primary,
+        MaterialTheme.colorScheme.onPrimary
+    )
+    LazyVerticalGrid(modifier = Modifier.padding(5.dp),
+        columns = GridCells.Fixed(2),
+        content = {
             itemsIndexed(items = datos.txtBotones,
                 key ={ index, _ -> index }
             ) {i, textoBoton ->
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.padding( 5.dp)
-                    .fillMaxWidth()
+                        .fillMaxWidth()
                 ) {
                     ComponenteRadioButon(
                         DatosRadioBoton(

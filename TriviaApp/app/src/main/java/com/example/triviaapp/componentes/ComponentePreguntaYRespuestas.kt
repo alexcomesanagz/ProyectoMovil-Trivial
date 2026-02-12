@@ -30,8 +30,27 @@ class DatosRespondePregunta(
 
 
 @Composable
-fun ComponentePreguntaYRespuestas(
+fun ComponentePreguntaYCategorias(
 datos: DatosRespondePregunta
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(datos.paddingBotonesTitulo.dp),
+        modifier = Modifier.background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
+    ) {
+        ComponenteTitulo(datos.enunciado)
+        ComponenteRadioButonCategorias(
+            DatosRadioBotones(
+                txtBotones = datos.textoBotonesRespuesta,
+                remember = datos.respuesta,
+                accion = datos.accionRespuestas
+            )
+        )
+    }
+}
+
+@Composable
+fun ComponentePreguntaYRespuestas(
+    datos: DatosRespondePregunta
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(datos.paddingBotonesTitulo.dp),
@@ -47,6 +66,7 @@ datos: DatosRespondePregunta
         )
     }
 }
+
 
 
 class DatosCreaPregunta(
