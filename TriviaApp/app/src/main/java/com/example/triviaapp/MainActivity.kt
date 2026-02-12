@@ -34,13 +34,9 @@ import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.ComponenteTopBar
-import com.example.triviaapp.data.repositorio.LogueadoRepo
-import com.example.triviaapp.data.repositorio.UsuarioLogueadoRepo
+import com.example.triviaapp.data.repositorio.PreferencesLogueadoRepo
 import com.example.triviaapp.viewModels.vm.MainViewModel
 import com.example.triviaapp.vista.navigation.TrivialNavGraph
-import com.example.triviaapp.vista.paginas.PaginaElegirRespuestas
-import com.example.triviaapp.vista.paginas.PaginaPerfil
-import com.example.triviaapp.vista.paginas.PaginaResponderPreguntas
 import kotlinx.coroutines.launch
 
 private val titulo: String = "Título de prueba"
@@ -74,7 +70,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val usuarioLogeado= UsuarioLogueadoRepo.repo
+            val usuarioLogeado= PreferencesLogueadoRepo.repo
             val uiState by viewMain.uiState.collectAsState()
             val navController = rememberNavController()
             val snackbarHostState = remember { SnackbarHostState() }

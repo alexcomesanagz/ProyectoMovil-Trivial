@@ -7,13 +7,13 @@ import com.example.triviaapp.modelo.UsuarioDTO
 object UsuarioRepoGeneral {
     val repo = UsuarioRepo()
 }
-class UsuarioRepo {
+class UsuarioRepo: UsuarioRepoInterf{
     private val datos = arrayListOf(
         UsuarioDTO(id = "1",imagen =R.drawable.trivia, nombre = "Ana",correo = "ana@gmail.com",contrasena = "1"),
         UsuarioDTO(id = "2", imagen =R.drawable.trivia , nombre = "Luis", correo = "luis@gmail.com", contrasena = "1")
     )
 
-    fun obtener(correo: String, contasena: String, onSuccess: (UsuarioDTO) -> Unit, onError: () -> Unit) {
+    override fun iniciarSesion(correo: String, contasena: String, onSuccess: (UsuarioDTO) -> Unit, onError: () -> Unit) {
         val usuario = datos.find {
             it.correo == correo && it.contrasena == contasena
         }
@@ -24,7 +24,7 @@ class UsuarioRepo {
         }
     }
 
-    fun registrar(nombre:String, correo: String, contasena: String, onSuccess: (UsuarioDTO) -> Unit, onError: () -> Unit) {
+    override fun registrar(nombre:String, correo: String, contasena: String, onSuccess: (UsuarioDTO) -> Unit, onError: () -> Unit) {
 
         if(datos.find {it.correo == correo}==null) {
 
@@ -42,16 +42,39 @@ class UsuarioRepo {
         else onError
     }
 
+    override fun obtenerNombreUsuario(
+        idUsuario: String,
+        onSuccess: () -> Unit,
+        onError: () -> Unit
+    ):String {
+        if (datos.find { it.id == idUsuario } != null){
+            return datos.find { it.id == idUsuario }!!.nombre
 
-    fun cambioImagenUsuario(id:String,imagen:Int, onSuccess: (UsuarioDTO?) -> Unit, onError: () -> Unit) {
-
-        var usuario = datos.find { it.id == id }
-        if(usuario == null) {
-            onError()
-            return
         }
-        usuario.imagen = imagen;
-
-        onSuccess(datos.find { it.id == id })
+        else return ""
     }
+
+    override fun obtenerCorreoUsuario(
+        idUsuario: String,
+        onSuccess: () -> Unit,
+        onError: () -> Unit
+    ):String {
+        if (datos.find { it.id == idUsuario } != null){
+                return datos.find { it.id == idUsuario }!!.correo
+        }
+        else return ""
+    }
+
+
+//    fun cambioImagenUsuario(id:String,imagen:Int, onSuccess: (UsuarioDTO?) -> Unit, onError: () -> Unit) {
+//
+//        var usuario = datos.find { it.id == id }
+//        if(usuario == null) {
+//            onError()
+//            return
+//        }
+//        usuario.imagen = imagen;
+//
+//        onSuccess(datos.find { it.id == id })
+//    }
 }

@@ -1,10 +1,9 @@
 package com.example.triviaapp.viewModels.vm
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.triviaapp.data.repositorio.UsuarioLogueadoRepo
-import com.example.triviaapp.data.repositorio.UsuarioRepo
+import com.example.triviaapp.data.repositorio.PreferencesLogueadoRepo
 import com.example.triviaapp.data.repositorio.UsuarioRepoGeneral
+import com.example.triviaapp.modelo.PreferenceDTO
 import com.example.triviaapp.viewModels.Uis.PaginaSignUpUi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +13,7 @@ class PaginaSignUpViewModel : ViewModel() {
 
     private val _uiState = MutableStateFlow(PaginaSignUpUi())
     val uiState: StateFlow<PaginaSignUpUi> = _uiState.asStateFlow()
-    val usuarioLogueado = UsuarioLogueadoRepo.repo
+    val usuarioLogueado = PreferencesLogueadoRepo.repo
     val repoUsuarios = UsuarioRepoGeneral.repo
 
     fun setCorreo(correo: String): String {
@@ -39,9 +38,9 @@ class PaginaSignUpViewModel : ViewModel() {
             contasena = uiState.value.stringContrasena,
             onSuccess = { it->
                 usuarioLogueado.registraUsuario(
-                        usuario = it,
-                        onSuccess = onSuccess,
-                        onError = onError
+                        usuario = PreferenceDTO(it.id),
+                    onSuccess = {},
+                    onError = {}
                     )
                 },
                 onError = onError)

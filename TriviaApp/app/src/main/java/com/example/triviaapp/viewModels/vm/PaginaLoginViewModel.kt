@@ -1,9 +1,7 @@
 package com.example.triviaapp.viewModels.vm
 
 import androidx.lifecycle.ViewModel
-import com.example.triviaapp.data.repositorio.LogueadoRepo
-import com.example.triviaapp.data.repositorio.UsuarioLogueadoRepo
-import com.example.triviaapp.data.repositorio.UsuarioRepo
+import com.example.triviaapp.data.repositorio.PreferencesLogueadoRepo
 import com.example.triviaapp.data.repositorio.UsuarioRepoGeneral
 import com.example.triviaapp.viewModels.Uis.PaginaLoginUi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +13,7 @@ class PaginaLoginViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(PaginaLoginUi())
     val uiState: StateFlow<PaginaLoginUi> = _uiState.asStateFlow()
     val repoUsuarios = UsuarioRepoGeneral.repo
-    val usuarioLogueado = UsuarioLogueadoRepo.repo
+    val usuarioLogueado = PreferencesLogueadoRepo.repo
     fun setCorreo(correo: String): String {
         _uiState.value = _uiState.value.copy(stringCorreo = correo)
         return _uiState.value.stringCorreo
