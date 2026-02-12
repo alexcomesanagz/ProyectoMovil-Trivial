@@ -3,7 +3,7 @@ package com.example.triviaapp.data.repositorio
 import com.example.triviaapp.modelo.PreguntaDTO
 import com.example.triviaapp.modelo.RespuestaDTO
 
-class PreguntasRepo :IRepoPregunta {
+class PreguntasRepo : IRepoPregunta {
     private val preguntas = listOf(
         PreguntaDTO(
             id = "1",
@@ -46,27 +46,36 @@ class PreguntasRepo :IRepoPregunta {
         )
     )
 
-    override fun obtenerPreguntasTrivial(idTrivial: String, onSuccess: (List<PreguntaDTO>) -> Unit, onError: () -> Unit) {
+    override fun obtenerPreguntasTrivial(
+        idTrivial: String,
+        onSuccess: (List<PreguntaDTO>) -> Unit,
+        onError: () -> Unit
+    ) {
         var preguntasTrivial = preguntas.filter { it.idTrivial == idTrivial }
         if (preguntasTrivial.isEmpty()) {
             onError()
             return
         }
-        onSuccess(preguntas.filter { it.idTrivial == idTrivial })
+        onSuccess(preguntasTrivial)
     }
 
-    override fun obtenerPregunta(idPregunta: String, idTrivial: String, onSuccess: (PreguntaDTO?) -> Unit, onError: () -> Unit){
-        var pregunta = preguntas.find{it.id == idPregunta; it.idTrivial == idTrivial}
-        if(pregunta == null){
+    override fun obtenerPregunta(
+        idPregunta: String,
+        idTrivial: String,
+        onSuccess: (PreguntaDTO?) -> Unit,
+        onError: () -> Unit
+    ) {
+        var pregunta = preguntas.find { it.id == idPregunta; it.idTrivial == idTrivial }
+        if (pregunta == null) {
             onError()
             return
         }
-        onSuccess(preguntas.find{it.id == idPregunta; it.idTrivial == idTrivial})
+        onSuccess(preguntas.find { it.id == idPregunta; it.idTrivial == idTrivial })
     }
 
-    override fun leerTodo(onSuccess: (List<PreguntaDTO>) -> Unit, onError: () -> Unit){
-
-            onSuccess(preguntas)
-
+    override fun leerTodo(onSuccess: (List<PreguntaDTO>) -> Unit, onError: () -> Unit) {
+        onSuccess(preguntas)
     }
+
+    companion object
 }
