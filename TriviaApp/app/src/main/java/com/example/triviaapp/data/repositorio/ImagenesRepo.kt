@@ -1,0 +1,26 @@
+package com.example.triviaapp.data.repositorio
+
+import androidx.compose.ui.res.stringResource
+import com.example.triviaapp.R
+import com.example.triviaapp.modelo.ImagenDTO
+
+class ImagenesRepo: ImagenesRepoInterface {
+    private val datos=listOf<ImagenDTO>(
+        ImagenDTO("Terror",R.drawable.terror),
+        ImagenDTO("Accion", R.drawable.accion),
+        ImagenDTO("Puzzle", R.drawable.puzzle),
+        ImagenDTO("Tactico", R.drawable.tactico),
+
+        )
+    override fun obtenerImagen(
+        categoria: String,
+        onSuccess: (ImagenDTO) -> Unit,
+        onError: () -> Unit
+    ) {
+        val imagen=datos.find {it.categoria==categoria}
+        if (imagen!=null){
+            onSuccess(imagen)
+        }
+        else onError()
+    }
+}

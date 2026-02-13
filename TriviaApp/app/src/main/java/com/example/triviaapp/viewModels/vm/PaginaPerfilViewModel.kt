@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import com.example.triviaapp.R
+import com.example.triviaapp.data.repositorio.ImagenesRepo
 import com.example.triviaapp.data.repositorio.PreferencesRepo
 import com.example.triviaapp.data.repositorio.TriviasRepoGeneral
 import com.example.triviaapp.viewModels.Uis.PaginaPerfilUi
@@ -20,6 +21,8 @@ class PaginaPerfilViewModel(application: Application) : AndroidViewModel(applica
         get() = getApplication<Application>().applicationContext
     val usuarioActual= PreferencesRepo(context!!)
     val trivialsRepo = TriviasRepoGeneral.repo
+    val imagenesRepo = ImagenesRepo()
+
 
 
     fun cargaDatos() {
@@ -39,10 +42,20 @@ class PaginaPerfilViewModel(application: Application) : AndroidViewModel(applica
         trivialsRepo.obtenerTrivialsPersona(
             usuarioActual.getUsuario()!!.id,
             {it-> lista=it.map {
-                TarjetaUiDatos(id = it.id,
-                titulo = it.nombre,
-                    imagen = R.drawable.trivia
-                )}
+                var imagenTrivia=R.drawable.trivia
+                imagenesRepo.obtenerImagen(
+                    categoria = it.categoria,
+                    onSuccess = { imagen->
+                        imagenTrivia = imagen.imagen
+                    }
+                    ,onError = {}
+                )
+                TarjetaUiDatos(
+                    id = it.id,
+                    titulo = it.nombre,
+                    imagen =imagenTrivia
+                )
+              }
             },
             {})
         return lista

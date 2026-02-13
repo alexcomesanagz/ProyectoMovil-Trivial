@@ -11,8 +11,8 @@ object TriviasRepoGeneral{
 
 class TrivialRepo: TrivialRepoInterface{
     private val datos = arrayListOf(
-        TrivialDTO(id = "1", idCreador ="1", nombre = "wana",categoria = "miedo"),
-        TrivialDTO(id = "2", idCreador ="1", nombre = "nana",categoria = "miedo"),
+        TrivialDTO(id = "1", idCreador ="1", nombre = "wana",categoria = "Terror"),
+        TrivialDTO(id = "2", idCreador ="1", nombre = "nana",categoria = "Accion"),
     )
      override fun obtenerTrivialsPersona(idCreador: String, onSuccess: (List<TrivialDTO>) -> Unit, onError: (List<TrivialDTO>) -> Unit){
         var Trivials = datos.filter { it.idCreador == idCreador }

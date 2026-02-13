@@ -108,7 +108,8 @@ fun PaginaElegirRespuestas(idTrivia:String, elegirRespuestas: CrearRespViewModel
                             idTrivia = idTrivia,
                             onSucces = onClickSalir,
                             onError = {}
-                        )},
+                        )
+                        },
                         accionBoton2 = onClickAceptar)
                 )
             }
