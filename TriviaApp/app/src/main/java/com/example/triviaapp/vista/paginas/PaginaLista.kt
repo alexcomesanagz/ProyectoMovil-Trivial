@@ -27,7 +27,7 @@ fun PaginaLista(
     paginaListaViewModel: PaginaListaViewModel= viewModel(),
     onItemClick: (String) -> Unit
     ){
-
+    paginaListaViewModel.cargar()
     val uiState by paginaListaViewModel.uiState.collectAsState()
     Column(
         modifier = Modifier.padding(horizontal = 30.dp, vertical = 30.dp),

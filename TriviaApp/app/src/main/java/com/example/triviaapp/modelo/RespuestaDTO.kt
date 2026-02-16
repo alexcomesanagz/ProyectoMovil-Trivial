@@ -4,7 +4,8 @@ data class RespuestaDTO(
     var id: String,
     var idUsuario: String,
     var idPregunta: String,
+    var idTrivial: String,
     var respuesta: String,
-    var correcta: Boolean,
-    var idTrivial: String
+    var correcta: Boolean
+
 )

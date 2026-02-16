@@ -1,10 +1,13 @@
 package com.example.triviaapp.data.repositorio
 
 import com.example.triviaapp.modelo.PreguntaDTO
-import com.example.triviaapp.modelo.RespuestaDTO
+
+object PreguntasRepoGeneral {
+    val repo = PreguntasRepo()
+}
 
 class PreguntasRepo : IRepoPregunta {
-    private val preguntas = listOf(
+    private val preguntas = arrayListOf<PreguntaDTO>(
         PreguntaDTO(
             id = "1",
             idTrivial = "1",
@@ -25,7 +28,7 @@ class PreguntasRepo : IRepoPregunta {
             pregunta = "Jugador conocido como \"El príncipe de las bateas\"",
             respuestaCorrecta = 4
         ), PreguntaDTO(
-            id = "1",
+            id = "3",
             idTrivial = "2",
             opcion1 = "Estrela",
             opcion2 = "Pedro",
@@ -35,7 +38,7 @@ class PreguntasRepo : IRepoPregunta {
             respuestaCorrecta = 2
         ),
         PreguntaDTO(
-            id = "2",
+            id = "4",
             idTrivial = "2",
             opcion1 = "Estrela",
             opcion2 = "Juan",
@@ -73,7 +76,76 @@ class PreguntasRepo : IRepoPregunta {
         onSuccess(preguntas.find { it.id == idPregunta; it.idTrivial == idTrivial })
     }
 
-    override fun leerTodo(onSuccess: (List<PreguntaDTO>) -> Unit, onError: () -> Unit) {
+    override fun crearPreguntas(
+        idTrivial: String,
+        numPreg: Int,
+        onSuccess: () -> Unit,
+        onError: () -> Unit
+    ) {
+        repeat(numPreg) {
+            preguntas.add(
+                PreguntaDTO(
+                    id = "${preguntas.size + 1}",
+                    idTrivial = idTrivial,
+                    opcion1 = "",
+                    opcion2 = "",
+                    opcion3 = "",
+                    opcion4 = "",
+                    pregunta = "",
+                    respuestaCorrecta = 1
+                )
+            )
+        }
+        onSuccess()
+    }
+
+    override fun borrarPreguntas(
+        idTrivial: String,
+        onSuccess: () -> Unit,
+        onError: () -> Unit
+    ) {
+        val lista = preguntas.filter { it.idTrivial == idTrivial }
+        lista.forEach { it ->
+            preguntas.remove(it)
+        }
+        onSuccess()
+    }
+
+    override fun cambiaDatosPregunta(
+        pregunta: PreguntaDTO,
+        onSuccess: () -> Unit,
+        onError: () -> Unit
+    ) {
+        val preguntaLista = preguntas.find { it.id == pregunta.id }
+        if (preguntaLista != null) {
+            val index = preguntas.indexOfFirst { it.id == pregunta.id }
+            if (index != -1) {
+                preguntaLista.cambioValores(pregunta)
+                preguntas[index] = preguntaLista
+                onSuccess()
+            }
+        } else onError()
+
+    }
+
+    override fun respuestaCorrecta(
+        respuesta: String,
+        preguntaId: String,
+        onSuccess: (Boolean) -> Unit,
+        onError: () -> Unit
+    ) {
+        val preguntaLista = preguntas.find { it.id == preguntaId }
+        if (preguntaLista != null) {
+            if (preguntaLista.respuestaCorrecta==respuesta.toInt()) onSuccess(true)
+           else onSuccess(false)
+        } else onError()
+    }
+
+
+    override fun leerTodo(
+        onSuccess: (List<PreguntaDTO>) -> Unit,
+        onError: () -> Unit
+    ) {
         onSuccess(preguntas)
     }
 

@@ -111,7 +111,7 @@ fun ComponenteRespuestasRadioButon(
                 ) {
                     ComponenteRadioButon(
                         DatosRadioBoton(
-                            msj = textoBoton,
+                            msj = "${(i+1)} ${textoBoton}",
                             boton = ""+(i+1),
                             coloresBoton = listaColor,
                             rememberCadena = datos.remember,

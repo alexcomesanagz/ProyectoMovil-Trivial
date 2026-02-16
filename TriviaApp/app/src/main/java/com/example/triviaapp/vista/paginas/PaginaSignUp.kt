@@ -76,7 +76,7 @@ fun PaginaSignUp(
                 )
                 ComponenteTextField(
                     DatosTextField(
-                        msjPregunta = stringResource(R.string.app_login_msjCorreo),
+                        msjPregunta = stringResource(R.string.app_login_msjContraseña),
                         listaColor = listOf(
                             MaterialTheme.colorScheme.background,
                             MaterialTheme.colorScheme.onBackground,

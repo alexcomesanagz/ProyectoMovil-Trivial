@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -44,10 +45,19 @@ val textoBotonesRespuesta = listOf(
 fun PaginaResponderPreguntas(
     idTrivia: String,
     responderPregunta: ResponderPreguntasViewModel = viewModel(),
-    accionFin: (String)-> Unit,
-    accionCancelar: ()->Unit
+    accionFin: (String) -> Unit,
+    accionCancelar: () -> Unit
 ) {
+    LaunchedEffect(idTrivia) {
+        responderPregunta.cargar(idTrivia)
+    }
     val uiState by responderPregunta.uiState.collectAsState()
+    val preguntaActual = uiState.preguntas.getOrNull(uiState.i)
+
+    if (preguntaActual == null) {
+        return
+    }
+
     Box(
         Modifier
             .fillMaxSize()
@@ -61,7 +71,7 @@ fun PaginaResponderPreguntas(
                 ComponentePreguntaYRespuestas(
                     DatosRespondePregunta(
                         enunciado = "enunciado",
-                        textoBotonesRespuesta,
+                        textoBotonesRespuesta = preguntaActual.textoBotonesRespuestas,
                         respuesta = responderPregunta.getPregunta().respuestaSeleccionada,
                         accionRespuestas = { it -> responderPregunta.cambiaRespuestaBoton(it) }
                     )
@@ -88,8 +98,8 @@ fun PaginaResponderPreguntas(
                         DatosBotonDoble(
                             stringResource(R.string.app_bt_anterior),
                             stringResource(R.string.app_bt_siguiente),
-                            accionBoton1 = { responderPregunta.anteriorPregunta() },
-                            accionBoton2 = { responderPregunta.siguientePregunta() })
+                            accionBoton1 = { responderPregunta.anteriorPregunta(idTrivia) },
+                            accionBoton2 = { responderPregunta.siguientePregunta(idTrivia) })
                     )
                 }
                 ComponenteLinea()
@@ -97,8 +107,13 @@ fun PaginaResponderPreguntas(
                     datosBotones = DatosBotonDoble(
                         stringResource(R.string.app_bt_salir),
                         stringResource(R.string.app_bt_finalizar),
-                        accionBoton1 = accionCancelar ,
-                        accionBoton2 = { accionFin(idTrivia) })
+                        accionBoton1 = accionCancelar,
+                        accionBoton2 = { responderPregunta.fin(
+                            idTrivia,
+                            {accionFin(idTrivia)},
+                            {} )
+                        }
+                    )
                 )
             }
         }

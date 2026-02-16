@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -36,16 +37,21 @@ import com.example.triviaapp.viewModels.vm.CrearRespViewModel
  * Pagina para rellenar una preguntas a la hora de hacer un quiz
  */
 @Composable
-fun PaginaElegirRespuestas(idTrivia:String, elegirRespuestas: CrearRespViewModel = viewModel(), onClickSalir: () -> Unit, onClickAceptar: () -> Unit) {
-    val uiState by elegirRespuestas.uiState.collectAsState()
+fun PaginaElegirRespuestas(idTrivia:String, crearPreguntas: CrearRespViewModel = viewModel(), onClickSalir: () -> Unit, onClickAceptar: () -> Unit) {
+    LaunchedEffect(idTrivia) {
+        crearPreguntas.cargar(idTrivia)
+    }
+    val uiState by crearPreguntas.uiState.collectAsState()
     val txtBotones: List<String> = listOf(
         stringResource(R.string.app_sleccion_resp_1),
         stringResource(R.string.app_sleccion_resp_2),
         stringResource(R.string.app_sleccion_resp_3),
         stringResource(R.string.app_sleccion_resp_4)
     )
-
-
+    val preguntaActual = uiState.preguntas.getOrNull(uiState.i)
+    if (preguntaActual == null) {
+        return
+    }
 
     Box(
         Modifier
@@ -60,17 +66,17 @@ fun PaginaElegirRespuestas(idTrivia:String, elegirRespuestas: CrearRespViewModel
             Column(verticalArrangement = Arrangement.spacedBy(30.dp)) {
                 ComponentePreguntaYRespuestasRellenar(
                     DatosCreaPregunta(
-                        enunciado = elegirRespuestas.getPregunta().pregunta,
-                        textoBotonesRespuesta = elegirRespuestas.getPregunta().textoBotonesRespuestas,
-                        accionEnunciado = {it-> elegirRespuestas.cambiaPregunta(it)},
-                        accionRespuestas = {i,it->elegirRespuestas.cambiaTextoBoton(i,it)}
+                        enunciado = preguntaActual.pregunta,
+                        textoBotonesRespuesta = preguntaActual.textoBotonesRespuestas,
+                        accionEnunciado = {it-> crearPreguntas.cambiaPregunta(it)},
+                        accionRespuestas = {i,it->crearPreguntas.cambiaTextoBoton(i,it)}
                     )
                 )
                 ComponenteTituloConRadioButonHorizontal(
                     stringResource(R.string.app_opcion_correcta),
                     txtBotones,
-                    remember = elegirRespuestas.getPregunta().respuestaCorrecta,
-                    accion = {it-> elegirRespuestas.cambiaRespuestaCorrecta(it)}
+                    remember = preguntaActual.respuestaCorrecta,
+                    accion = {it-> crearPreguntas.cambiaRespuestaCorrecta(it)}
                 )
             }
             Column(
@@ -82,7 +88,7 @@ fun PaginaElegirRespuestas(idTrivia:String, elegirRespuestas: CrearRespViewModel
                         RoundedCornerShape(12.dp)
                     )
             ) {
-                ComponenteTituloCaja( "${uiState.i+1} / ${elegirRespuestas.getNumPreguntas()} ${idTrivia}")
+                ComponenteTituloCaja( "${uiState.i+1} / ${crearPreguntas.getNumPreguntas()} ${preguntaActual.id}")
                 Box(
                     modifier = Modifier.padding(bottom = 10.dp)
                 ) {
@@ -90,8 +96,8 @@ fun PaginaElegirRespuestas(idTrivia:String, elegirRespuestas: CrearRespViewModel
                         DatosBotonDoble(
                             stringResource(R.string.app_bt_anterior),
                             stringResource(R.string.app_bt_siguiente),
-                            accionBoton1 = { elegirRespuestas.anteriorPregunta() },
-                            accionBoton2 = { elegirRespuestas.siguientePregunta()})
+                            accionBoton1 = { crearPreguntas.anteriorPregunta() },
+                            accionBoton2 = { crearPreguntas.siguientePregunta()})
                     )
                 }
             }
@@ -104,13 +110,16 @@ fun PaginaElegirRespuestas(idTrivia:String, elegirRespuestas: CrearRespViewModel
                         stringResource(R.string.app_bt_salir),
                         stringResource(R.string.app_bt_finalizar),
                         accionBoton1 = {
-                            elegirRespuestas.cancelarCreacion(
+                            crearPreguntas.cancelarCreacion(
                             idTrivia = idTrivia,
                             onSucces = onClickSalir,
                             onError = {}
                         )
                         },
-                        accionBoton2 = onClickAceptar)
+                        accionBoton2 = {
+                            crearPreguntas.fin(onClickAceptar,{})
+                        }
+                    )
                 )
             }
         }

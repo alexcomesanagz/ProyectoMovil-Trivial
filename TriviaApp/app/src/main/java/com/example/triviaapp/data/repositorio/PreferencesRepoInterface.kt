@@ -4,10 +4,16 @@ import android.content.SharedPreferences
 import com.example.triviaapp.modelo.PreferenceDTO
 
 interface PreferencesRepoInterface {
-    fun cerrarSesion( onSuccess: () -> Unit, onError: () -> Unit)
-    fun registraUsuario(usuario: PreferenceDTO, onSuccess: () -> Unit, onError: () -> Unit)
+    fun cerrarSesion(
+    onSuccess: () -> Unit,
+    onError: () -> Unit
+    )
+    fun registraUsuario(usuario: PreferenceDTO,
+    onSuccess: () -> Unit,
+    onError: () -> Unit
+    )
     fun getUsuario(): PreferenceDTO?
     fun getSharedPref(): SharedPreferences
 
 
-    }
+}

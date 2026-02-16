@@ -6,29 +6,30 @@ import androidx.core.content.edit
 import com.example.triviaapp.R
 import com.example.triviaapp.modelo.PreferenceDTO
 
-class PreferencesRepo(var context: Context): PreferencesRepoInterface {
+class PreferencesRepo(var context: Context) : PreferencesRepoInterface {
     private var logueado = false
+
     companion object {
         val NAME_KEY = "name_key";
         val EMAIL_KEY = "email_key";
         val ID_KEY = "id_key";
     }
 
-    override fun getUsuario(): PreferenceDTO?{
+    override fun getUsuario(): PreferenceDTO? {
         val sp = getSharedPref()
 
-        with(sp){
+        with(sp) {
             try {
                 val id = getString(ID_KEY, "-1")
                 val name = getString(NAME_KEY, null)
                 val email = getString(EMAIL_KEY, null)
 
-                if(id != "-1" && name != null && email != null){
+                if (id != "-1" && name != null && email != null) {
                     return PreferenceDTO(id = id!!, nombre = name, correo = email)
                 } else {
                     return null
                 }
-            }catch (e: TypeCastException){
+            } catch (e: TypeCastException) {
                 e.printStackTrace()
                 sp.edit { clear() };
                 return null
@@ -37,11 +38,11 @@ class PreferencesRepo(var context: Context): PreferencesRepoInterface {
         }
     }
 
-     override fun registraUsuario(
-         usuario: PreferenceDTO,
-         onSuccess: () -> Unit,
-         onError: () -> Unit
-     ) {
+    override fun registraUsuario(
+        usuario: PreferenceDTO,
+        onSuccess: () -> Unit,
+        onError: () -> Unit
+    ) {
         val sp = getSharedPref()
         with(sp.edit()) {
             putString(ID_KEY, usuario.id)
@@ -51,7 +52,10 @@ class PreferencesRepo(var context: Context): PreferencesRepoInterface {
         }
     }
 
-    override fun cerrarSesion(onSuccess: () -> Unit, onError: () -> Unit){
+    override fun cerrarSesion(
+        onSuccess: () -> Unit,
+        onError: () -> Unit
+    ) {
         val sp = getSharedPref()
         with(sp.edit()) {
             clear()

@@ -1,46 +1,59 @@
 package com.example.triviaapp.data.repositorio
 
-import com.example.triviaapp.R
-import com.example.triviaapp.modelo.PreguntaDTO
 import com.example.triviaapp.modelo.TrivialDTO
-import com.example.triviaapp.modelo.UsuarioDTO
 
-object TriviasRepoGeneral{
-    val repo= TrivialRepo()
+object TriviasRepoGeneral {
+    val repo = TrivialRepo()
 }
 
-class TrivialRepo: TrivialRepoInterface{
+class TrivialRepo : TrivialRepoInterface {
     private val datos = arrayListOf(
-        TrivialDTO(id = "1", idCreador ="1", nombre = "wana",categoria = "Terror"),
-        TrivialDTO(id = "2", idCreador ="1", nombre = "nana",categoria = "Accion"),
+        TrivialDTO(id = "1", idCreador = "1", nombre = "wana", categoria = "Terror"),
+        TrivialDTO(id = "2", idCreador = "1", nombre = "nana", categoria = "Accion"),
     )
-     override fun obtenerTrivialsPersona(idCreador: String, onSuccess: (List<TrivialDTO>) -> Unit, onError: (List<TrivialDTO>) -> Unit){
+
+    override fun obtenerTrivialsPersona(
+        idCreador: String,
+        onSuccess: (List<TrivialDTO>) -> Unit,
+        onError: (List<TrivialDTO>) -> Unit
+    ) {
         var Trivials = datos.filter { it.idCreador == idCreador }
         if (Trivials.isEmpty()) {
             onError(Trivials)
         }
-         onSuccess(Trivials)
-     }
+        onSuccess(Trivials)
+    }
 
-    override fun registrar(idCreador: String, nombre: String, categoria: String, onSuccess: (TrivialDTO) -> Unit, onError: () -> Unit) {
-            datos.add(
-                TrivialDTO(
-                    id = "${datos.size+1}",
-                    idCreador = idCreador,
-                    nombre = nombre,
-                    categoria = categoria
-                )
+    override fun crearTrivia(
+        idCreador: String,
+        nombre: String,
+        categoria: String,
+        onSuccess: (TrivialDTO) -> Unit,
+        onError: () -> Unit
+    ) {
+        datos.add(
+            TrivialDTO(
+                id = "${datos.size + 1}",
+                idCreador = idCreador,
+                nombre = nombre,
+                categoria = categoria
             )
-            onSuccess(datos.find { it.id=="${datos.size}"}!!)
+        )
+        onSuccess(datos.find { it.id == "${datos.size}" }!!)
     }
 
     override fun borrar(idTrivia: String, onSuccess: () -> Unit, onError: () -> Unit) {
-        val trivia=datos.find { it.id==idTrivia }
-        if(trivia!=null){
+        val trivia = datos.find { it.id == idTrivia }
         datos.remove(trivia)
         onSuccess()
-        }
-        else onError()
+    }
+
+    override fun leerTodo(
+        onSuccess: (List<TrivialDTO>) -> Unit,
+        onError: () -> Unit
+    ) {
+        onSuccess(datos.toList())
+
     }
 
 //    companion object{

@@ -44,13 +44,8 @@ data class PaginaAjustesUi(
     val preguntas: Int=0
     )
 
-data class ElegirRespUIState(
-    val preguntas: List<Pregunta> =listOf(
-        Pregunta(),
-        Pregunta(),
-        Pregunta(),
-        Pregunta()
-    ),
+data class CreaPreguntasUIState(
+    val preguntas: List<Pregunta> =listOf(),
     val i: Int = 0
 )
 data class PaginaFinUiState(

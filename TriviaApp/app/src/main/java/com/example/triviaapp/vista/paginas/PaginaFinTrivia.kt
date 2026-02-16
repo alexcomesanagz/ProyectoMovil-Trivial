@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -35,8 +36,11 @@ fun PaginaFinTrivia(
 ) {
     val uiState by paginaFinViewModel.uiState.collectAsState()
 
-    paginaFinViewModel.cargaDatos()
-    paginaFinViewModel.cambioImagen()
+    LaunchedEffect(idTrivia) {
+        paginaFinViewModel.cargar(idTrivia)
+        paginaFinViewModel.cambioImagen()
+    }
+
 
     Column(
         modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp),

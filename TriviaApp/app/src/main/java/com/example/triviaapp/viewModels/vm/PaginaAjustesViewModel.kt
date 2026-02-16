@@ -4,6 +4,8 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import com.example.triviaapp.data.repositorio.PreferencesRepo
+import com.example.triviaapp.data.repositorio.PreguntasRepo
+import com.example.triviaapp.data.repositorio.PreguntasRepoGeneral
 import com.example.triviaapp.data.repositorio.TriviasRepoGeneral
 import com.example.triviaapp.viewModels.Uis.PaginaAjustesUi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,13 +21,21 @@ class PaginaAjustesViewModel(application: Application) : AndroidViewModel(applic
     val usuarioActual= PreferencesRepo(context!!)
     val trivialsRepo = TriviasRepoGeneral.repo
 
+    val preguntasRepo = PreguntasRepoGeneral.repo
+
     fun crearTrivia(onSucces: (String)->Unit, onError:()-> Unit) {
         if(uiState.value.categoria!="" && uiState.value.nombreTriv!="" && uiState.value.preguntas>0){
-            trivialsRepo.registrar(
+            trivialsRepo.crearTrivia(
                 idCreador = usuarioActual.getUsuario()!!.id,
                 nombre = uiState.value.nombreTriv,
                 categoria = uiState.value.categoria,
-                onSuccess = {it-> onSucces(it.id)},
+                onSuccess = {trivia->
+                    preguntasRepo.crearPreguntas(trivia.id,
+                        numPreg=uiState.value.preguntas,
+                        onSuccess={onSucces(trivia.id)},
+                    onError={}
+                    )
+                },
                 onError = onError
             )
         }
