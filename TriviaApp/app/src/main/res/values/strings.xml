@@ -35,6 +35,6 @@
     <string name="app_opcion_correcta">Opción correcta</string>
     <string name="app_titulo_categorias">Tipo de categoría</string>
     <string name="app_login_Out">Cerrar sesion\n</string>
-
+    <string name="preferences_file">PREFERENCES_FILE</string>
 
 </resources>

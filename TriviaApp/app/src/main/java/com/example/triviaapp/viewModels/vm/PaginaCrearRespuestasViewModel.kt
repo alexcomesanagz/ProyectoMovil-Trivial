@@ -1,17 +1,18 @@
 package com.example.triviaapp.viewModels.vm
 
 import androidx.lifecycle.ViewModel
+import com.example.triviaapp.data.repositorio.TriviasRepoGeneral
 import com.example.triviaapp.viewModels.Uis.ElegirRespUIState
 import com.example.triviaapp.viewModels.Uis.Pregunta
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 
-class ElegirRespViewModel : ViewModel() {
+class CrearRespViewModel : ViewModel() {
 
     private val _uiState = MutableStateFlow(ElegirRespUIState())
     val uiState: StateFlow<ElegirRespUIState> = _uiState.asStateFlow()
+    val trivialsRepo = TriviasRepoGeneral.repo
 
     fun getPregunta(): Pregunta {
         return _uiState.value.preguntas[getNumPreguntaActual()]
@@ -80,7 +81,13 @@ class ElegirRespViewModel : ViewModel() {
             else _uiState.value.i)
     }
 
-
+    fun cancelarCreacion(idTrivia:String, onSucces:()->Unit, onError:()->Unit){
+        trivialsRepo.borrar(
+            idTrivia = idTrivia,
+            onSuccess = onSucces,
+            onError = onError
+        )
+    }
 
 }
 

@@ -1,6 +1,5 @@
 package com.example.triviaapp.vista.paginas
 
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,8 +21,6 @@ import com.example.triviaapp.componentes.BotonesAceptarDenegarLinea
 import com.example.triviaapp.componentes.ComponenteCajaDatosTrivia
 import com.example.triviaapp.componentes.ComponenteLinea
 import com.example.triviaapp.componentes.DatosBotonDoble
-import com.example.triviaapp.viewModels.PaginaFinViewModel
-import com.example.triviaapp.viewModels.Uis.PaginaAjustesUi
 import com.example.triviaapp.viewModels.vm.PaginaAjustesViewModel
 
 /**
@@ -59,7 +56,13 @@ fun PaginaAjustesTrivia(paginaAjustesUi: PaginaAjustesViewModel = viewModel(), o
                         stringResource(R.string.app_bt_salir),
                         stringResource(R.string.app_bt_aceptar),
                         accionBoton1 = onClickSalir,
-                        accionBoton2 = { onClickAceptar(paginaAjustesUi.guardarAjustesConNuevoId()) })
+                        accionBoton2 = {
+                            paginaAjustesUi.crearTrivia(
+                                onSucces = {it->onClickAceptar(it)},
+                                onError = {}
+                            )
+                        }
+                    )
                 )
             }
         }

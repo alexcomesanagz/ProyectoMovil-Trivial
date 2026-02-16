@@ -73,10 +73,10 @@ fun PaginaPerfil(
                 tarjetas = uiState.tarjetasUsuario.map {
                     Tarjeta(it.imagen,
                         it.titulo,
-                        {contenido ->
-                            onItemClick(contenido)
+                        {
+                            onItemClick(it.id)
                         },
-                        it.id)
+                        )
                 },
                 tamanioCaja = 220,
                 tamanio = 50,

@@ -33,7 +33,7 @@ fun ComponenteTituloConBotonesHorizontal(
     ) {
         ComponenteTituloCaja(txtTitulo)
         ComponenteBotonesHorizontal(
-            txtbotones,
+            txtBotones = txtbotones,
             accionBotones = accionBotones,
             tamanioTexto = tamanioTexto
         )

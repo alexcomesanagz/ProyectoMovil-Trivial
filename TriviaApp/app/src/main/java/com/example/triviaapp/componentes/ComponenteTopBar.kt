@@ -33,9 +33,7 @@ import com.example.triviaapp.R
 @Composable
 fun ComponenteTopBar(
     title: String,
-    logueado: Boolean,
     accionMenu: () -> Unit={ },
-    accionLogin:()->Unit={ Log.e("Testeo","inicio sesion cliqueada")},
     accionCerrarSesion:()->Unit={ Log.e("Testeo","inicio sesion cliqueada")},
     accionCamara: () -> Unit={ Log.e("Testeo","camara cliqueada")},
     accionPerfil: () -> Unit={Log.e("Testeo","perfil cliqueada")}
@@ -48,22 +46,13 @@ fun ComponenteTopBar(
             }
         },
         actions = {
-            if (!logueado) {
-                IconButton(onClick = accionLogin) {
-                    Icon(
-                        Icons.Default.Login,
-                        contentDescription = stringResource(R.string.app_login_btnLogIn)
-                    )
-                }
-            }
-            else{
                 IconButton(onClick = accionCerrarSesion) {
                     Icon(
                         Icons.AutoMirrored.Filled.Logout,
                         contentDescription = stringResource(R.string.app_login_Out)
                     )
                 }
-            }
+
 //            IconButton(onClick = accionCamara) {
 //                Icon(Icons.Default.Create, contentDescription = stringResource(R.string.app_toolbar_Camara))
 //            }
@@ -77,5 +66,5 @@ fun ComponenteTopBar(
 @Preview
 @Composable
 fun PreviewTop(){
-    ComponenteTopBar("Página 1", logueado = false,{},{},{})
+    ComponenteTopBar("Página 1",{},{},{})
 }

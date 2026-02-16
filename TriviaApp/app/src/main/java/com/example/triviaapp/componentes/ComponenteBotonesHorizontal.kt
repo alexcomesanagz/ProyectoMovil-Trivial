@@ -82,7 +82,7 @@ fun ComponenteRadioButonsHorizontal(
         horizontalArrangement = Arrangement.SpaceEvenly
     )
         {
-        datos.txtBotones.mapIndexed {i,it->
+        datos.txtBotones.map {it->
 
             Box(
                 modifier = Modifier.weight(1f)
@@ -99,7 +99,7 @@ fun ComponenteRadioButonsHorizontal(
                             ComponenteRadioButon(
                                 DatosRadioBoton(
                                     msj = it,
-                                    boton = ""+(i+1),
+                                    boton = it,
                                     coloresBoton = listaColor,
                                     tamanioTexto = datos.tamanioTexto,
                                     rememberCadena = datos.remember,

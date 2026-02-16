@@ -34,7 +34,6 @@ fun PaginaLogin(
     paginaLoginUi : PaginaLoginViewModel = viewModel(),
     onItemClick: () -> Unit,
     onSignUpClick:()->Unit,
-    onSalirClick:()-> Unit
 ) {
     val uiState by paginaLoginUi.uiState.collectAsState()
     Box(
@@ -87,15 +86,14 @@ fun PaginaLogin(
                         msjBot1 = stringResource(R.string.app_login_btnLogIn),
                         msjBot2 = stringResource(R.string.app_login_btnSignUp),
                         modifierBotones = Modifier.fillMaxWidth(),
-                        accionBoton1 =  onItemClick ,
+                        accionBoton1 =
+                            {
+                                paginaLoginUi.logIn(
+                                    onSucces = onItemClick,
+                                    onError = {}
+                                )
+                            },
                         accionBoton2 =  onSignUpClick)
-                )
-            }
-            Column(
-            ) {
-                DenegarBoton(
-                    stringResource(R.string.app_bt_salir),
-                    accion = onSalirClick
                 )
             }
         }
@@ -107,5 +105,5 @@ fun PaginaLogin(
 @Preview(showSystemUi = true)
 @Composable
 fun PrevPaginaLogin() {
-        PaginaLogin(onItemClick = {}, onSignUpClick = {}, onSalirClick = {})
+        PaginaLogin(onItemClick = {}, onSignUpClick = {})
 }

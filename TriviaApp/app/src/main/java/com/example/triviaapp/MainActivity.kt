@@ -29,16 +29,15 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.ComponenteTopBar
+import com.example.triviaapp.data.repositorio.PreferencesRepo
 import com.example.triviaapp.viewModels.vm.MainViewModel
 import com.example.triviaapp.vista.navigation.TrivialNavGraph
-import com.example.triviaapp.vista.paginas.PaginaElegirRespuestas
-import com.example.triviaapp.vista.paginas.PaginaPerfil
-import com.example.triviaapp.vista.paginas.PaginaResponderPreguntas
 import kotlinx.coroutines.launch
 
 private val titulo: String = "Título de prueba"
@@ -68,11 +67,12 @@ private val tarjetas: List<Tarjeta> = listOf(
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val viewMain= MainViewModel()
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-
+            val viewMain: MainViewModel=viewModel()
+            viewMain.cargar()
             val uiState by viewMain.uiState.collectAsState()
             val navController = rememberNavController()
             val snackbarHostState = remember { SnackbarHostState() }
@@ -123,15 +123,17 @@ class MainActivity : ComponentActivity() {
                             if (uiState.scaffold){
                             ComponenteTopBar(
                                 title = "Página de prueba",
-                                logueado = uiState.logueado,
                                 accionMenu = {
                                     scope.launch {
                                         drawerState.open()
                                     }
                                 },
-                                accionLogin = {viewMain.cambioLogueado(true)
-                                    navController.navigate("login")},
-                                accionCerrarSesion = {viewMain.cambioLogueado(false)},
+                                accionCerrarSesion = {
+                                    viewMain.salirLogueado(
+                                        onSuccess = {navController.navigate("login")},
+                                        onError = {}
+                                    )
+                                },
                                 accionPerfil = {navController.navigate("perfil")}
                              )
                             }
@@ -206,7 +208,6 @@ class MainActivity : ComponentActivity() {
                     topBar = {
                         ComponenteTopBar(
                             title = "Página de prueba",
-                            logueado = false,
                             accionMenu = {
                                 scope.launch {
                                     drawerState.open()
