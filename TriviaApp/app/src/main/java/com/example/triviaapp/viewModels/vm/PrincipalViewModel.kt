@@ -12,6 +12,7 @@ import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.data.repositorio.ImagenesRepo
 import com.example.triviaapp.data.repositorio.InicioRepoGeneral
 import com.example.triviaapp.data.repositorio.PreferencesRepo
+import com.example.triviaapp.data.repositorio.TriviasRepoGeneral
 import com.example.triviaapp.modelo.TrivialDTO
 import com.example.triviaapp.viewModels.Uis.PrincipalUiState
 import com.example.triviaapp.viewModels.Uis.TarjetaUiDatos
@@ -25,6 +26,8 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
     val usuarioActual= PreferencesRepo(context!!)
     val repoInicial= InicioRepoGeneral.repo
     val imagenesRepo = ImagenesRepo()
+
+    val trivialsRepo = TriviasRepoGeneral.repo
 
     fun cargaDatos() {
         val usuario= usuarioActual.getUsuario()
@@ -54,9 +57,14 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
             repoInicial.obtenerRecientesPersona(usuarioActual.getUsuario()!!.id,
                 onSuccess = {it->
                     recientes = it.map {
+                        var trivia= TrivialDTO("","","","")
+                        trivialsRepo.obtenerTrivial(it.trivia,
+                            {triviaCons-> trivia=triviaCons},
+                            {}
+                        )
                         var imagenTrivia=R.drawable.trivia
                         imagenesRepo.obtenerImagen(
-                            categoria = it.trivia.categoria,
+                            categoria = trivia.categoria,
                             onSuccess = { imagen->
                                 imagenTrivia = imagen.imagen
 
@@ -64,8 +72,8 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
                             ,onError = {}
                         )
                         TarjetaUiDatos(
-                            id = it.trivia.id,
-                            titulo = it.trivia.nombre,
+                            id = trivia.id,
+                            titulo =trivia.nombre,
                             imagen =imagenTrivia
                         )
                     }

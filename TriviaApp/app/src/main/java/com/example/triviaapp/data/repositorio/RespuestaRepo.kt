@@ -7,72 +7,7 @@ object RespuestasRepoGeneral{
 }
 
 class RespuestaRepo : IRepoRespuesta {
-    private val respuestas = arrayListOf<RespuestaDTO>(
-        RespuestaDTO(
-            id = "1",
-            idTrivial = "1",
-            idUsuario = "1",
-            idPregunta = "1",
-            respuesta = "3",
-            correcta = true
-        ),
-        RespuestaDTO(
-            id = "2",
-            idTrivial = "1",
-            idUsuario = "1",
-            idPregunta = "2",
-            respuesta = "2",
-            correcta = false
-        ),
-        RespuestaDTO(
-            id = "3",
-            idTrivial = "1",
-            idUsuario = "2",
-            idPregunta = "1",
-            respuesta = "1",
-            correcta = false
-        ),
-        RespuestaDTO(
-            id = "4",
-            idTrivial = "1",
-            idUsuario = "2",
-            idPregunta = "2",
-            respuesta = "4",
-            correcta = true
-        ),
-        RespuestaDTO(
-            id = "5",
-            idTrivial = "2",
-            idUsuario = "1",
-            idPregunta = "1",
-            respuesta = "2",
-            correcta = true
-        ),
-        RespuestaDTO(
-            id = "6",
-            idTrivial = "2",
-            idUsuario = "1",
-            idPregunta = "2",
-            respuesta = "3",
-            correcta = false
-        ),
-        RespuestaDTO(
-            id = "7",
-            idTrivial = "2",
-            idUsuario = "2",
-            idPregunta = "1",
-            respuesta = "3",
-            correcta = false
-        ),
-        RespuestaDTO(
-            id = "8",
-            idTrivial = "2",
-            idUsuario = "2",
-            idPregunta = "2",
-            respuesta = "1",
-            correcta = true
-        )
-    )
+    private val respuestas = arrayListOf<RespuestaDTO>()
 
     override fun obtenerRespuestasTrivial(
         idTrivial: String,
