@@ -65,8 +65,4 @@ class PaginaFinViewModel(application: Application) : AndroidViewModel(applicatio
         _uiState.value =_uiState.value.copy(imagenResultado = imagen)
     }
 
-    fun cargaDatos() {
-        _uiState.value = PaginaFinUiState()
-    }
-
 }
