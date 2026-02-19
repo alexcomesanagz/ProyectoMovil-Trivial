@@ -11,6 +11,13 @@ object Network {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val pokeApiService: InterfazRetrofit = retrofit.create(InterfazRetrofit::class.java)
+        val triviaRetrofit: InterfazRetrofitTrivias = retrofit.create(InterfazRetrofitTrivias::class.java)
+        val ImagenRetrofit: InterfazRetrofitImagenes = retrofit.create(InterfazRetrofitImagenes::class.java)
+        val respuestaRetrofit: InterfazRetrofitRespuestas = retrofit.create(InterfazRetrofitRespuestas::class.java)
+        val preguntaRetrofit: InterfazRetrofitPreguntas = retrofit.create(InterfazRetrofitPreguntas::class.java)
+        val inicioRetrofit: InterfazRetrofitInicio = retrofit.create(InterfazRetrofitInicio::class.java)
+        val usuarioRetrofit: InterfazRetrofitUsuarios = retrofit.create(InterfazRetrofitUsuarios::class.java)
+
+
 
 }
