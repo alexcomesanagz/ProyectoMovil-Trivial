@@ -1,9 +1,9 @@
 package com.example.triviaapp.data.repositorio
 
-import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofit
+import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofitTrivias
 import com.example.triviaapp.modelo.RespuestaDTO
 
-class RespuestaRepoRemoto(private val api : InterfazRetrofit) : IRepoRespuesta {
+class RespuestaRepoRemoto(private val api : InterfazRetrofitTrivias) : IRepoRespuesta {
     override fun obtenerRespuestasTrivial(
         idTrivial: String,
         idUsuario: String,

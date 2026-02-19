@@ -1,10 +1,11 @@
 package com.example.triviaapp.data.repositorio
 
-import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofit
+
+import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofitTrivias
 import com.example.triviaapp.modelo.InicioDTO
 import com.example.triviaapp.modelo.TrivialDTO
 
-class InicioRepoRemoto(private val api : InterfazRetrofit) : InicioRepoInterface {
+class InicioRepoRemoto(private val api : InterfazRetrofitTrivias) : InicioRepoInterface {
     override fun obtenerRecomendadosPersona(
         onSuccess: (List<TrivialDTO>) -> Unit,
         onError: (List<TrivialDTO>) -> Unit

@@ -1,10 +1,10 @@
 package com.example.triviaapp.data.repositorio
 
 import android.content.SharedPreferences
-import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofit
+import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofitTrivias
 import com.example.triviaapp.modelo.PreferenceDTO
 
-class PreferencesRepoRemoto(private val api : InterfazRetrofit) : PreferencesRepoInterface {
+class PreferencesRepoRemoto(private val api : InterfazRetrofitTrivias) : PreferencesRepoInterface {
     override fun cerrarSesion(onSuccess: () -> Unit, onError: () -> Unit) {
         TODO("Not yet implemented")
     }

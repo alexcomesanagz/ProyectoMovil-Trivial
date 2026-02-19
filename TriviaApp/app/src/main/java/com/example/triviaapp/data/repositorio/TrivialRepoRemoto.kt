@@ -1,9 +1,9 @@
 package com.example.triviaapp.data.repositorio
 
-import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofit
+import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofitTrivias
 import com.example.triviaapp.modelo.TrivialDTO
 
-class TrivialRepoRemoto(private val api : InterfazRetrofit) : TrivialRepoInterface {
+class TrivialRepoRemoto(private val api : InterfazRetrofitTrivias) : TrivialRepoInterface {
     override fun obtenerTrivialsPersona(
         idCreador: String,
         onSuccess: (List<TrivialDTO>) -> Unit,
