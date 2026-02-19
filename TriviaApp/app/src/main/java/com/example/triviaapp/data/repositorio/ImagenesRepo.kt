@@ -10,7 +10,8 @@ class ImagenesRepo: ImagenesRepoInterface {
         ImagenDTO("Accion", R.drawable.accion),
         ImagenDTO("Puzzle", R.drawable.puzzle),
         ImagenDTO("Tactico", R.drawable.tactico),
-
+        ImagenDTO("Mal", R.drawable.mal),
+        ImagenDTO("Bien", R.drawable.bien)
         )
     override fun obtenerImagen(
         categoria: String,

@@ -35,6 +35,7 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
 
            var recomendados= listOf<TarjetaUiDatos>()
             var recientes = listOf<TarjetaUiDatos>()
+
                repoInicial.obtenerRecomendadosPersona(onSuccess = {it->
                    recomendados = it.map {
                        var imagenTrivia=R.drawable.trivia

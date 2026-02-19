@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import com.example.triviaapp.R
+import com.example.triviaapp.data.repositorio.ImagenesRepo
 import com.example.triviaapp.data.repositorio.PreferencesRepo
 import com.example.triviaapp.data.repositorio.PreguntasRepoGeneral
 import com.example.triviaapp.data.repositorio.RespuestasRepoGeneral
@@ -22,6 +23,9 @@ class PaginaFinViewModel(application: Application) : AndroidViewModel(applicatio
         get() = getApplication<Application>().applicationContext
     val preguntasRepo = PreguntasRepoGeneral.repo
 
+    val imagenesRepo = ImagenesRepo()
+
+
     val usuarioActual = PreferencesRepo(context!!)
 
     val repuestasRepo = RespuestasRepoGeneral.repo
@@ -34,9 +38,10 @@ class PaginaFinViewModel(application: Application) : AndroidViewModel(applicatio
                     idTrivia,
                     usuarioActual.getUsuario()!!.id,
                     onSuccess = {
-                        _uiState.value=_uiState.value.copy(
+                        _uiState.value = _uiState.value.copy(
                             preguntasAcertadas = it,
-                            preguntasTotales = preguntas.size)
+                            preguntasTotales = preguntas.size
+                        )
                     },
                     onError = {})
             },
@@ -44,12 +49,20 @@ class PaginaFinViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     fun cambioImagen() {
-        _uiState.value =
+        var imagen = 0
+
             if (_uiState.value.preguntasAcertadas < _uiState.value.preguntasTotales / 2) {
-                _uiState.value.copy(imagenResultado = R.drawable.ic_launcher_background)
+                imagenesRepo.obtenerImagen("Mal",
+                    { it -> imagen = it.imagen },
+                    {}
+                )
             } else {
-                _uiState.value.copy(imagenResultado = R.drawable.trivia)
+                imagenesRepo.obtenerImagen("Bien",
+                    { it -> imagen = it.imagen },
+                    {}
+                )
             }
+        _uiState.value =_uiState.value.copy(imagenResultado = imagen)
     }
 
     fun cargaDatos() {
