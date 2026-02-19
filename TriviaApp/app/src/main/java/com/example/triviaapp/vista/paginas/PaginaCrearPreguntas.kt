@@ -88,7 +88,7 @@ fun PaginaElegirRespuestas(idTrivia:String, crearPreguntas: CrearRespViewModel =
                         RoundedCornerShape(12.dp)
                     )
             ) {
-                ComponenteTituloCaja( "${uiState.i+1} / ${crearPreguntas.getNumPreguntas()} ${preguntaActual.id}")
+                ComponenteTituloCaja( "${uiState.i+1} / ${crearPreguntas.getNumPreguntas()} ")
                 Box(
                     modifier = Modifier.padding(bottom = 10.dp)
                 ) {

@@ -28,4 +28,9 @@ interface TrivialRepoInterface {
         onSuccess: (List<TrivialDTO>) -> Unit,
         onError: () -> Unit)
 
+    fun obtenerTrivial(
+        idTrivial: String,
+        onSuccess: (TrivialDTO) -> Unit,
+        onError: () -> Unit)
+
 }

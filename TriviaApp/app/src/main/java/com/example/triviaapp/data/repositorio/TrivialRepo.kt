@@ -56,6 +56,14 @@ class TrivialRepo : TrivialRepoInterface {
 
     }
 
+    override fun obtenerTrivial(
+        idTrivial: String,
+        onSuccess: (TrivialDTO) -> Unit,
+        onError: () -> Unit
+    ) {
+       onSuccess(datos.find { it.id == idTrivial }!!)
+    }
+
 //    companion object{
 //        val preguntas() = ArrayList<PreguntaDTO>(
 //            listOf(

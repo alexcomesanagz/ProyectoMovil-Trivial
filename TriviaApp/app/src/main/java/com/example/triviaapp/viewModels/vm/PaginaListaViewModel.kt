@@ -30,7 +30,7 @@ class PaginaListaViewModel : ViewModel() {
             {it->lista=it.groupBy{it.categoria}.mapValues {
                 mapa->
                     mapa.value.map {
-                        var imagenTrivia=R.drawable.trivia
+                        var imagenTrivia = R.drawable.trivia
                             imagenesRepo.obtenerImagen(
                                 categoria = it.categoria,
                                 onSuccess = { imagen->

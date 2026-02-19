@@ -4,9 +4,12 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
+import com.example.triviaapp.data.repositorio.InicioRepoGeneral
 import com.example.triviaapp.data.repositorio.PreferencesRepo
 import com.example.triviaapp.data.repositorio.PreguntasRepoGeneral
 import com.example.triviaapp.data.repositorio.RespuestasRepoGeneral
+import com.example.triviaapp.data.repositorio.TriviasRepoGeneral
+import com.example.triviaapp.modelo.InicioDTO
 import com.example.triviaapp.modelo.PreguntaDTO
 import com.example.triviaapp.modelo.RespuestaDTO
 import com.example.triviaapp.viewModels.Uis.Pregunta
@@ -26,6 +29,10 @@ class ResponderPreguntasViewModel(application: Application) : AndroidViewModel(a
     val usuarioActual= PreferencesRepo(context!!)
     val preguntasRepo = PreguntasRepoGeneral.repo
     val repuestasRepo = RespuestasRepoGeneral.repo
+    val trivialRepo = TriviasRepoGeneral.repo
+    val repoInicial= InicioRepoGeneral.repo
+
+
     fun cargar(idTrivia: String){
         preguntasRepo.obtenerPreguntasTrivial(idTrivial = idTrivia,
             onSuccess = {
@@ -68,7 +75,17 @@ class ResponderPreguntasViewModel(application: Application) : AndroidViewModel(a
                         }
 
                     )
-
+                    trivialRepo.obtenerTrivial(idTrivial = idTrivia,
+                        onSuccess ={
+                            it->
+                            repoInicial.anadirRecientes(reciente = InicioDTO(
+                                idUsiario = usuarioActual.getUsuario()!!.id,
+                                trivia = it
+                            ),
+                                onSuccess = {},
+                                onError = {})
+                        },
+                        onError = {})
             },
             onError = {}
         )

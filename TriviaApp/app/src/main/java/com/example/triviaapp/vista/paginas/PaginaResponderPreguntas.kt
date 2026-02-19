@@ -70,7 +70,7 @@ fun PaginaResponderPreguntas(
             Column(verticalArrangement = Arrangement.spacedBy(50.dp)) {
                 ComponentePreguntaYRespuestas(
                     DatosRespondePregunta(
-                        enunciado = "enunciado",
+                        enunciado = preguntaActual.pregunta,
                         textoBotonesRespuesta = preguntaActual.textoBotonesRespuestas,
                         respuesta = responderPregunta.getPregunta().respuestaSeleccionada,
                         accionRespuestas = { it -> responderPregunta.cambiaRespuestaBoton(it) }
