@@ -152,7 +152,7 @@ class MainActivity : ComponentActivity() {
                         Box(
                             modifier = Modifier
                                 .padding(innerPadding)
-                                .fillMaxSize()
+
                                 .background(MaterialTheme.colorScheme.inverseSurface)
                         ) {
                           TrivialNavGraph(navController,viewMain)

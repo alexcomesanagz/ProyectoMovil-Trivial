@@ -4,7 +4,7 @@ package com.example.triviaapp.data.repositorio.retrofit
     import retrofit2.converter.gson.GsonConverterFactory
 
 object Network {
-        private const val BASE_URL = "https://pokeapi.co/api/v2/"
+        private const val BASE_URL = "192.168.4.20"
 
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)

@@ -33,12 +33,16 @@ import com.example.triviaapp.componentes.DatosCreaPregunta
 import com.example.triviaapp.viewModels.vm.CrearRespViewModel
 
 
-
 /**
  * Pagina para rellenar una preguntas a la hora de hacer un quiz
  */
 @Composable
-fun PaginaElegirRespuestas(idTrivia:String, crearPreguntas: CrearRespViewModel = viewModel(), onClickSalir: () -> Unit, onClickAceptar: () -> Unit) {
+fun PaginaElegirRespuestas(
+    idTrivia: String,
+    crearPreguntas: CrearRespViewModel = viewModel(),
+    onClickSalir: () -> Unit,
+    onClickAceptar: () -> Unit
+) {
     LaunchedEffect(idTrivia) {
         crearPreguntas.cargar(idTrivia)
     }
@@ -53,78 +57,63 @@ fun PaginaElegirRespuestas(idTrivia:String, crearPreguntas: CrearRespViewModel =
     if (preguntaActual == null) {
         return
     }
-    LazyColumn {
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
         item {
             Box(
                 Modifier
-                    .fillMaxSize()
                     .padding(vertical = 30.dp, horizontal = 10.dp)
                     .windowInsetsPadding(WindowInsets.safeDrawing)
             ) {
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(30.dp)
 
-                ) {
-                    Column(verticalArrangement = Arrangement.spacedBy(30.dp)) {
-                        ComponentePreguntaYRespuestasRellenar(
-                            DatosCreaPregunta(
-                                enunciado = preguntaActual.pregunta,
-                                textoBotonesRespuesta = preguntaActual.textoBotonesRespuestas,
-                                accionEnunciado = {it-> crearPreguntas.cambiaPregunta(it)},
-                                accionRespuestas = {i,it->crearPreguntas.cambiaTextoBoton(i,it)}
-                            )
+                    ComponentePreguntaYRespuestasRellenar(
+                        DatosCreaPregunta(
+                            enunciado = preguntaActual.pregunta,
+                            textoBotonesRespuesta = preguntaActual.textoBotonesRespuestas,
+                            accionEnunciado = { it -> crearPreguntas.cambiaPregunta(it) },
+                            accionRespuestas = { i, it -> crearPreguntas.cambiaTextoBoton(i, it) }
                         )
-                        ComponenteTituloConRadioButonHorizontal(
-                            stringResource(R.string.app_opcion_correcta),
-                            txtBotones,
-                            remember = preguntaActual.respuestaCorrecta,
-                            accion = {it-> crearPreguntas.cambiaRespuestaCorrecta(it)}
-                        )
-                    }
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(10.dp),
-                        modifier = Modifier
-                            .padding(bottom = 10.dp)
-                            .background(
-                                MaterialTheme.colorScheme.surface,
-                                RoundedCornerShape(12.dp)
-                            )
+                    )
+                    ComponenteTituloConRadioButonHorizontal(
+                        stringResource(R.string.app_opcion_correcta),
+                        txtBotones,
+                        remember = preguntaActual.respuestaCorrecta,
+                        accion = { it -> crearPreguntas.cambiaRespuestaCorrecta(it) }
+                    )
+
+
+                    ComponenteTituloCaja("${uiState.i + 1} / ${crearPreguntas.getNumPreguntas()} ")
+                    Box(
+                        modifier = Modifier.padding(bottom = 10.dp)
                     ) {
-                        ComponenteTituloCaja( "${uiState.i+1} / ${crearPreguntas.getNumPreguntas()} ")
-                        Box(
-                            modifier = Modifier.padding(bottom = 10.dp)
-                        ) {
-                            BotonesDobleAvanzarLinea(
-                                DatosBotonDoble(
-                                    stringResource(R.string.app_bt_anterior),
-                                    stringResource(R.string.app_bt_siguiente),
-                                    accionBoton1 = { crearPreguntas.anteriorPregunta() },
-                                    accionBoton2 = { crearPreguntas.siguientePregunta()})
-                            )
-                        }
-                    }
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(10.dp)
-                    ) {
-                        ComponenteLinea()
-                        BotonesAceptarDenegarLinea(
+                        BotonesDobleAvanzarLinea(
                             DatosBotonDoble(
-                                stringResource(R.string.app_bt_salir),
-                                stringResource(R.string.app_bt_finalizar),
-                                accionBoton1 = {
-                                    crearPreguntas.cancelarCreacion(
+                                stringResource(R.string.app_bt_anterior),
+                                stringResource(R.string.app_bt_siguiente),
+                                accionBoton1 = { crearPreguntas.anteriorPregunta() },
+                                accionBoton2 = { crearPreguntas.siguientePregunta() })
+                        )
+                    }
+
+
+                    ComponenteLinea()
+                    BotonesAceptarDenegarLinea(
+                        DatosBotonDoble(
+                            stringResource(R.string.app_bt_salir),
+                            stringResource(R.string.app_bt_finalizar),
+                            accionBoton1 = {
+                                crearPreguntas.cancelarCreacion(
                                     idTrivia = idTrivia,
                                     onSucces = onClickSalir,
                                     onError = {}
                                 )
-                                },
-                                accionBoton2 = {
-                                    crearPreguntas.fin(onClickAceptar,{})
-                                }
-                            )
+                            },
+                            accionBoton2 = {
+                                crearPreguntas.fin(onClickAceptar, {})
+                            }
                         )
-                    }
-                }
+                    )
+
+
             }
         }
     }
@@ -135,6 +124,6 @@ fun PaginaElegirRespuestas(idTrivia:String, crearPreguntas: CrearRespViewModel =
 @Composable
 fun PrevPaginaElegirRespuestas() {
 //    TriviaAppTheme {
-        PaginaElegirRespuestas("1" ,onClickSalir ={""}, onClickAceptar = {""})
+    PaginaElegirRespuestas("1", onClickSalir = { "" }, onClickAceptar = { "" })
 //    }
 }
