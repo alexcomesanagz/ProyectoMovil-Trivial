@@ -55,11 +55,11 @@ class TrivialRepo : TrivialRepoInterface {
     }
 
     override fun obtenerTrivial(
-        idTrivial: String,
+        idTrivia: String,
         onSuccess: (TrivialDTO) -> Unit,
         onError: () -> Unit
     ) {
-       onSuccess(datos.find { it.id == idTrivial }!!)
+       onSuccess(datos.find { it.id == idTrivia }!!)
     }
 
 //    companion object{

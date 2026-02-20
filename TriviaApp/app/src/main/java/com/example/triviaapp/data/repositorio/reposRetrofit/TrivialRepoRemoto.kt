@@ -96,14 +96,50 @@ class TrivialRepoRemoto(private val triviaRetrofit : InterfazRetrofitTrivias) : 
         onSuccess: (List<TrivialDTO>) -> Unit,
         onError: () -> Unit
     ) {
-        TODO("Not yet implemented")
+        triviaRetrofit.listarTrivials()
+            .enqueue(object : retrofit2.Callback<List<TrivialDTO>> {
+                override fun onResponse(call: Call<List<TrivialDTO>>, response: Response<List<TrivialDTO>>) {
+                    if (response.isSuccessful && response.body() != null) {
+                        val lista = response.body()
+                        onSuccess(lista!!)
+                    }
+                    onError()
+                }
+
+
+                override fun onFailure(
+                    call: Call<List<TrivialDTO>>,
+                    t: Throwable
+                ) {
+                    onError()
+                }
+
+            })
     }
 
     override fun obtenerTrivial(
-        idTrivial: String,
+        idTrivia: String,
         onSuccess: (TrivialDTO) -> Unit,
         onError: () -> Unit
     ) {
-        TODO("Not yet implemented")
+        triviaRetrofit.obtenerTrivial(id = idTrivia)
+            .enqueue(object : retrofit2.Callback<TrivialDTO> {
+                override fun onResponse(call: Call<TrivialDTO>, response: Response<TrivialDTO>) {
+                    if (response.isSuccessful && response.body() !=null) {
+                        val trivia=response.body()
+                       if (trivia!=null) onSuccess(trivia)
+                    }
+                    onError()
+                }
+
+
+                override fun onFailure(
+                    call: Call<TrivialDTO>,
+                    t: Throwable
+                ) {
+                    onError()
+                }
+
+            })
     }
 }
