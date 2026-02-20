@@ -44,10 +44,6 @@ interface InterfazRetrofitImagenes {
 interface InterfazRetrofitInicio {
         @GET("/json/inicio")
         fun listarInicio(): Call<List<InicioDTO>>
-
-        @GET("/json/inicio/{id}")
-        fun obtenerInicio(@Path("id") id: String): Call<InicioDTO>
-
         @PUT("/json/inicio")
         fun crearInicio(@Body dto: InicioDTO): Call<InicioDTO>
 

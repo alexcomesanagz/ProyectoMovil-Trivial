@@ -1,6 +1,6 @@
 package com.example.triviaapp.modelo
 
 class InicioDTO (
-    var idUsiario : String,
+    var idUsuario : String,
     var trivia: String
 )

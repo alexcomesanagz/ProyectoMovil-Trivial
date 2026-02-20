@@ -2,8 +2,6 @@ package com.example.triviaapp.data.repositorio.reposLocal
 
 import com.example.triviaapp.data.repositorio.interfacesRepo.InicioRepoInterface
 import com.example.triviaapp.modelo.InicioDTO
-import com.example.triviaapp.modelo.TrivialDTO
-
 
 
 class InicioRepo : InicioRepoInterface {
@@ -15,10 +13,10 @@ class InicioRepo : InicioRepoInterface {
         onSuccess: () -> Unit,
         onError: () -> Unit
     ) {
-        if(recientes.find { it.idUsiario==reciente.idUsiario && it.trivia==reciente.trivia }==null) {
+        if(recientes.find { it.idUsuario==reciente.idUsuario && it.trivia==reciente.trivia }==null) {
             recientes.add(
                 InicioDTO(
-                    idUsiario = reciente.idUsiario,
+                    idUsuario = reciente.idUsuario,
                     trivia = reciente.trivia
                 )
             )
@@ -31,7 +29,7 @@ class InicioRepo : InicioRepoInterface {
         onSuccess: (List<InicioDTO>) -> Unit,
         onError: (List<InicioDTO>) -> Unit
     ){
-        var Trivials = recientes.filter { it.idUsiario == idCreador }
+        var Trivials = recientes.filter { it.idUsuario == idCreador }
         if (Trivials.isEmpty()) {
             onError(Trivials)
         }

@@ -75,7 +75,7 @@ class ResponderPreguntasViewModel(application: Application) : AndroidViewModel(a
                     onSuccess = { it ->
                         repoInicial.anadirRecientes(
                             reciente = InicioDTO(
-                                idUsiario = usuarioActual.getUsuario()!!.id,
+                                idUsuario = usuarioActual.getUsuario()!!.id,
                                 trivia = it.id
                             ),
                             onSuccess = {},
