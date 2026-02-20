@@ -1,6 +1,6 @@
-package com.example.triviaapp.data.repositorio
+package com.example.triviaapp.data.repositorio.reposLocal
 
-import com.example.triviaapp.modelo.PreguntaDTO
+import com.example.triviaapp.data.repositorio.interfacesRepo.IRepoRespuesta
 import com.example.triviaapp.modelo.RespuestaDTO
 object RespuestasRepoGeneral{
     val repo= RespuestaRepo()

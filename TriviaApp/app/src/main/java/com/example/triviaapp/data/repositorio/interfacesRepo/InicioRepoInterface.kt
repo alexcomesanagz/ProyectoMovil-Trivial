@@ -1,14 +1,9 @@
-package com.example.triviaapp.data.repositorio
+package com.example.triviaapp.data.repositorio.interfacesRepo
 
 import com.example.triviaapp.modelo.InicioDTO
 import com.example.triviaapp.modelo.TrivialDTO
 
 interface InicioRepoInterface {
-    fun obtenerRecomendadosPersona(
-        onSuccess: (List<TrivialDTO>) -> Unit,
-        onError: (List<TrivialDTO>) -> Unit
-    )
-
     fun anadirRecientes(
         reciente: InicioDTO,
         onSuccess: () -> Unit,

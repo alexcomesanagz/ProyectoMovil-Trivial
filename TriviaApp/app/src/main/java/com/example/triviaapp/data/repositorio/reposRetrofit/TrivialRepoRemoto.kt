@@ -1,5 +1,6 @@
-package com.example.triviaapp.data.repositorio
+package com.example.triviaapp.data.repositorio.reposRetrofit
 
+import com.example.triviaapp.data.repositorio.interfacesRepo.TrivialRepoInterface
 import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofitTrivias
 import com.example.triviaapp.modelo.TrivialDTO
 

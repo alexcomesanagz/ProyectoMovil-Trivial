@@ -1,4 +1,4 @@
-package com.example.triviaapp.data.repositorio
+package com.example.triviaapp.data.repositorio.interfacesRepo
 
 import android.content.SharedPreferences
 import com.example.triviaapp.modelo.PreferenceDTO

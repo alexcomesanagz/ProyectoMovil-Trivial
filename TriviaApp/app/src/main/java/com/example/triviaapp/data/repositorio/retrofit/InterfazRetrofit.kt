@@ -5,6 +5,7 @@ import com.example.triviaapp.modelo.ImagenDTO
 import com.example.triviaapp.modelo.InicioDTO
 import com.example.triviaapp.modelo.PreferenceDTO
 import com.example.triviaapp.modelo.PreguntaDTO
+import com.example.triviaapp.modelo.RecomendadosDTO
 import com.example.triviaapp.modelo.RespuestaDTO
 import com.example.triviaapp.modelo.TrivialDTO
 import com.example.triviaapp.modelo.UsuarioDTO
@@ -18,69 +19,77 @@ import retrofit2.http.Path
 
 interface InterfazRetrofitTrivias {
 
-        @GET("json/trivials")
+        @GET("/json/trivials")
         fun listarTrivials(): Call<List<TrivialDTO>>
 
-        @GET("json/trivials/{id}")
+        @GET("/json/trivials/{id}")
         fun obtenerTrivial(@Path("id") id: String): Call<TrivialDTO>
 
-        @POST("json/trivials")
+        @POST("/json/trivials")
         fun crearTrivial(@Body dto: TrivialDTO): Call<TrivialDTO>
 
-        @DELETE("json/trivials/{id}")
-        fun borrarTrivial(@Body dto: TrivialDTO): Call<TrivialDTO>
+        @DELETE("/json/trivials/{id}")
+        fun borrarTrivial(@Path("id") id: String): Call<Void>
 }
 
 interface InterfazRetrofitImagenes {
-        @GET("json/imagenes")
+        @GET("/images")
         fun listarImagenes(): Call<List<ImagenDTO>>
 
-        @GET("json/imagenes/{id}")
+        @GET("/images/{id}")
         fun obtenerImagenes(@Path("id") id: String): Call<ImagenDTO>
 
 }
 
 interface InterfazRetrofitInicio {
-        @GET("json/inicio")
+        @GET("/json/inicio")
         fun listarInicio(): Call<List<InicioDTO>>
 
-        @GET("json/inicio/{id}")
+        @GET("/json/inicio/{id}")
         fun obtenerInicio(@Path("id") id: String): Call<InicioDTO>
 
-        @POST("json/inicio")
+        @PUT("/json/inicio")
         fun crearInicio(@Body dto: InicioDTO): Call<InicioDTO>
 
 }
 
 interface InterfazRetrofitPreguntas {
-        @GET("json/preguntas")
+        @GET("/json/preguntas")
         fun listarPreguntas(): Call<List<PreguntaDTO>>
 
-        @GET("json/preguntas/{id}")
-        fun obtenerPreguntas(@Path("id") id: String): Call<PreguntaDTO>
+        @GET("/json/preguntas/{id}")
+        fun obtenerPregunta(@Path("id") id: String): Call<PreguntaDTO>
 
-        @POST("json/preguntas")
-        fun crearPreguntas(@Body dto: PreguntaDTO): Call<PreguntaDTO>
+        @PUT("/json/preguntas")
+        fun crearPregunta(@Body dto: PreguntaDTO): Call<PreguntaDTO>
 
-        @DELETE("json/preguntas/{id}")
-        fun borrarPreguntas(@Body dto: PreguntaDTO)
+        @POST("/json/preguntas")
+        fun modificaPregunta(@Body dto: PreguntaDTO): Call<PreguntaDTO>
+        @DELETE("/json/preguntas/{id}")
+        fun borrarPregunta(@Path("id") id: String): Call<Void>
 }
 interface InterfazRetrofitRespuestas {
-        @GET("json/respuestas")
+        @GET("/json/respuestas")
         fun listarRespuestas(): Call<List<RespuestaDTO>>
 
-        @GET("json/respuestas/{id}")
-        fun obtenerRespuestas(@Path("id") id: String): Call<RespuestaDTO>
+        @GET("/json/respuestas/{id}")
+        fun obtenerRespuesta(@Path("id") id: String): Call<RespuestaDTO>
 
-        @POST("json/respuestas")
-        fun crearRespuestas(@Body dto: RespuestaDTO): Call<RespuestaDTO>
+        @POST("/json/respuestas")
+        fun crearRespuesta(@Body dto: RespuestaDTO): Call<RespuestaDTO>
 
 }
 interface InterfazRetrofitUsuarios {
-        @GET("json/usuarios")
+        @GET("/json/usuarios")
         fun listarUsuarios(): Call<List<UsuarioDTO>>
-        @GET("json/usuarios/{id}")
+        @GET("/json/usuarios/{id}")
         fun obtenerUsuarios(@Path("id") id: String): Call<UsuarioDTO>
-        @POST("json/usuarios")
+        @POST("/json/usuarios")
         fun crearUsuarios(@Body dto: UsuarioDTO): Call<UsuarioDTO>
+}
+
+interface InterfazRetrofitRecomendados {
+        @GET("/json/recomendados")
+        fun listarRecomendados(): Call<List<RecomendadosDTO>>
+
 }

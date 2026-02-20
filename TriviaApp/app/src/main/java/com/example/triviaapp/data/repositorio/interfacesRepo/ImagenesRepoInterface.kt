@@ -1,4 +1,4 @@
-package com.example.triviaapp.data.repositorio
+package com.example.triviaapp.data.repositorio.interfacesRepo
 
 import com.example.triviaapp.modelo.ImagenDTO
 
@@ -9,3 +9,4 @@ interface ImagenesRepoInterface {
         onError: () -> Unit
     )
 }
+

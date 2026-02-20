@@ -1,9 +1,10 @@
-package com.example.triviaapp.data.repositorio
+package com.example.triviaapp.data.repositorio.reposLocal
 
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
 import com.example.triviaapp.R
+import com.example.triviaapp.data.repositorio.interfacesRepo.PreferencesRepoInterface
 import com.example.triviaapp.modelo.PreferenceDTO
 
 class PreferencesRepo(var context: Context) : PreferencesRepoInterface {

@@ -4,9 +4,9 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import com.example.triviaapp.R
-import com.example.triviaapp.data.repositorio.ImagenesRepo
-import com.example.triviaapp.data.repositorio.PreferencesRepo
-import com.example.triviaapp.data.repositorio.TriviasRepoGeneral
+import com.example.triviaapp.data.repositorio.reposLocal.ImagenesRepo
+import com.example.triviaapp.data.repositorio.reposLocal.PreferencesRepo
+import com.example.triviaapp.data.repositorio.reposLocal.TriviasRepoGeneral
 import com.example.triviaapp.viewModels.Uis.PaginaPerfilUi
 import com.example.triviaapp.viewModels.Uis.TarjetaUiDatos
 import kotlinx.coroutines.flow.MutableStateFlow

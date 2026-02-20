@@ -1,5 +1,6 @@
-package com.example.triviaapp.data.repositorio
+package com.example.triviaapp.data.repositorio.reposLocal
 
+import com.example.triviaapp.data.repositorio.interfacesRepo.IRepoPregunta
 import com.example.triviaapp.modelo.PreguntaDTO
 
 object PreguntasRepoGeneral {

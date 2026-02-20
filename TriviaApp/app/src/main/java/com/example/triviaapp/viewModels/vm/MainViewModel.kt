@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 
-import com.example.triviaapp.data.repositorio.PreferencesRepo
+import com.example.triviaapp.data.repositorio.reposLocal.PreferencesRepo
 import com.example.triviaapp.viewModels.Uis.MainUi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

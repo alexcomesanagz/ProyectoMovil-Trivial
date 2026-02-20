@@ -3,21 +3,17 @@ package com.example.triviaapp.viewModels.vm
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
-import com.example.triviaapp.data.repositorio.InicioRepoGeneral
-import com.example.triviaapp.data.repositorio.PreferencesRepo
-import com.example.triviaapp.data.repositorio.PreguntasRepoGeneral
-import com.example.triviaapp.data.repositorio.RespuestasRepoGeneral
-import com.example.triviaapp.data.repositorio.TriviasRepoGeneral
+import com.example.triviaapp.data.repositorio.reposLocal.InicioRepoGeneral
+import com.example.triviaapp.data.repositorio.reposLocal.PreferencesRepo
+import com.example.triviaapp.data.repositorio.reposLocal.PreguntasRepoGeneral
+import com.example.triviaapp.data.repositorio.reposLocal.RespuestasRepoGeneral
+import com.example.triviaapp.data.repositorio.reposLocal.TriviasRepoGeneral
 import com.example.triviaapp.modelo.InicioDTO
-import com.example.triviaapp.modelo.PreguntaDTO
-import com.example.triviaapp.modelo.RespuestaDTO
 import com.example.triviaapp.viewModels.Uis.Pregunta
 import com.example.triviaapp.viewModels.Uis.ResponderPregUIState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 
 class ResponderPreguntasViewModel(application: Application) : AndroidViewModel(application)  {
 

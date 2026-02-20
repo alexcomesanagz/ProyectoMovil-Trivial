@@ -1,7 +1,6 @@
-package com.example.triviaapp.data.repositorio
+package com.example.triviaapp.data.repositorio.interfacesRepo
 
 import com.example.triviaapp.modelo.PreguntaDTO
-import com.example.triviaapp.modelo.RespuestaDTO
 
 interface IRepoPregunta {
     fun obtenerPreguntasTrivial(

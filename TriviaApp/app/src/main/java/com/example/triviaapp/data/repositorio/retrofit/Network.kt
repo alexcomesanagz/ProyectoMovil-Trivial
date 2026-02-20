@@ -4,7 +4,7 @@ package com.example.triviaapp.data.repositorio.retrofit
     import retrofit2.converter.gson.GsonConverterFactory
 
 object Network {
-        private const val BASE_URL = "10.0.0.2:5131"
+        private const val BASE_URL = "http://10.0.2.2:5131"
 
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -18,6 +18,6 @@ object Network {
         val inicioRetrofit: InterfazRetrofitInicio = retrofit.create(InterfazRetrofitInicio::class.java)
         val usuarioRetrofit: InterfazRetrofitUsuarios = retrofit.create(InterfazRetrofitUsuarios::class.java)
 
-
+        val recomendadosRetrofit: InterfazRetrofitRecomendados = retrofit.create(InterfazRetrofitRecomendados::class.java)
 
 }

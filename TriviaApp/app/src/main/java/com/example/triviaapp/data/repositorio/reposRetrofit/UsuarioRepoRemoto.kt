@@ -1,9 +1,11 @@
-package com.example.triviaapp.data.repositorio
+package com.example.triviaapp.data.repositorio.reposRetrofit
 
+import com.example.triviaapp.data.repositorio.interfacesRepo.UsuarioRepoInterf
 import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofitTrivias
+import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofitUsuarios
 import com.example.triviaapp.modelo.UsuarioDTO
 
-class UsuarioRepoRemoto(private val api : InterfazRetrofitTrivias) : UsuarioRepoInterf {
+class UsuarioRepoRemoto(private val api : InterfazRetrofitUsuarios) : UsuarioRepoInterf {
     override fun iniciarSesion(
         correo: String,
         contasena: String,

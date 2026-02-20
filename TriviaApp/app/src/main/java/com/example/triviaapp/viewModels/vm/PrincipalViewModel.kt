@@ -3,16 +3,15 @@ package com.example.triviaapp.viewModels.vm
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
 import com.example.triviaapp.R
+import com.example.triviaapp.data.repositorio.objetosRepo.RecomendadosRepoGeneral
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import com.example.triviaapp.componentes.Tarjeta
-import com.example.triviaapp.data.repositorio.ImagenesRepo
-import com.example.triviaapp.data.repositorio.InicioRepoGeneral
-import com.example.triviaapp.data.repositorio.PreferencesRepo
-import com.example.triviaapp.data.repositorio.TriviasRepoGeneral
+import com.example.triviaapp.data.repositorio.reposLocal.ImagenesRepo
+import com.example.triviaapp.data.repositorio.reposLocal.InicioRepoGeneral
+import com.example.triviaapp.data.repositorio.reposLocal.PreferencesRepo
+import com.example.triviaapp.data.repositorio.reposLocal.TriviasRepoGeneral
 import com.example.triviaapp.modelo.TrivialDTO
 import com.example.triviaapp.viewModels.Uis.PrincipalUiState
 import com.example.triviaapp.viewModels.Uis.TarjetaUiDatos
@@ -29,6 +28,7 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
 
     val trivialsRepo = TriviasRepoGeneral.repo
 
+    val recomendadosRepo= RecomendadosRepoGeneral.repo
     fun cargaDatos() {
         val usuario= usuarioActual.getUsuario()
         if (usuario!=null) {
@@ -36,11 +36,16 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
            var recomendados= listOf<TarjetaUiDatos>()
             var recientes = listOf<TarjetaUiDatos>()
 
-               repoInicial.obtenerRecomendadosPersona(onSuccess = {it->
+               recomendadosRepo.obtenerRecomendadosPersona(onSuccess = {it->
                    recomendados = it.map {
+                       var trivia= TrivialDTO("","","","")
+                       trivialsRepo.obtenerTrivial(it.idTrivia,
+                           {triviaCons-> trivia=triviaCons},
+                           {}
+                       )
                        var imagenTrivia=R.drawable.trivia
                        imagenesRepo.obtenerImagen(
-                           categoria = it.categoria,
+                           categoria = trivia.categoria,
                            onSuccess = { imagen->
                                imagenTrivia = imagen.imagen
 
@@ -48,8 +53,8 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
                            ,onError = {}
                        )
                        TarjetaUiDatos(
-                           id = it.id,
-                           titulo = it.nombre,
+                           id = it.idTrivia,
+                           titulo = trivia.nombre,
                            imagen =imagenTrivia
                        )
                    }

@@ -35,7 +35,6 @@ import com.example.compose.TriviaAppTheme
 import com.example.triviaapp.componentes.ComponenteFAB
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.componentes.ComponenteTopBar
-import com.example.triviaapp.data.repositorio.PreferencesRepo
 import com.example.triviaapp.viewModels.vm.MainViewModel
 import com.example.triviaapp.vista.navigation.TrivialNavGraph
 import kotlinx.coroutines.launch

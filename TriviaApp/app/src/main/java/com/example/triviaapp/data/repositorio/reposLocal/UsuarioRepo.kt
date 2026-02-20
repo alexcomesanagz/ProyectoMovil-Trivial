@@ -1,6 +1,7 @@
-package com.example.triviaapp.data.repositorio
+package com.example.triviaapp.data.repositorio.reposLocal
 
 import com.example.triviaapp.R
+import com.example.triviaapp.data.repositorio.interfacesRepo.UsuarioRepoInterf
 import com.example.triviaapp.modelo.UsuarioDTO
 
 
