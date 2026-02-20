@@ -10,7 +10,7 @@ class RecomendadosRepo : RecomendadosRepoInterfaz {
         RecomendadosDTO(idTrivia = "2"),
     )
 
-    override fun obtenerRecomendadosPersona(
+    override fun obtenerRecomendados(
         onSuccess: (List<RecomendadosDTO>) -> Unit,
         onError: (List<RecomendadosDTO>) -> Unit
     ) {

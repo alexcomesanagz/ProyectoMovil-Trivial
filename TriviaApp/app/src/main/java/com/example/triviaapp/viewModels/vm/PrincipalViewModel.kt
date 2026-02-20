@@ -3,7 +3,6 @@ package com.example.triviaapp.viewModels.vm
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
-import com.example.triviaapp.R
 import com.example.triviaapp.data.repositorio.objetosRepo.InicioRepoGeneral
 import com.example.triviaapp.data.repositorio.objetosRepo.RecomendadosRepoGeneral
 import com.example.triviaapp.data.repositorio.objetosRepo.TriviasRepoGeneral
@@ -33,7 +32,7 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
            var recomendados= listOf<TarjetaUiDatos>()
             var recientes = listOf<TarjetaUiDatos>()
 
-               recomendadosRepo.obtenerRecomendadosPersona(onSuccess = {it->
+               recomendadosRepo.obtenerRecomendados(onSuccess = { it->
                    recomendados = it.map {
                        var trivia= TrivialDTO("","","","")
                        trivialsRepo.obtenerTrivial(it.idTrivia,

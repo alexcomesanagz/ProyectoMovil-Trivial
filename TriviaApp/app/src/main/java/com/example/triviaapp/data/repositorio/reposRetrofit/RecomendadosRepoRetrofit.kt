@@ -9,7 +9,7 @@ import retrofit2.Response
 
 class RecomendadosRepoRetrofit(private val recomendadosRetrofit: InterfazRetrofitRecomendados) : RecomendadosRepoInterfaz {
 
-    override fun obtenerRecomendadosPersona(
+    override fun obtenerRecomendados(
         onSuccess: (List<RecomendadosDTO>) -> Unit,
         onError: (List<RecomendadosDTO>) -> Unit
     ) {
