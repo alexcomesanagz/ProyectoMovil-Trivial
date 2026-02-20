@@ -8,23 +8,24 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class PreguntasRepoRemoto(private val preguntaRetrofit : InterfazRetrofitPreguntas) : IRepoPregunta {
+class PreguntasRepoRemoto(private val preguntaRetrofit: InterfazRetrofitPreguntas) : IRepoPregunta {
     override fun obtenerPreguntasTrivial(
         idTrivial: String,
         onSuccess: (List<PreguntaDTO>) -> Unit,
-
         onError: () -> Unit
     ) {
-        preguntaRetrofit.listarPreguntas().enqueue(object : Callback<List<PreguntaDTO>> {
+        preguntaRetrofit.listarPreguntas()
+            .enqueue(object : Callback<List<PreguntaDTO>> {
 
             override fun onResponse(
                 call: Call<List<PreguntaDTO>>,
                 response: Response<List<PreguntaDTO>>
             ) {
-                if (response.isSuccessful) {
-                    var lista = response.body()!!.filter { it.idTrivial == idTrivial }
-                    if (!lista.isEmpty()) onSuccess(lista)
-                    else onError()
+
+                val lista = response.body()?.filter { it.idTrivial == idTrivial }
+
+                if (response.isSuccessful && !lista.isNullOrEmpty()) {
+                    onSuccess(lista)
                 } else {
                     onError()
                 }
@@ -49,12 +50,10 @@ class PreguntasRepoRemoto(private val preguntaRetrofit : InterfazRetrofitPregunt
                     call: Call<PreguntaDTO>,
                     response: Response<PreguntaDTO>
                 ) {
-                    if (response.isSuccessful) {
-                        val pregunta = response.body()
-                        if (pregunta != null)
+                    val pregunta = response.body()
+
+                    if (response.isSuccessful && pregunta!=null ) {
                             onSuccess(pregunta)
-                        else
-                            onError()
                     } else {
                         onError()
                     }
@@ -71,7 +70,8 @@ class PreguntasRepoRemoto(private val preguntaRetrofit : InterfazRetrofitPregunt
         numPreg: Int,
         onSuccess: () -> Unit,
         onError: () -> Unit
-    ) {var creadas = 0
+    ) {
+        var creadas = 0
         repeat(numPreg) {
             val nueva = PreguntaDTO(
                 id = "",
@@ -103,26 +103,28 @@ class PreguntasRepoRemoto(private val preguntaRetrofit : InterfazRetrofitPregunt
         idTrivial: String,
         onSuccess: () -> Unit,
         onError: () -> Unit
-    ) { obtenerPreguntasTrivial(idTrivial,
-        onSuccess = { lista ->
-            var eliminadas = 0
-            lista.forEach { pregunta ->
-                preguntaRetrofit.borrarPregunta(pregunta.id).enqueue(object : Callback<Void> {
-                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                        if (response.isSuccessful) {
-                            eliminadas++
-                            if (eliminadas == lista.size) onSuccess()
-                        } else onError()
-                    }
+    ) {
+        obtenerPreguntasTrivial(
+            idTrivial,
+            onSuccess = { lista ->
+                var eliminadas = 0
+                lista.forEach { pregunta ->
+                    preguntaRetrofit.borrarPregunta(pregunta.id).enqueue(object : Callback<Void> {
+                        override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                            if (response.isSuccessful) {
+                                eliminadas++
+                                if (eliminadas == lista.size) onSuccess()
+                            } else onError()
+                        }
 
-                    override fun onFailure(call: Call<Void>, t: Throwable) {
-                        onError()
-                    }
-                })
-            }
-        },
-        onError = { onError() }
-    )
+                        override fun onFailure(call: Call<Void>, t: Throwable) {
+                            onError()
+                        }
+                    })
+                }
+            },
+            onError = { onError() }
+        )
     }
 
 
