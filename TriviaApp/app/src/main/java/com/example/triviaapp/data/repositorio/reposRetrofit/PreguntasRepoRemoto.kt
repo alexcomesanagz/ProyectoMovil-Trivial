@@ -17,24 +17,24 @@ class PreguntasRepoRemoto(private val preguntaRetrofit: InterfazRetrofitPregunta
         preguntaRetrofit.listarPreguntas()
             .enqueue(object : Callback<List<PreguntaDTO>> {
 
-            override fun onResponse(
-                call: Call<List<PreguntaDTO>>,
-                response: Response<List<PreguntaDTO>>
-            ) {
+                override fun onResponse(
+                    call: Call<List<PreguntaDTO>>,
+                    response: Response<List<PreguntaDTO>>
+                ) {
 
-                val lista = response.body()?.filter { it.idTrivial == idTrivial }
+                    val lista = response.body()?.filter { it.idTrivial == idTrivial }
 
-                if (response.isSuccessful && !lista.isNullOrEmpty()) {
-                    onSuccess(lista)
-                } else {
+                    if (response.isSuccessful && !lista.isNullOrEmpty()) {
+                        onSuccess(lista)
+                    } else {
+                        onError()
+                    }
+                }
+
+                override fun onFailure(call: Call<List<PreguntaDTO>>, t: Throwable) {
                     onError()
                 }
-            }
-
-            override fun onFailure(call: Call<List<PreguntaDTO>>, t: Throwable) {
-                onError()
-            }
-        })
+            })
     }
 
     override fun obtenerPregunta(
@@ -52,8 +52,8 @@ class PreguntasRepoRemoto(private val preguntaRetrofit: InterfazRetrofitPregunta
                 ) {
                     val pregunta = response.body()
 
-                    if (response.isSuccessful && pregunta!=null ) {
-                            onSuccess(pregunta)
+                    if (response.isSuccessful && pregunta != null) {
+                        onSuccess(pregunta)
                     } else {
                         onError()
                     }
@@ -72,7 +72,10 @@ class PreguntasRepoRemoto(private val preguntaRetrofit: InterfazRetrofitPregunta
         onError: () -> Unit
     ) {
         var creadas = 0
+        var errorOcurrido = false
+
         repeat(numPreg) {
+
             val nueva = PreguntaDTO(
                 id = "",
                 idTrivial = idTrivial,
@@ -84,18 +87,35 @@ class PreguntasRepoRemoto(private val preguntaRetrofit: InterfazRetrofitPregunta
                 respuestaCorrecta = 1
             )
 
-            preguntaRetrofit.crearPregunta(nueva).enqueue(object : Callback<PreguntaDTO> {
-                override fun onResponse(call: Call<PreguntaDTO>, response: Response<PreguntaDTO>) {
-                    if (response.isSuccessful) {
-                        creadas++
-                        if (creadas == numPreg) onSuccess()
-                    } else onError()
-                }
+            preguntaRetrofit.crearPregunta(nueva)
+                .enqueue(object : Callback<PreguntaDTO> {
 
-                override fun onFailure(call: Call<PreguntaDTO>, t: Throwable) {
-                    onError()
-                }
-            })
+                    override fun onResponse(
+                        call: Call<PreguntaDTO>,
+                        response: Response<PreguntaDTO>
+                    ) {
+                        if (!response.isSuccessful) {
+                            if(!errorOcurrido){
+                                errorOcurrido = true
+                                onError()
+                            }
+                            return
+                        }
+
+                        creadas++
+
+                        if (creadas == numPreg && !errorOcurrido){
+                            onSuccess()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<PreguntaDTO>, t: Throwable) {
+                        if(!errorOcurrido){
+                            errorOcurrido = true
+                            onError()
+                        }
+                    }
+                })
         }
     }
 
@@ -107,6 +127,7 @@ class PreguntasRepoRemoto(private val preguntaRetrofit: InterfazRetrofitPregunta
         obtenerPreguntasTrivial(
             idTrivial,
             onSuccess = { lista ->
+
                 var eliminadas = 0
                 lista.forEach { pregunta ->
                     preguntaRetrofit.borrarPregunta(pregunta.id).enqueue(object : Callback<Void> {
@@ -133,13 +154,23 @@ class PreguntasRepoRemoto(private val preguntaRetrofit: InterfazRetrofitPregunta
         onSuccess: () -> Unit,
         onError: () -> Unit
     ) {
-        preguntaRetrofit.modificaPregunta(pregunta).enqueue(object : Callback<PreguntaDTO> {
-            override fun onResponse(call: Call<PreguntaDTO>, response: Response<PreguntaDTO>) {
-                if (response.isSuccessful) onSuccess()
-                else onError()
+        preguntaRetrofit.modificaPregunta(pregunta)
+            .enqueue(object : Callback<PreguntaDTO> {
+
+            override fun onResponse(
+                call: Call<PreguntaDTO>,
+                response: Response<PreguntaDTO>
+            ) {
+                if (response.isSuccessful && response.body()!=null ) {
+                    onSuccess()
+                } else {
+                    onError()
+                }
             }
 
-            override fun onFailure(call: Call<PreguntaDTO>, t: Throwable) {
+            override fun onFailure(
+                call: Call<PreguntaDTO>,
+                t: Throwable) {
                 onError()
             }
         })
@@ -157,17 +188,19 @@ class PreguntasRepoRemoto(private val preguntaRetrofit: InterfazRetrofitPregunta
                 call: Call<PreguntaDTO>,
                 response: Response<PreguntaDTO>
             ) {
-                if (response.isSuccessful) {
-                    val pregunta = response.body()
-                    if (pregunta != null) {
-                        // Comparamos la respuesta del usuario con la correcta
-                        val esCorrecta = pregunta.respuestaCorrecta == respuesta.toIntOrNull()
-                        onSuccess(esCorrecta)
+                val pregunta = response.body()
+
+                if (response.isSuccessful && pregunta!=null) {
+
+                    val respuestaInt = respuesta.toIntOrNull()
+                    if (respuestaInt != null) {
+                        onSuccess(pregunta.respuestaCorrecta == respuestaInt)
                     } else {
                         onError() // No se encontró la pregunta
                     }
+
                 } else {
-                    onError() // Error HTTP
+                    onError() // Error HTTP o body null
                 }
             }
 
