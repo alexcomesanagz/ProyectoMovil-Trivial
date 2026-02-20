@@ -1,8 +1,8 @@
 package com.example.triviaapp.viewModels.vm
 
 import androidx.lifecycle.ViewModel
-import com.example.triviaapp.data.repositorio.reposLocal.PreguntasRepoGeneral
-import com.example.triviaapp.data.repositorio.reposLocal.TriviasRepoGeneral
+import com.example.triviaapp.data.repositorio.objetosRepo.PreguntasRepoGeneral
+import com.example.triviaapp.data.repositorio.objetosRepo.TriviasRepoGeneral
 import com.example.triviaapp.modelo.PreguntaDTO
 import com.example.triviaapp.viewModels.Uis.CreaPreguntasUIState
 import com.example.triviaapp.viewModels.Uis.Pregunta

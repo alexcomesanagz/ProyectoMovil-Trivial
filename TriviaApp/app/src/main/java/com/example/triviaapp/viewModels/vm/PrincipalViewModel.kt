@@ -4,14 +4,14 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import com.example.triviaapp.R
+import com.example.triviaapp.data.repositorio.objetosRepo.InicioRepoGeneral
 import com.example.triviaapp.data.repositorio.objetosRepo.RecomendadosRepoGeneral
+import com.example.triviaapp.data.repositorio.objetosRepo.TriviasRepoGeneral
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import com.example.triviaapp.data.repositorio.reposLocal.ImagenesRepo
-import com.example.triviaapp.data.repositorio.reposLocal.InicioRepoGeneral
 import com.example.triviaapp.data.repositorio.reposLocal.PreferencesRepo
-import com.example.triviaapp.data.repositorio.reposLocal.TriviasRepoGeneral
 import com.example.triviaapp.modelo.TrivialDTO
 import com.example.triviaapp.viewModels.Uis.PrincipalUiState
 import com.example.triviaapp.viewModels.Uis.TarjetaUiDatos

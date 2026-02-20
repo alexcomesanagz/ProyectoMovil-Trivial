@@ -6,7 +6,7 @@ interface UsuarioRepoInterf {
     fun iniciarSesion(
         correo: String,
         contasena: String,
-        onSuccess: (UsuarioDTO) -> Unit,
+        onSuccess: (UsuarioDTO?) -> Unit,
         onError: () -> Unit
     )
 
@@ -14,7 +14,7 @@ interface UsuarioRepoInterf {
         nombre: String,
         correo: String,
         contasena: String,
-        onSuccess: (UsuarioDTO) -> Unit,
+        onSuccess: (UsuarioDTO?) -> Unit,
         onError: () -> Unit
     )
 }

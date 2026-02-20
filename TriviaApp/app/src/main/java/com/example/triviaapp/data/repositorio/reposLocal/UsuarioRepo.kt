@@ -5,9 +5,6 @@ import com.example.triviaapp.data.repositorio.interfacesRepo.UsuarioRepoInterf
 import com.example.triviaapp.modelo.UsuarioDTO
 
 
-object UsuarioRepoGeneral {
-    val repo = UsuarioRepo()
-}
 
 class UsuarioRepo : UsuarioRepoInterf {
     private val datos = arrayListOf(
@@ -30,7 +27,7 @@ class UsuarioRepo : UsuarioRepoInterf {
     override fun iniciarSesion(
         correo: String,
         contasena: String,
-        onSuccess: (UsuarioDTO) -> Unit,
+        onSuccess: (UsuarioDTO?) -> Unit,
         onError: () -> Unit
     ) {
         val usuario = datos.find {
@@ -47,7 +44,7 @@ class UsuarioRepo : UsuarioRepoInterf {
         nombre: String,
         correo: String,
         contasena: String,
-        onSuccess: (UsuarioDTO) -> Unit,
+        onSuccess: (UsuarioDTO?) -> Unit,
         onError: () -> Unit
     ) {
 

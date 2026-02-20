@@ -4,9 +4,7 @@ import com.example.triviaapp.data.repositorio.interfacesRepo.InicioRepoInterface
 import com.example.triviaapp.modelo.InicioDTO
 import com.example.triviaapp.modelo.TrivialDTO
 
-object InicioRepoGeneral {
-    val repo = InicioRepo()
-}
+
 
 class InicioRepo : InicioRepoInterface {
     private val recientes = arrayListOf<InicioDTO>(

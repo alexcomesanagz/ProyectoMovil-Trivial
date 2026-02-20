@@ -3,8 +3,8 @@ package com.example.triviaapp.viewModels.vm
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
+import com.example.triviaapp.data.repositorio.objetosRepo.UsuarioRepoGeneral
 import com.example.triviaapp.data.repositorio.reposLocal.PreferencesRepo
-import com.example.triviaapp.data.repositorio.reposLocal.UsuarioRepoGeneral
 import com.example.triviaapp.modelo.PreferenceDTO
 import com.example.triviaapp.viewModels.Uis.PaginaSignUpUi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -43,9 +43,9 @@ class PaginaSignUpViewModel(application: Application) : AndroidViewModel(applica
             onSuccess = { it->
                 usuarioActual.registraUsuario(
                         usuario = PreferenceDTO(
-                            it.id,
-                            nombre = it.nombre,
-                            correo = it.correo),
+                            id = it?.id ?: "",
+                            nombre = it?.nombre ?: "",
+                            correo = it?.correo ?: ""),
                     onSuccess = onSuccess,
                     onError = {}
                     )

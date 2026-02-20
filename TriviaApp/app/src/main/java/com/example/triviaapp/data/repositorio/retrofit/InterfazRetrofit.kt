@@ -80,11 +80,9 @@ interface InterfazRetrofitRespuestas {
 
 }
 interface InterfazRetrofitUsuarios {
-        @GET("/json/usuarios")
-        fun listarUsuarios(): Call<List<UsuarioDTO>>
-        @GET("/json/usuarios/{id}")
-        fun obtenerUsuarios(@Path("id") id: String): Call<UsuarioDTO>
-        @POST("/json/usuarios")
+        @POST("auth/login")
+        fun login(@Body dto: UsuarioDTO): Call<UsuarioDTO>
+        @POST("auth/register")
         fun crearUsuarios(@Body dto: UsuarioDTO): Call<UsuarioDTO>
 }
 

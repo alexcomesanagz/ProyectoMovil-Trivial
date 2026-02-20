@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import com.example.triviaapp.componentes.Tarjeta
+import com.example.triviaapp.data.repositorio.objetosRepo.TriviasRepoGeneral
 import com.example.triviaapp.data.repositorio.reposLocal.ImagenesRepo
-import com.example.triviaapp.data.repositorio.reposLocal.TriviasRepoGeneral
 import com.example.triviaapp.viewModels.Uis.PaginaListaUiState
 import com.example.triviaapp.viewModels.Uis.TarjetaUiDatos
 

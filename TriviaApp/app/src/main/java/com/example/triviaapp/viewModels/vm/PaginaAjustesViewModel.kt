@@ -3,9 +3,9 @@ package com.example.triviaapp.viewModels.vm
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
+import com.example.triviaapp.data.repositorio.objetosRepo.PreguntasRepoGeneral
+import com.example.triviaapp.data.repositorio.objetosRepo.TriviasRepoGeneral
 import com.example.triviaapp.data.repositorio.reposLocal.PreferencesRepo
-import com.example.triviaapp.data.repositorio.reposLocal.PreguntasRepoGeneral
-import com.example.triviaapp.data.repositorio.reposLocal.TriviasRepoGeneral
 import com.example.triviaapp.viewModels.Uis.PaginaAjustesUi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

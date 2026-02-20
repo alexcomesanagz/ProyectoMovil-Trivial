@@ -5,7 +5,7 @@ import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofitRespuesta
 import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofitTrivias
 import com.example.triviaapp.modelo.RespuestaDTO
 
-class RespuestaRepoRemoto(private val api : InterfazRetrofitRespuestas) : IRepoRespuesta {
+class RespuestaRepoRemoto(private val respuestaRetrofit : InterfazRetrofitRespuestas) : IRepoRespuesta {
     override fun obtenerRespuestasTrivial(
         idTrivial: String,
         idUsuario: String,

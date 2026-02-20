@@ -3,9 +3,6 @@ package com.example.triviaapp.data.repositorio.reposLocal
 import com.example.triviaapp.data.repositorio.interfacesRepo.IRepoPregunta
 import com.example.triviaapp.modelo.PreguntaDTO
 
-object PreguntasRepoGeneral {
-    val repo = PreguntasRepo()
-}
 
 class PreguntasRepo : IRepoPregunta {
     private val preguntas = arrayListOf<PreguntaDTO>(
