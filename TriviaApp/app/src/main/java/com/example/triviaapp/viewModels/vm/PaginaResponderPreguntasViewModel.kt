@@ -71,7 +71,7 @@ class ResponderPreguntasViewModel(application: Application) : AndroidViewModel(a
                 }
                 )
                 trivialRepo.obtenerTrivial(
-                    idTrivial = idTrivia,
+                    idTrivia = idTrivia,
                     onSuccess = { it ->
                         repoInicial.anadirRecientes(
                             reciente = InicioDTO(
