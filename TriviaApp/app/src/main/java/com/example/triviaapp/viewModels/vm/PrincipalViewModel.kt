@@ -10,7 +10,6 @@ import com.example.triviaapp.data.repositorio.objetosRepo.TriviasRepoGeneral
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import com.example.triviaapp.data.repositorio.reposLocal.ImagenesRepo
 import com.example.triviaapp.data.repositorio.reposLocal.PreferencesRepo
 import com.example.triviaapp.modelo.TrivialDTO
 import com.example.triviaapp.viewModels.Uis.PrincipalUiState
@@ -24,8 +23,6 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
         get() = getApplication<Application>().applicationContext
     val usuarioActual= PreferencesRepo(context!!)
     val repoInicial= InicioRepoGeneral.repo
-    val imagenesRepo = ImagenesRepo()
-
     val trivialsRepo = TriviasRepoGeneral.repo
 
     val recomendadosRepo= RecomendadosRepoGeneral.repo
@@ -40,26 +37,19 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
                    recomendados = it.map {
                        var trivia= TrivialDTO("","","","")
                        trivialsRepo.obtenerTrivial(it.idTrivia,
-                           {triviaCons-> trivia=triviaCons},
+                           {triviaCons-> trivia=triviaCons?: TrivialDTO()},
                            {}
                        )
-                       var imagenTrivia=R.drawable.trivia
-                       imagenesRepo.obtenerImagen(
-                           categoria = trivia.categoria,
-                           onSuccess = { imagen->
-                               imagenTrivia = imagen.imagen
 
-                           }
-                           ,onError = {}
-                       )
                        TarjetaUiDatos(
                            id = it.idTrivia,
                            titulo = trivia.nombre,
-                           imagen =imagenTrivia
+                           imagen =trivia.categoria
                        )
                    }
                },
                onError = {})
+
             repoInicial.obtenerRecientesPersona(usuarioActual.getUsuario()!!.id,
                 onSuccess = {it->
                     recientes = it.map {
@@ -68,19 +58,11 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
                             {triviaCons-> trivia=triviaCons},
                             {}
                         )
-                        var imagenTrivia=R.drawable.trivia
-                        imagenesRepo.obtenerImagen(
-                            categoria = trivia.categoria,
-                            onSuccess = { imagen->
-                                imagenTrivia = imagen.imagen
 
-                            }
-                            ,onError = {}
-                        )
                         TarjetaUiDatos(
                             id = trivia.id,
                             titulo =trivia.nombre,
-                            imagen =imagenTrivia
+                            imagen =trivia.categoria
                         )
                     }
                 },
@@ -88,7 +70,6 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
             _uiState.value = _uiState.value.copy(
                 tarjetasLista1 = recomendados,
                 tarjetasLista2 = recientes
-
             )
         }
     }

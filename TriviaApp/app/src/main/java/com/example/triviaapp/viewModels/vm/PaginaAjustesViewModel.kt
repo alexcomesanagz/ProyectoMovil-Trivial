@@ -29,7 +29,7 @@ class PaginaAjustesViewModel(application: Application) : AndroidViewModel(applic
                 nombre = uiState.value.nombreTriv,
                 categoria = uiState.value.categoria,
                 onSuccess = {trivia->
-                    preguntasRepo.crearPreguntas(trivia.id,
+                    preguntasRepo.crearPreguntas(trivia!!.id,
                         numPreg=uiState.value.preguntas,
                         onSuccess={onSucces(trivia.id)},
                     onError={}

@@ -27,7 +27,7 @@ import com.example.triviaapp.R
  *@param accion lo que hara cuando se haga click en la tarjeta
  */
 data class Tarjeta(
-    val imagen: Int=R.drawable.trivia,
+    val imagen: String="",
     val titulo: String="",
     val accion: () -> Unit = { Log.e("Testeo","tarjeta cliqueada")},
 )
@@ -94,7 +94,7 @@ fun ComponenteTarjetaVertical(
 @Composable
 fun PrevioTarjHoriz() {
     Column {
-    val contenido = Tarjeta(R.drawable.trivia, titulo = "Trivia")
+    val contenido = Tarjeta("R.drawable.trivia", titulo = "Trivia")
 
     ComponenteTarjetaHorizontal(contenido)
         ComponenteTarjetaVertical(contenido)

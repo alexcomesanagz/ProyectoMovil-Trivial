@@ -24,14 +24,7 @@ import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.viewModels.vm.PaginaPerfilViewModel
 
 val tarjetasUsuario: List<Tarjeta> = listOf(
-    Tarjeta(R.drawable.trivia, titulo = "Trivia 1"),
-    Tarjeta(R.drawable.trivia, titulo = "Trivia 2"),
-    Tarjeta(R.drawable.trivia, titulo = "Trivia 3"),
-    Tarjeta(R.drawable.trivia, titulo = "Trivia 4"),
-    Tarjeta(R.drawable.trivia, titulo = "Trivia 5"),
-    Tarjeta(R.drawable.trivia, titulo = "Trivia 6"),
-    Tarjeta(R.drawable.trivia, titulo = "Trivia 7"),
-    Tarjeta(R.drawable.trivia, titulo = "Trivia 8")
+
 )
 
 /**

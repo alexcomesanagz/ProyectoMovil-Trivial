@@ -14,25 +14,12 @@ data class MainUi(
     val logueado: Boolean=false
 )
 data class PaginaPerfilUi(
-    val imagenPerfil: Int = R.drawable.perfil,
+    val imagenPerfil: String = "R.drawable.perfil",
     val nombreUsuario: String="",
     val correoUsuario: String="@gmail.com",
     val tarjetasUsuario: List<TarjetaUiDatos> = listOf(
-        TarjetaUiDatos(
-            imagen = R.drawable.trivia,
-            titulo = "Cultura General"),
-        TarjetaUiDatos(
-            imagen = R.drawable.trivia,
-            titulo = "Historia"),
-        TarjetaUiDatos(
-            imagen = R.drawable.trivia,
-            titulo = "Ciencia"),
-        TarjetaUiDatos(
-            imagen = R.drawable.trivia,
-            titulo = "Deportes")
-    )
 )
-
+)
 data class PaginaSignUpUi(
     val nombreUsuario:String="",
     val stringCorreo: String = "",
@@ -52,31 +39,14 @@ data class PaginaFinUiState(
     val id:String="",
     val preguntasAcertadas: Int = 5,
     val preguntasTotales: Int = 10,
-    val imagenResultado: Int = R.drawable.trivia
+    val imagenResultado: String = "R.drawable.trivia"
 )
 
 
 data class PaginaListaUiState(
     val mapaDatos: Map<String, List<TarjetaUiDatos>> = mapOf<String,List<TarjetaUiDatos>>(
-        "susto" to
-            listOf(TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                TarjetaUiDatos(R.drawable.trivia,"Trivia 2")),
-        "resusto" to
-                listOf(TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                    TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                    TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                    TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
-                    TarjetaUiDatos(R.drawable.trivia,"Trivia 2")),
-        "cagao" to  listOf(TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
-            TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
-            TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
-            TarjetaUiDatos(R.drawable.trivia,"Trivia 2"),
-            TarjetaUiDatos(R.drawable.trivia,"Trivia 2")))
 )
-
+)
 data class ResponderPregUIState(
     val preguntas: List<Pregunta> =listOf(
         Pregunta(),
@@ -101,7 +71,7 @@ data class Pregunta(
 )
 
 data class TarjetaUiDatos(
-    val imagen: Int=R.drawable.trivia,
+    val imagen: String="",
     val titulo: String="",
     val id: String = ""
 )

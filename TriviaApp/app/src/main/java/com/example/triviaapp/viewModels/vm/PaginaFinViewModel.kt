@@ -5,7 +5,6 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import com.example.triviaapp.data.repositorio.objetosRepo.PreguntasRepoGeneral
 import com.example.triviaapp.data.repositorio.objetosRepo.RespuestasRepoGeneral
-import com.example.triviaapp.data.repositorio.reposLocal.ImagenesRepo
 import com.example.triviaapp.data.repositorio.reposLocal.PreferencesRepo
 import com.example.triviaapp.viewModels.Uis.PaginaFinUiState
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,7 +19,6 @@ class PaginaFinViewModel(application: Application) : AndroidViewModel(applicatio
         get() = getApplication<Application>().applicationContext
     val preguntasRepo = PreguntasRepoGeneral.repo
 
-    val imagenesRepo = ImagenesRepo()
 
 
     val usuarioActual = PreferencesRepo(context!!)
@@ -46,19 +44,13 @@ class PaginaFinViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     fun cambioImagen() {
-        var imagen = 0
+        var imagen = ""
 
-            if (_uiState.value.preguntasAcertadas < _uiState.value.preguntasTotales / 2) {
-                imagenesRepo.obtenerImagen("Mal",
-                    { it -> imagen = it.imagen },
-                    {}
-                )
-            } else {
-                imagenesRepo.obtenerImagen("Bien",
-                    { it -> imagen = it.imagen },
-                    {}
-                )
-            }
+            if (_uiState.value.preguntasAcertadas < _uiState.value.preguntasTotales / 2)
+                  imagen="Mal"
+            else  imagen="Bien"
+
+
         _uiState.value =_uiState.value.copy(imagenResultado = imagen)
     }
 

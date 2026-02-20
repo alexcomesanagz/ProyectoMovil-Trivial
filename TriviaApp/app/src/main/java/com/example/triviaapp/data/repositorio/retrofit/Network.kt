@@ -12,7 +12,6 @@ object Network {
             .build()
 
         val triviaRetrofit: InterfazRetrofitTrivias = retrofit.create(InterfazRetrofitTrivias::class.java)
-        val ImagenRetrofit: InterfazRetrofitImagenes = retrofit.create(InterfazRetrofitImagenes::class.java)
         val respuestaRetrofit: InterfazRetrofitRespuestas = retrofit.create(InterfazRetrofitRespuestas::class.java)
         val preguntaRetrofit: InterfazRetrofitPreguntas = retrofit.create(InterfazRetrofitPreguntas::class.java)
         val inicioRetrofit: InterfazRetrofitInicio = retrofit.create(InterfazRetrofitInicio::class.java)

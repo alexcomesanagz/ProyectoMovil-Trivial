@@ -5,7 +5,6 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import com.example.triviaapp.R
 import com.example.triviaapp.data.repositorio.objetosRepo.TriviasRepoGeneral
-import com.example.triviaapp.data.repositorio.reposLocal.ImagenesRepo
 import com.example.triviaapp.data.repositorio.reposLocal.PreferencesRepo
 import com.example.triviaapp.viewModels.Uis.PaginaPerfilUi
 import com.example.triviaapp.viewModels.Uis.TarjetaUiDatos
@@ -21,19 +20,19 @@ class PaginaPerfilViewModel(application: Application) : AndroidViewModel(applica
         get() = getApplication<Application>().applicationContext
     val usuarioActual= PreferencesRepo(context!!)
     val trivialsRepo = TriviasRepoGeneral.repo
-    val imagenesRepo = ImagenesRepo()
 
 
 
     fun cargaDatos() {
         val usuario= usuarioActual.getUsuario()
         if (usuario!=null) {
-            _uiState.value = _uiState.value.copy(
-                nombreUsuario = usuario.nombre,
-                correoUsuario = usuario.correo,
-                tarjetasUsuario = obtenListaTrivias()
+                _uiState.value = _uiState.value.copy(
+                    nombreUsuario = usuario.nombre,
+                    correoUsuario = usuario.correo,
+                    tarjetasUsuario = obtenListaTrivias(),
+                    imagenPerfil= "Perfil"
 
-            )
+                )
         }
     }
 
@@ -42,18 +41,10 @@ class PaginaPerfilViewModel(application: Application) : AndroidViewModel(applica
         trivialsRepo.obtenerTrivialsPersona(
             usuarioActual.getUsuario()!!.id,
             {it-> lista=it.map {
-                var imagenTrivia=R.drawable.trivia
-                imagenesRepo.obtenerImagen(
-                    categoria = it.categoria,
-                    onSuccess = { imagen->
-                        imagenTrivia = imagen.imagen
-                    }
-                    ,onError = {}
-                )
                 TarjetaUiDatos(
                     id = it.id,
                     titulo = it.nombre,
-                    imagen =imagenTrivia
+                    imagen =it.categoria
                 )
               }
             },

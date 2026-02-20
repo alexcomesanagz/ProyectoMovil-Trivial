@@ -11,6 +11,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.example.triviaapp.R
 
 /**
@@ -20,12 +21,12 @@ import com.example.triviaapp.R
  */
 @Composable
 fun ComponenteImagen(
-    id: Int,
+    id: String,
     tamanio: Int = 20
 ) {
 
-    Image(
-        painter = painterResource(id = id),
+    AsyncImage(
+        model =  "http://10.0.2.2:5131/images/$id",
         modifier = Modifier
             .size(width = tamanio.dp, height = tamanio.dp)
             .padding(vertical = 2.dp, horizontal = 2.dp)
@@ -37,12 +38,12 @@ fun ComponenteImagen(
 
 @Composable
 fun ComponenteImagenRedondeada(
-    id: Int,
+    id: String,
     tamanio: Int = 20
 ) {
 
-    Image(
-        painter = painterResource(id = id),
+    AsyncImage(
+        model =  "http://10.0.2.2:5131/images/$id",
         modifier = Modifier
             .size(width = tamanio.dp, height = tamanio.dp)
             .clip(shape = CircleShape),
@@ -54,11 +55,11 @@ fun ComponenteImagenRedondeada(
 @Preview
 @Composable
 fun ImagenPreview() {
-    ComponenteImagen(R.drawable.trivia)
+    ComponenteImagen("R.drawable.trivia")
 }
 
 @Preview
 @Composable
 fun ImagenPreviewRedondeada() {
-    ComponenteImagenRedondeada(R.drawable.trivia)
+    ComponenteImagenRedondeada("R.drawable.trivia")
 }

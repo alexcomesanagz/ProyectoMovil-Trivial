@@ -9,6 +9,8 @@ import com.example.triviaapp.modelo.RecomendadosDTO
 import com.example.triviaapp.modelo.RespuestaDTO
 import com.example.triviaapp.modelo.TrivialDTO
 import com.example.triviaapp.modelo.UsuarioDTO
+import okhttp3.Response
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -25,21 +27,13 @@ interface InterfazRetrofitTrivias {
         @GET("/json/trivials/{id}")
         fun obtenerTrivial(@Path("id") id: String): Call<TrivialDTO>
 
-        @POST("/json/trivials")
+        @PUT("/json/trivials")
         fun crearTrivial(@Body dto: TrivialDTO): Call<TrivialDTO>
 
         @DELETE("/json/trivials/{id}")
         fun borrarTrivial(@Path("id") id: String): Call<Void>
 }
 
-interface InterfazRetrofitImagenes {
-        @GET("/images")
-        fun listarImagenes(): Call<List<ImagenDTO>>
-
-        @GET("/images/{id}")
-        fun obtenerImagenes(@Path("id") id: String): Call<ImagenDTO>
-
-}
 
 interface InterfazRetrofitInicio {
         @GET("/json/inicio")
