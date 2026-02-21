@@ -38,7 +38,6 @@ fun PaginaFinTrivia(
 
     LaunchedEffect(idTrivia) {
         paginaFinViewModel.cargar(idTrivia)
-        paginaFinViewModel.cambioImagen()
     }
 
 

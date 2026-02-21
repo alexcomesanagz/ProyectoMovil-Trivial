@@ -1,6 +1,7 @@
 package com.example.triviaapp.data.repositorio.reposLocal
 
 import com.example.triviaapp.data.repositorio.interfacesRepo.IRepoRespuesta
+import com.example.triviaapp.modelo.PreguntaDTO
 import com.example.triviaapp.modelo.RespuestaDTO
 
 class RespuestaRepo : IRepoRespuesta {
@@ -9,7 +10,7 @@ class RespuestaRepo : IRepoRespuesta {
     override fun obtenerRespuestasTrivial(
         idTrivial: String,
         idUsuario: String,
-        onSuccess: (List<RespuestaDTO?>) -> Unit,
+        onSuccess: (List<RespuestaDTO>) -> Unit,
         onError: () -> Unit
     ) {
         var respuestasTrivial = respuestas.filter { it.idTrivial == idTrivial
@@ -21,50 +22,35 @@ class RespuestaRepo : IRepoRespuesta {
         onSuccess(respuestasTrivial)
     }
 
-    override fun obtenerRespuestasCorrectas(
+    override fun crearRespuestas(
         idTrivial: String,
         idUsuario: String,
-        onSuccess: (List<RespuestaDTO?>) -> Unit,
-        onError: () -> Unit
-    ) {
-        var respuestasTrivial = respuestas.filter { it.idTrivial == idTrivial
-                && it.idUsuario == idUsuario
-                && it.correcta}
-        if (respuestasTrivial.isEmpty()) {
-            onError()
-            return
-        }
-        onSuccess(respuestasTrivial)
-    }
-
-
-    override fun crearRespuesta(
-        idTrivial: String,
-        idUsuario: String,
-        idPregunta: String,
+        idPreguntas: List<PreguntaDTO>,
         onSuccess: () -> Unit,
         onError: () -> Unit
     ) {
-            respuestas.add(
+        idPreguntas.forEach {
+        respuestas.add(
                 RespuestaDTO(
                     id = "${respuestas.size + 1}",
                     idTrivial = idTrivial,
                     idUsuario = idUsuario,
-                    idPregunta = idPregunta,
+                    idPregunta = it.id,
                     respuesta = "1",
-                    correcta = false
+                    respuestaCorrecta = it.respuestaCorrecta,
+                    correcta = it.respuestaCorrecta=="1"
                 )
             )
+        }
         onSuccess()
     }
 
     override fun cambiaRespuesta(
-        id: String,
         idTrivial: String,
         idUsuario: String,
         idPregunta: String,
         respuesta: String,
-        esCorrecto: Boolean,
+        respuestaCorrecta: String,
         onSuccess: () -> Unit,
         onError: () -> Unit
     ) {
@@ -77,7 +63,8 @@ class RespuestaRepo : IRepoRespuesta {
             val index = respuestas.indexOfFirst { it.id == respuestaLista.id }
             if (index != -1) {
                 respuestaLista.respuesta=respuesta
-                respuestaLista.correcta=esCorrecto
+                respuestaLista.respuestaCorrecta=respuestaCorrecta
+                respuestaLista.correcta=respuestaCorrecta==respuesta
                 respuestas[index] = respuestaLista
                 onSuccess()
             }
@@ -111,20 +98,5 @@ class RespuestaRepo : IRepoRespuesta {
         onSuccess(respuestas.toList())
     }
 
-    override fun obtenerRespuestaSeleccionada(
-        idTrivial: String,
-        idUsuario: String,
-        idPregunta: String,
-        onSuccess: () -> Unit,
-        onError: () -> Unit
-    ): String {
-        val respuesta = respuestas.find {
-            it.idTrivial==idTrivial
-            && it.idUsuario==idUsuario
-            && it.idPregunta==idPregunta
-        }
-        if(respuesta!=null)return  respuesta.respuesta
-        else return ""
-    }
 
 }

@@ -34,7 +34,7 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
 
                     _uiState.value=_uiState.value.copy(tarjetasLista1 =it.map {
                         TarjetaUiDatos(
-                            id = it.id,
+                            id = it.idTrivia,
                             titulo = it.nombre,
                             imagen = it.categoria
                         )
@@ -46,7 +46,7 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
                 onSuccess = { it ->
                    _uiState.value=_uiState.value.copy(tarjetasLista2 = it.map {
                         TarjetaUiDatos(
-                            id = it.id,
+                            id = it.trivia,
                             titulo = it.nombre,
                             imagen = it.categoria
                         )

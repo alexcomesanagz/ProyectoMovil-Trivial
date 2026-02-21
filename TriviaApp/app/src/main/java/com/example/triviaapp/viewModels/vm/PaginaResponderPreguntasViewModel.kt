@@ -46,46 +46,66 @@ class ResponderPreguntasViewModel(application: Application) : AndroidViewModel(a
             },
             onError = {}
         )
+
         preguntasRepo.obtenerPreguntasTrivial(
             idTrivial = idTrivia,
             onSuccess = { preguntas ->
                 repuestasRepo.obtenerRespuestasTrivial(
                     idTrivial = idTrivia,
                     idUsuario = usuarioActual.getUsuario()!!.id,
-                    onSuccess = {},
-                    onError = {
-                        preguntas.forEach { pregunta ->
-                            repuestasRepo.crearRespuesta(
-                                idTrivial = idTrivia,
-                                idUsuario = usuarioActual.getUsuario()!!.id,
-                                idPregunta = pregunta.id,
-                                onSuccess = {},
-                                onError = {}
+                    onSuccess = { it->
+                        _uiState.value = uiState.value.copy(preguntas = preguntas.map { preguntaCopia ->
+                            Pregunta(
+                                id = preguntaCopia.id,
+                                pregunta = preguntaCopia.pregunta,
+                                respuestaCorrecta = preguntaCopia.respuestaCorrecta.toString(),
+                                respuestaSeleccionada = it.find{ it.idPregunta==preguntaCopia.id }!!.respuesta,
+                                textoBotonesRespuestas = listOf(
+                                    preguntaCopia.opcion1,
+                                    preguntaCopia.opcion2,
+                                    preguntaCopia.opcion3,
+                                    preguntaCopia.opcion4
+                                )
                             )
                         }
+                        )
+
                     },
-                )
-                _uiState.value = uiState.value.copy(preguntas = preguntas.map { preguntaCopia ->
-                    Pregunta(
-                        id = preguntaCopia.id,
-                        pregunta = preguntaCopia.pregunta,
-                        respuestaCorrecta = preguntaCopia.respuestaCorrecta.toString(),
-                        respuestaSeleccionada = repuestasRepo.obtenerRespuestaSeleccionada(
+                    onError = {
+                        repuestasRepo.crearRespuestas(
                             idTrivial = idTrivia,
                             idUsuario = usuarioActual.getUsuario()!!.id,
-                            idPregunta = preguntaCopia.id,
-                            onSuccess = {},
-                            {}
-                        ),
-                        textoBotonesRespuestas = listOf(
-                            preguntaCopia.opcion1,
-                            preguntaCopia.opcion2,
-                            preguntaCopia.opcion3,
-                            preguntaCopia.opcion4
+                            idPreguntas = preguntas,
+                            onSuccess = {
+                                repuestasRepo.obtenerRespuestasTrivial(idTrivial = idTrivia, idUsuario = usuarioActual.getUsuario()!!.id,
+                                    {it->
+                                        _uiState.value = uiState.value.copy(preguntas = preguntas.map { preguntaCopia ->
+                                            Pregunta(
+                                                id = preguntaCopia.id,
+                                                pregunta = preguntaCopia.pregunta,
+                                                respuestaCorrecta = preguntaCopia.respuestaCorrecta.toString(),
+                                                respuestaSeleccionada = it.find { it.idPregunta==preguntaCopia.id }!!.respuesta,
+                                                textoBotonesRespuestas = listOf(
+                                                    preguntaCopia.opcion1,
+                                                    preguntaCopia.opcion2,
+                                                    preguntaCopia.opcion3,
+                                                    preguntaCopia.opcion4
+                                                )
+                                            )
+                                        }
+                                        )
+
+                                    },
+                                    {})
+
+                            },
+                            onError = {}
                         )
-                    )
-                }
+
+                    },
                 )
+
+
             },
             onError = {}
         )
@@ -119,74 +139,52 @@ class ResponderPreguntasViewModel(application: Application) : AndroidViewModel(a
 
     fun siguientePregunta(idTrivia: String) {
         val pregunta = getPregunta()
-        preguntasRepo.respuestaCorrecta(
+        repuestasRepo.cambiaRespuesta(
+            idTrivial = idTrivia,
+            idPregunta = pregunta.id,
+            idUsuario = usuarioActual.getUsuario()!!.id,
             respuesta = pregunta.respuestaSeleccionada,
-            preguntaId = pregunta.id,
-            onSuccess = { it ->
-                repuestasRepo.cambiaRespuesta(
-                    idTrivial = idTrivia,
-                    idPregunta = pregunta.id,
-                    idUsuario = usuarioActual.getUsuario()!!.id,
-                    respuesta = pregunta.respuestaSeleccionada,
-                    esCorrecto = it,
-                    onSuccess = {
-                        _uiState.value = _uiState.value.copy(
-                            i =
-                                if (_uiState.value.i < _uiState.value.preguntas.lastIndex) _uiState.value.i + 1
-                                else _uiState.value.i
-                        )
-                    },
-                    onError = {}
+            respuestaCorrecta = pregunta.respuestaCorrecta,
+            onSuccess = {
+                _uiState.value = _uiState.value.copy(
+                    i =
+                        if (_uiState.value.i < _uiState.value.preguntas.lastIndex) _uiState.value.i + 1
+                        else _uiState.value.i
                 )
             },
-            onError = {}
-        )
+            onError = {})
     }
 
     fun anteriorPregunta(idTrivia: String) {
         val pregunta = getPregunta()
-        preguntasRepo.respuestaCorrecta(
+        repuestasRepo.cambiaRespuesta(
+            idTrivial = idTrivia,
+            idPregunta = pregunta.id,
+            idUsuario = usuarioActual.getUsuario()!!.id,
             respuesta = pregunta.respuestaSeleccionada,
-            preguntaId = pregunta.id,
-            onSuccess = { it ->
-                repuestasRepo.cambiaRespuesta(
-                    idTrivial = idTrivia,
-                    idPregunta = pregunta.id,
-                    idUsuario = usuarioActual.getUsuario()!!.id,
-                    respuesta = pregunta.respuestaSeleccionada,
-                    esCorrecto = it,
-                    onSuccess = {
-                        _uiState.value = _uiState.value.copy(
-                            i =
-                                if (_uiState.value.i > 0) _uiState.value.i - 1
-                                else _uiState.value.i
-                        )
-                    },
-                    onError = {}
+            respuestaCorrecta = pregunta.respuestaCorrecta,
+            onSuccess = {
+                _uiState.value = _uiState.value.copy(
+                    i =
+                        if (_uiState.value.i > 0) _uiState.value.i - 1
+                        else _uiState.value.i
                 )
             },
-            onError = {}
-        )
+            onError = {})
+
     }
 
     fun fin(idTrivia: String, onSuccess: () -> Unit, onError: () -> Unit) {
         val pregunta = getPregunta()
-        preguntasRepo.respuestaCorrecta(
+        repuestasRepo.cambiaRespuesta(
+            idTrivial = idTrivia,
+            idPregunta = pregunta.id,
+            idUsuario = usuarioActual.getUsuario()!!.id,
             respuesta = pregunta.respuestaSeleccionada,
-            preguntaId = pregunta.id,
-            onSuccess = { it ->
-                repuestasRepo.cambiaRespuesta(
-                    idTrivial = idTrivia,
-                    idPregunta = pregunta.id,
-                    idUsuario = usuarioActual.getUsuario()!!.id,
-                    respuesta = pregunta.respuestaSeleccionada,
-                    esCorrecto = it,
-                    onSuccess = onSuccess,
-                    onError = onError
-                )
-            },
-            onError = {}
-        )
+            respuestaCorrecta = pregunta.respuestaCorrecta,
+            onSuccess = onSuccess,
+            onError = onError)
+
     }
 
 }

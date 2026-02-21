@@ -33,25 +33,23 @@ class PaginaFinViewModel(application: Application) : AndroidViewModel(applicatio
                     idTrivia,
                     usuarioActual.getUsuario()!!.id,
                     onSuccess = {
-                        _uiState.value = _uiState.value.copy(
+                        if(it < preguntas.size / 2){
+                                _uiState.value = _uiState.value.copy(
                             preguntasAcertadas = it,
-                            preguntasTotales = preguntas.size
-                        )
+                            preguntasTotales = preguntas.size,
+                            imagenResultado = "Mal"
+                        )}
+                        else{
+                            _uiState.value = _uiState.value.copy(
+                                preguntasAcertadas = it,
+                                preguntasTotales = preguntas.size,
+                                imagenResultado = "Bien")
+                        }
                     },
                     onError = {})
             },
             onError = {})
     }
 
-    fun cambioImagen() {
-        var imagen = ""
-
-            if (_uiState.value.preguntasAcertadas < _uiState.value.preguntasTotales / 2)
-                  imagen="Mal"
-            else  imagen="Bien"
-
-
-        _uiState.value =_uiState.value.copy(imagenResultado = imagen)
-    }
 
 }

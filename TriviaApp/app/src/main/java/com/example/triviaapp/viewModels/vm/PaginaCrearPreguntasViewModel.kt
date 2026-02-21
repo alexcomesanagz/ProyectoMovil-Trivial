@@ -89,17 +89,17 @@ class CrearRespViewModel : ViewModel() {
         return _uiState.value.preguntas[getNumPreguntaActual()].pregunta
     }
 
-    fun siguientePregunta() {
+    fun siguientePregunta(idTrivia: String) {
         val pregunta= getPregunta()
         preguntasRepo.cambiaDatosPregunta(pregunta = PreguntaDTO(
             id = pregunta.id,
-            idTrivial = "",
+            idTrivial = idTrivia,
             opcion1 = pregunta.textoBotonesRespuestas[0],
             opcion2 = pregunta.textoBotonesRespuestas[1],
             opcion3 = pregunta.textoBotonesRespuestas[2],
             opcion4 = pregunta.textoBotonesRespuestas[3],
             pregunta = pregunta.pregunta,
-            respuestaCorrecta = pregunta.respuestaCorrecta.toInt()
+            respuestaCorrecta = pregunta.respuestaCorrecta
         ),
             onSuccess = {
                 _uiState.value=_uiState.value.copy(i =
@@ -111,17 +111,17 @@ class CrearRespViewModel : ViewModel() {
 
     }
 
-    fun anteriorPregunta() {
+    fun anteriorPregunta(idTrivia: String) {
         val pregunta= getPregunta()
         preguntasRepo.cambiaDatosPregunta(pregunta = PreguntaDTO(
             id = pregunta.id,
-            idTrivial = "",
+            idTrivial = idTrivia,
             opcion1 = pregunta.textoBotonesRespuestas[0],
             opcion2 = pregunta.textoBotonesRespuestas[1],
             opcion3 = pregunta.textoBotonesRespuestas[2],
             opcion4 = pregunta.textoBotonesRespuestas[3],
             pregunta = pregunta.pregunta,
-            respuestaCorrecta = pregunta.respuestaCorrecta.toInt()
+            respuestaCorrecta = pregunta.respuestaCorrecta
         ),
             onSuccess = {
                 _uiState.value=_uiState.value.copy(i =
@@ -134,17 +134,17 @@ class CrearRespViewModel : ViewModel() {
     }
 
 
-    fun fin(onSuccess: ()-> Unit,onError: ()-> Unit){
+    fun fin(idtrivial:String,onSuccess: ()-> Unit,onError: ()-> Unit){
         val pregunta= getPregunta()
         preguntasRepo.cambiaDatosPregunta(pregunta = PreguntaDTO(
             id = pregunta.id,
-            idTrivial = "",
+            idTrivial = idtrivial,
             opcion1 = pregunta.textoBotonesRespuestas[0],
             opcion2 = pregunta.textoBotonesRespuestas[1],
             opcion3 = pregunta.textoBotonesRespuestas[2],
             opcion4 = pregunta.textoBotonesRespuestas[3],
             pregunta = pregunta.pregunta,
-            respuestaCorrecta = pregunta.respuestaCorrecta.toInt()
+            respuestaCorrecta = pregunta.respuestaCorrecta
         ),
             onSuccess = onSuccess,
             onError = onError

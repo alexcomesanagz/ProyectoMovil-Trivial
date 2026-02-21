@@ -54,8 +54,8 @@ interface InterfazRetrofitPreguntas {
         @PUT("/json/preguntas")
         fun crearPregunta(@Body dto: PreguntaDTO): Call<PreguntaDTO>
 
-        @POST("/json/preguntas")
-        fun modificaPregunta(@Body dto: PreguntaDTO): Call<PreguntaDTO>
+        @POST("/json/preguntas/{id}")
+        fun modificaPregunta(@Path("id")id:String,@Body dto: PreguntaDTO): Call<PreguntaDTO>
         @DELETE("/json/preguntas/{id}")
         fun borrarPregunta(@Path("id") id: String): Call<Void>
 }
@@ -66,10 +66,10 @@ interface InterfazRetrofitRespuestas {
         @GET("/json/respuestas/{id}")
         fun obtenerRespuesta(@Path("id") id: String): Call<RespuestaDTO>
 
-        @POST("/json/respuestas")
+        @PUT("/json/respuestas")
         fun crearRespuesta(@Body dto: RespuestaDTO): Call<RespuestaDTO>
 
-        @PUT("/json/respuestas/{id}")
+        @POST("/json/respuestas/{id}")
         fun modificaRespuesta(@Path("id") id: String, @Body dto: RespuestaDTO): Call<RespuestaDTO>
 }
 interface InterfazRetrofitUsuarios {

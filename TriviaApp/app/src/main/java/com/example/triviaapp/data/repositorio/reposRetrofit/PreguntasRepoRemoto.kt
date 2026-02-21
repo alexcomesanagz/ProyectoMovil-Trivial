@@ -22,9 +22,9 @@ class PreguntasRepoRemoto(private val preguntaRetrofit: InterfazRetrofitPregunta
                     response: Response<List<PreguntaDTO>>
                 ) {
 
-                    val lista = response.body()?.filter { it.idTrivial == idTrivial }
+                    val lista = response.body()!!.filter { it.idTrivial == idTrivial }
 
-                    if (response.isSuccessful && !lista.isNullOrEmpty()) {
+                    if (response.isSuccessful && !lista.isEmpty()) {
                         onSuccess(lista)
                     } else {
                         onError()
@@ -84,7 +84,7 @@ class PreguntasRepoRemoto(private val preguntaRetrofit: InterfazRetrofitPregunta
                 opcion3 = "",
                 opcion4 = "",
                 pregunta = "",
-                respuestaCorrecta = 1
+                respuestaCorrecta = "1"
             )
 
             preguntaRetrofit.crearPregunta(nueva)
@@ -154,14 +154,14 @@ class PreguntasRepoRemoto(private val preguntaRetrofit: InterfazRetrofitPregunta
         onSuccess: () -> Unit,
         onError: () -> Unit
     ) {
-        preguntaRetrofit.modificaPregunta(pregunta)
+        preguntaRetrofit.modificaPregunta(id = pregunta.id,pregunta)
             .enqueue(object : Callback<PreguntaDTO> {
 
             override fun onResponse(
                 call: Call<PreguntaDTO>,
                 response: Response<PreguntaDTO>
             ) {
-                if (response.isSuccessful && response.body()!=null ) {
+                if (response.isSuccessful ) {
                     onSuccess()
                 } else {
                     onError()
@@ -176,39 +176,6 @@ class PreguntasRepoRemoto(private val preguntaRetrofit: InterfazRetrofitPregunta
         })
     }
 
-    override fun respuestaCorrecta(
-        respuesta: String,
-        preguntaId: String,
-        onSuccess: (Boolean) -> Unit,
-        onError: () -> Unit
-    ) {
-        // Llamamos a la API para obtener la pregunta
-        preguntaRetrofit.obtenerPregunta(preguntaId).enqueue(object : Callback<PreguntaDTO> {
-            override fun onResponse(
-                call: Call<PreguntaDTO>,
-                response: Response<PreguntaDTO>
-            ) {
-                val pregunta = response.body()
-
-                if (response.isSuccessful && pregunta!=null) {
-
-                    val respuestaInt = respuesta.toIntOrNull()
-                    if (respuestaInt != null) {
-                        onSuccess(pregunta.respuestaCorrecta == respuestaInt)
-                    } else {
-                        onError() // No se encontró la pregunta
-                    }
-
-                } else {
-                    onError() // Error HTTP o body null
-                }
-            }
-
-            override fun onFailure(call: Call<PreguntaDTO>, t: Throwable) {
-                onError() // Error de red
-            }
-        })
-    }
 
     override fun leerTodo(
         onSuccess: (List<PreguntaDTO>) -> Unit,

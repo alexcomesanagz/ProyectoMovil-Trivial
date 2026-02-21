@@ -8,7 +8,7 @@ data class PreguntaDTO(
     var opcion3: String,
     var opcion4: String,
     var pregunta: String,
-    var respuestaCorrecta: Int
+    var respuestaCorrecta: String
 ){
     fun cambioValores(pregunta: PreguntaDTO){
         this.respuestaCorrecta=pregunta.respuestaCorrecta

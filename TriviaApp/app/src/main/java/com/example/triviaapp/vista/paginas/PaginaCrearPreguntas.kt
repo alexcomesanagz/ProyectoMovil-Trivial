@@ -89,8 +89,8 @@ fun PaginaElegirRespuestas(
                             DatosBotonDoble(
                                 stringResource(R.string.app_bt_anterior),
                                 stringResource(R.string.app_bt_siguiente),
-                                accionBoton1 = { crearPreguntas.anteriorPregunta() },
-                                accionBoton2 = { crearPreguntas.siguientePregunta() })
+                                accionBoton1 = { crearPreguntas.anteriorPregunta(idTrivia) },
+                                accionBoton2 = { crearPreguntas.siguientePregunta(idTrivia) })
                         )
                     }
 
@@ -108,7 +108,7 @@ fun PaginaElegirRespuestas(
                                 )
                             },
                             accionBoton2 = {
-                                crearPreguntas.fin(onClickAceptar, {})
+                                crearPreguntas.fin(idTrivia,onClickAceptar, {})
                             }
                         )
                     )

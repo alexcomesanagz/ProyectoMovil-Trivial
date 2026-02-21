@@ -1,37 +1,30 @@
 package com.example.triviaapp.data.repositorio.interfacesRepo
 
+import com.example.triviaapp.modelo.PreguntaDTO
 import com.example.triviaapp.modelo.RespuestaDTO
 
 interface IRepoRespuesta {
     fun obtenerRespuestasTrivial(
         idTrivial: String,
         idUsuario: String,
-        onSuccess: (List<RespuestaDTO?>) -> Unit,
+        onSuccess: (List<RespuestaDTO>) -> Unit,
         onError: () -> Unit
     )
 
-    fun obtenerRespuestasCorrectas(
+    fun crearRespuestas(
         idTrivial: String,
         idUsuario: String,
-        onSuccess: (List<RespuestaDTO?>) -> Unit,
-        onError: () -> Unit
-    )
-
-    fun crearRespuesta(
-        idTrivial: String,
-        idUsuario: String,
-        idPregunta: String,
+        idPreguntas: List<PreguntaDTO>,
         onSuccess: () -> Unit,
         onError: () -> Unit
     )
 
     fun cambiaRespuesta(
-        id: String,
         idTrivial: String,
         idUsuario: String,
         idPregunta: String,
         respuesta: String,
-        esCorrecto: Boolean,
+        respuestaCorrecta: String,
         onSuccess: () -> Unit, onError: () -> Unit
     )
     fun recuento(
@@ -44,10 +37,4 @@ interface IRepoRespuesta {
         onSuccess: (List<RespuestaDTO>) -> Unit,
         onError: () -> Unit)
 
-    fun obtenerRespuestaSeleccionada(
-        idTrivial: String,
-        idUsuario: String,
-        idPregunta: String,
-        onSuccess: () -> Unit,
-        onError: () -> Unit):String
 }

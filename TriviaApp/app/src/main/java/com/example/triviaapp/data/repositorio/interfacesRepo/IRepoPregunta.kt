@@ -35,12 +35,6 @@ interface IRepoPregunta {
         onError: () -> Unit
     )
 
-    fun respuestaCorrecta(
-        respuesta: String,
-        preguntaId: String,
-        onSuccess: (Boolean) -> Unit,
-        onError: () -> Unit
-    )
 
     fun leerTodo(
         onSuccess: (List<PreguntaDTO>) -> Unit,

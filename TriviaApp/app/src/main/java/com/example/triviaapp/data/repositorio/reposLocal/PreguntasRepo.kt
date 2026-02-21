@@ -14,7 +14,7 @@ class PreguntasRepo : IRepoPregunta {
             opcion3 = "España",
             opcion4 = "Alemania",
             pregunta = "País que gano el mundial en 2010",
-            respuestaCorrecta = 3
+            respuestaCorrecta = "3"
         ),
         PreguntaDTO(
             id = "2",
@@ -24,7 +24,7 @@ class PreguntasRepo : IRepoPregunta {
             opcion3 = "Lucas Pérez",
             opcion4 = "Iago Aspas",
             pregunta = "Jugador conocido como \"El príncipe de las bateas\"",
-            respuestaCorrecta = 4
+            respuestaCorrecta = "4"
         ), PreguntaDTO(
             id = "3",
             idTrivial = "2",
@@ -33,7 +33,7 @@ class PreguntasRepo : IRepoPregunta {
             opcion3 = "Jose",
             opcion4 = "Marta",
             pregunta = "Mejor profe de 2º DAM (todos son muy buenos profesores)",
-            respuestaCorrecta = 2
+            respuestaCorrecta = "2"
         ),
         PreguntaDTO(
             id = "4",
@@ -43,7 +43,7 @@ class PreguntasRepo : IRepoPregunta {
             opcion3 = "Jose",
             opcion4 = "Pedro",
             pregunta = "Profesor que da la materia denominada como \"Diseño de interfaces\"",
-            respuestaCorrecta = 1
+            respuestaCorrecta = "1"
         )
     )
 
@@ -90,7 +90,7 @@ class PreguntasRepo : IRepoPregunta {
                     opcion3 = "",
                     opcion4 = "",
                     pregunta = "",
-                    respuestaCorrecta = 1
+                    respuestaCorrecta = "1"
                 )
             )
         }
@@ -124,19 +124,6 @@ class PreguntasRepo : IRepoPregunta {
             }
         } else onError()
 
-    }
-
-    override fun respuestaCorrecta(
-        respuesta: String,
-        preguntaId: String,
-        onSuccess: (Boolean) -> Unit,
-        onError: () -> Unit
-    ) {
-        val preguntaLista = preguntas.find { it.id == preguntaId }
-        if (preguntaLista != null) {
-            if (preguntaLista.respuestaCorrecta==respuesta.toInt()) onSuccess(true)
-           else onSuccess(false)
-        } else onError()
     }
 
 

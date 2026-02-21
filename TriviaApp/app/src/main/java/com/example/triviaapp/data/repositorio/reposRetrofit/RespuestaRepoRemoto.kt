@@ -1,9 +1,9 @@
 package com.example.triviaapp.data.repositorio.reposRetrofit
 
-import androidx.sqlite.db.SupportSQLiteOpenHelper
+import android.util.Log
 import com.example.triviaapp.data.repositorio.interfacesRepo.IRepoRespuesta
 import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofitRespuestas
-import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofitTrivias
+import com.example.triviaapp.modelo.PreguntaDTO
 import com.example.triviaapp.modelo.RespuestaDTO
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,7 +14,7 @@ class RespuestaRepoRemoto(private val respuestaRetrofit: InterfazRetrofitRespues
     override fun obtenerRespuestasTrivial(
         idTrivial: String,
         idUsuario: String,
-        onSuccess: (List<RespuestaDTO?>) -> Unit,
+        onSuccess: (List<RespuestaDTO>) -> Unit,
         onError: () -> Unit
     ) {
         respuestaRetrofit.listarRespuestas()
@@ -24,12 +24,11 @@ class RespuestaRepoRemoto(private val respuestaRetrofit: InterfazRetrofitRespues
                     response: Response<List<RespuestaDTO>>
                 ) {
                     if (response.isSuccessful) {
-                        //Filtramos por trivial y usuario
-                        val lista = response.body()
-                            ?.filter { it.idTrivial == idTrivial && it.idUsuario == idUsuario }
-
-                        //se devuelve lista no nula aunque esté vacía
-                        onSuccess(lista ?: emptyList())
+                        val lista = response.body()!!.filter { it.idTrivial == idTrivial && it.idUsuario == idUsuario }
+                        if(!lista.isEmpty()){onSuccess(lista)}
+                        else {
+                            onError()
+                        }
                     } else {
                         onError()
                     }
@@ -42,55 +41,26 @@ class RespuestaRepoRemoto(private val respuestaRetrofit: InterfazRetrofitRespues
             })
     }
 
-    override fun obtenerRespuestasCorrectas(
+
+    override fun crearRespuestas(
         idTrivial: String,
         idUsuario: String,
-        onSuccess: (List<RespuestaDTO?>) -> Unit,
-        onError: () -> Unit
-    ) {
-        respuestaRetrofit.listarRespuestas().enqueue(object : Callback<List<RespuestaDTO>> {
-
-            override fun onResponse(
-                call: Call<List<RespuestaDTO>>,
-                response: Response<List<RespuestaDTO>>
-            ) {
-                if (response.isSuccessful) {
-                    val listaCorrectas = response.body()
-                        ?.filter {
-                            it.idTrivial == idTrivial &&
-                                    it.idUsuario == idUsuario &&
-                                    it.correcta
-                        }
-
-                    // se devuelve lista no nula aunque esté vacía
-                    onSuccess(listaCorrectas ?: emptyList())
-                } else {
-                    onError()
-                }
-            }
-
-            override fun onFailure(call: Call<List<RespuestaDTO>>, t: Throwable) {
-                onError()
-            }
-        })
-    }
-
-    override fun crearRespuesta(
-        idTrivial: String,
-        idUsuario: String,
-        idPregunta: String,
+        idPreguntas: List<PreguntaDTO>,
         onSuccess: () -> Unit,
         onError: () -> Unit
     ) {
-        val nuevaRespuesta = RespuestaDTO(
-            id = "",
-            idUsuario = idUsuario,
-            idPregunta = idPregunta,
-            idTrivial = idTrivial,
-            respuesta = "",
-            correcta = false
-        )
+        var creadas = 0
+        var errorOcurrido = false
 
+        idPreguntas.map {
+            val nuevaRespuesta = RespuestaDTO(
+                idUsuario = idUsuario,
+                idPregunta = it.id,
+                idTrivial =  idTrivial,
+                respuesta = "1",
+                respuestaCorrecta = it.respuestaCorrecta,
+                correcta =  it.respuestaCorrecta=="1"
+            )
         respuestaRetrofit.crearRespuesta(nuevaRespuesta)
             .enqueue(object : Callback<RespuestaDTO> {
 
@@ -98,56 +68,69 @@ class RespuestaRepoRemoto(private val respuestaRetrofit: InterfazRetrofitRespues
                     call: Call<RespuestaDTO>,
                     response: Response<RespuestaDTO>
                 ) {
-                    if (response.isSuccessful && response.body() != null) {
+                    if (!response.isSuccessful) {
+                        if(!errorOcurrido){
+                            errorOcurrido = true
+                            onError()
+                        }
+                        return
+                    }
+                    creadas++
+
+                    if (creadas == idPreguntas.size && !errorOcurrido){
                         onSuccess()
-                    } else {
-                        onError()
                     }
                 }
 
                 override fun onFailure(call: Call<RespuestaDTO>, t: Throwable) {
-                    onError()
+                    if(!errorOcurrido){
+                        errorOcurrido = true
+                        onError()
+                    }
                 }
             })
+        }
+        onSuccess()
     }
 
     override fun cambiaRespuesta(
-        id: String,
         idTrivial: String,
         idUsuario: String,
         idPregunta: String,
         respuesta: String,
-        esCorrecto: Boolean,
+        respuestaCorrecta:String,
         onSuccess: () -> Unit,
         onError: () -> Unit
     ) {
-        val respuestaActualizada = RespuestaDTO(
-            id = id,
-            idUsuario = idUsuario,
-            idPregunta = idPregunta,
-            idTrivial = idTrivial,
-            respuesta = respuesta,
-            correcta = esCorrecto
+        obtenerRespuestasTrivial(idTrivial,idUsuario, {it->
+            val respuestaBuscar=it.find { it.idPregunta==idPregunta }
+            Log.i("cambio", respuestaBuscar.toString())
+            if(respuestaBuscar!=null){
+                respuestaBuscar.respuesta=respuesta
+                respuestaBuscar.correcta= respuesta==respuestaCorrecta
+
+                respuestaRetrofit.modificaRespuesta(respuestaBuscar.id, respuestaBuscar)
+                    .enqueue(object : Callback<RespuestaDTO> {
+
+                        override fun onResponse(
+                            call: Call<RespuestaDTO>,
+                            response: Response<RespuestaDTO>
+                        ) {
+                            if (response.isSuccessful && response.body() != null) {
+                                onSuccess()
+                            } else {
+                                onError()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<RespuestaDTO>, t: Throwable) {
+                            onError()
+                        }
+                    })
+            }
+        },{}
         )
 
-        respuestaRetrofit.modificaRespuesta(id, respuestaActualizada)
-            .enqueue(object : Callback<RespuestaDTO> {
-
-                override fun onResponse(
-                    call: Call<RespuestaDTO>,
-                    response: Response<RespuestaDTO>
-                ) {
-                    if (response.isSuccessful && response.body() != null) {
-                        onSuccess()
-                    } else {
-                        onError()
-                    }
-                }
-
-                override fun onFailure(call: Call<RespuestaDTO>, t: Throwable) {
-                    onError()
-                }
-            })
     }
 
     override fun recuento(
@@ -203,52 +186,4 @@ class RespuestaRepoRemoto(private val respuestaRetrofit: InterfazRetrofitRespues
             }
         })
     }
-
-    override fun obtenerRespuestaSeleccionada(
-        idTrivial: String,
-        idUsuario: String,
-        idPregunta: String,
-        onSuccess: () -> Unit,
-        onError: () -> Unit
-    ): String {
-        TODO("Not yet implemented")
-    }
-
-//    override fun obtenerRespuestaSeleccionada(
-//        idTrivial: String,
-//        idUsuario: String,
-//        idPregunta: String,
-//        onSuccess: () -> Unit,
-//        onError: () -> Unit
-//    ): String {
-//        // Obtenemos todas las respuestas
-//        respuestaRetrofit.listarRespuestas().enqueue(object : Callback<List<RespuestaDTO>> {
-//
-//            override fun onResponse(
-//                call: Call<List<RespuestaDTO>>,
-//                response: Response<List<RespuestaDTO>>
-//            ) {
-//                if (response.isSuccessful) {
-//                    val seleccionada = response.body()
-//                        ?.firstOrNull { it.idTrivial == idTrivial && it.idUsuario == idUsuario && it.idPregunta == idPregunta }
-//                        ?.respuesta
-//
-//                    if (seleccionada != null) {
-//                        onSuccess(seleccionada)
-//                    } else {
-//                        onError()
-//                    }
-//                } else {
-//                    onError()
-//                }
-//            }
-//
-//            override fun onFailure(call: Call<List<RespuestaDTO>>, t: Throwable) {
-//                onError()
-//            }
-//        })
-//    }
-
-
-
 }
