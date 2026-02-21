@@ -59,6 +59,7 @@ class RespuestaRepo : IRepoRespuesta {
     }
 
     override fun cambiaRespuesta(
+        id: String,
         idTrivial: String,
         idUsuario: String,
         idPregunta: String,

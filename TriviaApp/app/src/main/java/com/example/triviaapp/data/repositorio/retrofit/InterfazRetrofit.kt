@@ -69,6 +69,8 @@ interface InterfazRetrofitRespuestas {
         @POST("/json/respuestas")
         fun crearRespuesta(@Body dto: RespuestaDTO): Call<RespuestaDTO>
 
+        @PUT("/json/respuestas/{id}")
+        fun modificaRespuesta(@Path("id") id: String, @Body dto: RespuestaDTO): Call<RespuestaDTO>
 }
 interface InterfazRetrofitUsuarios {
         @POST("auth/login")
