@@ -41,6 +41,7 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
                     })
                 },
                 onError = {})
+
             repoInicial.obtenerRecientesPersona(
                 usuarioActual.getUsuario()!!.id,
                 onSuccess = { it ->
@@ -50,7 +51,7 @@ class PrincipalViewModel(application: Application) : AndroidViewModel(applicatio
                             titulo = it.nombre,
                             imagen = it.categoria
                         )
-                            })
+                        })
 
 
                 },

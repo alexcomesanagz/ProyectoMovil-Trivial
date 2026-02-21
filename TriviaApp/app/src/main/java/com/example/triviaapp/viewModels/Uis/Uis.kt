@@ -1,6 +1,7 @@
 package com.example.triviaapp.viewModels.Uis
 
 import com.example.triviaapp.R
+import com.example.triviaapp.componentes.Tarjeta
 
 data class PaginaLoginUi(
     val stringCorreo: String = "",
@@ -44,8 +45,8 @@ data class PaginaFinUiState(
 
 
 data class PaginaListaUiState(
-    val mapaDatos: Map<String, List<TarjetaUiDatos>> = mapOf<String,List<TarjetaUiDatos>>(
-)
+    val mapaDatos: List<TarjetaUiDatos> =listOf<TarjetaUiDatos>(),
+    val tarjetas: Map<String,List<Tarjeta>> = mapOf<String,List<Tarjeta>>()
 )
 data class ResponderPregUIState(
     val preguntas: List<Pregunta> =listOf(

@@ -1,11 +1,17 @@
 package com.example.triviaapp.vista.paginas
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -27,16 +33,21 @@ fun PaginaLista(
     paginaListaViewModel: PaginaListaViewModel= viewModel(),
     onItemClick: (String) -> Unit
     ){
-    paginaListaViewModel.cargar()
+    LaunchedEffect(Unit) {
+        paginaListaViewModel.cargar(onItemClick)
+    }
     val uiState by paginaListaViewModel.uiState.collectAsState()
+
     Column(
-        modifier = Modifier.padding(horizontal = 30.dp, vertical = 30.dp),
+        modifier = Modifier.padding(horizontal = 30.dp, vertical = 30.dp)
+        .windowInsetsPadding(WindowInsets.safeDrawing),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        LazyColumn(verticalArrangement = Arrangement.spacedBy(30.dp)) {
+        LazyColumn(Modifier.fillMaxHeight(),
+            verticalArrangement = Arrangement.spacedBy(30.dp)) {
 
-            items(items =paginaListaViewModel.transformaLista(onItemClick).entries.toList(), key = {it.key} ){ entry ->
-                ComponenteTituloYListaTarjetasHorizontal(entry.key,entry.value)
+            items(items =uiState.tarjetas.entries.toList(), key = {it.key} ){ entry ->
+                    ComponenteTituloYListaTarjetasHorizontal(entry.key, entry.value)
             }
         }
     }

@@ -34,7 +34,6 @@ interface InterfazRetrofitTrivias {
         fun borrarTrivial(@Path("id") id: String): Call<Void>
 }
 
-
 interface InterfazRetrofitInicio {
         @GET("/json/inicio")
         fun listarInicio(): Call<List<InicioDTO>>
@@ -59,6 +58,7 @@ interface InterfazRetrofitPreguntas {
         @DELETE("/json/preguntas/{id}")
         fun borrarPregunta(@Path("id") id: String): Call<Void>
 }
+
 interface InterfazRetrofitRespuestas {
         @GET("/json/respuestas")
         fun listarRespuestas(): Call<List<RespuestaDTO>>
@@ -72,6 +72,7 @@ interface InterfazRetrofitRespuestas {
         @POST("/json/respuestas/{id}")
         fun modificaRespuesta(@Path("id") id: String, @Body dto: RespuestaDTO): Call<RespuestaDTO>
 }
+
 interface InterfazRetrofitUsuarios {
         @POST("auth/login")
         fun login(@Body dto: UsuarioDTO): Call<UsuarioDTO>

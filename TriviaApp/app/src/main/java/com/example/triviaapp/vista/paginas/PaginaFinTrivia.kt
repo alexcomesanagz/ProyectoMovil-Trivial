@@ -4,8 +4,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -40,53 +45,57 @@ fun PaginaFinTrivia(
         paginaFinViewModel.cargar(idTrivia)
     }
 
-
-    Column(
-        modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp),
-        verticalArrangement = Arrangement.spacedBy(space = 40.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-
-        Column(
-            verticalArrangement = Arrangement.spacedBy(space = 40.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(vertical = 30.dp)
-        ) {
-            ComponenteColumnaTextoUnFondo(
-                DatosColumnaTexto(
-                    msj1 = stringResource(R.string.app_titulo_tituloPreguntasAcertadas),
-                    msj2 = "" + uiState.preguntasAcertadas + "/" + uiState.preguntasTotales,
-                    tamaño = 30
-                )
-            )
-        }
-        ComponenteImagen(uiState.imagenResultado, 300)
-        Row(modifier = Modifier.fillMaxWidth()) {
-            Box(
-                modifier = Modifier
-                    .weight(weight = 0.5f)
-                    .fillMaxWidth()
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        item {
+            Column(
+                modifier = Modifier.padding(horizontal = 20.dp, vertical = 20.dp)
+                    .windowInsetsPadding(WindowInsets.safeDrawing),
+                verticalArrangement = Arrangement.spacedBy(space = 40.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = "")
-            }
-            Box(
-                modifier = Modifier
-                    .weight(weight = 1f)
-                    .fillMaxWidth()
-            ) {
-                DenegarBoton(
-                    stringResource(R.string.app_bt_salir),
-                    modifier = Modifier.fillMaxWidth(),
-                    accion = accionSalir
-                )
-            }
 
-            Box(
-                modifier = Modifier
-                    .weight(weight = 0.5f)
-                    .fillMaxWidth()
-            ) {
-                Text(text = "")
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(space = 40.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.padding(vertical = 30.dp)
+                ) {
+                    ComponenteColumnaTextoUnFondo(
+                        DatosColumnaTexto(
+                            msj1 = stringResource(R.string.app_titulo_tituloPreguntasAcertadas),
+                            msj2 = "" + uiState.preguntasAcertadas + "/" + uiState.preguntasTotales,
+                            tamaño = 30
+                        )
+                    )
+                }
+                ComponenteImagen(uiState.imagenResultado, 300)
+                Row(modifier = Modifier.fillMaxWidth()) {
+                    Box(
+                        modifier = Modifier
+                            .weight(weight = 0.5f)
+                            .fillMaxWidth()
+                    ) {
+                        Text(text = "")
+                    }
+                    Box(
+                        modifier = Modifier
+                            .weight(weight = 1f)
+                            .fillMaxWidth()
+                    ) {
+                        DenegarBoton(
+                            stringResource(R.string.app_bt_salir),
+                            modifier = Modifier.fillMaxWidth(),
+                            accion = accionSalir
+                        )
+                    }
+
+                    Box(
+                        modifier = Modifier
+                            .weight(weight = 0.5f)
+                            .fillMaxWidth()
+                    ) {
+                        Text(text = "")
+                    }
+                }
             }
         }
     }

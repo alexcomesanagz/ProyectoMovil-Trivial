@@ -3,8 +3,13 @@ package com.example.triviaapp.vista.paginas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -42,53 +47,62 @@ fun PaginaPerfil(
     LaunchedEffect(Unit) {
         paginaPerfilUi.cargaDatos()
     }
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        item {
 
-    Column(verticalArrangement = Arrangement.spacedBy(space = 50.dp)) {
-        Box(
-            modifier = Modifier.padding(horizontal = 50.dp),
-        ) {
+
             Column(
-                modifier = Modifier.padding(top = 40.dp),
-                verticalArrangement = Arrangement.spacedBy(30.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing),
+                verticalArrangement = Arrangement.spacedBy(space = 50.dp)
             ) {
-                ComponenteImagenRedondeada(id = uiState.imagenPerfil, tamanio = 120)
-                ComponenteTitulo(uiState.nombreUsuario)
-                ComponenteTitulo(uiState.correoUsuario)
+                Box(
+                    modifier = Modifier.padding(horizontal = 50.dp),
+                ) {
+                    Column(
+                        modifier = Modifier.padding(top = 40.dp),
+                        verticalArrangement = Arrangement.spacedBy(30.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        ComponenteImagenRedondeada(id = uiState.imagenPerfil, tamanio = 120)
+                        ComponenteTitulo(uiState.nombreUsuario)
+                        ComponenteTitulo(uiState.correoUsuario)
+                    }
+                }
+                Box(
+                    modifier = Modifier.padding(horizontal = 50.dp),
+                    contentAlignment = Alignment.Center
+                )
+                {
+                    ComponenteListaTarjetasVertical(
+                        tarjetas = uiState.tarjetasUsuario.map {
+                            Tarjeta(
+                                it.imagen,
+                                it.titulo,
+                                {
+                                    onItemClick(it.id)
+                                },
+                            )
+                        },
+                        tamanioCaja = 220,
+                        tamanio = 50,
+                    )
+                }
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 50.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    ComponenteLinea(grosor = 8.dp)
+                    DenegarBoton(
+                        msj = "salir",
+                        modifier = Modifier.fillMaxWidth(),
+                        accion = onSalida
+                    )
+                }
             }
         }
-        Box(
-            modifier = Modifier.padding(horizontal = 50.dp),
-            contentAlignment = Alignment.Center
-        )
-        {
-            ComponenteListaTarjetasVertical(
-                tarjetas = uiState.tarjetasUsuario.map {
-                    Tarjeta(it.imagen,
-                        it.titulo,
-                        {
-                            onItemClick(it.id)
-                        },
-                        )
-                },
-                tamanioCaja = 220,
-                tamanio = 50,
-                )
-        }
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 50.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            ComponenteLinea(grosor = 8.dp)
-            DenegarBoton(
-                msj = "salir",
-                modifier = Modifier.fillMaxWidth(),
-                accion = onSalida)
-        }
     }
-
 }
 
 @Preview(showSystemUi = true)

@@ -1,5 +1,6 @@
 package com.example.triviaapp.viewModels.vm
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.triviaapp.R
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -7,6 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import com.example.triviaapp.componentes.Tarjeta
 import com.example.triviaapp.data.repositorio.objetosRepo.TriviasRepoGeneral
+import com.example.triviaapp.modelo.TrivialDTO
 import com.example.triviaapp.viewModels.Uis.PaginaListaUiState
 import com.example.triviaapp.viewModels.Uis.TarjetaUiDatos
 
@@ -16,41 +18,28 @@ class PaginaListaViewModel : ViewModel() {
     val uiState: StateFlow<PaginaListaUiState> = _uiState.asStateFlow()
     val trivialsRepo = TriviasRepoGeneral.repo
 
-    fun cargar() {
-          _uiState.value=uiState.value.copy(mapaDatos = obtenListaTrivias())
-    }
-
-    fun obtenListaTrivias(): Map<String ,List<TarjetaUiDatos>>{
-        var lista: Map<String,List<TarjetaUiDatos>> = mapOf()
+    fun cargar(accion: (String)->Unit) {
         trivialsRepo.leerTodo(
-            {it->lista=it.groupBy{it.categoria}.mapValues {
-                mapa->
-                    mapa.value.map {
+        {it->
+             _uiState.value = uiState.value.copy(mapaDatos = it.map {tarjeta->
+                TarjetaUiDatos(
+                    id = tarjeta.id,
+                    titulo = tarjeta.nombre,
+                    imagen = tarjeta.categoria
+                )
+            }, tarjetas =  it.groupBy { dto -> dto.categoria }
+                 .mapValues { (_, lista) ->
+                     lista.map { dto ->
+                         Tarjeta(
+                             imagen = dto.categoria,
+                             titulo = dto.nombre,
+                             accion = {accion(dto.id)}
+                         )
+                     }
+                 })
+                },
+                {})
 
-                            TarjetaUiDatos(
-                                id = it.id,
-                                titulo = it.nombre,
-                                imagen =it.categoria
-                            )
-                    }
-                }
-            },
-            {})
-        return lista
+        }
     }
-    fun transformaLista(accion: (String)->Unit): Map<String, List<Tarjeta>> {
-        val mapaTarjetas: Map<String, List<Tarjeta>> =
-            _uiState.value.mapaDatos.mapValues { (_, listaTagetas) ->
-                listaTagetas.map { targeta ->
-                    Tarjeta(
-                        imagen = targeta.imagen,
-                        titulo = targeta.titulo,
-                        accion = {accion(targeta.id)},
-                    )
-                }
-            }
-        return mapaTarjetas
-    }
-
-}
 

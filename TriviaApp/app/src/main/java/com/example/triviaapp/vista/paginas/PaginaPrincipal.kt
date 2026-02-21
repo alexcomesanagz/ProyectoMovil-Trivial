@@ -24,7 +24,9 @@ import com.example.triviaapp.componentes.Tarjeta
  */
 @Composable
 fun PaginaPrincipal(principalViewmodel: PrincipalViewModel = viewModel(), onItemClick: (String) -> Unit) {
+    LaunchedEffect(Unit) {
         principalViewmodel.cargaDatos()
+    }
     val uiState by principalViewmodel.uiState.collectAsState()
 
     Box(

@@ -100,11 +100,10 @@ class TrivialRepoRemoto(private val triviaRetrofit : InterfazRetrofitTrivias) : 
         triviaRetrofit.listarTrivials()
             .enqueue(object : retrofit2.Callback<List<TrivialDTO>> {
                 override fun onResponse(call: Call<List<TrivialDTO>>, response: Response<List<TrivialDTO>>) {
-                    if (response.isSuccessful && response.body() != null) {
-                        val lista = response.body()
-                        onSuccess(lista!!)
+                    if (response.isSuccessful ) {
+                       if(response.body() != null) onSuccess(response.body()!!)
+                       else{onError() }
                     }
-                    onError()
                 }
 
 
