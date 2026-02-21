@@ -26,6 +26,7 @@ interface IRepoRespuesta {
     )
 
     fun cambiaRespuesta(
+        id: String,
         idTrivial: String,
         idUsuario: String,
         idPregunta: String,
