@@ -13,18 +13,13 @@ class RecomendadosRepoRetrofit(private val recomendadosRetrofit: InterfazRetrofi
         onSuccess: (List<RecomendadosDTO>) -> Unit,
         onError: (List<RecomendadosDTO>) -> Unit
     ) {
-        {
-            {
                 recomendadosRetrofit.listarRecomendados().enqueue(object : Callback<List<RecomendadosDTO>> {
                     override fun onResponse(
                         call: Call<List<RecomendadosDTO>>,
                         response: Response<List<RecomendadosDTO>>
                     ) {
-                        val lista = response.body() ?: emptyList()
-                        if (response.isSuccessful && !lista.isEmpty()) {
-                            onSuccess(lista)
-                        } else {
-                            onError(lista)
+                        if (response.isSuccessful && response.body()!=null) {
+                            onSuccess(response.body()!!)
                         }
                     }
 
@@ -32,7 +27,5 @@ class RecomendadosRepoRetrofit(private val recomendadosRetrofit: InterfazRetrofi
                         onError(emptyList())
                     }
                 })
-            }
-        }
     }
 }

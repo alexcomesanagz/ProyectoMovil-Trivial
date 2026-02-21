@@ -58,8 +58,8 @@ data class ResponderPregUIState(
 )
 
 data class PrincipalUiState(
-    val tarjetasLista1: List<TarjetaUiDatos> = listOf<TarjetaUiDatos>(TarjetaUiDatos(titulo = "awawa"),TarjetaUiDatos(titulo = "awawa")),
-    val tarjetasLista2: List<TarjetaUiDatos> = listOf<TarjetaUiDatos>(TarjetaUiDatos(titulo = "awawa"),TarjetaUiDatos(titulo = "awawa")),
+    val tarjetasLista1: List<TarjetaUiDatos> = listOf<TarjetaUiDatos>(),
+    val tarjetasLista2: List<TarjetaUiDatos> = listOf<TarjetaUiDatos>()
 )
 
 data class Pregunta(

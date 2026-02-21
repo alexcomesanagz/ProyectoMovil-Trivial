@@ -51,6 +51,7 @@ fun PaginaResponderPreguntas(
     LaunchedEffect(idTrivia) {
         responderPregunta.cargar(idTrivia)
     }
+
     val uiState by responderPregunta.uiState.collectAsState()
     val preguntaActual = uiState.preguntas.getOrNull(uiState.i)
 

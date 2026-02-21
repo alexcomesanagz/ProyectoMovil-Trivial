@@ -2,6 +2,7 @@ package com.example.triviaapp.viewModels.vm
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import com.example.triviaapp.data.repositorio.objetosRepo.InicioRepoGeneral
 import com.example.triviaapp.data.repositorio.objetosRepo.PreguntasRepoGeneral
@@ -30,6 +31,21 @@ class ResponderPreguntasViewModel(application: Application) : AndroidViewModel(a
 
 
     fun cargar(idTrivia: String) {
+        trivialRepo.obtenerTrivial(
+            idTrivia = idTrivia,
+            onSuccess = { it ->
+                repoInicial.anadirRecientes(
+                    reciente = InicioDTO(
+                        idUsuario = usuarioActual.getUsuario()!!.id,
+                        trivia = it.id,
+                        nombre = it.nombre,
+                        categoria = it.categoria
+                    ),
+                    onSuccess = {},
+                    onError = {})
+            },
+            onError = {}
+        )
         preguntasRepo.obtenerPreguntasTrivial(
             idTrivial = idTrivia,
             onSuccess = { preguntas ->
@@ -70,18 +86,6 @@ class ResponderPreguntasViewModel(application: Application) : AndroidViewModel(a
                     )
                 }
                 )
-                trivialRepo.obtenerTrivial(
-                    idTrivia = idTrivia,
-                    onSuccess = { it ->
-                        repoInicial.anadirRecientes(
-                            reciente = InicioDTO(
-                                idUsuario = usuarioActual.getUsuario()!!.id,
-                                trivia = it.id
-                            ),
-                            onSuccess = {},
-                            onError = {})
-                    },
-                    onError = {})
             },
             onError = {}
         )

@@ -15,4 +15,5 @@ interface InicioRepoInterface {
         onSuccess: (List<InicioDTO>) -> Unit,
         onError: (List<InicioDTO>) -> Unit
     )
+
 }

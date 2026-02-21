@@ -1,5 +1,8 @@
 package com.example.triviaapp.modelo
 
 class RecomendadosDTO (
-    val idTrivia:String
+    val id:String="",
+    val idTrivia:String,
+    var nombre: String,
+    var categoria: String
 )

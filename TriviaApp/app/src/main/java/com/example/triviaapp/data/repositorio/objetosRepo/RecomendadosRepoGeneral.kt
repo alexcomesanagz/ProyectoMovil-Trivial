@@ -5,5 +5,5 @@ import com.example.triviaapp.data.repositorio.reposRetrofit.RecomendadosRepoRetr
 import com.example.triviaapp.data.repositorio.retrofit.Network
 
 object RecomendadosRepoGeneral {
-    val repo = RecomendadosRepo()
+    val repo = RecomendadosRepoRetrofit(Network.recomendadosRetrofit)
 }

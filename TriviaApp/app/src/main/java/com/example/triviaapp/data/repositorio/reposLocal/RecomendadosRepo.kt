@@ -5,10 +5,7 @@ import com.example.triviaapp.modelo.RecomendadosDTO
 
 
 class RecomendadosRepo : RecomendadosRepoInterfaz {
-    private val recomendados = arrayListOf(
-        RecomendadosDTO(idTrivia = "1"),
-        RecomendadosDTO(idTrivia = "2"),
-    )
+    private val recomendados = arrayListOf<RecomendadosDTO>()
 
     override fun obtenerRecomendados(
         onSuccess: (List<RecomendadosDTO>) -> Unit,

@@ -1,5 +1,6 @@
 package com.example.triviaapp.data.repositorio.reposRetrofit
 
+import android.util.Log
 import com.example.triviaapp.data.repositorio.interfacesRepo.TrivialRepoInterface
 import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofitTrivias
 import com.example.triviaapp.modelo.TrivialDTO
@@ -127,9 +128,9 @@ class TrivialRepoRemoto(private val triviaRetrofit : InterfazRetrofitTrivias) : 
                 override fun onResponse(call: Call<TrivialDTO>, response: Response<TrivialDTO>) {
                     if (response.isSuccessful && response.body() !=null) {
                         val trivia=response.body()
-                       if (trivia!=null) onSuccess(trivia)
+                        onSuccess(trivia!!)
                     }
-                    onError()
+                    else onError()
                 }
 
 

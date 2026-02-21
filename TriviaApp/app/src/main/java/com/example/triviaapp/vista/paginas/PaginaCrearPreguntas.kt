@@ -59,7 +59,7 @@ fun PaginaElegirRespuestas(
     }
     LazyColumn(modifier = Modifier.fillMaxSize()) {
         item {
-            Box(
+            Column(
                 Modifier
                     .padding(vertical = 30.dp, horizontal = 10.dp)
                     .windowInsetsPadding(WindowInsets.safeDrawing)

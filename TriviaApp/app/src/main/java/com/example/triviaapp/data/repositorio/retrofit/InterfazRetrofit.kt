@@ -38,6 +38,7 @@ interface InterfazRetrofitTrivias {
 interface InterfazRetrofitInicio {
         @GET("/json/inicio")
         fun listarInicio(): Call<List<InicioDTO>>
+
         @PUT("/json/inicio")
         fun crearInicio(@Body dto: InicioDTO): Call<InicioDTO>
 

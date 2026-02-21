@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -23,7 +24,7 @@ import com.example.triviaapp.componentes.Tarjeta
  */
 @Composable
 fun PaginaPrincipal(principalViewmodel: PrincipalViewModel = viewModel(), onItemClick: (String) -> Unit) {
-    principalViewmodel.cargaDatos()
+        principalViewmodel.cargaDatos()
     val uiState by principalViewmodel.uiState.collectAsState()
 
     Box(
@@ -41,7 +42,8 @@ fun PaginaPrincipal(principalViewmodel: PrincipalViewModel = viewModel(), onItem
                             onItemClick(it.id)
                         }
                        )
-                })
+                }
+            )
             ComponenteTituloYListaTarjetasHorizontal(
                 stringResource(R.string.app_titulo_pagina_2),
                 uiState.tarjetasLista2.map {

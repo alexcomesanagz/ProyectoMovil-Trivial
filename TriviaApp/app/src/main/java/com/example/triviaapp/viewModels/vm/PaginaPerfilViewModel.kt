@@ -24,32 +24,27 @@ class PaginaPerfilViewModel(application: Application) : AndroidViewModel(applica
 
 
     fun cargaDatos() {
+
         val usuario= usuarioActual.getUsuario()
         if (usuario!=null) {
-                _uiState.value = _uiState.value.copy(
-                    nombreUsuario = usuario.nombre,
-                    correoUsuario = usuario.correo,
-                    tarjetasUsuario = obtenListaTrivias(),
-                    imagenPerfil= "Perfil"
+            trivialsRepo.obtenerTrivialsPersona(
+                usuarioActual.getUsuario()!!.id,
+                {it->
+                    _uiState.value = _uiState.value.copy(
+                        nombreUsuario = usuario.nombre,
+                        correoUsuario = usuario.correo,
+                        imagenPerfil= "Perfil",
+                        tarjetasUsuario =  it.map {
+                            TarjetaUiDatos(
+                                id = it.id,
+                                titulo = it.nombre,
+                                imagen =it.categoria
+                            )
 
-                )
+                    })
+                },
+                {})
+            }
         }
-    }
-
-    fun obtenListaTrivias(): List<TarjetaUiDatos>{
-        var lista=listOf<TarjetaUiDatos>()
-        trivialsRepo.obtenerTrivialsPersona(
-            usuarioActual.getUsuario()!!.id,
-            {it-> lista=it.map {
-                TarjetaUiDatos(
-                    id = it.id,
-                    titulo = it.nombre,
-                    imagen =it.categoria
-                )
-              }
-            },
-            {})
-        return lista
-    }
 
 }

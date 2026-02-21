@@ -17,7 +17,10 @@ class InicioRepo : InicioRepoInterface {
             recientes.add(
                 InicioDTO(
                     idUsuario = reciente.idUsuario,
-                    trivia = reciente.trivia
+                    trivia = reciente.trivia,
+                    nombre = reciente.nombre,
+                    categoria = reciente.categoria,
+
                 )
             )
             onSuccess()
