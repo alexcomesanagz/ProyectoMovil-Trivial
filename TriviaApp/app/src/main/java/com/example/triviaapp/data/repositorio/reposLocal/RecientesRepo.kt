@@ -1,21 +1,21 @@
 package com.example.triviaapp.data.repositorio.reposLocal
 
-import com.example.triviaapp.data.repositorio.interfacesRepo.InicioRepoInterface
-import com.example.triviaapp.modelo.InicioDTO
+import com.example.triviaapp.data.repositorio.interfacesRepo.RecientesRepoInterface
+import com.example.triviaapp.modelo.RecientesDTO
 
 
-class InicioRepo : InicioRepoInterface {
-    private val recientes = arrayListOf<InicioDTO>(
+class RecientesRepo : RecientesRepoInterface {
+    private val recientes = arrayListOf<RecientesDTO>(
     )
 
-    override fun anadirRecientes(
-        reciente: InicioDTO,
+    override fun anadirReciente(
+        reciente: RecientesDTO,
         onSuccess: () -> Unit,
         onError: () -> Unit
     ) {
         if(recientes.find { it.idUsuario==reciente.idUsuario && it.trivia==reciente.trivia }==null) {
             recientes.add(
-                InicioDTO(
+                RecientesDTO(
                     idUsuario = reciente.idUsuario,
                     trivia = reciente.trivia,
                     nombre = reciente.nombre,
@@ -29,8 +29,8 @@ class InicioRepo : InicioRepoInterface {
 
     override fun obtenerRecientesPersona(
         idCreador: String,
-        onSuccess: (List<InicioDTO>) -> Unit,
-        onError: (List<InicioDTO>) -> Unit
+        onSuccess: (List<RecientesDTO>) -> Unit,
+        onError: (List<RecientesDTO>) -> Unit
     ){
         var Trivials = recientes.filter { it.idUsuario == idCreador }
         if (Trivials.isEmpty()) {

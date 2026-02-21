@@ -19,8 +19,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 /**
- * Set de 4 botones repartidos en 2 filas y 2 columnas
+ * Set de 4 cajas de texto en 2 filas y 2 columnas
  * @param textoBotonesRespuesta lista de contenido de cada boton, tiene que haber solo 4
+ * @param accion lo que van a hacer
  */
 @Composable
 fun ComponenteRespuestasTextBox(
@@ -55,7 +56,10 @@ fun ComponenteRespuestasTextBox(
     )
 }
 
-
+/**
+ * Set de 4 radio botones en 2 filas y 2 columnas
+ * @see DatosRadioBotones
+ */
 @Composable
 fun ComponenteRadioButonCategorias(
     datos: DatosRadioBotones
@@ -78,7 +82,7 @@ fun ComponenteRadioButonCategorias(
                     ComponenteRadioButon(
                         DatosRadioBoton(
                             msj = textoBoton,
-                            boton = textoBoton,
+                            msjClick = textoBoton,
                             coloresBoton = listaColor,
                             rememberCadena = datos.remember,
                             accion = datos.accion
@@ -114,7 +118,7 @@ fun ComponenteRespuestasRadioButon(
                     ComponenteRadioButon(
                         DatosRadioBoton(
                             msj = "${(i+1)} ${textoBoton}",
-                            boton = ""+(i+1),
+                            msjClick = ""+(i+1),
                             coloresBoton = listaColor,
                             rememberCadena = datos.remember,
                             accion = datos.accion

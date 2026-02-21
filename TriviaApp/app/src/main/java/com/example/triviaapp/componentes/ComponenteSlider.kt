@@ -19,12 +19,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 /**
+ * @param estadoSlider numero en el que esta el slider
+ * @param accionSlider lo que hace
+ */
+class DatosSlider(
+    var estadoSlider: Float,
+    val accionSlider: (Float)-> Float={1f}
+)
+
+/**
  * barra con número del 1 al 20
  * llendo de 1 en 1
- * @param sliderPosition posicion del componente,
- * siendo esta 10 por defecto
  */
-class DatosSlider(var estadoSlider: Float,val accionSlider: (Float)-> Float={1f})
 @Composable
 fun ComponenteSlider(
     datos: DatosSlider

@@ -24,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.triviaapp.R
 import com.example.triviaapp.componentes.ComponenteColumnaTextoUnFondo
-import com.example.triviaapp.componentes.ComponenteCreditoCreadores
 import com.example.triviaapp.componentes.ComponenteImagen
 import com.example.triviaapp.componentes.DatosColumnaTexto
 import com.example.triviaapp.componentes.DenegarBoton
@@ -63,7 +62,7 @@ fun PaginaFinTrivia(
                         DatosColumnaTexto(
                             msj1 = stringResource(R.string.app_titulo_tituloPreguntasAcertadas),
                             msj2 = "" + uiState.preguntasAcertadas + "/" + uiState.preguntasTotales,
-                            tamaño = 30
+                            tamanio = 30
                         )
                     )
                 }

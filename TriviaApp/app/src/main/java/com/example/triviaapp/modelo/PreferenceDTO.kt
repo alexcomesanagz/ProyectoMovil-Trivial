@@ -1,6 +1,6 @@
 package com.example.triviaapp.modelo
-/*
-    objeto que rpresenta todas las preferencias guardaddas en el set preference
+/**
+ * objeto que representa todas las preferencias guardadas en el set preference
 */
 data class PreferenceDTO(
     var id: String = "",

@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -58,6 +57,13 @@ fun ComponenteBotonesHorizontal(
         }
     }
 }
+
+/**
+ * @param txtBotones texto de los botones
+ * @param tamanioTexto su tamaño
+ * @param remember donde se almacena el si esta seleccionado
+ * @param accion lo que hace al hacerle click
+ */
 class DatosRadioBotones(
     val txtBotones: List<String>,
     val tamanioTexto:Int=12,
@@ -65,6 +71,10 @@ class DatosRadioBotones(
     val accion: (String) -> String = {""}
 
 )
+
+/**
+ * crea una cantidad de radio butons igual que el numero de texto que tenga la lista de botones, en horizontal
+ */
 @Composable
 fun ComponenteRadioButonsHorizontal(
    datos: DatosRadioBotones
@@ -99,7 +109,7 @@ fun ComponenteRadioButonsHorizontal(
                             ComponenteRadioButon(
                                 DatosRadioBoton(
                                     msj = it,
-                                    boton = it,
+                                    msjClick = it,
                                     coloresBoton = listaColor,
                                     tamanioTexto = datos.tamanioTexto,
                                     rememberCadena = datos.remember,

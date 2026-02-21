@@ -31,13 +31,6 @@ import com.example.triviaapp.componentes.DatosRespondePregunta
 import com.example.triviaapp.viewModels.vm.ResponderPreguntasViewModel
 
 
-val textoBotonesRespuesta = listOf(
-    "1 a",
-    "2 a",
-    "3 a",
-    "4 a"
-)
-
 /**
  * Pagina para responder una de las preguntas de un trivia ya creado
  */

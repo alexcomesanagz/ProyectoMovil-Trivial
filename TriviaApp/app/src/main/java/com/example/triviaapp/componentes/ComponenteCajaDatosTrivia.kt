@@ -17,7 +17,12 @@ import com.example.triviaapp.R
 /**
  * Componente con los ajustes para crear un trivia
  * @param txtBotones lista de textos con tipos de categoría
- * @param tamañoTexto tamaño de la letra de los botones
+ * @param radioButonSeleccionado el radio buton que esta siendo seleccionado
+ * @param accionRadioButons la accion que tendran los radio butons
+ * @param cadenaField donde se almacena el nombre del trivia
+ * @param accionTextField lo que hace el text field
+ * @param estadoSlider valor que tiene el slider
+ * @param accionSlider lo que hace el slider
  */
 @Composable
 fun ComponenteCajaDatosTrivia(

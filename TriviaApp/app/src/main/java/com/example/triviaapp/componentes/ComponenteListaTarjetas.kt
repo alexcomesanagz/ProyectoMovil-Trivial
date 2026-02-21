@@ -58,6 +58,12 @@ fun ComponenteListaTarjetasVertical(
     }
 }
 
+/**
+ * crea una lista de trajetas que se puede escrolear de manera horizontal
+ * @param tarjetas tarjetas que aparecerán en la lista
+ * @param tamanioCaja la altura que tendrá donde se contiene la lista
+ * @param tamanio tamaño de las tarjetas de dentro de la lista
+ */
 @Composable
 fun ComponenteListaTarjetasHorizontal(
     tarjetas: List<Tarjeta>,

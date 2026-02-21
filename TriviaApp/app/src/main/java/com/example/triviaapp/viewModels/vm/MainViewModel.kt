@@ -18,22 +18,36 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         get() = getApplication<Application>().applicationContext
     val usuarioActual= PreferencesRepo(context!!)
 
+
     fun cargar(){
         val currentUser = usuarioActual.getUsuario()
         if(currentUser!=null)_uiState.value=_uiState.value.copy(logueado = true)
     }
+
+    /**
+     * quita el scafold y el boton flotante de la vista
+     */
     fun quitaTodo(){
         _uiState.value = _uiState.value.copy(scaffold = false, botonFlotante =false )
     }
 
+    /**
+     * coloca el scafold y el boton flotante
+     */
     fun ponTodo(){
         _uiState.value = _uiState.value.copy(scaffold = true, botonFlotante =true )
     }
 
+    /**
+     * quita el boton flotante de la vista
+     */
     fun quitaBoton(){
         _uiState.value = _uiState.value.copy(botonFlotante =false )
     }
 
+    /**
+     * cierra la sesion del usuario actual
+     */
     fun salirLogueado(onSuccess:()-> Unit, onError: ()->Unit){
         usuarioActual.cerrarSesion(
             onSuccess = {

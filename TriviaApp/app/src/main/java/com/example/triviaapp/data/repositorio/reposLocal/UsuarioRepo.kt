@@ -25,13 +25,13 @@ class UsuarioRepo : UsuarioRepoInterf {
     )
 
     override fun iniciarSesion(
-        correo: String,
+        nombre: String,
         contasena: String,
         onSuccess: (UsuarioDTO?) -> Unit,
         onError: () -> Unit
     ) {
         val usuario = datos.find {
-            it.correo == correo && it.contrasena == contasena
+            it.correo == nombre && it.contrasena == contasena
         }
         if (usuario != null) {
             onSuccess(usuario)

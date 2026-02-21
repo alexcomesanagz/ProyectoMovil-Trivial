@@ -16,17 +16,17 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.triviaapp.componentes.ComponenteTituloCaja
 
 /**
  * crea un texto con un color de fondo predefinido
  * @param titulo
+ * @param tamanio tamaño del texto
  */
 
 @Composable
 fun ComponenteTitulo(
     titulo: String,
-    tamaño: Int=20
+    tamanio: Int=20
 ){
     Text(text = titulo,
         modifier = Modifier.background(MaterialTheme.colorScheme.primary,
@@ -35,16 +35,21 @@ fun ComponenteTitulo(
             .padding(vertical = 6.dp, horizontal = 20.dp)
             .fillMaxWidth(),
         textAlign = TextAlign.Center,
-        fontSize = tamaño.sp,
+        fontSize = tamanio.sp,
         color = MaterialTheme.colorScheme.onPrimary,
         fontWeight = FontWeight.Bold,
         )
 }
 
+/**
+ * crea un texto dentro de una caja con color
+ * @param titulo
+ * @param tamanio tamaño del texto
+ */
 @Composable
 fun ComponenteTituloCaja(
     titulo: String,
-    tamaño: Int=20
+    tamanio: Int=20
 ){
     Text(text = titulo,
         modifier = Modifier.background(MaterialTheme.colorScheme.primary,
@@ -52,7 +57,7 @@ fun ComponenteTituloCaja(
             .padding(vertical = 6.dp, horizontal = 20.dp)
             .fillMaxWidth(),
         textAlign = TextAlign.Center,
-        fontSize = tamaño.sp,
+        fontSize = tamanio.sp,
         color = MaterialTheme.colorScheme.onPrimary,
         fontWeight = FontWeight.Bold,
 

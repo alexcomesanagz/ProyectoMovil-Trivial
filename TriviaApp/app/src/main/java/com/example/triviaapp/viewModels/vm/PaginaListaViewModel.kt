@@ -21,7 +21,7 @@ class PaginaListaViewModel : ViewModel() {
     fun cargar(accion: (String)->Unit) {
         trivialsRepo.leerTodo(
         {it->
-             _uiState.value = uiState.value.copy(mapaDatos = it.map {tarjeta->
+             _uiState.value = uiState.value.copy(listaDatos = it.map {tarjeta->
                 TarjetaUiDatos(
                     id = tarjeta.id,
                     titulo = tarjeta.nombre,

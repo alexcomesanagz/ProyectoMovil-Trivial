@@ -19,8 +19,8 @@
     <string name="app_signUp_msjnombre">Nombre usuario</string>
     <string name="app_login_msjCorreo">Correo usuario</string>
     <string name="app_login_msjContraseña">Contraseña usuario</string>
-    <string name="app_login_btnLogIn">Log in</string>
-    <string name="app_login_btnSignUp">Sign up</string>
+    <string name="app_login_btnLogIn">Iniciar Sesion</string>
+    <string name="app_login_btnSignUp">Registrarse</string>
     <string name="app_toolbar_Menu">Menu</string>
     <string name="app_toolbar_Camara">Camara</string>
     <string name="app_toolbar_Perfil">Perfil</string>

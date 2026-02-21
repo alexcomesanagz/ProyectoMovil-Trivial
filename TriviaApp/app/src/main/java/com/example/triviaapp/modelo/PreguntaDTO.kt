@@ -1,5 +1,15 @@
 package com.example.triviaapp.modelo
 
+/**
+ * objeto que representa a una pregunta
+ * @param idTrivial id del trivia al que pertenece
+ * @param opcion1 mensaje de la primera respuesta
+ * @param opcion2 mensaje de la segunda respuesta
+ * @param opcion3 mensaje de la tercera respuesta
+ * @param opcion4 mensaje de la cuarta respuesta
+ * @param pregunta mensaje de la pregunta
+ * @param respuestaCorrecta indica que opcion es la correcta
+ */
 data class PreguntaDTO(
     var id: String,
     var idTrivial: String,

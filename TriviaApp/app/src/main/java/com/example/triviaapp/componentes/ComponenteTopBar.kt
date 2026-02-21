@@ -25,7 +25,7 @@ import com.example.triviaapp.R
  * Barra de navegacion de los escafolds
  * @param title texto que estara en el centro
  * @param accionMenu acccion del menu al hacer click
- * @param accionLogin hacion que se hara al hacer click en el icono de login
+ * @param accionCerrarSesion acion que se hara al hacer click en el icono de cerrar sesion
  * @param accionCamara acccion del la barra de busqueda al hacer click
  * @param accionPerfil acccion del perfil al hacer click
  */

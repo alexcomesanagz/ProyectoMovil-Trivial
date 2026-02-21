@@ -28,8 +28,10 @@ import androidx.compose.ui.tooling.preview.Preview
 
 /**
  * Componente para introducir textos
- * @param txtContenido texto que aparece antes de introducir un texto
- * @param txtNuevo texto introducido empleado para actualizar
+ * @param msjPregunta texto que aparece antes de introducir un texto
+ * @param txtContenido texto introducido empleado para actualizar
+ * @param listaColor colores que emplea
+ * @param accion lo que hace
  */
 class DatosTextField(
     val msjPregunta: String = "Introduca aquí nombre del Trivial a crear",
@@ -40,6 +42,14 @@ class DatosTextField(
 
 )
 
+/**
+ * Componente para introducir textos de una lista
+ * @param msjPregunta texto que aparece antes de introducir un texto
+ * @param txtContenido texto introducido empleado para actualizar
+ * @param i elemento de la lista al que pertenece
+ * @param listaColor colores que emplea
+ * @param accion lo que hace
+ */
 class DatosTextFieldLista(
     val msjPregunta: String = "Introduca aquí nombre del Trivial a crear",
     var txtContenido: String = "",
@@ -50,6 +60,9 @@ class DatosTextFieldLista(
 
 )
 
+/**
+ * crea una caja donde el usuario puede escribir
+ */
 @Composable
 fun ComponenteTextField(datos: DatosTextField) {
 
@@ -70,7 +83,9 @@ fun ComponenteTextField(datos: DatosTextField) {
         )
 }
 
-
+/**
+ * crea una caja donde el usuario puede escribir, pero los datos pertenecen a una lista
+ */
 @Composable
 fun ComponenteTextFieldLista(datos: DatosTextFieldLista) {
     datos.listaColor = listOf(
@@ -99,6 +114,12 @@ fun ComponenteTextFieldLista(datos: DatosTextFieldLista) {
         )
 }
 
+/**
+ * crea una caja donde el usuario puede escribir si contrasena,
+ * esta contiene un icono que permita mostrar o ocultar lo escrito
+ * @param visible parametro utilizado para saber si mostrar o no
+ * @param onclickIcon lo que se hace al hacer click al icono
+ */
 @Composable
 fun ComponenteTextFieldContrasena(
     datos: DatosTextField,

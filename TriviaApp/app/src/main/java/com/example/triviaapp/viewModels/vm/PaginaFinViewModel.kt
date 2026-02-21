@@ -33,7 +33,7 @@ class PaginaFinViewModel(application: Application) : AndroidViewModel(applicatio
                     idTrivia,
                     usuarioActual.getUsuario()!!.id,
                     onSuccess = {
-                        if(it < preguntas.size / 2){
+                        if(it < preguntas.size / 2 || it==0){
                                 _uiState.value = _uiState.value.copy(
                             preguntasAcertadas = it,
                             preguntasTotales = preguntas.size,

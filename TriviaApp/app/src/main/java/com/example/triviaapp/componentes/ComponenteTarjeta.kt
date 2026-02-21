@@ -33,7 +33,7 @@ data class Tarjeta(
 )
 
 /**
- * crea una tarjeta
+ * crea una tarjeta con el contenido en horizontal
  * @param tamanio cambia el tamaño de la imagen y texto de la tarjeta, predefinido a 40
  */
 @Composable
@@ -61,7 +61,10 @@ fun ComponenteTarjetaHorizontal(
         )
     }
 }
-
+/**
+* crea una tarjeta con el contenido en vertical
+* @param tamanio cambia el tamaño de la imagen y texto de la tarjeta, predefinido a 40
+*/
 @Composable
 fun ComponenteTarjetaVertical(
     contenido: Tarjeta,

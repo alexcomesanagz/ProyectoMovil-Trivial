@@ -34,18 +34,31 @@ class CrearRespViewModel : ViewModel() {
             },
             onError = {})
     }
+
+    /**
+     * obtiene la pregunta en la que se está actualmente
+     */
     fun getPregunta(): Pregunta {
         return _uiState.value.preguntas[getNumPreguntaActual()]
     }
 
+    /**
+     * obtiene en que pregunta se esta actualmente
+     */
     fun getNumPreguntaActual(): Int {
         return _uiState.value.i
     }
 
+    /**
+     * obtiene la cantidad de preguntas que hay
+     */
     fun getNumPreguntas(): Int {
         return _uiState.value.preguntas.size
     }
 
+    /**
+     * cambia la respuesta correcta de la pregunta
+     */
     fun cambiaRespuestaCorrecta(cadena: String): String {
         _uiState.value= uiState.value.copy(
             preguntas = uiState.value.preguntas.mapIndexed{
@@ -59,6 +72,10 @@ class CrearRespViewModel : ViewModel() {
 
     }
 
+    /**
+     * cambia el mensaje de la lista seleccionado
+     * @param i el mensaje que se quiere cambiar
+     */
     fun cambiaTextoBoton(i: Int ,cadena: String): String {
         _uiState.value=_uiState.value.copy(
             preguntas = _uiState.value.preguntas.mapIndexed{
@@ -76,6 +93,9 @@ class CrearRespViewModel : ViewModel() {
 
     }
 
+    /**
+     * cambia el mensaje de la pregunta
+     */
     fun cambiaPregunta(cadena: String): String {
         _uiState.value=_uiState.value.copy(
             preguntas = _uiState.value.preguntas.mapIndexed{
@@ -89,6 +109,9 @@ class CrearRespViewModel : ViewModel() {
         return _uiState.value.preguntas[getNumPreguntaActual()].pregunta
     }
 
+    /**
+     * cambia a la siguiente pregunta si no es la última, guardando la actual antes
+     */
     fun siguientePregunta(idTrivia: String) {
         val pregunta= getPregunta()
         preguntasRepo.cambiaDatosPregunta(pregunta = PreguntaDTO(
@@ -111,6 +134,9 @@ class CrearRespViewModel : ViewModel() {
 
     }
 
+    /**
+     * cambia a la anterio pregunta si no es la primera, guardando la actual antes
+     */
     fun anteriorPregunta(idTrivia: String) {
         val pregunta= getPregunta()
         preguntasRepo.cambiaDatosPregunta(pregunta = PreguntaDTO(
@@ -133,7 +159,9 @@ class CrearRespViewModel : ViewModel() {
 
     }
 
-
+    /**
+     * guarda la pregunta en la que se acabó el trivial
+     */
     fun fin(idtrivial:String,onSuccess: ()-> Unit,onError: ()-> Unit){
         val pregunta= getPregunta()
         preguntasRepo.cambiaDatosPregunta(pregunta = PreguntaDTO(
@@ -151,7 +179,9 @@ class CrearRespViewModel : ViewModel() {
         )
     }
 
-
+    /**
+     * borra las preguntas y el trivia creados
+     */
     fun cancelarCreacion(idTrivia:String, onSucces:()->Unit, onError:()->Unit){
         preguntasRepo.borrarPreguntas(idTrivial = idTrivia, onSuccess = {
             trivialsRepo.borrar(

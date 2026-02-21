@@ -40,6 +40,14 @@ fun ComponenteTituloConBotonesHorizontal(
     }
 }
 
+/**
+ *set de cuatro redio butons en fila debajo de un texto
+ * @param txtTitulo contenido del texto
+ * @param txtbotones lista de contenido de cada boton, tiene que haber solo 4
+ * @param accion contiene las acciones de cada boton
+ * @param tamanioTexto tamaño de el texto que contienen los botones
+ * @param remember indica cual redio buton tiene que estar seleccionado
+ */
 @Composable
 fun ComponenteTituloConRadioButonHorizontal(
     txtTitulo: String,

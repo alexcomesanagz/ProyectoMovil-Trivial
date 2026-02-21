@@ -33,8 +33,14 @@ object Routes {
     const val paginaFinPreguntas = "preguntasFin/{idTrivia}"
 }
 
+/**
+ * componente con el que se navega en la aplicación
+ * @param navController lo que permite la navegacion entre páginas
+ * @param viewMain viewmodel del main, utilizado para saber si ya hay un usuario loguado y para quitar el scaffold y floating buton
+ */
 @Composable
 fun TrivialNavGraph(navController: NavHostController, viewMain: MainViewModel) {
+
     NavHost(navController = navController, startDestination = Routes.login) {
         composable(Routes.principal) {
             viewMain.ponTodo()
@@ -76,7 +82,7 @@ fun TrivialNavGraph(navController: NavHostController, viewMain: MainViewModel) {
 
         composable(Routes.login) {
             if(!viewMain.uiState.collectAsState().value.logueado) {
-                viewMain.quitaBoton()
+                viewMain.quitaTodo()
                 PaginaLogin(
                     onItemClick = { navController.navigate("principal") },
                     onSignUpClick = { navController.navigate("sign") }

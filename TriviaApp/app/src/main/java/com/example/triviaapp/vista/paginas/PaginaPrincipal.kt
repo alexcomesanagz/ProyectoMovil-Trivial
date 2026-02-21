@@ -37,7 +37,7 @@ fun PaginaPrincipal(principalViewmodel: PrincipalViewModel = viewModel(), onItem
         Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
             ComponenteTituloYListaTarjetasHorizontal(
                 stringResource(R.string.app_titulo_pagina_1),
-                uiState.tarjetasLista1.map {
+                uiState.recomendados.map {
                     Tarjeta(it.imagen,
                         it.titulo,
                         {
@@ -48,7 +48,7 @@ fun PaginaPrincipal(principalViewmodel: PrincipalViewModel = viewModel(), onItem
             )
             ComponenteTituloYListaTarjetasHorizontal(
                 stringResource(R.string.app_titulo_pagina_2),
-                uiState.tarjetasLista2.map {
+                uiState.recientes.map {
                     Tarjeta(it.imagen,
                         it.titulo,
                         {

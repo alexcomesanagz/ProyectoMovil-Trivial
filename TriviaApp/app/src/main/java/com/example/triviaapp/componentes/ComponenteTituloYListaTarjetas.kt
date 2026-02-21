@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import com.example.triviaapp.R
 
 /**
- * crea una lista de tarjetas bajo un texto
+ * crea una lista de tarjetas bajo un texto con desplazamiento vertical
  * @param titulo mensaje de el texto de encima de la lista
  * @param tarjetas lista de tarjetas que estaran en la lista
  */
@@ -26,6 +26,12 @@ fun ComponenteTituloYListaTarjetasVertical(
         ComponenteListaTarjetasVertical(tarjetas)
     }
 }
+
+/**
+ * crea una lista de tarjetas bajo un texto con desplazamiento horizontal
+ * @param titulo mensaje de el texto de encima de la lista
+ * @param tarjetas lista de tarjetas que estaran en la lista
+ */
 @Composable
 fun ComponenteTituloYListaTarjetasHorizontal(
     titulo: String,

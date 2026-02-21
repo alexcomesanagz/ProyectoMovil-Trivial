@@ -176,25 +176,4 @@ class PreguntasRepoRemoto(private val preguntaRetrofit: InterfazRetrofitPregunta
         })
     }
 
-
-    override fun leerTodo(
-        onSuccess: (List<PreguntaDTO>) -> Unit,
-        onError: () -> Unit
-    ) {
-        preguntaRetrofit.listarPreguntas().enqueue(object : Callback<List<PreguntaDTO>> {
-
-            override fun onResponse(
-                call: Call<List<PreguntaDTO>>,
-                response: Response<List<PreguntaDTO>>
-            ) {
-                if (response.isSuccessful) {
-                    onSuccess(response.body() ?: emptyList())
-                } else onError()
-            }
-
-            override fun onFailure(call: Call<List<PreguntaDTO>>, t: Throwable) {
-                onError()
-            }
-        })
-    }
 }

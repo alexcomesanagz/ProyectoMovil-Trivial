@@ -6,27 +6,42 @@ import androidx.lifecycle.AndroidViewModel
 import com.example.triviaapp.data.repositorio.objetosRepo.UsuarioRepoGeneral
 import com.example.triviaapp.data.repositorio.reposLocal.PreferencesRepo
 import com.example.triviaapp.modelo.PreferenceDTO
-import com.example.triviaapp.viewModels.Uis.PaginaLoginUi
+import com.example.triviaapp.viewModels.Uis.PaginaInicioSesionUi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class PaginaLoginViewModel(application: Application) : AndroidViewModel(application)  {
+class PaginaInicioSesionViewModel(application: Application) : AndroidViewModel(application)  {
 
-    private val _uiState = MutableStateFlow(PaginaLoginUi())
-    val uiState: StateFlow<PaginaLoginUi> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(PaginaInicioSesionUi())
+    val uiState: StateFlow<PaginaInicioSesionUi> = _uiState.asStateFlow()
     val repoUsuarios = UsuarioRepoGeneral.repo
     private val context: Context?
         get() = getApplication<Application>().applicationContext
     val usuarioActual= PreferencesRepo(context!!)
-    fun setCorreo(correo: String): String {
-        _uiState.value = _uiState.value.copy(stringCorreo = correo)
-        return _uiState.value.stringCorreo
+
+    /**
+     * cambia el nombre
+     */
+    fun setNombre(correo: String): String {
+        _uiState.value = _uiState.value.copy(stringNombre = correo)
+        return _uiState.value.stringNombre
     }
 
+    /**
+     * cambia la contraseña
+     */
+    fun setContrasena(contrasena: String): String {
+        _uiState.value = _uiState.value.copy(stringContrasena = contrasena)
+        return _uiState.value.stringContrasena
+    }
+
+    /**
+     * loguea al usuario si el nombre existía y la contraseña es correcta
+     */
     fun logIn(onSucces: () -> Unit,onError: ()->Unit) {
         repoUsuarios.iniciarSesion(
-            correo = uiState.value.stringCorreo,
+            nombre = uiState.value.stringNombre,
             contasena = uiState.value.stringContrasena,
             onSuccess = { it->
                 usuarioActual.registraUsuario(
@@ -44,15 +59,15 @@ class PaginaLoginViewModel(application: Application) : AndroidViewModel(applicat
 
     }
 
+    /**
+     * permite que la contraseña esté oculta o no
+     */
     fun setVisibilidad() {
         _uiState.value = _uiState.value.copy(contrasenaVisible = !uiState.value.contrasenaVisible)
     }
 
 
-    fun setContrasena(contrasena: String): String {
-        _uiState.value = _uiState.value.copy(stringContrasena = contrasena)
-        return _uiState.value.stringContrasena
-    }
+
 
 
 }

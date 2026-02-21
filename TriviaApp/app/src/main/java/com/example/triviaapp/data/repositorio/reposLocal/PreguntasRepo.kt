@@ -126,13 +126,5 @@ class PreguntasRepo : IRepoPregunta {
 
     }
 
-
-    override fun leerTodo(
-        onSuccess: (List<PreguntaDTO>) -> Unit,
-        onError: () -> Unit
-    ) {
-        onSuccess(preguntas)
-    }
-
     companion object
 }

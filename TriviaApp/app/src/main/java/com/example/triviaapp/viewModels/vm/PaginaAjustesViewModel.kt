@@ -39,16 +39,26 @@ class PaginaAjustesViewModel(application: Application) : AndroidViewModel(applic
             )
         }
     }
+
+    /**
+     * cambia la categoria del trivia a crear
+     */
     fun setCategoria(categoria: String): String{
         _uiState.value = _uiState.value.copy(categoria = categoria)
         return categoria
     }
 
+    /**
+     * cambia el nombre del trivia a crear
+     */
     fun setNombreTrivia(nombre: String): String{
         _uiState.value = _uiState.value.copy(nombreTriv = nombre)
         return nombre
     }
 
+    /**
+     * cambia la cantidad de preguntas del trivia a crear
+     */
     fun setPreguntas(numPreguntas: Float): Float{
         _uiState.value = _uiState.value.copy(preguntas = numPreguntas.toInt())
         return _uiState.value.preguntas.toFloat()

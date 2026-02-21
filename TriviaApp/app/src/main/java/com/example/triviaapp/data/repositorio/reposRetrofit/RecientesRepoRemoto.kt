@@ -1,26 +1,23 @@
 package com.example.triviaapp.data.repositorio.reposRetrofit
 
-    import android.util.Log
-    import com.example.triviaapp.data.repositorio.interfacesRepo.InicioRepoInterface
-    import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofitInicio
-    import com.example.triviaapp.data.repositorio.retrofit.Network
-    import com.example.triviaapp.modelo.InicioDTO
-    import com.example.triviaapp.modelo.TrivialDTO
+    import com.example.triviaapp.data.repositorio.interfacesRepo.RecientesRepoInterface
+    import com.example.triviaapp.data.repositorio.retrofit.InterfazRetrofitRecientes
+    import com.example.triviaapp.modelo.RecientesDTO
     import retrofit2.Call
     import retrofit2.Callback
     import retrofit2.Response
 
-    class InicioRepoRemoto(private val inicioRetrofit: InterfazRetrofitInicio, ) : InicioRepoInterface {
+    class RecientesRepoRemoto(private val inicioRetrofit: InterfazRetrofitRecientes, ) : RecientesRepoInterface {
 
-        override fun anadirRecientes(
-            reciente: InicioDTO,
+        override fun anadirReciente(
+            reciente: RecientesDTO,
             onSuccess: () -> Unit,
             onError: () -> Unit
         ) {
             obtenerRecientesPersona(reciente.idUsuario,{it->
                 if(it.find {it.trivia==reciente.trivia}==null){
-                    inicioRetrofit.crearInicio(reciente).enqueue(object : Callback<InicioDTO> {
-                        override fun onResponse(call: Call<InicioDTO>, response: Response<InicioDTO>) {
+                    inicioRetrofit.crearInicio(reciente).enqueue(object : Callback<RecientesDTO> {
+                        override fun onResponse(call: Call<RecientesDTO>, response: Response<RecientesDTO>) {
                             if (response.isSuccessful) {
                                 onSuccess()
                             } else {
@@ -28,15 +25,15 @@ package com.example.triviaapp.data.repositorio.reposRetrofit
                             }
                         }
 
-                        override fun onFailure(call: Call<InicioDTO>, t: Throwable) {
+                        override fun onFailure(call: Call<RecientesDTO>, t: Throwable) {
                             onError()
                         }
                     })
                 }
             },
             onError = {
-                inicioRetrofit.crearInicio(reciente).enqueue(object : Callback<InicioDTO> {
-                    override fun onResponse(call: Call<InicioDTO>, response: Response<InicioDTO>) {
+                inicioRetrofit.crearInicio(reciente).enqueue(object : Callback<RecientesDTO> {
+                    override fun onResponse(call: Call<RecientesDTO>, response: Response<RecientesDTO>) {
                         if (response.isSuccessful) {
                             onSuccess()
                         } else {
@@ -44,7 +41,7 @@ package com.example.triviaapp.data.repositorio.reposRetrofit
                         }
                     }
 
-                    override fun onFailure(call: Call<InicioDTO>, t: Throwable) {
+                    override fun onFailure(call: Call<RecientesDTO>, t: Throwable) {
                         onError()
                     }
                 })
@@ -54,18 +51,18 @@ package com.example.triviaapp.data.repositorio.reposRetrofit
 
         override fun obtenerRecientesPersona(
             idCreador: String,
-            onSuccess: (List<InicioDTO>) -> Unit,
-            onError: (List<InicioDTO>) -> Unit
+            onSuccess: (List<RecientesDTO>) -> Unit,
+            onError: (List<RecientesDTO>) -> Unit
         ) {
-            inicioRetrofit.listarInicio().enqueue(object : Callback<List<InicioDTO>> {
-                override fun onResponse(call: Call<List<InicioDTO>>, response: Response<List<InicioDTO>>) {
+            inicioRetrofit.listarInicio().enqueue(object : Callback<List<RecientesDTO>> {
+                override fun onResponse(call: Call<List<RecientesDTO>>, response: Response<List<RecientesDTO>>) {
                     if (response.isSuccessful && response.body()!=null) {
                         onSuccess(response.body()!!.filter { it.idUsuario == idCreador })
                     } else {
                         onError(listOf())
                     }
                 }
-                override fun onFailure(call: Call<List<InicioDTO>>, t: Throwable) {
+                override fun onFailure(call: Call<List<RecientesDTO>>, t: Throwable) {
                     onError(emptyList())
                 }
             })

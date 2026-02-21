@@ -19,12 +19,12 @@ import androidx.compose.ui.unit.sp
 /**
  * @param msj1 mensaje del primer texto
  * @param msj2 mensaje del segundo texto
- * @param tamaño tamaño que tendran los textos
+ * @param tamanio tamaño que tendran los textos
  */
 class DatosColumnaTexto(
     var msj1: String,
     var msj2: String,
-    var tamaño: Int = 15
+    var tamanio: Int = 15
 )
 
 /**
@@ -33,11 +33,11 @@ class DatosColumnaTexto(
 @Composable
 fun ComponenteColumnaTextoDobleFondo(datos: DatosColumnaTexto) {
     Column(
-        verticalArrangement = Arrangement.spacedBy((datos.tamaño / 3).dp),
+        verticalArrangement = Arrangement.spacedBy((datos.tamanio / 3).dp),
         modifier = Modifier.fillMaxWidth()
     ) {
-        ComponenteTituloCaja(titulo = datos.msj1, tamaño = datos.tamaño)
-        ComponenteTituloCaja(titulo = datos.msj2, tamaño = datos.tamaño)
+        ComponenteTituloCaja(titulo = datos.msj1, tamanio = datos.tamanio)
+        ComponenteTituloCaja(titulo = datos.msj2, tamanio = datos.tamanio)
     }
 }
 
@@ -49,7 +49,7 @@ fun ComponenteColumnaTextoUnFondo(datos: DatosColumnaTexto) {
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
-        ComponenteTituloCaja(titulo = datos.msj1, tamaño = datos.tamaño)
+        ComponenteTituloCaja(titulo = datos.msj1, tamanio = datos.tamanio)
         Box(
             modifier = Modifier
                 .background(
@@ -66,9 +66,9 @@ fun ComponenteColumnaTextoUnFondo(datos: DatosColumnaTexto) {
             Text(
                 text = datos.msj2,
                 modifier = Modifier
-                    .padding(horizontal = 20.dp, vertical = (datos.tamaño/3).dp)
+                    .padding(horizontal = 20.dp, vertical = (datos.tamanio/3).dp)
                     .fillMaxWidth(),
-                fontSize = datos.tamaño.sp,
+                fontSize = datos.tamanio.sp,
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onSurface
             )

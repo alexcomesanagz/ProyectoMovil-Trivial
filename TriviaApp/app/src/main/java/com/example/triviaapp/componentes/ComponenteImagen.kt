@@ -16,7 +16,7 @@ import com.example.triviaapp.R
 
 /**
  * Crea una imagen de la id de la imagen que se le pase
- * @param id la imagen que se quiere que aparezca
+ * @param id la imagen que se quiere que aparezca del api
  * @param tamanio el tamaño de la imagen, por defecto a 20
  */
 @Composable
@@ -36,6 +36,11 @@ fun ComponenteImagen(
 
 }
 
+/**
+ * Crea una imagen redondeada
+ * @param id la imagen que se quiere que aparezca del api
+ * @param tamanio el tamaño de la imagen, por defecto a 20
+ */
 @Composable
 fun ComponenteImagenRedondeada(
     id: String,

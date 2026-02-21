@@ -91,12 +91,5 @@ class RespuestaRepo : IRepoRespuesta {
         onSuccess(correctas)
     }
 
-    override fun leerTodo(
-        onSuccess: (List<RespuestaDTO>) -> Unit,
-        onError: () -> Unit
-        ) {
-        onSuccess(respuestas.toList())
-    }
-
 
 }
