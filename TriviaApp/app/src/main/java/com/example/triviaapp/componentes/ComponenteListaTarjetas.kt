@@ -86,8 +86,7 @@ fun ComponenteListaTarjetasHorizontal(
         LazyRow(
             modifier = Modifier
                 .padding(all = (tamanio / 2).dp)
-                .fillMaxWidth()
-                .height(height = tamanioCaja.dp),
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy((tamanio * 0.5).dp),
             verticalAlignment = Alignment.CenterVertically
             )

@@ -56,11 +56,13 @@ fun ComponenteTarjetaHorizontal(
             text = contenido.titulo,
             modifier = Modifier.padding(vertical = 2.dp, horizontal = 4.dp),
             fontSize = (tamanio * 0.5).sp,
-            color = MaterialTheme.colorScheme.onSecondary
-
+            color = MaterialTheme.colorScheme.onSecondary,
+            overflow = TextOverflow.Ellipsis,
+            maxLines = 3
         )
     }
 }
+
 /**
 * crea una tarjeta con el contenido en vertical
 * @param tamanio cambia el tamaño de la imagen y texto de la tarjeta, predefinido a 40
@@ -85,7 +87,7 @@ fun ComponenteTarjetaVertical(
                 fontSize = (tamanio).sp,
                 color =MaterialTheme.colorScheme.onSecondary,
                 overflow = TextOverflow.Ellipsis,
-                maxLines = 1
+                maxLines = 3
 
             )
         }
